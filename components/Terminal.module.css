@@ -1,0 +1,57 @@
+.terminal {
+  background-color: #0a0a0a;
+  color: #ededed;
+  font-family: Consolas;
+  font-size: 0.9rem;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.terminal::-webkit-scrollbar {
+  display: none;
+}
+
+.terminal>.logs>.item {
+  padding-bottom: 12px;
+}
+
+.terminal input.command {
+  flex: 1;
+  min-width: 0px;
+  font-family: "Monospace", "Consolas";
+  background: transparent;
+  border: none;
+  outline: none;
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/caret-shape */
+  caret-shape: block;
+}
+
+.input::before {
+  content: "$ ";
+  display: inline;
+}
+
+.prompt {
+  display: inline-flex;
+  column-gap: 12px;
+}
+
+.prompt>.user {
+  color: green;
+}
+
+.prompt>.os {
+  color: blueviolet;
+}
+
+.prompt>.path {
+  color: gold;
+}
+
+.prompt>.branch {
+  color: darkcyan;
+}
