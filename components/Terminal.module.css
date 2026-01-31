@@ -19,6 +19,10 @@
   padding-bottom: 12px;
 }
 
+label.input {
+  display: flex;
+}
+
 .terminal input.command {
   flex: 1;
   min-width: 0px;
@@ -33,6 +37,11 @@
 .input::before {
   content: "$ ";
   display: inline;
+}
+
+.input,
+.output {
+  white-space: pre-wrap;
 }
 
 .prompt {

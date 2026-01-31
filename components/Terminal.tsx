@@ -3,10 +3,11 @@
 import styles from "./Terminal.module.css";
 import { useEffect, useRef, useState } from "react";
 import { Log, LogType } from "../types/Terminal";
-import { createLog, methods } from "../libs/terminal";
+import { createLog, createMethods } from "../libs/terminal";
 import { checkWindows } from "@/libs/checker";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
   ssr: false,
@@ -14,12 +15,14 @@ const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
 });
 
 export default function Terminal() {
+  const router = useRouter();
   const pathname = usePathname();
   const isWindows = checkWindows();
   const terminalRef = useRef<HTMLElement>(null);
   const commandRef = useRef<HTMLInputElement>(null);
   const indexRef = useRef<number>(-1);
   const [logs, setLogs] = useState<Log[][]>([]);
+  const methods = createMethods({ router, setLogs });
 
   useEffect(() => {
     if (commandRef.current) {
@@ -41,13 +44,12 @@ export default function Terminal() {
       const res = methods(req);
       setLogs((prev) => {
         indexRef.current = prev.length + 1;
-        return [
-          ...prev,
-          [
-            createLog({ type: "input", text: req, path: pathname }),
-            createLog({ type: "output", text: res, path: pathname }),
-          ],
-        ];
+        const logItem = [];
+        logItem.push(createLog({ type: "input", text: req, path: pathname }));
+        if (res) {
+          logItem.push(createLog({ type: "output", text: res, path: pathname }));
+        }
+        return [...prev, logItem];
       });
       e.currentTarget.value = "";
     }
@@ -82,24 +84,28 @@ export default function Terminal() {
           ))}
       </ul>
       <DynamicPromptText path={pathname} isWindows={isWindows} />
-      <div className={styles.input}>
+      <label className={styles.input} htmlFor="command">
         <input
           className={styles.command}
           ref={commandRef}
+          id="command"
+          name="command"
           onKeyDown={handleEnter}
           autoComplete="false"
+          spellCheck="false"
         />
-      </div>
+      </label>
     </section>
   );
 }
 
 function PromptText({ path, isWindows }: { path: string; isWindows: boolean; }) {
+  const displayPath = path === '/' ? '~' : `~${path}`;
   return (
     <p className={styles.prompt}>
       <span className={styles.user}>Portfolio@Guest</span>
       {isWindows && <span className={styles.os}>MINGW64</span>}
-      <span className={styles.path}>{`~${path}`}</span>
+      <span className={styles.path}>{displayPath}</span>
       <span className={styles.branch}>(master)</span>
     </p>
   );
