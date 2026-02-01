@@ -1,12 +1,18 @@
 "use client";
 
 import styles from "./Terminal.module.css";
+import { JetBrains_Mono } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Log, LogType } from "../types/Terminal";
 import { checkWindows } from "@/libs/checker";
 import terminal from "@/libs/terminal";
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
 
 const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
   ssr: false,
@@ -60,7 +66,7 @@ export default function Terminal() {
     }
   }
   return (
-    <section className={styles.terminal} ref={terminalRef}>
+    <section className={`${styles.terminal} ${jetBrainsMono.variable}`} ref={terminalRef}>
       <ul className={styles.logs}>
         {logs.length > 0 &&
           logs.map((log) => (
