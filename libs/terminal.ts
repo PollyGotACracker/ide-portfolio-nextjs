@@ -1,80 +1,140 @@
 import { Dispatch, SetStateAction } from "react";
-import { LogType, Log } from "../types/Terminal";
-
+import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 
+type Logs = Log[][];
+type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
-export function createMethods({ router, setLogs }: { router: Router, setLogs: Dispatch<SetStateAction<Log[][]>>; }) {
-  const methodsObj = {
-    help() {
-      return [
-        `Available commands:`,
-        `   about           Print profile`,
-        `   echo <text>     Print text`,
-        `   cd <page>       Navigate to page`,
-        `   grep <keyword>  Search contents`,
-        `   wget            Download portfolio`,
-        `   clear           Clear terminal`,
-      ].join('\n');
-    },
-    about() {
-      return [
-        `╔══════════════════════════════════════╗`,
-        `║ ${process.env.NEXT_PUBLIC_NAME}'s Portfolio v1.0 ║`,
-        `║ Frontend Developer                   ║`,
-        `║ Contact: ${process.env.NEXT_PUBLIC_EMAIL}        ║`,
-        `╚══════════════════════════════════════╝`,
-      ].join('\n');
-    },
-    echo(value: string) { return value; },
-    cd(value: string) {
-      if (!value) {
-        return router.push(`/`);
-      }
-      switch (value) {
-        case ".":
-          return;
-        case "":
-        case "~":
-        case "/":
-        case "~/":
-        case "..":
-          return router.push(`/`);
-        case "/log":
-        case "log":
-          return router.push(`/log`);
-        default:
-          return `bash: cd: ${value}: No such page`;
-      }
-    },
-    grep(value: string) { return `find ${value}`; },
-    wget() { return "download"; },
-    clear() { setLogs([]); }
+type CreateLogParams = Omit<Log, "id">;
+interface CreateMethodsParams {
+  logs: Logs;
+  setLogs: SetLogs;
+  router: Router;
+}
+
+export class CreateTerminal {
+  private logs!: Logs;
+  private setLogs!: SetLogs;
+  private router!: Router;
+
+  private id: number = 0;
+  private cmdIndex = -1;
+
+  create({ logs, setLogs, router }: CreateMethodsParams) {
+    this.logs = logs;
+    this.setLogs = setLogs;
+    this.router = router;
   };
 
-  return function (name: string) {
-    const cmd = name.split(" ");
-    const key = alias[cmd[0]] ?? cmd[0];
-    if (!(key in methodsObj)) {
+  private get methods() {
+    const { router, setLogs } = this;
+    return {
+      help() {
+        return [
+          `Available commands:`,
+          `   about           Print profile`,
+          `   echo <text>     Print text`,
+          `   cd <page>       Navigate to page`,
+          `   grep <keyword>  Search contents`,
+          `   wget            Download portfolio`,
+          `   clear           Clear terminal`,
+        ].join('\n');
+      },
+      about() {
+        return [
+          `> ${process.env.NEXT_PUBLIC_NAME}'s Portfolio v1.0`,
+          `> Frontend Developer`,
+          `> Contact: ${process.env.NEXT_PUBLIC_EMAIL}`,
+        ].join('\n');
+      },
+      echo(value: string) { return value; },
+      cd(value: string) {
+        if (!value) {
+          return router.push(`/`);
+        }
+        switch (value) {
+          case ".":
+            return;
+          case "":
+          case "~":
+          case "/":
+          case "~/":
+          case "..":
+            return router.push(`/`);
+          case "/log":
+          case "log":
+            return router.push(`/log`);
+          default:
+            return `bash: cd: ${value}: No such page`;
+        }
+      },
+      grep(value: string) { return `find ${value}`; },
+      wget() { return "download"; },
+      clear() { setLogs([]); }
+    };
+  };
+
+  private alias: Record<string, string> = {};
+
+  private createLog({ type, text, path }: CreateLogParams) {
+    const log: Log = {
+      id: this.id,
+      type,
+      text,
+      path
+    };
+    this.id++;
+    return log;
+  }
+
+  exec(name: string) {
+    const [cmd, ...rest] = name.split(" ");
+    const args = rest.join(" ");
+    const key = this.alias[cmd] ?? cmd;
+    if (!(key in this.methods)) {
       return `bash: ${key}: command not found\nType 'help' to see available commands`;
     }
-    return methodsObj[key as keyof typeof methodsObj](cmd[1]);
+    return this.methods[key as keyof typeof this.methods](args);
   };
-}
 
-let id = 0;
-export function createLog({ type, text, path }: { type: LogType, text: string; path: string; }) {
-  const log: Log = {
-    id,
-    type,
-    text,
-    path
-  };
-  id++;
-  return log;
-}
+  insertInput({ text, path }: Pick<CreateLogParams, "text" | "path">) {
+    this.setLogs((prev) => {
+      this.cmdIndex = prev.length + 1;
+      const item = this.createLog({ type: "input", text, path });
+      return [...prev, [item]];
+    });
+  }
 
+  insertOutput({ text }: Pick<CreateLogParams, "text">) {
+    this.setLogs((prev) => {
+      const last = prev.at(-1)!;
+      const item = this.createLog({ type: "output", text, path: last[0].path });
+      return [...prev.slice(0, -1), [...last, item]];
+    });
+  }
 
-const alias: Record<string, string> = {};
+  updateOutput({ text }: Pick<CreateLogParams, "text">) {
+    this.setLogs((prev) => {
+      const last = [...prev.at(-1)!];
+      const newItem = { ...last.at(-1)!, text };
+      return prev.with(-1, last.with(-1, newItem));
+    });
+  }
 
+  get prevCmd() {
+    if (this.logs.length === 0 || this.cmdIndex === 0) return;
+    this.cmdIndex--;
+    return this.logs[this.cmdIndex][0].text;
+  }
 
+  get nextCmd() {
+    if (this.logs.length === 0 || this.cmdIndex === this.logs.length) return;
+    const idx = this.cmdIndex + 1;
+    const req = this.logs?.[idx]?.[0]?.text;
+    this.cmdIndex++;
+    return req ?? "";
+  }
+};
+
+const terminal = new CreateTerminal();
+export default terminal;

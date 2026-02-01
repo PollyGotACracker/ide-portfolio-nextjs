@@ -2,12 +2,11 @@
 
 import styles from "./Terminal.module.css";
 import { useEffect, useRef, useState } from "react";
-import { Log, LogType } from "../types/Terminal";
-import { createLog, createMethods } from "../libs/terminal";
-import { checkWindows } from "@/libs/checker";
+import { useRouter, usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { Log, LogType } from "../types/Terminal";
+import { checkWindows } from "@/libs/checker";
+import terminal from "@/libs/terminal";
 
 const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
   ssr: false,
@@ -20,9 +19,8 @@ export default function Terminal() {
   const isWindows = checkWindows();
   const terminalRef = useRef<HTMLElement>(null);
   const commandRef = useRef<HTMLInputElement>(null);
-  const indexRef = useRef<number>(-1);
   const [logs, setLogs] = useState<Log[][]>([]);
-  const methods = createMethods({ router, setLogs });
+  terminal.create({ logs, setLogs, router });
 
   useEffect(() => {
     if (commandRef.current) {
@@ -41,29 +39,24 @@ export default function Terminal() {
       const req = e.currentTarget.value;
       if (!req) return;
 
-      const res = methods(req);
-      setLogs((prev) => {
-        indexRef.current = prev.length + 1;
-        const logItem = [];
-        logItem.push(createLog({ type: "input", text: req, path: pathname }));
-        if (res) {
-          logItem.push(createLog({ type: "output", text: res, path: pathname }));
-        }
-        return [...prev, logItem];
-      });
+      terminal.insertInput({ text: req, path: pathname });
+      const res = terminal.exec(req);
+      if (res) {
+        terminal.insertOutput({ text: res });
+      }
       e.currentTarget.value = "";
     }
     if (e.key === "ArrowUp") {
-      if (logs.length === 0 || indexRef.current === 0) return;
-      indexRef.current--;
-      e.currentTarget.value = logs[indexRef.current][0].text;
+      const value = terminal.prevCmd;
+      if (value !== undefined) {
+        e.currentTarget.value = value;
+      }
     }
     if (e.key === "ArrowDown") {
-      if (logs.length === 0 || indexRef.current === logs.length) return;
-      const idx = indexRef.current + 1;
-      const req = logs?.[idx]?.[0]?.text;
-      e.currentTarget.value = req ?? "";
-      indexRef.current = idx;
+      const value = terminal.nextCmd;
+      if (value !== undefined) {
+        e.currentTarget.value = value;
+      }
     }
   }
   return (
