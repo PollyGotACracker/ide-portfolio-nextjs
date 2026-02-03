@@ -26,13 +26,14 @@ export default function Terminal() {
   const terminalRef = useRef<HTMLElement>(null);
   const commandRef = useRef<HTMLInputElement>(null);
   const [logs, setLogs] = useState<Log[][]>([]);
-  terminal.create({ logs, setLogs, router });
+
 
   useEffect(() => {
+    terminal.create({ setLogs, router });
     if (commandRef.current) {
       commandRef.current.focus();
     }
-  }, []);
+  }, [setLogs, router]);
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -90,7 +91,7 @@ export default function Terminal() {
           id="command"
           name="command"
           onKeyDown={handleEnter}
-          autoComplete="false"
+          autoComplete="off"
           spellCheck="false"
         />
       </label>
@@ -102,7 +103,7 @@ function PromptText({ path, isWindows }: { path: string; isWindows: boolean; }) 
   const displayPath = path === '/' ? '~' : `~${path}`;
   return (
     <p className={styles.prompt}>
-      <span className={styles.user}>Portfolio@Guest</span>
+      <span className={styles.user}>portfolio@guest</span>
       {isWindows && <span className={styles.os}>MINGW64</span>}
       <span className={styles.path}>{displayPath}</span>
       <span className={styles.branch}>(master)</span>

@@ -2,26 +2,24 @@ import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 
-type Logs = Log[][];
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
 type CreateLogParams = Omit<Log, "id">;
 interface CreateMethodsParams {
-  logs: Logs;
   setLogs: SetLogs;
   router: Router;
 }
 
 export class CreateTerminal {
-  private logs!: Logs;
+  private inputs: string[] = [];
   private setLogs!: SetLogs;
   private router!: Router;
 
   private id: number = 0;
   private cmdIndex = -1;
 
-  create({ logs, setLogs, router }: CreateMethodsParams) {
-    this.logs = logs;
+  create({
+    setLogs, router }: CreateMethodsParams) {
     this.setLogs = setLogs;
     this.router = router;
   };
@@ -98,6 +96,7 @@ export class CreateTerminal {
   };
 
   insertInput({ text, path }: Pick<CreateLogParams, "text" | "path">) {
+    this.inputs.push(text);
     this.setLogs((prev) => {
       this.cmdIndex = prev.length + 1;
       const item = this.createLog({ type: "input", text, path });
@@ -122,16 +121,15 @@ export class CreateTerminal {
   }
 
   get prevCmd() {
-    if (this.logs.length === 0 || this.cmdIndex === 0) return;
+    if (this.inputs.length === 0 || this.cmdIndex === 0) return;
     this.cmdIndex--;
-    return this.logs[this.cmdIndex][0].text;
+    return this.inputs[this.cmdIndex];
   }
 
   get nextCmd() {
-    if (this.logs.length === 0 || this.cmdIndex === this.logs.length) return;
-    const idx = this.cmdIndex + 1;
-    const req = this.logs?.[idx]?.[0]?.text;
+    if (this.inputs.length === 0 || this.cmdIndex === this.inputs.length) return;
     this.cmdIndex++;
+    const req = this.inputs?.[this.cmdIndex];
     return req ?? "";
   }
 };
