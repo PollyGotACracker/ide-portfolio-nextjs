@@ -37,7 +37,6 @@ export default function Explorer() {
     );
   }
 
-
   return (
     <nav>
       {renderItem(PAGES.HOME, HOME_HEADINGS_DATA)}
