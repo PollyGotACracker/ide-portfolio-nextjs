@@ -4,7 +4,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
   /*
   [Issue] #id 로 페이지 스크롤 시 화면 흔들림
   overflow: clip: 코드를 사용한 스크롤까지 방지 
