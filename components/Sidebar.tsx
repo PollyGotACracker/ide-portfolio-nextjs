@@ -33,10 +33,12 @@ export default function Sidebar() {
 
   return (
     <aside className={styles.sidebar}>
-      {renderButton("explorer")}
-      {renderButton("search")}
-      {renderButton("sourceControl")}
-      {renderButton("extensions")}
+      <div className={styles.menuList}>
+        {renderButton("explorer")}
+        {renderButton("search")}
+        {renderButton("sourceControl")}
+        {renderButton("extensions")}
+      </div>
       {MENU_CONFIG[activeMenu].comp}
     </aside>
   );

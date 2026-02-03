@@ -3,7 +3,7 @@
 import styles from "./Explorer.module.css";
 import { useState } from "react";
 import Link from "next/link";
-import { PAGES, HOME_HEADINGS } from "@/constants/label";
+import { PAGES, HOME_HEADINGS, LOG_HEADINGS } from "@/constants/label";
 
 export default function Explorer() {
   const [activeMenu, setActiveMenu] = useState<string | null>(PAGES.HOME.param);
@@ -28,7 +28,7 @@ export default function Explorer() {
           <ul className={styles.submenuContent}>
             {menu.map(({ id, label }) =>
               <li className={styles.submenuName} key={id} >
-                <Link className={`codicon codicon-file ${styles.submenuLink}`} href={`#${id}`}>{label}</Link>
+                <Link className={`codicon codicon-file ${styles.submenuLink}`} href={`${page.param}#${id}`}>{label}</Link>
               </li>
             )}
           </ul>
@@ -40,6 +40,7 @@ export default function Explorer() {
   return (
     <nav>
       {renderItem(PAGES.HOME, HOME_HEADINGS_DATA)}
+      {renderItem(PAGES.LOG, LOG_HEADINGS_DATA)}
     </nav>
   );
 }
@@ -53,3 +54,4 @@ interface Heading {
 };
 
 const HOME_HEADINGS_DATA: Heading[] = Object.values(HOME_HEADINGS);
+const LOG_HEADINGS_DATA: Heading[] = Object.values(LOG_HEADINGS);

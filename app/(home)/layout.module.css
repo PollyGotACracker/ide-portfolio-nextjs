@@ -1,0 +1,65 @@
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  /*
+  [Issue] #id 로 페이지 스크롤 시 화면 흔들림
+  overflow: clip: 코드를 사용한 스크롤까지 방지 
+  */
+  grid-template-columns: 1fr var(--aside-width, 250px);
+  grid-template-rows: 40px 1fr var(--footer-height, 180px);
+  overflow: clip;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main aside"
+    "footer aside";
+  transition:
+    grid-template-columns 0.3s ease-in-out,
+    grid-template-rows 0.3s ease-in-out;
+}
+
+/* 데스크톱 (769px 이상) */
+@media (min-width: 769px) {
+  .container {
+    --aside-width: 250px;
+    --footer-height: 180px;
+  }
+
+  .container[data-aside="false"] {
+    --aside-width: 0px;
+  }
+
+  .container[data-footer="false"] {
+    --footer-height: 0px;
+  }
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .container {
+    --aside-width: 0px;
+    --footer-height: 0px;
+  }
+
+  .container[data-aside="true"] {
+    --aside-width: 250px;
+  }
+
+  .container[data-footer="true"] {
+    --footer-height: 180px;
+  }
+}
+
+.main {
+  grid-area: main;
+  height: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: var(--background-main);
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}

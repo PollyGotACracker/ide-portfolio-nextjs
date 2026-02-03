@@ -1,19 +1,36 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #181818;
+  --background-main: #ededed;
+  --border-color: #444444;
+  --button-color: #9D9D9D;
+  --button-active-background: #2A2D2E;
+  --button-active-color: #CCCCCC;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #181818;
     --foreground: #ededed;
+    --background-main: #1F1F1F;
+    --border-color: #444444;
+    --button-color: #9D9D9D;
+    --button-active-background: #2A2D2E;
+    --button-active-color: #CCCCCC;
   }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  min-height: 100vh;
+  position: fixed;
 }
 
 body {
@@ -22,12 +39,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {

@@ -23,7 +23,7 @@ export default function Terminal() {
   const router = useRouter();
   const pathname = usePathname();
   const isWindows = checkWindows();
-  const terminalRef = useRef<HTMLElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
   const commandRef = useRef<HTMLInputElement>(null);
   const [logs, setLogs] = useState<Log[][]>([]);
 
@@ -67,7 +67,7 @@ export default function Terminal() {
     }
   }
   return (
-    <section className={`${styles.terminal} ${jetBrainsMono.variable}`} ref={terminalRef}>
+    <div className={`${styles.terminal} ${jetBrainsMono.variable}`} ref={terminalRef}>
       <ul className={styles.logs}>
         {logs.length > 0 &&
           logs.map((log) => (
@@ -95,7 +95,7 @@ export default function Terminal() {
           spellCheck="false"
         />
       </label>
-    </section>
+    </div>
   );
 }
 

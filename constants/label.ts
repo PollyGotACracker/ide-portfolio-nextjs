@@ -1,6 +1,6 @@
 export const PAGES = {
   HOME: { param: "/", label: "홈", title: "포트폴리오" },
-  LOG: { param: "/log", log: "업데이트" },
+  LOG: { param: "/log", label: "업데이트", title: "업데이트" },
 };
 
 export const HOME_HEADINGS = {
@@ -12,4 +12,8 @@ export const HOME_HEADINGS = {
   CERTIFICATIONS: { id: "certifications", label: "자격증" },
   TRAINING: { id: "training", label: "교육" },
   COURSES: { id: "courses", label: "강의" },
+};
+
+export const LOG_HEADINGS = {
+  TEST: { id: "test", label: "테스트" }
 };
