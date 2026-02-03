@@ -1,0 +1,53 @@
+/* .menuItem {} */
+
+.menuName,
+.submenuName {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.menuName:hover,
+.menuName:focus,
+.submenuName:hover,
+.submenuName:focus {
+  background-color: #2A2D2E;
+}
+
+.submenuName {
+  padding-left: 45px;
+}
+
+button.toggle[class*="codicon-"] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.submenuWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  /* transition: grid-template-rows 0.3s ease-out; */
+}
+
+.menuItem.active > .submenuWrapper {
+  grid-template-rows: 1fr;
+}
+
+.submenuContent {
+  min-height: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a.menuLink[class*="codicon-"],
+a.submenuLink[class*="codicon-"] {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 6px;
+  width: 100%;
+}
