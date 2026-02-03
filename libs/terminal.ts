@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
+import { HOME_HEADINGS } from "@/constants/label";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -17,6 +18,9 @@ export class CreateTerminal {
 
   private id: number = 0;
   private cmdIndex = -1;
+  private headingMap = new Map(
+    Object.values(HOME_HEADINGS).map(({ id, label }) => [label, id])
+  );
 
   create({
     setLogs, router }: CreateMethodsParams) {
@@ -25,7 +29,7 @@ export class CreateTerminal {
   };
 
   private get methods() {
-    const { router, setLogs } = this;
+    const { router, setLogs, headingMap } = this;
     return {
       help() {
         return [
@@ -50,6 +54,12 @@ export class CreateTerminal {
         if (!value) {
           return router.push(`/`);
         }
+
+        const headingId = headingMap.get(value);
+        if (headingId) {
+          return router.push(`#${headingId}`);
+        }
+
         switch (value) {
           case ".":
             return;
