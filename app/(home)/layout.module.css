@@ -7,6 +7,11 @@
 */
 
 .container {
+  /* panel css variables */
+  --header-zindex: 102;
+  --aside-zindex: inherit;
+  --aside-position: static;
+  --header-size: 40px;
   --aside-size: 250px;
   --footer-size: 200px;
   --panel-padding: 10px;
@@ -18,9 +23,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  grid-template-columns: 1fr var(--aside-width, 250px);
-  grid-template-rows: 40px 1fr var(--footer-height, 200px);
-  overflow: hidden;
   display: grid;
   grid-template-areas:
     "header header"
@@ -34,13 +36,17 @@
 /* 데스크톱 (769px 이상) */
 @media (min-width: 769px) {
   .container {
+    grid-template-columns: 1fr var(--aside-width, 200px);
+    grid-template-rows: var(--header-height, 40px) 1fr var(--footer-height, 200px);
+
     --aside-width: var(--aside-size);
-    --footer-height: var(--footer-size);
     --aside-padding: var(--panel-padding);
-    --footer-padding: var(--panel-padding);
     --aside-border: var(--panel-border);
-    --footer-border: var(--panel-border);
     --aside-transition: none;
+
+    --footer-height: var(--footer-size);
+    --footer-padding: var(--panel-padding);
+    --footer-border: var(--panel-border);
     --footer-transition: none;
   }
 
@@ -62,21 +68,33 @@
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
   .container {
-    --aside-width: 0px;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height, 40px) 1fr var(--footer-height, 200px);
+
+    --aside-position: fixed;
+    --aside-zindex: 101;
+    --aside-right: calc(var(--aside-size) * -1);
+    --aside-top: var(--header-size);
+
+    --aside-width: var(--aside-size);
+    --aside-padding: var(--panel-padding);
+    --aside-border: var(--panel-border);
+    --aside-transition: right 0.3s ease-in-out;
+
     --footer-height: 0px;
-    --aside-padding: 0px;
     --footer-padding: 0px;
-    --aside-border: none;
     --footer-border: none;
-    --aside-transition: var(--hide-transition);
     --footer-transition: var(--hide-transition);
   }
 
   .container[data-aside="true"] {
-    --aside-width: var(--aside-size);
-    --aside-padding: var(--panel-padding);
-    --aside-border: var(--panel-border);
-    --aside-transition: none;
+    --aside-right: 0;
+  }
+
+  /* mobile Overlay */
+  .container[data-aside="true"]::after {
+    opacity: 1;
+    visibility: visible;
   }
 
   .container[data-footer="true"] {
@@ -87,12 +105,27 @@
   }
 }
 
+/* mobile Overlay */
+.container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
 .main {
   grid-area: main;
   height: 100%;
   padding: 10px;
   overflow-y: auto;
   background-color: var(--background-main);
-  scroll-behavior: smooth;
-  overscroll-behavior: contain;
+  /* scroll-behavior: smooth; */
+  /* overscroll-behavior: contain; */
 }
