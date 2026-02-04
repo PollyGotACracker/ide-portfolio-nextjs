@@ -9,7 +9,7 @@
   right: var(--aside-right);
   position: var(--aside-position);
   z-index: var(--aside-zindex);
-  padding-top: var(--aside-padding);
+  padding: var(--aside-padding) 0;
   border-left: var(--aside-border);
   transition: var(--aside-transition);
   display: flex;

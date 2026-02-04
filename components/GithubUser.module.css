@@ -1,0 +1,33 @@
+.github {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.github:hover {
+  background-color: transparent;
+}
+
+.githubIcon {
+  margin-right: 5px;
+  transform: translateY(2px);
+}
+
+.url {
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.repoWrapper {
+  font-size: 0.8rem;
+  display: flex;
+  column-gap: 6px;
+}
+
+.repo {
+  margin-right: 5px;
+}

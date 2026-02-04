@@ -1,7 +1,29 @@
-export default function SourceControl() {
+import styles from "./SourceControl.module.css";
+import Link from "next/link";
+import { getUserEvents } from "@/apis/github";
+
+export default async function SourceControl() {
+  const res = await getUserEvents();
+
   return (
-    <ul>
-      <li><span>init: initialize portfolio</span><span>2026.02.</span></li>
-    </ul>
+    <ul className={styles.eventList}>
+      {res.map((i) => {
+        const repoName = i.repo.name.split("/").at(-1);
+        const privateStyle = i.public ? "" : styles.private;
+        return (
+          <li className={styles.event} key={i.id}>
+            <Link className={`${styles.eventLink} ${privateStyle}`} href={`https://github.com/${i.repo.name}`} target="_blank">
+              <EventType type={i.type} />
+              <span>{repoName}</span>
+              <div className={styles.createdAt}>{i.created_at}</div>
+            </Link>
+          </li>);
+      })}
+    </ul >
   );
+}
+
+function EventType({ type }: { type: string; }) {
+  const text = type.slice(0, -5);
+  return <span className={styles.eventType}>{text}:</span>;
 }

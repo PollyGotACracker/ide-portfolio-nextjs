@@ -1,3 +1,4 @@
+import GithubUser from "@/components/GithubUser";
 import Heading from "@/components/Heading";
 import { HOME_HEADINGS, PAGES } from "@/constants/label";
 import Link from "next/link";
@@ -6,6 +7,7 @@ export default function Home() {
   return (
     <>
       <h1>{PAGES.HOME.title}</h1>
+      <GithubUser />
       <Heading.H2 {...HOME_HEADINGS.PROFILE} />
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget nisl ut justo interdum bibendum. Vestibulum congue lectus at enim pharetra luctus. Donec placerat nisl fermentum condimentum dignissim. Nulla ut hendrerit metus. Sed vestibulum euismod lacus ut dictum. In sit amet ornare justo. Quisque vitae nunc vel mauris facilisis luctus. Aliquam ut mauris sit amet ex venenatis semper vitae pharetra sapien. Phasellus efficitur, mi in convallis gravida, nunc ligula efficitur felis, ac aliquam lacus felis quis magna.
 
