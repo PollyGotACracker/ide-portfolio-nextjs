@@ -9,9 +9,11 @@
   right: var(--aside-right);
   position: var(--aside-position);
   z-index: var(--aside-zindex);
-  padding: var(--aside-padding);
+  padding-top: var(--aside-padding);
   border-left: var(--aside-border);
   transition: var(--aside-transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .menuList {
@@ -26,19 +28,28 @@ button.menuButton {
   height: 30px;
   padding: 5px;
   background-color: transparent;
-  color: var(--button-color);
+  color: var(--item-color);
   border: none;
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
 }
 
 button.menuButton:hover,
-button.menuButton:focus,
+button.menuButton:focus {
+  background-color: var(--item-hover-background);
+  color: var(--item-active-color);
+}
+
 button.menuButton.active {
-  background-color: var(--button-active-background);
-  color: var(--button-active-color);
+  background-color: var(--item-active-background);
+  color: var(--item-active-color);
 }
 
 i.icon[class*="codicon-"] {
   font-size: 20px;
+}
+
+.content {
+  flex: 1;
+  overflow: hidden;
 }

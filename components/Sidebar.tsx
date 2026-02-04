@@ -2,21 +2,24 @@
 
 import styles from "./Sidebar.module.css";
 import { useState } from "react";
-import Explorer from "./Explorer";
-import Search from "./Search";
-import SourceControl from "./SourceControl";
-import Extensions from "./Extensions";
 
-const MENU_CONFIG = {
-  explorer: { icon: "files", name: "Files", comp: <Explorer /> },
-  search: { icon: "search", name: "Search", comp: <Search /> },
-  sourceControl: { icon: "source-control", name: "Source Control", comp: <SourceControl /> },
-  extensions: { icon: "extensions", name: "Extensions", comp: <Extensions /> },
-} as const;
-type Menu = keyof typeof MENU_CONFIG;
+interface SidebarProps {
+  explorer: React.ReactNode;
+  search: React.ReactNode;
+  sourceControl: React.ReactNode;
+  extensions: React.ReactNode;
+}
 
-export default function Sidebar() {
+export default function Sidebar({ explorer, search, sourceControl, extensions }: SidebarProps) {
   const [activeMenu, setActiveMenu] = useState<Menu>("explorer");
+
+  const MENU_CONFIG = {
+    explorer: { icon: "files", name: "Files", comp: explorer },
+    search: { icon: "search", name: "Search", comp: search },
+    sourceControl: { icon: "source-control", name: "Source Control", comp: sourceControl },
+    extensions: { icon: "extensions", name: "Extensions", comp: extensions },
+  } as const;
+  type Menu = keyof typeof MENU_CONFIG;
 
   function renderButton(id: Menu) {
     const activeStyle = activeMenu === id ? styles.active : "";
@@ -39,7 +42,9 @@ export default function Sidebar() {
         {renderButton("sourceControl")}
         {renderButton("extensions")}
       </div>
-      {MENU_CONFIG[activeMenu].comp}
+      <div className={styles.content}>
+        {MENU_CONFIG[activeMenu].comp}
+      </div>
     </aside>
   );
 }
