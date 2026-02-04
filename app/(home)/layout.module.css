@@ -1,16 +1,26 @@
+/* 
+1. CSS 변수 두 번째 인자는 fallback 값
+2. CSS 모듈에서 컴포넌트 간 스타일 값 공유는 부모->자식으로 CSS 변수 사용
+3. grid 를 사용한 레이아웃 구현 시 토글되는 영역의 padding 과 border 는 화면을 흔들리게 함
+    따라서 닫힐 때 padding, border 제거 필요
+    만약 transition 이 적용되어있는 경우 닫힐 때 padding, border 에 transition delay 필요
+*/
+
 .container {
+  --aside-size: 250px;
+  --footer-size: 200px;
+  --panel-padding: 10px;
+  --panel-border: 1px solid var(--border-color);
+  --hide-transition: padding 0s 0.3s, border 0s 0.3s;
+
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  /*
-  [Issue] #id 로 페이지 스크롤 시 화면 흔들림
-  overflow: clip: 코드를 사용한 스크롤까지 방지 
-  */
   grid-template-columns: 1fr var(--aside-width, 250px);
-  grid-template-rows: 40px 1fr var(--footer-height, 180px);
-  overflow: clip;
+  grid-template-rows: 40px 1fr var(--footer-height, 200px);
+  overflow: hidden;
   display: grid;
   grid-template-areas:
     "header header"
@@ -24,16 +34,28 @@
 /* 데스크톱 (769px 이상) */
 @media (min-width: 769px) {
   .container {
-    --aside-width: 250px;
-    --footer-height: 180px;
+    --aside-width: var(--aside-size);
+    --footer-height: var(--footer-size);
+    --aside-padding: var(--panel-padding);
+    --footer-padding: var(--panel-padding);
+    --aside-border: var(--panel-border);
+    --footer-border: var(--panel-border);
+    --aside-transition: none;
+    --footer-transition: none;
   }
 
   .container[data-aside="false"] {
     --aside-width: 0px;
+    --aside-padding: 0px;
+    --aside-border: none;
+    --aside-transition: var(--hide-transition);
   }
 
   .container[data-footer="false"] {
     --footer-height: 0px;
+    --footer-padding: 0px;
+    --footer-border: none;
+    --footer-transition: var(--hide-transition);
   }
 }
 
@@ -42,14 +64,26 @@
   .container {
     --aside-width: 0px;
     --footer-height: 0px;
+    --aside-padding: 0px;
+    --footer-padding: 0px;
+    --aside-border: none;
+    --footer-border: none;
+    --aside-transition: var(--hide-transition);
+    --footer-transition: var(--hide-transition);
   }
 
   .container[data-aside="true"] {
-    --aside-width: 250px;
+    --aside-width: var(--aside-size);
+    --aside-padding: var(--panel-padding);
+    --aside-border: var(--panel-border);
+    --aside-transition: none;
   }
 
   .container[data-footer="true"] {
-    --footer-height: 180px;
+    --footer-height: var(--footer-size);
+    --footer-padding: var(--panel-padding);
+    --footer-border: var(--panel-border);
+    --footer-transition: none;
   }
 }
 

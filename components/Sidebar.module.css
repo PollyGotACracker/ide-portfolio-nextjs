@@ -2,8 +2,9 @@
   grid-area: aside;
   overflow: hidden;
   white-space: nowrap;
-  padding: 10px;
-  border-left: 1px solid var(--border-color);
+  padding: var(--aside-padding);
+  border-left: var(--aside-border);
+  transition: var(--aside-transition);
 }
 
 .menuList {
