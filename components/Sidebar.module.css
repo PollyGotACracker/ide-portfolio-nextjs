@@ -18,12 +18,10 @@ button.menuButton {
   width: 30px;
   height: 30px;
   padding: 5px;
-  color: var(--button-color);
   background-color: transparent;
+  color: var(--button-color);
   border: none;
-  outline: none;
   border-radius: 2px;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 

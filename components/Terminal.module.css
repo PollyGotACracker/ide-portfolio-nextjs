@@ -26,10 +26,8 @@ label.input {
   font-family: var(--font-jetbrains-mono);
   font-size: 0.9rem;
   flex: 1;
-  min-width: 0px;
   background: transparent;
   border: none;
-  outline: none;
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/caret-shape */
   caret-shape: block;
 }
