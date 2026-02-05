@@ -13,17 +13,20 @@ import Extensions from '@/components/Extensions';
     props 사용 => 상위 server component에서 import 하여 특정 prop 또는 children 으로 전달
 */
 export default function HomeLayout({ children }: { children: React.ReactNode; }) {
+  const sidebarProps = {
+    explorer: <Explorer />,
+    sourceControl: <SourceControl />,
+    search: <Search />,
+    extensions: <Extensions />
+  };
+
   return (
     <PanelProvider>
       <MainLayout
-        sidebar={
-          <Sidebar
-            explorer={<Explorer />}
-            sourceControl={<SourceControl />}
-            search={<Search />}
-            extensions={<Extensions />}
-          />
-        } footer={<Footer />}>{children}</MainLayout>
+        sidebar={<Sidebar {...sidebarProps} />}
+        footer={<Footer />}>
+        {children}
+      </MainLayout>
     </PanelProvider>
   );
 }

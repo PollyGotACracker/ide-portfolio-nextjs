@@ -6,7 +6,7 @@ export default async function SourceControl() {
   const res = await getUserEvents();
 
   return (
-    <ul className={styles.eventList}>
+    <ul className={`${styles.eventList} scrollbar`}>
       {res.map((i) => {
         const repoName = i.repo.name.split("/").at(-1);
         const privateStyle = i.public ? "" : styles.private;

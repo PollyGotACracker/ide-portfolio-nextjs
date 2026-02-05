@@ -1,6 +1,6 @@
 export const PAGES = {
-  HOME: { param: "/", label: "홈", title: "포트폴리오" },
-  LOG: { param: "/log", label: "업데이트", title: "업데이트" },
+  HOME: { param: "/", label: "포트폴리오", },
+  LOG: { param: "/log", label: "기록" },
 };
 
 export const HOME_HEADINGS = {

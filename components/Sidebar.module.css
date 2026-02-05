@@ -30,7 +30,7 @@ button.menuButton {
   background-color: transparent;
   color: var(--item-color);
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
   transition: all 0.2s ease-in-out;
 }
 

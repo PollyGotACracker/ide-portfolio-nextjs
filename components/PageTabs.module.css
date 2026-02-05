@@ -1,0 +1,32 @@
+.tabList {
+  grid-area: tabs;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+  height: 100%;
+  padding: 0 50px;
+  background-color: var(--background-main);
+  border-top: 1px solid var(--primary);
+  border-right: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.tab:after {
+  position: absolute;
+  content: "";
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--background-main);
+}
+
+.tab > i[class*="codicon"] {
+  transform: translateY(-1px);
+}

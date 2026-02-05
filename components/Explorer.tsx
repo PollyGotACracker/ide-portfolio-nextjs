@@ -22,7 +22,7 @@ export default function Explorer() {
       <div className={`${styles.menuItem} ${activeStyle}`}>
         <div className={styles.menuName}>
           <button className={`codicon codicon-${chevronClass} ${styles.toggle}`} onClick={handleToggle} />
-          <Link className={`codicon codicon-${folderClass} ${styles.menuLink}`} href={page.param}>{page.title}</Link>
+          <Link className={`codicon codicon-${folderClass} ${styles.menuLink}`} href={page.param}>{page.label}</Link>
         </div>
         <div className={styles.submenuWrapper}>
           <ul className={styles.submenuContent}>
@@ -46,7 +46,7 @@ export default function Explorer() {
 }
 interface Page {
   param: string;
-  title: string;
+  label: string;
 }
 interface Heading {
   id: string;

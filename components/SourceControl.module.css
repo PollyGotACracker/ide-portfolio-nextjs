@@ -3,22 +3,6 @@
   overflow: auto;
 }
 
-.eventList::-webkit-scrollbar {
-  width: 8px;
-}
-
-.eventList::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.eventList::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5);
-}
-
-.eventList::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 100, 100, 0.7);
-}
-
 .event:hover {
   background-color: var(--item-hover-background);
 }

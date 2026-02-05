@@ -1,12 +1,15 @@
 :root {
+  --primary: #0078d4;
+
   --background: #ffffff;
   --foreground: #181818;
   --background-main: #ededed;
-  --border-color: #444444;
+  --border-color: #2b2b2b;
   --item-color: #9D9D9D;
   --item-active-background: #37373D;
   --item-hover-background: #2A2D2E;
   --item-active-color: #CCCCCC;
+  --item-inactive-color: #525252;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,11 +17,12 @@
     --background: #181818;
     --foreground: #ededed;
     --background-main: #1F1F1F;
-    --border-color: #444444;
+    --border-color: #2b2b2b;
     --item-color: #9D9D9D;
     --item-active-background: #37373D;
     --item-hover-background: #2A2D2E;
     --item-active-color: #CCCCCC;
+    --item-inactive-color: #525252;
   }
 }
 
@@ -56,4 +60,20 @@ button {
   html {
     color-scheme: dark;
   }
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.7);
 }

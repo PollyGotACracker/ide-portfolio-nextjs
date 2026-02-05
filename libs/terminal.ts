@@ -18,9 +18,7 @@ export class CreateTerminal {
 
   private id: number = 0;
   private cmdIndex = -1;
-  private headingMap = new Map(
-    Object.values(HOME_HEADINGS).map(({ id, label }) => [label, id])
-  );
+  private headingMap = new Map(Object.values(HOME_HEADINGS).map((i) => [i.label, i.id]));
 
   create({
     setLogs, router }: CreateMethodsParams) {

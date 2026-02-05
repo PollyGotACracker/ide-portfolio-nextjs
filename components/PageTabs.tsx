@@ -1,0 +1,17 @@
+import { PAGES } from "@/constants/label";
+import styles from "./PageTabs.module.css";
+import { usePathname } from "next/navigation";
+
+export default function PageTabs() {
+  const pathname = usePathname();
+  return (
+    <ul className={styles.tabList}>
+      <li className={styles.tab}>
+        <i className="codicon codicon-browser" />
+        <span>{pageMap.get(pathname)}</span>
+      </li>
+    </ul>
+  );
+}
+
+const pageMap = new Map(Object.values(PAGES).map((i) => [i.param, i.label]));
