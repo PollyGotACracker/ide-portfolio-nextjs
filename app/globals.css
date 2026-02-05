@@ -1,5 +1,7 @@
 :root {
   --primary: #0078d4;
+  --primary-light: #3794ff;
+  --primary-dark: #27568c;
 
   --background: #ffffff;
   --foreground: #181818;
@@ -26,7 +28,9 @@
   }
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
