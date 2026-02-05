@@ -6,16 +6,8 @@ import { PAGES } from "@/constants/label";
 import { usePanel } from "@/contexts/PanelProvider";
 
 export default function Header() {
-  const { setShowAside, setShowFooter } = usePanel();
+  const { toggleFooter, toggleAside } = usePanel();
   const router = useRouter();
-
-  function callback(prev: boolean | "") {
-    if (prev === "") {
-      // 데스크톱: false(닫기), 모바일: true(열기)
-      return !(window.innerWidth > 768);
-    }
-    return !prev;
-  }
 
   function handleGoHome() {
     router.push(PAGES.HOME.param);
@@ -37,11 +29,11 @@ export default function Header() {
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.footer}`}
-          onClick={() => setShowFooter(callback)}
+          onClick={toggleFooter}
         />
         <button
           className={`codicon codicon-layout-sidebar-right ${styles.toggleButton} ${styles.aside}`}
-          onClick={() => setShowAside(callback)}
+          onClick={toggleAside}
         />
       </div>
     </header>);

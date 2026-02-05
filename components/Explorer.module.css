@@ -1,8 +1,13 @@
-.menuName,
+.menuName {
+  padding-left: 20px !important;
+}
+
 .submenuName {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 5px;
+  padding-left: 45px;
 }
 
 .menuName:hover,
@@ -12,11 +17,6 @@
   background-color: #2A2D2E;
 }
 
-.submenuName {
-  position: relative;
-  padding-left: 45px;
-}
-
 .submenuName:before {
   position: absolute;
   content: "";
@@ -24,31 +24,7 @@
   width: 1px;
   height: 100%;
   background-color: #585858;
-  transform: translateX(-30px);
-}
-
-button.toggle[class*="codicon-"] {
-  margin-right: 12px;
-  font-size: 20px;
-  background-color: transparent;
-  border: none;
-}
-
-.submenuWrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  /* transition: grid-template-rows 0.3s ease-out; */
-}
-
-.menuItem.active > .submenuWrapper {
-  grid-template-rows: 1fr;
-}
-
-.submenuContent {
-  min-height: 0;
-  margin: 0;
-  list-style: none;
+  transform: translateX(-18px);
 }
 
 a.menuLink[class*="codicon-"],

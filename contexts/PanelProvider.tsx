@@ -18,7 +18,26 @@ export function usePanel() {
     throw new Error("usePanel must be used within a PanelProvider.");
   }
 
-  return panelState;
+  function callback(prev: boolean | "") {
+    if (prev === "") {
+      // 데스크톱: false(닫기), 모바일: true(열기)
+      return !(window.innerWidth > 768);
+    }
+    return !prev;
+  }
+
+  function closeMobileAside() {
+    if (!(window.innerWidth > 768)) {
+      panelState?.setShowAside(false);
+    }
+  }
+
+  return {
+    ...panelState,
+    toggleFooter: () => panelState.setShowFooter(callback),
+    toggleAside: () => panelState.setShowAside(callback),
+    closeMobileAside
+  };
 }
 
 export default function PanelProvider({ children }: { children: React.ReactNode; }) {

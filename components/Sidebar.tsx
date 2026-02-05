@@ -42,11 +42,9 @@ export default function Sidebar({ explorer, search, sourceControl, extensions }:
         {renderButton("sourceControl")}
         {renderButton("extensions")}
       </div>
-      <div className={styles.content}>
+      <div className={styles.contentWrapper}>
         {MENU_CONFIG[activeMenu].comp}
       </div>
     </aside>
   );
 }
-
-;;

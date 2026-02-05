@@ -57,6 +57,9 @@ input {
 
 button {
   outline: none;
+}
+
+button:enabled {
   cursor: pointer;
 }
 
@@ -80,4 +83,12 @@ button {
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 100, 100, 0.7);
+}
+
+.scrollbarHidden {
+  scrollbar-width: none;
+}
+
+.scrollbarHidden::-webkit-scrollbar {
+  display: none;
 }

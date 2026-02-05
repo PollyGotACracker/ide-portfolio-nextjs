@@ -1,49 +1,60 @@
 'use client';
 
 import styles from "./Explorer.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePanel } from "@/contexts/PanelProvider";
 import { PAGES, HOME_HEADINGS, LOG_HEADINGS } from "@/constants/label";
+import Details from "./Details";
 
 export default function Explorer() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(PAGES.HOME.param);
+  const pathname = usePathname();
+  const { closeMobileAside } = usePanel();
+  const [activeMenu, setActiveMenu] = useState<string>(pathname);
+
+  useEffect(() => { setActiveMenu(pathname); }, [pathname]);
 
   function renderItem(page: Page, menu: Heading[]) {
     const isActive = activeMenu === page.param;
-    const activeStyle = isActive ? styles.active : "";
-    const chevronClass = isActive ? "chevron-down" : "chevron-right";
     const folderClass = isActive ? "folder-opened" : "folder";
 
-    function handleToggle() {
-      setActiveMenu((prev) => prev === page.param ? null : page.param);
+    function handleOptionalClose(e: React.MouseEvent) {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor) {
+        closeMobileAside();
+      };
     }
 
     return (
-      <div className={`${styles.menuItem} ${activeStyle}`}>
-        <div className={styles.menuName}>
-          <button className={`codicon codicon-${chevronClass} ${styles.toggle}`} onClick={handleToggle} />
-          <Link className={`codicon codicon-${folderClass} ${styles.menuLink}`} href={page.param}>{page.label}</Link>
-        </div>
-        <div className={styles.submenuWrapper}>
-          <ul className={styles.submenuContent}>
-            {menu.map(({ id, label }) =>
-              <li className={styles.submenuName} key={id} >
-                <Link className={`codicon codicon-file ${styles.submenuLink}`} href={`${page.param}#${id}`}>{label}</Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div >
+      <Details
+        className={styles.menuName}
+        title={<Link className={`codicon codicon-${folderClass} ${styles.menuLink} parent`} href={page.param}>{page.label}</Link>}
+        initialOpen={isActive}
+        onClick={handleOptionalClose}
+      >
+        <ul>
+          {menu.map(({ id, label }) =>
+            <li className={styles.submenuName} key={id}>
+              <Link className={`codicon codicon-file ${styles.submenuLink} child`} href={`${page.param}#${id}`}>{label}</Link>
+            </li>
+          )}
+        </ul>
+      </Details>
     );
   }
 
   return (
-    <nav>
-      {renderItem(PAGES.HOME, HOME_HEADINGS_DATA)}
-      {renderItem(PAGES.LOG, LOG_HEADINGS_DATA)}
-    </nav>
+    <Details title="pages">
+      <nav className={styles.linkList}>
+        {renderItem(PAGES.HOME, HOME_HEADINGS_DATA)}
+        {renderItem(PAGES.LOG, LOG_HEADINGS_DATA)}
+      </nav>
+    </Details>
   );
 }
+
 interface Page {
   param: string;
   label: string;

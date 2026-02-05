@@ -12,7 +12,7 @@ interface MainLayoutProps {
   footer: React.ReactNode;
 }
 export default function MainLayout({ children, sidebar, footer }: MainLayoutProps) {
-  const { showAside, showFooter } = usePanel();
+  const { showAside, showFooter, setShowAside } = usePanel();
 
   return (
     <div
@@ -24,6 +24,7 @@ export default function MainLayout({ children, sidebar, footer }: MainLayoutProp
       <main className={`${styles.main} scrollbar`}>{children}</main>
       {sidebar}
       {footer}
+      <div className={styles.overlay} onClick={() => setShowAside(false)} />
     </div>
   );
 }

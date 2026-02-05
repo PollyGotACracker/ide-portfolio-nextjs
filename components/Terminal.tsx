@@ -67,7 +67,7 @@ export default function Terminal() {
     }
   }
   return (
-    <div className={`${styles.terminal} ${jetBrainsMono.variable}`} ref={terminalRef}>
+    <div className={`${styles.terminal} ${jetBrainsMono.variable} scrollbarHidden`} ref={terminalRef}>
       <ul className={styles.logs}>
         {logs.length > 0 &&
           logs.map((log) => (
