@@ -44,7 +44,25 @@ export default async function generatePDF(html: string) {
 
     const browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
-    await page.setContent(html);
+
+    // 한글 폰트 포함
+    const htmlWithFont = `
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Noto Sans KR', sans-serif; }
+  </style>
+</head>
+<body>
+  ${html}
+</body>
+</html>
+`;
+    await page.setContent(htmlWithFont, {
+      waitUntil: 'networkidle0' // 요청 완료까지 대기
+    });
     const pdf = await page.pdf();
     await browser.close();
 
