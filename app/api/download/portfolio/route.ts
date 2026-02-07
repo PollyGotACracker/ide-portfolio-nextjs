@@ -1,4 +1,4 @@
-import { generatePDF } from '../generatePdf';
+import generatePDF from '../generatePdf';
 import { getJson } from '@/libs/getter';
 import {
   ProfileType,
@@ -28,6 +28,9 @@ export async function GET() {
     // skills: skillsData,
   }));
   const pdf = await generatePDF(html);
+  if (!pdf) {
+    return new Response('Failed to generate PDF', { status: 500 });
+  }
 
   return new Response(Buffer.from(pdf), {
     headers: {
