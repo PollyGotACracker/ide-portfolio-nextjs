@@ -42,7 +42,7 @@ export default async function generatePDF(html: string) {
       puppeteer = await import("puppeteer");
     }
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
     await page.setContent(html);
     const pdf = await page.pdf();
