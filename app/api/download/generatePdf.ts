@@ -16,7 +16,7 @@ Failed to get Chromium path: AssertionError [ERR_ASSERTION]: protocol mismatch
 위 이슈로 http 환경에서는 @sparticuz/chromium-min 사용 불가
 */
 
-const isVercel = !!process.env.VERCEL_ENV;
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default async function generatePDF(html: string) {
   let browser: Browser | undefined;
@@ -25,7 +25,7 @@ export default async function generatePDF(html: string) {
     let puppeteer;
     const launchOptions: LaunchOptions = { headless: true };
 
-    if (isVercel) {
+    if (isProduction) {
       // Vercel: puppeteer-core 와 다운로드한 Chromium 바이너리 사용
       puppeteer = await import("puppeteer-core");
       const chromium = (await import("@sparticuz/chromium-min")).default;
@@ -36,8 +36,7 @@ export default async function generatePDF(html: string) {
       // Chromium 바이너리 위치 지정 (기본 Chrome 대신 다운로드한 파일 사용)
       launchOptions.executablePath = executablePath;
       console.log("Launching browser with executable path:", executablePath);
-    }
-    else {
+    } else {
       // Local: puppeteer 사용
       // An `executablePath` or `channel` must be specified for `puppeteer-core`
       puppeteer = await import("puppeteer");
@@ -58,7 +57,6 @@ export default async function generatePDF(html: string) {
     }
   }
 }
-
 
 // 다운로드 데이터 캐싱
 let cachedExecutablePath: string | null = null;
