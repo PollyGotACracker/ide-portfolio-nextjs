@@ -1,0 +1,31 @@
+.ext {
+  display: grid;
+  column-gap: 10px;
+  grid-template-areas:
+    "icon name"
+    "icon desc"
+    "icon button";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  padding: 5px 20px;
+}
+
+.ext > svg {
+  grid-area: icon;
+  width: 35px;
+  height: 35px;
+}
+
+.extName {
+  grid-area: name;
+}
+
+.extDesc {
+  grid-area: desc;
+  color: var(--item-active-color);
+  font-size: 0.9rem;
+}
+
+.extButton {
+  grid-area: button;
+}

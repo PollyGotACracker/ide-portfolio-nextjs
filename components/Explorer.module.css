@@ -27,8 +27,8 @@
   transform: translateX(-18px);
 }
 
-a.menuLink[class*="codicon-"],
-a.submenuLink[class*="codicon-"] {
+.menuLink[class*="codicon-"],
+.submenuLink[class*="codicon-"] {
   display: inline-flex;
   align-items: center;
   column-gap: 6px;

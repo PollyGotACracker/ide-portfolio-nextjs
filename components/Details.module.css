@@ -1,18 +1,20 @@
 .details {
+  --summary-size: 30px;
   position: relative;
   overflow: hidden;
-  height: 100%;
 }
 
 button.summary {
   position: sticky;
   width: 100%;
+  height: var(--summary-size);
   background-color: transparent;
   border: none;
   display: flex;
+  align-items: center;
   text-transform: uppercase;
   font-size: 0.9rem;
-  padding: 5px 10px;
+  padding: 0 10px;
 }
 
 button.summary:disabled {
@@ -28,7 +30,7 @@ i.chevron[class*="codicon-"] {
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
-  height: calc(100% - 30px);
+  /* height: calc(100% - 30px); */
 }
 
 .contentWrapper.transition {
@@ -44,4 +46,5 @@ i.chevron[class*="codicon-"] {
   margin: 0;
   list-style: none;
   overflow-y: auto;
+  max-height: calc(100dvh - var(--header-size) - var(--aside-button-size) - (var(--aside-padding) * 3) - var(--summary-size));
 }

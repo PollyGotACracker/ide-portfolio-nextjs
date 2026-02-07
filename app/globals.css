@@ -12,6 +12,8 @@
   --item-hover-background: #2A2D2E;
   --item-active-color: #CCCCCC;
   --item-inactive-color: #525252;
+  --input-background: #313131;
+  --input-border-color: #3c3c3c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +27,8 @@
     --item-hover-background: #2A2D2E;
     --item-active-color: #CCCCCC;
     --item-inactive-color: #525252;
+    --input-background: #313131;
+    --input-border-color: #3c3c3c;
   }
 }
 
