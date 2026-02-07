@@ -25,7 +25,7 @@ export default function Header() {
           onClick={() => router.forward()}
         />
       </div>
-      <div className={styles.title} onClick={handleGoHome}>{process.env.NEXT_PUBLIC_NAME}</div>
+      <div className={styles.title} onClick={handleGoHome}>{process.env.NEXT_PUBLIC_NICKNAME}</div>
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.footer}`}

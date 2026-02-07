@@ -42,7 +42,7 @@ export class CreateTerminal {
       },
       about() {
         return [
-          `> ${process.env.NEXT_PUBLIC_NAME}'s Portfolio v1.0`,
+          `> ${process.env.NEXT_PUBLIC_NICKNAME}'s Portfolio v1.0`,
           `> Frontend Developer`,
           `> Contact: ${process.env.NEXT_PUBLIC_EMAIL}`,
         ].join('\n');

@@ -8,7 +8,7 @@ const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
-const title = process.env.NEXT_PUBLIC_NAME;
+const title = process.env.NEXT_PUBLIC_NICKNAME;
 const description = `${title} | Frontend Developer Portfolio`;
 export const metadata: Metadata = {
   metadataBase: new URL('https://ide-portfolio-nextjs.vercel.app'),
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: '/og_image.png',
         width: 1200,
         height: 630,
-        alt: `${process.env.NEXT_PUBLIC_NAME} Portfolio`,
+        alt: `${process.env.NEXT_PUBLIC_NICKNAME} Portfolio`,
       },
     ],
   },

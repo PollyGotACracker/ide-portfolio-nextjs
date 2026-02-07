@@ -1,0 +1,21 @@
+ul.skillList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.skillName {
+  display: inline-flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+p.capability {
+  text-indent: 15px;
+}
+
+p.capability:before {
+  display: inline-block;
+  content: "•";
+  margin-right: 10px;
+}

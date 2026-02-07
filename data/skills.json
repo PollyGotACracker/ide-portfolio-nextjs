@@ -1,0 +1,85 @@
+{
+  "frontend": [
+    {
+      "name": "HTML",
+      "capabilities": [
+        "Semantic Tag 를 사용한 페이지 구조 설계",
+        "`dataset` 속성을 사용하여 CSS, JavaScript 에서 element 조회"
+      ]
+    },
+    {
+      "name": "CSS",
+      "capabilities": [
+        "`:before`, `:after` 가상선택자를 활용한 요소 디자인 구현",
+        "Flexbox 와 Grid 를 활용한 복잡한 레이아웃 설계",
+        "Media Query 를 사용한 반응형 레이아웃 구현",
+        "Keyframes 를 사용한 애니메이션 구현"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "capabilities": [
+        "Event Handler 를 활용한 사용자 인터랙션 구현",
+        "Fetch API 및 FormData 객체를 사용한 데이터 요청",
+        "Web Animation API 를 활용한 애니메이션 구현"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "capabilities": [
+        "`type` 과 `interface` 를 사용한 타입 작성",
+        "Generic 을 활용한 재사용 가능한 컴포넌트 작성"
+      ]
+    },
+    {
+      "name": "React",
+      "capabilities": [
+        "`useState`, `useEffect` 를 활용한 UI 변경",
+        "`react-dom` 을 사용한 page routing",
+        "Custom hook 을 이용한 로직 재사용",
+        "Code Splitting 및 Lazy Loading 구현"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "capabilities": [
+        "Pages Router, App Router 버전에서의 프로젝트 구현",
+        "서버 라우터 작성"
+      ]
+    },
+    {
+      "name": "React-Query",
+      "capabilities": [
+        "`useQuery` 및 `useMutation` 코드 작성",
+        "Query `enabled` 옵션으로 특정 상황에서 데이터 재요청",
+        "`queryClient.invalidateQueries` 를 활용한 쿼리 무효화"
+      ]
+    },
+    {
+      "name": "MSW",
+      "capabilities": [
+        "Mocking 환경 구축",
+        "API endpoint mocking 및 handler 작성",
+        "`params` 및 `query`를 이용한 동적 응답 처리",
+        "네트워크 에러, 서버 에러 및 지연 상황 테스트"
+      ]
+    }
+  ],
+  "design": [
+    "Figma"
+  ],
+  "infra": [
+    "Vercel",
+    "Netlify",
+    "Heroku",
+    "AWS S3, EC2",
+    "Nginx"
+  ],
+  "backend": [
+    "Node.js",
+    "Express",
+    "Sequelize",
+    "mySQL",
+    "MongoDB"
+  ]
+}
