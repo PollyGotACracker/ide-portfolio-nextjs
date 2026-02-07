@@ -73,3 +73,7 @@ export interface CourseType {
     is_completed: boolean;
   }[];
 }
+
+export interface PortfolioData {
+  profile: ProfileType;
+}
