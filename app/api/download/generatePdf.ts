@@ -67,9 +67,8 @@ let downloadPromise: Promise<string> | null = null;
 async function getChromiumPath(): Promise<string> {
   if (cachedExecutablePath) return cachedExecutablePath;
 
-  const CHROMIUM_PACK_URL = process.env.PRODUCTION_URL
-    ? `${process.env.PRODUCTION_URL}/chromium-pack.tar`
-    : "https://github.com/gabenunez/puppeteer-on-vercel/raw/refs/heads/main/example/chromium-dont-use-in-prod.tar";
+  // install 된 패키지와 버전이 동일해야 함
+  const CHROMIUM_PACK_URL = "https://github.com/Sparticuz/chromium/releases/download/v143.0.4/chromium-v143.0.4-pack.x64.tar";
 
   if (!downloadPromise) {
     const chromium = (await import("@sparticuz/chromium-min")).default;
