@@ -51,7 +51,7 @@ i.icon[class*="codicon-"] {
 }
 
 .contentWrapper {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .contentWrapper > *:not(:last-child) {
