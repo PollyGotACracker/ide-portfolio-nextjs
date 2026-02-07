@@ -11,8 +11,10 @@
   "dependencies": {
     "@vscode/codicons": "^0.0.44",
     "next": "16.1.6",
+    "puppeteer": "^24.37.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",

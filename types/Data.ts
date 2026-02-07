@@ -1,12 +1,10 @@
 /* 소개 */
-export interface Profile {
-  name: string;
-  email: string;
+export interface ProfileType {
   about: string; // markdown
 }
 
 /* 주요 역량 */
-export interface Skills {
+export interface SkillsType {
   frontend: {
     name: string;
     capabilities: string[]; // markdown
@@ -17,7 +15,7 @@ export interface Skills {
 }
 
 /* 프로젝트 */
-export interface Project {
+export interface ProjectType {
   title: string;
   repo_url: string;
   site_url?: string;
@@ -31,7 +29,7 @@ export interface Project {
 }
 
 /* 경력 */
-export interface Experience {
+export interface ExperienceType {
   company: string;
   position: string;
   start_at: string;
@@ -40,7 +38,7 @@ export interface Experience {
 }
 
 /* 학력 */
-export interface Education {
+export interface EducationType {
   degree: string;
   major: string;
   institution: string;
@@ -49,7 +47,7 @@ export interface Education {
 }
 
 /* 자격증 */
-export interface Certification {
+export interface CertificationType {
   name: string;
   start_at: string;
   end_at?: string;
@@ -57,7 +55,7 @@ export interface Certification {
 }
 
 /* 교육(훈련) */
-export interface Training {
+export interface TrainingType {
   name: string;
   start_at: string;
   end_at?: string;
@@ -66,7 +64,7 @@ export interface Training {
 }
 
 /* 강의 */
-export interface Course {
+export interface CourseType {
   platform: string;
   list: {
     title: string;
