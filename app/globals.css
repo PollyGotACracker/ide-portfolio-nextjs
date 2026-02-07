@@ -74,7 +74,10 @@ button:enabled {
 }
 
 .scrollbar::-webkit-scrollbar {
+  /* 세로 스크롤바 */
   width: 8px;
+  /* 가로 스크롤바 */
+  height: 8px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -87,6 +90,10 @@ button:enabled {
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 100, 100, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 .scrollbarHidden {
