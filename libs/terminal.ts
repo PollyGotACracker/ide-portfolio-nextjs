@@ -27,7 +27,7 @@ export class CreateTerminal {
   };
 
   private get methods() {
-    const { router, setLogs, headingMap } = this;
+    const { router, setLogs, headingMap, downloadFile } = this;
     return {
       help() {
         return [
@@ -36,7 +36,8 @@ export class CreateTerminal {
           `   echo <text>     Print text`,
           `   cd <page>       Navigate to page`,
           `   grep <keyword>  Search contents`,
-          `   wget            Download portfolio`,
+          `   wget <file>     Download pdf file`,
+          `       portfolio`,
           `   clear           Clear terminal`,
         ].join('\n');
       },
@@ -75,7 +76,9 @@ export class CreateTerminal {
         }
       },
       grep(value: string) { return `find ${value}`; },
-      wget() { return "download"; },
+      wget(filename: string) {
+        downloadFile(filename);
+      },
       clear() { setLogs([]); }
     };
   };
@@ -92,6 +95,13 @@ export class CreateTerminal {
     this.id++;
     return log;
   }
+
+  private downloadFile(filename: string) {
+    const link = document.createElement('a');
+    link.href = `/api/download/${filename}`;
+    link.download = `${filename}.pdf`;
+    link.click();
+  };
 
   exec(name: string) {
     const [cmd, ...rest] = name.split(" ");
