@@ -92,7 +92,7 @@ button:enabled {
   background: rgba(100, 100, 100, 0.7);
 }
 
-::-webkit-scrollbar-corner {
+.scrollbar::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
