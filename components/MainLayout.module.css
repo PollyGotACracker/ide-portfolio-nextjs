@@ -78,42 +78,6 @@
   }
 }
 
-/* 데스크톱 (769px 이상) */
-@media (min-width: 769px) {
-  .container {
-    grid-template-columns: 1fr var(--aside-width, 200px);
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
-    --aside-toggle-color: var(--item-active-color);
-    --footer-toggle-color: var(--item-active-color);
-
-    --aside-width: var(--aside-size);
-    --aside-padding: var(--panel-padding);
-    --aside-border: var(--panel-border);
-    --aside-transition: none;
-
-    --footer-height: var(--footer-size);
-    --footer-padding: var(--panel-padding);
-    --footer-border: var(--panel-border);
-    --footer-transition: none;
-  }
-
-  .container[data-aside="false"] {
-    --aside-toggle-color: var(--item-inactive-color);
-    --aside-width: 0px;
-    --aside-padding: 0px;
-    --aside-border: none;
-    --aside-transition: var(--hide-transition);
-  }
-
-  .container[data-footer="false"] {
-    --footer-toggle-color: var(--item-inactive-color);
-    --footer-height: 0px;
-    --footer-padding: 0px;
-    --footer-border: none;
-    --footer-transition: var(--hide-transition);
-  }
-}
-
 /* mobile Overlay */
 .container > .overlay {
   content: "";
@@ -128,6 +92,43 @@
   visibility: hidden;
   transition: opacity 0.3s ease;
 }
+
+/* 데스크톱 (769px 이상) */
+@media (min-width: 769px) {
+  .container {
+    grid-template-columns: 1fr var(--aside-width, 200px);
+    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
+    --aside-toggle-color: var(--item-active-color);
+    --footer-toggle-color: var(--item-inactive-color);
+
+    --aside-width: var(--aside-size);
+    --aside-padding: var(--panel-padding);
+    --aside-border: var(--panel-border);
+    --aside-transition: none;
+
+    --footer-height: 0px;
+    --footer-padding: 0px;
+    --footer-border: none;
+    --footer-transition: var(--hide-transition);
+  }
+
+  .container[data-aside="false"] {
+    --aside-toggle-color: var(--item-inactive-color);
+    --aside-width: 0px;
+    --aside-padding: 0px;
+    --aside-border: none;
+    --aside-transition: var(--hide-transition);
+  }
+
+  .container[data-footer="true"] {
+    --footer-toggle-color: var(--item-active-color);
+    --footer-height: var(--footer-size);
+    --footer-padding: var(--panel-padding);
+    --footer-border: var(--panel-border);
+    --footer-transition: none;
+  }
+}
+
 
 .main {
   grid-area: main;

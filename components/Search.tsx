@@ -5,7 +5,7 @@ export default function Search() {
   return (
     <Details title="search" disabled={true}>
       <div className={styles.inputWrapper}>
-        <input className={styles.keyword} />
+        <input className={styles.keyword} value="Not supported" disabled />
       </div>
     </Details>);
 }

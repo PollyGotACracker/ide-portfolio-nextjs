@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Log, LogType } from "../types/Terminal";
+import { usePanel } from "@/contexts/PanelProvider";
 import { checkWindows } from "@/libs/checker";
 import terminal from "@/libs/terminal";
 
@@ -20,6 +21,7 @@ const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
 });
 
 export default function Terminal() {
+  const { showFooter } = usePanel();
   const router = useRouter();
   const pathname = usePathname();
   const isWindows = checkWindows();
@@ -27,12 +29,14 @@ export default function Terminal() {
   const commandRef = useRef<HTMLInputElement>(null);
   const [logs, setLogs] = useState<Log[][]>([]);
 
+  useEffect(() => {
+    if (commandRef.current && showFooter) {
+      commandRef.current.focus();
+    }
+  }, [showFooter]);
 
   useEffect(() => {
     terminal.create({ setLogs, router });
-    if (commandRef.current) {
-      commandRef.current.focus();
-    }
   }, [setLogs, router]);
 
   useEffect(() => {

@@ -35,7 +35,7 @@ export class CreateTerminal {
           `   about           Print profile`,
           `   echo <text>     Print text`,
           `   cd <page>       Navigate to page`,
-          `   grep <keyword>  Search contents`,
+          // `   grep <keyword>  Search contents`,
           `   wget <file>     Download pdf file`,
           `       portfolio`,
           `   clear           Clear terminal`,
@@ -75,7 +75,7 @@ export class CreateTerminal {
             return `bash: cd: ${value}: No such page`;
         }
       },
-      grep(value: string) { return `find ${value}`; },
+      // grep(value: string) { return `find ${value}`; },
       wget(filename: string) {
         downloadFile(filename);
       },

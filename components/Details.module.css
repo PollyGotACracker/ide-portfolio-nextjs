@@ -11,6 +11,7 @@ button.summary {
   background-color: transparent;
   border: none;
   display: flex;
+  column-gap: 6px;
   align-items: center;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -20,10 +21,6 @@ button.summary {
 button.summary:disabled {
   color: inherit;
   cursor: default;
-}
-
-i.chevron[class*="codicon-"] {
-  margin-right: 6px;
 }
 
 .contentWrapper {

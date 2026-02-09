@@ -12,8 +12,9 @@
 
 .ext > svg {
   grid-area: icon;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
 }
 
 .extName {
@@ -28,4 +29,16 @@
 
 .extButton {
   grid-area: button;
+  border: none;
+  border-radius: 2px;
+  width: 80px;
+  margin-left: auto;
+}
+
+.extButton.active {
+  background-color: var(--primary);
+}
+
+.extButton.inactive {
+  background-color: var(--item-inactive-color);
 }

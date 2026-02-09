@@ -25,14 +25,15 @@ export default function Explorer() {
 
   function renderPage(page: Page, menu: SubPage[]) {
     const isActive = activeMenu === page.param;
-    const folderClass = isActive ? "folder-opened" : "folder";
-    const pageClass = `codicon codicon-${folderClass} ${styles.menuLink} parent`;
 
     return (
       <Details
-        className={styles.menuName}
-        title={<Link className={pageClass} href={page.param}>{page.label}</Link>}
+        className={styles.menu}
+        title={<Link className={styles.menuLink} href={page.param}>{page.label}</Link>}
+        openIcon={<i className={`codicon codicon-folder-opened`} />}
+        closeIcon={<i className={`codicon codicon-folder`} />}
         initialOpen={isActive}
+        showTransition={false}
         onClick={handleOptionalClose}
       >
         {renderSubpages(page.param, menu)}
@@ -46,7 +47,7 @@ export default function Explorer() {
     return (
       <ul>
         {menu.map(({ id, label, separator }) =>
-          <li className={styles.submenuName} key={id}>
+          <li className={styles.submenu} key={id}>
             <Link className={subpageClass} href={`${param}${separator}${id}`}>
               {label}
             </Link>

@@ -9,6 +9,8 @@ interface DetailsProps {
   className?: string;
   onClick?: React.MouseEventHandler,
   onToggle?: (prev: boolean) => void;
+  openIcon?: React.ReactNode;
+  closeIcon?: React.ReactNode;
   initialOpen?: boolean;
   disabled?: boolean;
   showScrollbar?: boolean;
@@ -20,6 +22,8 @@ export default function Details({
   className,
   onClick,
   onToggle,
+  openIcon,
+  closeIcon,
   initialOpen = true,
   disabled = false,
   showScrollbar = false,
@@ -45,6 +49,7 @@ export default function Details({
     <div className={`${styles.details} ${activeStyle}`} onClick={onClick}>
       <button className={`${styles.summary} ${className ?? ""}`} onClick={handleToggle} disabled={disabled}>
         {!disabled && <i className={`codicon codicon-${chevronClass} ${styles.chevron}`} />}
+        {isActive ? openIcon : closeIcon}
         {title}
       </button>
       <div className={`${styles.contentWrapper} ${showTransition ? styles.transition : ""}`}>

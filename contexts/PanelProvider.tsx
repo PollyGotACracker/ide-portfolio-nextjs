@@ -18,7 +18,14 @@ export function usePanel() {
     throw new Error("usePanel must be used within a PanelProvider.");
   }
 
-  function callback(prev: boolean | "") {
+  function footerCb(prev: boolean | "") {
+    if (prev === "") {
+      return true;
+    }
+    return !prev;
+  }
+
+  function asideCb(prev: boolean | "") {
     if (prev === "") {
       // 데스크톱: false(닫기), 모바일: true(열기)
       return !(window.innerWidth > 768);
@@ -34,8 +41,8 @@ export function usePanel() {
 
   return {
     ...panelState,
-    toggleFooter: () => panelState.setShowFooter(callback),
-    toggleAside: () => panelState.setShowAside(callback),
+    toggleFooter: () => panelState.setShowFooter(footerCb),
+    toggleAside: () => panelState.setShowAside(asideCb),
     closeMobileAside
   };
 }
