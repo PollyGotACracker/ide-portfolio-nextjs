@@ -2,11 +2,19 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+}
+
+h2.heading {
+  font-size: 30px;
+  font-weight: 700;
   scroll-margin-top: 20px;
   margin-top: 20px;
   margin-bottom: 10px;
   padding: 0 10px;
-  font-size: 30px;
-  font-weight: 700;
   border-bottom: 1px solid var(--border-color);
+}
+
+h3.heading {
+  font-size: 20px;
+  padding: 5px 0;
 }

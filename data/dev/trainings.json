@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Lorem Intensive Training",
+    "start_at": "2019.06",
+    "end_at": "2019.12",
+    "institution": "Ipsum Academy",
+    "description": [
+      "Comprehensive study of **Lorem Algorithms**.",
+      "Practical application of *Ipsum Data Structures*.",
+      "Final project on **Dolor Integration**."
+    ]
+  }
+]

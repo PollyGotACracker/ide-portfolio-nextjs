@@ -1,0 +1,87 @@
+.projectList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+}
+
+.content > * {
+  padding: 10px;
+}
+
+.content > *:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.textWrapper {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.textWrapper > svg {
+  flex-shrink: 0;
+}
+
+.link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.link:not(.inactive):hover,
+.link:not(.inactive):focus {
+  border-color: var(--item-active-color);
+}
+
+.link.inactive {
+  color: var(--item-inactive-color);
+  text-decoration: line-through;
+  cursor: default;
+  pointer-events: none;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stack {
+  white-space: nowrap;
+}
+
+.stack:not(:last-child):after {
+  display: inline;
+  content: "|";
+  padding: 0 5px;
+  color: var(--item-inactive-color);
+}
+
+.featureList,
+.extraLinkList {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature:before {
+  display: inline-block;
+  content: "•";
+  margin-right: 10px;
+}

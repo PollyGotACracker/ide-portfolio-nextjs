@@ -9,18 +9,20 @@ const { id, label } = HOME_HEADINGS.SKILLS;
 
 export default async function Skills() {
   const data: SkillsType = await getJson("skills.json");
+  return <SkillsUI data={data} />;
+}
 
+export function SkillsUI({ data }: { data: SkillsType; }) {
   return (
     <section>
       <Heading.H2 id={id} icon={<FaTools />}>{label}</Heading.H2>
       <ul className={styles.skillList}>
         {data.frontend.map((i) =>
           <li key={i.name}>
-            <span className={styles.skillName}>
-              {iconMap[i.name]}
-              <span>{i.name}</span>
-            </span>
-            {i.capabilities.map((c) => <p className={styles.capability} key={c}>{c}</p>)}
+            <span className={styles.skillName}>{iconMap[i.name]}<span>{i.name}</span></span>
+            <ul className={styles.capabilityList}>
+              {i.capabilities.map((c) => <li className={styles.capability} key={c}>{c}</li>)}
+            </ul>
           </li>
         )}
       </ul>

@@ -1,0 +1,32 @@
+{
+  "frontend": [
+    {
+      "name": "Lorem Framework",
+      "capabilities": [
+        "**Dolor sit amet** consectetur adipiscing elit.",
+        "Facilisis magna etiam tempor *orci eu lobortis* elementum."
+      ]
+    },
+    {
+      "name": "Ipsum Script",
+      "capabilities": [
+        "Purus sit amet **volutpat consequat** mauris.",
+        "Arcu cursus vitae congue *mauris rhoncus* aenean."
+      ]
+    }
+  ],
+  "infra": [
+    "Lorem Cloud",
+    "Ipsum Engine",
+    "Dolor Container"
+  ],
+  "design": [
+    "Lorem Studio",
+    "Ipsum Design System"
+  ],
+  "backend": [
+    "Lorem Node",
+    "Ipsum Database",
+    "Dolor API"
+  ]
+}

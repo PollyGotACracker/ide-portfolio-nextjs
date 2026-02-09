@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Mastering Lorem Ipsum",
+    "instructor": "Dr. Lorem",
+    "url": "/",
+    "is_completed": true
+  },
+  {
+    "title": "Ipsum Advanced Patterns",
+    "instructor": "Prof. Ipsum",
+    "url": "/",
+    "is_completed": false
+  }
+]

@@ -9,7 +9,10 @@ const { id, label } = HOME_HEADINGS.PROFILE;
 
 export default async function Profile() {
   const data: ProfileType = await getJson(file);
+  return <ProfileUI data={data} />;
+}
 
+export function ProfileUI({ data }: { data: ProfileType; }) {
   return (
     <section>
       <Heading.H2 id={id} icon={<MdModeComment />}>{label}</Heading.H2>
