@@ -97,7 +97,7 @@
 @media (min-width: 769px) {
   .container {
     grid-template-columns: 1fr var(--aside-width, 200px);
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
+    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 0);
     --aside-toggle-color: var(--item-color-active);
     --footer-toggle-color: var(--item-color-inactive);
 
