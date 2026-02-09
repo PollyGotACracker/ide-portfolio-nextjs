@@ -39,8 +39,8 @@
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
-    --aside-toggle-color: var(--item-inactive-color);
-    --footer-toggle-color: var(--item-inactive-color);
+    --aside-toggle-color: var(--item-color-inactive);
+    --footer-toggle-color: var(--item-color-inactive);
 
     --aside-position: fixed;
     --aside-zindex: 101;
@@ -59,7 +59,7 @@
   }
 
   .container[data-aside="true"] {
-    --aside-toggle-color: var(--item-active-color);
+    --aside-toggle-color: var(--item-color-active);
     --aside-right: 0;
   }
 
@@ -70,7 +70,7 @@
   }
 
   .container[data-footer="true"] {
-    --footer-toggle-color: var(--item-active-color);
+    --footer-toggle-color: var(--item-color-active);
     --footer-height: var(--footer-size);
     --footer-padding: var(--panel-padding);
     --footer-border: var(--panel-border);
@@ -98,8 +98,8 @@
   .container {
     grid-template-columns: 1fr var(--aside-width, 200px);
     grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
-    --aside-toggle-color: var(--item-active-color);
-    --footer-toggle-color: var(--item-inactive-color);
+    --aside-toggle-color: var(--item-color-active);
+    --footer-toggle-color: var(--item-color-inactive);
 
     --aside-width: var(--aside-size);
     --aside-padding: var(--panel-padding);
@@ -113,7 +113,7 @@
   }
 
   .container[data-aside="false"] {
-    --aside-toggle-color: var(--item-inactive-color);
+    --aside-toggle-color: var(--item-color-inactive);
     --aside-width: 0px;
     --aside-padding: 0px;
     --aside-border: none;
@@ -121,7 +121,7 @@
   }
 
   .container[data-footer="true"] {
-    --footer-toggle-color: var(--item-active-color);
+    --footer-toggle-color: var(--item-color-active);
     --footer-height: var(--footer-size);
     --footer-padding: var(--panel-padding);
     --footer-border: var(--panel-border);

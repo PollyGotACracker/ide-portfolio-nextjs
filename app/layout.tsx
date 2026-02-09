@@ -30,10 +30,30 @@ export const metadata: Metadata = {
   },
 };
 
+
+const ScriptTheme = () => {
+  const codeToRunOnClient = `(function () {
+    const themeSaved = localStorage.getItem('theme');
+    if (themeSaved) {
+      document.documentElement.dataset.theme = themeSaved;
+    } else {
+      const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    }
+
+    const fontSaved = localStorage.getItem('fontSize');
+    if (fontSaved) {
+      document.documentElement.style.setProperty('--font-size', fontSaved);
+    }
+  })()`;
+  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="ko">
-      <body className={`${notoSans.variable}`}>
+    <html lang="ko" suppressHydrationWarning>
+      <head><ScriptTheme /></head>
+      <body className={`${notoSans.variable}`} suppressHydrationWarning>
         {children}
       </body>
     </html>

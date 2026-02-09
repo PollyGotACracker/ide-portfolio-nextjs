@@ -5,7 +5,7 @@
 }
 
 h2.heading {
-  font-size: 30px;
+  font-size: 1.8rem;
   font-weight: 700;
   scroll-margin-top: 20px;
   margin-top: 20px;
@@ -15,6 +15,6 @@ h2.heading {
 }
 
 h3.heading {
-  font-size: 20px;
+  font-size: 1.2rem;
   padding: 5px 0;
 }

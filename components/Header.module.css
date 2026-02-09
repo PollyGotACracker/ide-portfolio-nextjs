@@ -42,17 +42,17 @@ button.toggleButton {
 }
 
 button.historyButton:hover {
-  background-color: var(--item-hover-background);
+  background-color: var(--item-background-hover);
   color: var(--item-hover-color);
 }
 
 button.toggleButton:hover {
-  background-color: var(--item-hover-background);
+  background-color: var(--item-background-hover);
 }
 
 button.historyButton[class*="codicon-"],
 button.toggleButton[class*="codicon-"] {
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 button.toggleButton.aside {

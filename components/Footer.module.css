@@ -29,11 +29,11 @@ button.menuButton {
 
 button.menuButton:hover,
 button.menuButton:focus {
-  background-color: var(--item-hover-background);
-  color: var(--item-active-color);
+  background-color: var(--item-background-hover);
+  color: var(--item-color-active);
 }
 
 button.menuButton.active {
-  background-color: var(--item-active-background);
-  color: var(--item-active-color);
+  background-color: var(--item-background-active);
+  color: var(--item-color-active);
 }

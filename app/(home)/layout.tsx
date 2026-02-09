@@ -6,6 +6,8 @@ import Explorer from '@/components/Explorer';
 import SourceControl from '@/components/SourceControl';
 import Search from '@/components/Search';
 import Extensions from '@/components/Extensions';
+import FontSizeProvider from '@/contexts/FontSizeProvider';
+import ThemeProvider from '@/contexts/ThemeProvider';
 
 /*
 1. layout 은 server component 로 만들어 놓을 것
@@ -21,12 +23,16 @@ export default function HomeLayout({ children }: { children: React.ReactNode; })
   };
 
   return (
-    <PanelProvider>
-      <MainLayout
-        sidebar={<Sidebar {...sidebarProps} />}
-        footer={<Footer />}>
-        {children}
-      </MainLayout>
-    </PanelProvider>
+    <ThemeProvider>
+      <FontSizeProvider>
+        <PanelProvider>
+          <MainLayout
+            sidebar={<Sidebar {...sidebarProps} />}
+            footer={<Footer />}>
+            {children}
+          </MainLayout>
+        </PanelProvider>
+      </FontSizeProvider>
+    </ThemeProvider>
   );
 }

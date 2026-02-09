@@ -23,7 +23,7 @@
 
 .extDesc {
   grid-area: desc;
-  color: var(--item-active-color);
+  color: var(--item-color-active);
   font-size: 0.9rem;
 }
 
@@ -37,8 +37,9 @@
 
 .extButton.active {
   background-color: var(--primary);
+  color: #fff;
 }
 
 .extButton.inactive {
-  background-color: var(--item-inactive-color);
+  background-color: var(--item-color-inactive);
 }

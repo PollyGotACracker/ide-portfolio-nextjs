@@ -42,11 +42,11 @@
 
 .link:not(.inactive):hover,
 .link:not(.inactive):focus {
-  border-color: var(--item-active-color);
+  border-color: var(--foreground);
 }
 
 .link.inactive {
-  color: var(--item-inactive-color);
+  color: var(--item-color-inactive);
   text-decoration: line-through;
   cursor: default;
   pointer-events: none;
@@ -71,7 +71,7 @@
   display: inline;
   content: "|";
   padding: 0 5px;
-  color: var(--item-inactive-color);
+  color: var(--item-color-inactive);
 }
 
 .featureList,

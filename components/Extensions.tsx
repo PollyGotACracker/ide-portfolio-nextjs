@@ -1,54 +1,42 @@
 'use client';
 
 import styles from "./Extension.module.css";
-import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeProvider";
+import { useFontSize } from "@/contexts/FontSizeProvider";
 import Details from "./Details";
 import { IoInvertMode } from "react-icons/io5";
 import { RiFontSize2 } from "react-icons/ri";
 
-
 interface ExtensionProps {
   name: string;
-  onToggle: (prev: boolean) => boolean;
+  onToggle: () => void;
+  state: boolean;
   onValue: string;
   offValue: string;
   icon: React.ReactNode;
-  initialValue: boolean;
 }
 export default function Extensions() {
-  function toggleUITheme(prev: boolean) {
-
-    return !prev;
-  }
-  function toggleFontSize(prev: boolean) {
-
-    return !prev;
-  }
+  const { themeState, toggleTheme } = useTheme();
+  const { fontSizeState, toggleFontSize } = useFontSize();
 
   return (
     <Details title="installed">
       <ul className={styles.extList}>
-        <Extension name="UI Theme" onToggle={toggleUITheme} initialValue={true} onValue="dark" offValue="light" icon={<IoInvertMode />} />
-        <Extension name="Font Size" onToggle={toggleFontSize} initialValue={false} onValue="large" offValue="medium" icon={<RiFontSize2 />} />
+        <Extension name="UI Theme" onToggle={toggleTheme} state={themeState} onValue="dark" offValue="light" icon={<IoInvertMode />} />
+        <Extension name="Font Size" onToggle={toggleFontSize} state={fontSizeState} onValue="large" offValue="medium" icon={<RiFontSize2 />} />
       </ul>
     </Details>
   );
 }
 
-function Extension({ name, onToggle, onValue, offValue, initialValue, icon }: ExtensionProps) {
-  const [state, setState] = useState(initialValue);
-
-  function handleChangeState() {
-    setState(onToggle);
-  }
-
+function Extension({ name, onToggle, onValue, offValue, state, icon }: ExtensionProps) {
   return (
     <li className={styles.ext}>
       {icon}
       <div className={styles.extName}>{name}</div>
       <p className={styles.extDesc}>{`current: ${state ? onValue : offValue}`}</p>
       <button
-        onClick={handleChangeState}
+        onClick={onToggle}
         className={`${styles.extButton} ${state ? styles.active : styles.inactive}`}
       >
         {state ? "Enabled" : "Disabled"}
@@ -56,3 +44,6 @@ function Extension({ name, onToggle, onValue, offValue, initialValue, icon }: Ex
     </li>
   );
 }
+
+
+
