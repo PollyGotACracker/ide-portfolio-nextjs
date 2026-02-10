@@ -1,9 +1,13 @@
+import styles from "./Profile.module.css";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
+import List from "@/components/List";
 import { ProfileType } from "@/types/Data";
-import { HOME_HEADINGS } from "@/constants/label";
+import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
 import { MdModeComment } from "react-icons/md";
+import { FaGraduationCap } from "react-icons/fa6";
+import { FaCertificate } from "react-icons/fa6";
 
 const file = "profile.json";
 const { id, label } = HOME_HEADINGS.PROFILE;
@@ -18,6 +22,40 @@ export function ProfileUI({ data }: { data: ProfileType; }) {
     <section>
       <Heading.H2 id={id} icon={<MdModeComment />}>{label}</Heading.H2>
       <Markdown>{data.about}</Markdown>
+      <Educations data={data.educations} />
+      <Certifications data={data.certifications} />
     </section>
+  );
+}
+
+function Educations({ data }: { data: ProfileType["educations"]; }) {
+  return (
+    <>
+      <Heading.H3 icon={<FaGraduationCap />}>{HOME_SUBHEADINGS.EDUCATION.label}</Heading.H3>
+      <List className={styles.list}>
+        {data.map((i) =>
+          <li className={styles.item} key={i.start_at}>
+            <span>{`${i.start_at} ~ ${i?.end_at ?? ``}`}</span>
+            <span>{`${i.institution} ${i.major} ${i.degree}`}</span>
+          </li>
+        )}
+      </List>
+    </>
+  );
+}
+
+function Certifications({ data }: { data: ProfileType["certifications"]; }) {
+  return (
+    <>
+      <Heading.H3 icon={<FaCertificate />}>{HOME_SUBHEADINGS.CERTIFICATIONS.label}</Heading.H3>
+      <List className={styles.list}>
+        {data.map((i) =>
+          <li className={styles.item} key={i.date}>
+            <span>{i.date}</span>
+            <span>{`${i.name} (${i.issuer})`}</span>
+          </li>
+        )}
+      </List>
+    </>
   );
 }

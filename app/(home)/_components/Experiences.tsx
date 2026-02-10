@@ -1,0 +1,37 @@
+import styles from "./Experiences.module.css";
+import Heading from "@/components/Heading";
+import List from "@/components/List";
+import { HOME_HEADINGS } from "@/constants/label";
+import { getJson } from "@/libs/getter";
+import { ExperienceType, } from "@/types/Data";
+import { FaBriefcase } from "react-icons/fa";
+
+const file = "experiences.json";
+const { id, label } = HOME_HEADINGS.EXPERIENCE;
+
+export default async function Experiences() {
+  const data: ExperienceType[] = await getJson(file);
+  return <ExperiencesUI data={data} />;
+}
+
+export function ExperiencesUI({ data }: { data: ExperienceType[]; }) {
+  return (
+    <section>
+      <Heading.H2 id={id} icon={<FaBriefcase />}>{label}</Heading.H2>
+      <ul>
+        {data.map((i) =>
+          <li className={styles.item} key={i.start_at}>
+            <span className={styles.range}>{`${i.start_at} ~ ${i?.end_at ?? ``}`}</span>
+            <div className={styles.content}>
+              <div className={styles.roleWrapper}>
+                <span className={styles.role}>{`${i.job_title} | ${i.position}`}</span>
+                <span className={styles.company}>{i.company}</span>
+              </div>
+              <List className={styles.descList}>{i.responsibilities?.map((j) => <li key={j}>{j}</li>)}</List>
+            </div>
+          </li>
+        )}
+      </ul>
+    </section>
+  );
+}

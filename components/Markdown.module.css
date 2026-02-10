@@ -1,5 +1,7 @@
 .markdown {
   display: inline-block;
+  white-space: wrap;
+  word-break: break-all;
   line-height: 1.7;
 }
 

@@ -1,7 +1,7 @@
 .projectList {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 30px;
 }
 
 .titleWrapper {
@@ -39,6 +39,7 @@
   color: var(--color-anchor);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
+  word-break: break-all;
 }
 
 .link:not(.inactive):hover,
@@ -75,14 +76,7 @@
   color: var(--item-color-inactive);
 }
 
-.featureList,
 .extraLinkList {
   display: flex;
   flex-direction: column;
-}
-
-.feature:before {
-  display: inline-block;
-  content: "•";
-  margin-right: 10px;
 }

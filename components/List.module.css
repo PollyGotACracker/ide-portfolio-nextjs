@@ -1,0 +1,10 @@
+ul.list li {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+ul.list li:before {
+  display: inline-block;
+  content: "•";
+  margin-right: 10px;
+}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Markdown from "@/components/Markdown";
 import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
+import List from "@/components/List";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
 import { ProjectType } from "@/types/Data";
@@ -94,13 +95,13 @@ function StackList({ stacks }: Pick<ProjectType, "stacks">) {
 
 function FeatureList({ features }: Pick<ProjectType, "features">) {
   return (
-    <ul className={styles.FeatureList}>
+    <List className={styles.FeatureList}>
       {features.map((i) =>
         <li className={styles.feature} key={i}>
           <Markdown>{i}</Markdown>
         </li>
       )}
-    </ul>
+    </List>
   );
 }
 

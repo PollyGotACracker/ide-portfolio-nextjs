@@ -1,6 +1,7 @@
 import styles from "./Skills.module.css";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
+import List from "@/components/List";
 import { SkillsType } from "@/types/Data";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
@@ -29,14 +30,14 @@ export function SkillsUI({ data }: { data: SkillsType; }) {
       <ul className={styles.skillList}>
         {data.frontend.map((i) =>
           <li key={i.name}>
-            <span className={styles.skillName}>{iconMap[i.name]}<span>{i.name}</span></span>
-            <ul className={styles.capabilityList}>
+            <Heading.H3 icon={iconMap[i.name]}>{i.name}</Heading.H3>
+            <List className={styles.capabilityList}>
               {i.capabilities.map((c) =>
                 <li className={styles.capability} key={c}>
                   <Markdown>{c}</Markdown>
                 </li>
               )}
-            </ul>
+            </List>
           </li>
         )}
       </ul>

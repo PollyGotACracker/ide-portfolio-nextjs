@@ -2,6 +2,9 @@ import GithubUser from "@/components/GithubUser";
 import Profile from "./_components/Profile";
 import Skills from "./_components/Skills";
 import Projects from "./_components/Projects";
+import Experiences from "./_components/Experiences";
+import Trainings from "./_components/Trainings";
+import Courses from "./_components/Courses";
 
 export default function Home() {
   const name = process.env.NEXT_PUBLIC_NAME;
@@ -17,6 +20,9 @@ export default function Home() {
       <Profile />
       <Skills />
       <Projects />
+      <Experiences />
+      <Trainings />
+      <Courses />
     </>
   );
 }
