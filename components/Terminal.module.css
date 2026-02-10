@@ -1,12 +1,28 @@
 .terminal {
   font-family: var(--font-jetbrains-mono);
   font-size: 0.9rem;
-  color: #ededed;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: auto;
+  line-height: 1.2;
+}
+
+[data-theme="light"] .terminal {
+  --color-user: #107c10;
+  --color-os: #bc05bc;
+  --color-path: #6b6d00;
+  --color-branch: #037a98;
+  caret-color: var(--primary);
+}
+
+[data-theme="dark"] .terminal {
+  --color-user: #0cb474;
+  --color-os: #c353c3;
+  --color-path: #e5e510;
+  --color-branch: #11a8cd;
+  caret-color: var(--foreground);
 }
 
 .logs > .item {
@@ -43,17 +59,17 @@ label.input {
 }
 
 .prompt > .user {
-  color: green;
+  color: var(--color-user);
 }
 
 .prompt > .os {
-  color: blueviolet;
+  color: var(--color-os);
 }
 
 .prompt > .path {
-  color: gold;
+  color: var(--color-path);
 }
 
 .prompt > .branch {
-  color: darkcyan;
+  color: var(--color-branch);
 }
