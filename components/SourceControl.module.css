@@ -73,7 +73,10 @@
   text-transform: lowercase;
 }
 
-.createdAt {
-  flex: 1;
+.desc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
   color: var(--item-color);
 }
