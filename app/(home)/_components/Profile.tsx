@@ -1,4 +1,5 @@
 import Heading from "@/components/Heading";
+import Markdown from "@/components/Markdown";
 import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
@@ -16,7 +17,7 @@ export function ProfileUI({ data }: { data: ProfileType; }) {
   return (
     <section>
       <Heading.H2 id={id} icon={<MdModeComment />}>{label}</Heading.H2>
-      <div>{data.about}</div>
+      <Markdown>{data.about}</Markdown>
     </section>
   );
 }

@@ -1,10 +1,11 @@
 import styles from "./Projects.module.css";
+import Link from "next/link";
+import Markdown from "@/components/Markdown";
 import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
 import { ProjectType } from "@/types/Data";
-import Link from "next/link";
 import { MdMonitor } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -94,7 +95,11 @@ function StackList({ stacks }: Pick<ProjectType, "stacks">) {
 function FeatureList({ features }: Pick<ProjectType, "features">) {
   return (
     <ul className={styles.FeatureList}>
-      {features.map((i) => <li className={styles.feature} key={i}>{i}</li>)}
+      {features.map((i) =>
+        <li className={styles.feature} key={i}>
+          <Markdown>{i}</Markdown>
+        </li>
+      )}
     </ul>
   );
 }
