@@ -36,14 +36,14 @@
 }
 
 .link {
-  color: var(--primary-light);
+  color: var(--color-anchor);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
 }
 
 .link:not(.inactive):hover,
 .link:not(.inactive):focus {
-  border-color: var(--primary-light);
+  border-color: var(--color-anchor);
 }
 
 .link.inactive {

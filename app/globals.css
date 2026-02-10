@@ -12,6 +12,7 @@ html[data-theme="light"] {
   --background: #f8f8f8;
   --foreground: #181818;
   --background-main: #ffffff;
+  --color-anchor: var(--primary-dark);
   --border-color: #e5e5e5;
   --border-color-secondary: #a9a9a9;
   --item-color: #3b3b3b;
@@ -33,6 +34,7 @@ html[data-theme="dark"] {
   --background: #181818;
   --foreground: #ededed;
   --background-main: #1F1F1F;
+  --color-anchor: var(--primary-light);
   --border-color: #2b2b2b;
   --border-color-secondary: #585858;
   --item-color: #9D9D9D;

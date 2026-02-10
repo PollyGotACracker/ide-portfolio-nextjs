@@ -21,14 +21,14 @@
 }
 
 .markdown a {
-  color: var(--primary-light);
+  color: var(--color-anchor);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
 }
 
 .markdown a:hover,
 .markdown a:focus {
-  border-color: var(--primary-light);
+  border-color: var(--color-anchor);
 }
 
 /* 인라인 코드 */
