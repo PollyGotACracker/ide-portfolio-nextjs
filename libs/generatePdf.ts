@@ -32,6 +32,7 @@ export default async function generatePDF(
       // Vercel: puppeteer-core 와 다운로드한 Chromium 바이너리 사용
       puppeteer = await import("puppeteer-core");
       const chromium = (await import("@sparticuz/chromium-min")).default;
+
       // 캐시된 Chromium 실행 파일 경로 가져오기
       const executablePath = await getChromiumPath();
       // 브라우저 실행 옵션에 Chromium 전용 인자 추가: 보안, 샌드박스 설정 등
@@ -44,7 +45,6 @@ export default async function generatePDF(
       // An `executablePath` or `channel` must be specified for `puppeteer-core`
       puppeteer = await import("puppeteer");
     }
-
     const browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
 
@@ -69,11 +69,6 @@ export default async function generatePDF(
     // await page.pdf({ path: 'portfolio.pdf' });
 
     await page.goto(url, { waitUntil: 'networkidle0' });
-    // 한국어 폰트 적용
-    await page.addStyleTag({
-      url: "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
-    });
-    await page.evaluateHandle('document.fonts.ready');
     // light 테마 강제: CSS OS테마 모드 선언, HTML data-theme 조작
     await page.emulateMediaFeatures([
       { name: 'prefers-color-scheme', value: 'light' }
@@ -82,6 +77,13 @@ export default async function generatePDF(
       document.documentElement.dataset.theme = 'light';
     });
 
+    // [Issue] 링크 페이지 렌더링 시 한국어 폰트 적용
+    // 시스템 폰트 추가: root 경로에 /.font 폴더 생성 후 ttf 파일 추가
+    // https://github.com/sparticuz/chromium?tab=readme-ov-file#fonts
+    await page.addStyleTag({
+      content: `* { font-family: 'Nanum Gothic', sans-serif !important; }`
+    });
+    await page.evaluateHandle('document.fonts.ready');
     const pdf = await page.pdf({
       format: 'A4',
       printBackground: true, // CSS background 적용
