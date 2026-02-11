@@ -9,15 +9,15 @@ import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
 
-
 const BASE_URL = 'http://localhost';
 const PORT = '3333';
-const PAGE_PATH = '/portfolio';
-const URL = `${BASE_URL}:${PORT}${PAGE_PATH}`;
-
+const URL = `${BASE_URL}:${PORT}`;
 const STATIC_PATH_TARGET = 'public/files';
-const STATIC_PATH_FILE = '/portfolio.pdf';
 const STATIC_PATH_FONT = 'public/fonts/NanumGothic-Regular.ttf';
+
+const pages = [
+  { pagePath: '/portfolio', filePath: '/portfolio.pdf' }
+];
 
 // 저장할 경로가 없으면 생성
 const dir = path.join(process.cwd(), STATIC_PATH_TARGET);
@@ -25,7 +25,7 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-// 서버 준비 및 대기
+// 서버 준비 및 대기(30초)
 const server = spawn('npx', ['next', 'start', '-p', PORT], {
   shell: true,
   stdio: 'ignore'
@@ -44,39 +44,42 @@ const browser = await puppeteer.launch({
   headless: true,
   args: ['--no-sandbox', '--font-render-hinting=none'],
 });
-const page = await browser.newPage();
-const response = await page.goto(URL, { waitUntil: 'load' });
-console.log('PDF Status:', response.status());
 
-// light 테마 강제 적용
-await page.emulateMediaFeatures([
-  { name: 'prefers-color-scheme', value: 'light' }
-]);
-await page.evaluate(() => {
-  document.documentElement.dataset.theme = 'light';
-});
+for (const { pagePath, filePath } of pages) {
+  const page = await browser.newPage();
+  const response = await page.goto(URL + pagePath, { waitUntil: 'load' });
+  console.log('PDF Status:', response.status());
 
-// ttf 폰트를 사용하여 한국어 적용
-const fontBuffer = fs.readFileSync(path.join(process.cwd(), STATIC_PATH_FONT));
-const fontBase64 = fontBuffer.toString('base64');
-await page.addStyleTag({
-  content: `
+  // light 테마 강제 적용
+  await page.emulateMediaFeatures([
+    { name: 'prefers-color-scheme', value: 'light' }
+  ]);
+  await page.evaluate(() => {
+    document.documentElement.dataset.theme = 'light';
+  });
+
+  // ttf 폰트를 사용하여 한국어 적용
+  const fontBuffer = fs.readFileSync(path.join(process.cwd(), STATIC_PATH_FONT));
+  const fontBase64 = fontBuffer.toString('base64');
+  await page.addStyleTag({
+    content: `
     @font-face {
       font-family: 'NanumGothic';
       src: url(data:font/truetype;base64,${fontBase64}) format('truetype');
     }
     * { font-family: 'NanumGothic' !important; }
   `
-});
-await page.evaluateHandle('document.fonts.ready');
+  });
+  await page.evaluateHandle('document.fonts.ready');
 
-await page.pdf({
-  path: STATIC_PATH_TARGET + STATIC_PATH_FILE,
-  format: 'A4',
-  printBackground: true,
-  margin: { top: '10mm', bottom: '10mm', left: '10mm', right: '10mm' },
-});
+  await page.pdf({
+    path: STATIC_PATH_TARGET + filePath,
+    format: 'A4',
+    printBackground: true,
+    margin: { top: '10mm', bottom: '10mm', left: '10mm', right: '10mm' },
+  });
 
-await browser.close();
-server.kill();
-console.log('PDF generated!');
+  await browser.close();
+  server.kill();
+  console.log('PDF generated!');
+}
