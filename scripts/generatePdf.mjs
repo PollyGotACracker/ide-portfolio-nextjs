@@ -4,10 +4,11 @@
  * => 프로젝트 빌드 후 서버를 실행하고 pdf 파일 생성 후 배포
  */
 
-import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
+import puppeteer from 'puppeteer';
+import 'dotenv/config'; // .env 읽기
 
 const BASE_URL = 'http://localhost';
 const PORT = '3333';
@@ -47,6 +48,10 @@ const browser = await puppeteer.launch({
 
 for (const { pagePath, filePath } of pages) {
   const page = await browser.newPage();
+  // 페이지 진입을 위한 헤더 설정
+  await page.setExtraHTTPHeaders({
+    'x-build-id': process.env.BUILD_BYPASS_TOKEN
+  });
   const response = await page.goto(URL + pagePath, { waitUntil: 'load' });
   console.log('PDF Status:', response.status());
 
