@@ -1,16 +1,16 @@
 import styles from "./Trainings.module.css";
 import Heading from "@/components/Heading";
 import List from '@/components/List';
+import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
 import { TrainingType } from "@/types/Data";
 import { PiTargetBold } from "react-icons/pi";
 
-const file = "trainings.json";
 const { id, label } = HOME_HEADINGS.TRAINING;
 
 export default async function Trainings() {
-  const data: TrainingType[] = await getJson(file);
+  const data: TrainingType[] = await getJson(FILES.TRAININGS);
   return <TrainingsUI data={data} />;
 }
 

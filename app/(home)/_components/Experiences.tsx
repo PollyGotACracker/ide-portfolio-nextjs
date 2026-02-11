@@ -1,16 +1,16 @@
 import styles from "./Experiences.module.css";
 import Heading from "@/components/Heading";
 import List from "@/components/List";
+import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
 import { ExperienceType, } from "@/types/Data";
 import { FaBriefcase } from "react-icons/fa";
 
-const file = "experiences.json";
 const { id, label } = HOME_HEADINGS.EXPERIENCE;
 
 export default async function Experiences() {
-  const data: ExperienceType[] = await getJson(file);
+  const data: ExperienceType[] = await getJson(FILES.EXPERIENCES);
   return <ExperiencesUI data={data} />;
 }
 

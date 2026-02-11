@@ -18,7 +18,10 @@ Failed to get Chromium path: AssertionError [ERR_ASSERTION]: protocol mismatch
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-export default async function generatePDF(html: string) {
+export default async function generatePDF(
+  url: string
+  // html: string
+) {
   let browser: Browser | undefined;
 
   try {
@@ -45,25 +48,45 @@ export default async function generatePDF(html: string) {
     const browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
 
-    // 한글 폰트 포함
-    const htmlWithFont = `
-<!DOCTYPE html>
-<html>
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Noto Sans KR', sans-serif; }
-  </style>
-</head>
-<body>
-  ${html}
-</body>
-</html>
-`;
-    await page.setContent(htmlWithFont, {
-      waitUntil: 'networkidle0' // 요청 완료까지 대기
+    //     // 한글 폰트 포함
+    //     const htmlWithFont = `
+    // <!DOCTYPE html>
+    // <html>
+    // <head>
+    //   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    //   <style>
+    //     * { font-family: 'Noto Sans KR', sans-serif; }
+    //   </style>
+    // </head>
+    // <body>
+    //   ${html}
+    // </body>
+    // </html>
+    // `;
+    //     await page.setContent(htmlWithFont, {
+    //       waitUntil: 'networkidle0' // 요청 완료까지 대기
+    //     });
+    // await page.pdf({ path: 'portfolio.pdf' });
+    await page.goto(url);
+
+    // light 테마 강제: CSS OS테마 모드 선언, HTML data-theme 조작
+    await page.emulateMediaFeatures([
+      { name: 'prefers-color-scheme', value: 'light' }
+    ]);
+    await page.evaluate(() => {
+      document.documentElement.dataset.theme = 'light';
     });
-    const pdf = await page.pdf();
+
+    const pdf = await page.pdf({
+      format: 'A4',
+      printBackground: true, // CSS background 적용
+      margin: {
+        top: '10mm',
+        bottom: '10mm',
+        left: '10mm',
+        right: '10mm',
+      }
+    });
     await browser.close();
 
     return pdf;

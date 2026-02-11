@@ -4,9 +4,9 @@ import Markdown from "@/components/Markdown";
 import List from "@/components/List";
 import { SkillsType } from "@/types/Data";
 import { HOME_HEADINGS } from "@/constants/label";
+import { FILES } from "@/constants/dir";
 import { getJson } from "@/libs/getter";
 import { FaTools } from "react-icons/fa";
-
 import { SiHtml5 } from "react-icons/si";
 import { SiCss3 } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
@@ -19,7 +19,7 @@ import { SiMockserviceworker } from "react-icons/si";
 const { id, label } = HOME_HEADINGS.SKILLS;
 
 export default async function Skills() {
-  const data: SkillsType = await getJson("skills.json");
+  const data: SkillsType = await getJson(FILES.SKILLS);
   return <SkillsUI data={data} />;
 }
 

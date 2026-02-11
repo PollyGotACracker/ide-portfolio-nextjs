@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 import { HOME_HEADINGS } from "@/constants/label";
+import { DOWNLOAD_API } from "@/constants/dir";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -98,7 +99,7 @@ export class CreateTerminal {
 
   private downloadFile(filename: string) {
     const link = document.createElement('a');
-    link.href = `/api/download/${filename}`;
+    link.href = `${DOWNLOAD_API}/${filename}`;
     link.download = `${filename}.pdf`;
     link.click();
   };

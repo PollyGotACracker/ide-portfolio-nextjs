@@ -41,6 +41,7 @@ label.input {
   border: none;
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/caret-shape */
   caret-shape: block;
+  mix-blend-mode: exclusion;
 }
 
 .input::before {

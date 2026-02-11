@@ -12,12 +12,12 @@ import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { PiLinkSimpleBold } from "react-icons/pi";
 import { FaTools } from "react-icons/fa";
+import { FILES } from "@/constants/dir";
 
-const file = "projects.json";
 const { id, label } = HOME_HEADINGS.PROJECTS;
 
 export default async function Projects() {
-  const data: ProjectType[] = await getJson(file);
+  const data: ProjectType[] = await getJson(FILES.PROJECTS);
   return <ProjectsUI data={data} />;
 }
 

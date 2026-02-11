@@ -1,8 +1,9 @@
+import { DATA_DIR_DEV, DATA_DIR_PROD } from '@/constants/dir';
 import fs from 'fs/promises';
 import path from 'path';
 
 export function getDir(...paths: string[]) {
-  const dataDir = process.env.NODE_ENV === "production" ? ["data", "prod"] : ["data", "dev"];
+  const dataDir = process.env.NODE_ENV === "production" ? DATA_DIR_PROD : DATA_DIR_DEV;
   const resultPath = path.join(process.cwd(), ...dataDir, ...paths);
   return resultPath;
 }
