@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 import { HOME_HEADINGS } from "@/constants/label";
-import { STATIC_FILES_DIR } from "@/constants/dir";
+import { PATHS } from "@/constants/path";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -104,7 +104,7 @@ export class CreateTerminal {
 
   private downloadFile(filename: string, ext: string) {
     const link = document.createElement('a');
-    link.href = `${STATIC_FILES_DIR}/${filename}.${ext}`;
+    link.href = `${PATHS.STATIC_FILES}/${filename}.${ext}`;
     link.download = `${filename}.pdf`;
     link.click();
   };

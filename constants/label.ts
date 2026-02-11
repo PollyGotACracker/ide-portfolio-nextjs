@@ -1,9 +1,9 @@
-import { STATIC_FILES_DIR } from "./dir";
+import { PATHS } from "./path";
 
 export const PAGES = {
-  HOME: { param: "/", label: "홈" },
-  LOG: { param: "/log", label: "기록" },
-  DOWNLOAD: { param: STATIC_FILES_DIR, label: "다운로드" },
+  HOME: { param: PATHS.HOME, label: "홈" },
+  LOG: { param: PATHS.LOG, label: "기록" },
+  DOWNLOAD: { param: PATHS.STATIC_FILES, label: "다운로드" },
 };
 
 export const DOWNLOAD_FILES = {
