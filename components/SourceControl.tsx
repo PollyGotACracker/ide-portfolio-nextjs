@@ -2,12 +2,7 @@ import styles from "./SourceControl.module.css";
 import Link from "next/link";
 import { getUserEvents } from "@/apis/github";
 import Details from "./Details";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ko";
-
-dayjs.locale("ko");
-dayjs.extend(relativeTime);
+import TimeAgo from "./TimeAgo";
 
 export default async function SourceControl() {
   const res = await getUserEvents();
@@ -29,7 +24,7 @@ export default async function SourceControl() {
                 <span>{repoName}</span>
                 <div className={styles.desc}>
                   <span>{getRefText(i.payload.ref)}</span>
-                  <span>{dayjs(i.created_at).fromNow()}</span>
+                  <TimeAgo date={i.created_at} />
                 </div>
               </Link>
             </li>);
