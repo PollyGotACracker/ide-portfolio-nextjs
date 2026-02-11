@@ -69,7 +69,11 @@ export default async function generatePDF(
     // await page.pdf({ path: 'portfolio.pdf' });
 
     await page.goto(url, { waitUntil: 'networkidle0' });
-
+    // 한국어 폰트 적용
+    await page.addStyleTag({
+      url: "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+    });
+    await page.evaluateHandle('document.fonts.ready');
     // light 테마 강제: CSS OS테마 모드 선언, HTML data-theme 조작
     await page.emulateMediaFeatures([
       { name: 'prefers-color-scheme', value: 'light' }
