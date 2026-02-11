@@ -5,14 +5,14 @@ export default function ImageBox({ src, alt }: { src: string; alt: string; }) {
 
   return (
     src.endsWith('.gif') ? (
-      <>
+      <Link href={`/api${src}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/api${src}`}
           alt={alt}
           style={{ width: '100%', height: 'auto' }}
         />
-      </>
+      </Link>
     ) : (
       <Link href={`/api${src}`}>
         <Image
