@@ -41,18 +41,21 @@ export default function Explorer() {
     );
   }
 
-  function renderSubpages(param: Page["param"], menu: SubPage[]) {
-    const subpageClass = `codicon codicon-file ${styles.submenuLink} child`;
-
+  function renderSubpages(param: Page["param"], menu: SubPage[], download = false) {
+    const subpageClass = `codicon codicon-file ${styles.submenuLink}`;
     return (
       <ul>
-        {menu.map(({ id, label, separator }) =>
-          <li className={styles.submenu} key={id}>
-            <Link className={subpageClass} href={`${param}${separator}${id}`}>
-              {label}
-            </Link>
-          </li>
-        )}
+        {menu.map(({ id, label, separator }) => {
+          const href = `${param}${separator}${id}`;
+          const link = !download
+            ? <Link className={subpageClass} href={href}>{label}</Link>
+            : <a className={subpageClass} href={href} download>{label}</a>;
+          return (
+            <li className={styles.submenu} key={id}>
+              {link}
+            </li>
+          );
+        })}
       </ul>
     );
   }
@@ -66,7 +69,7 @@ export default function Explorer() {
         </nav>
       </Details>
       <Details title="download">
-        {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles)}
+        {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, true)}
       </Details>
     </>
   );

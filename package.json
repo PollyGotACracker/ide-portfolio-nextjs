@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "vercel --prod"
+    "pdf": "node scripts/generatePdf.mjs",
+    "deploy": "npm run build && npm run pdf && vercel --prod"
   },
   "dependencies": {
     "@sparticuz/chromium-min": "^143.0.4",

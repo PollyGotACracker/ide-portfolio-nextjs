@@ -1,7 +1,7 @@
 export const DATA_DIR_DEV = ["data", "dev"];
 export const DATA_DIR_PROD = ["data", "prod"];
 
-export const DOWNLOAD_API = `/api/download`;
+export const STATIC_FILES_DIR = `/files`;
 
 export const FILES = {
   PROFILE: "profile.json",

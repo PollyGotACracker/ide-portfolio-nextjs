@@ -1,13 +1,13 @@
-import { DOWNLOAD_API } from "./dir";
+import { STATIC_FILES_DIR } from "./dir";
 
 export const PAGES = {
   HOME: { param: "/", label: "홈" },
   LOG: { param: "/log", label: "기록" },
-  DOWNLOAD: { param: DOWNLOAD_API, label: "다운로드" },
+  DOWNLOAD: { param: STATIC_FILES_DIR, label: "다운로드" },
 };
 
 export const DOWNLOAD_FILES = {
-  PORTFOLIO: { id: "portfolio", label: "포트폴리오", separator: "/" }
+  PORTFOLIO: { id: "portfolio.pdf", label: "포트폴리오", separator: "/" }
 };
 
 export const HOME_HEADINGS = {

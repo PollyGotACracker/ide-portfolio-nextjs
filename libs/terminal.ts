@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 import { HOME_HEADINGS } from "@/constants/label";
-import { DOWNLOAD_API } from "@/constants/dir";
+import { STATIC_FILES_DIR } from "@/constants/dir";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -78,7 +78,12 @@ export class CreateTerminal {
       },
       // grep(value: string) { return `find ${value}`; },
       wget(filename: string) {
-        downloadFile(filename);
+        switch (filename) {
+          case "portfolio":
+            return downloadFile(filename, "pdf");
+          default:
+            return `bash: wget: ${filename}: No such file`;
+        }
       },
       clear() { setLogs([]); }
     };
@@ -97,9 +102,9 @@ export class CreateTerminal {
     return log;
   }
 
-  private downloadFile(filename: string) {
+  private downloadFile(filename: string, ext: string) {
     const link = document.createElement('a');
-    link.href = `${DOWNLOAD_API}/${filename}`;
+    link.href = `${STATIC_FILES_DIR}/${filename}.${ext}`;
     link.download = `${filename}.pdf`;
     link.click();
   };

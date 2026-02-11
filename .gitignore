@@ -2,6 +2,7 @@
 
 # production files
 /data/prod
+/public/files/*
 
 # dependencies
 /node_modules
