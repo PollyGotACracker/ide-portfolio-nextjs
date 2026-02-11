@@ -67,7 +67,8 @@ export default async function generatePDF(
     //       waitUntil: 'networkidle0' // 요청 완료까지 대기
     //     });
     // await page.pdf({ path: 'portfolio.pdf' });
-    await page.goto(url);
+
+    await page.goto(url, { waitUntil: 'networkidle0' });
 
     // light 테마 강제: CSS OS테마 모드 선언, HTML data-theme 조작
     await page.emulateMediaFeatures([
