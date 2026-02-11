@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import Main from "../(home)/_components/Main";
 import Profile from "@/app/(home)/_components/Profile";
 import Skills from "@/app/(home)/_components/Skills";
 import Projects from "@/app/(home)/_components/Projects";
@@ -19,6 +20,7 @@ export default async function Portfolio() {
 
   return (
     <main className={styles.printPage}>
+      <Main />
       <Profile />
       <Skills />
       <Projects />

@@ -1,4 +1,5 @@
 import styles from "./Profile.module.css";
+import GithubUser from "@/components/GithubUser";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
 import List from "@/components/List";
@@ -19,8 +20,9 @@ export default async function Profile() {
 
 export function ProfileUI({ data }: { data: ProfileType; }) {
   return (
-    <section>
+    <section className={styles.section}>
       <Heading.H2 id={id} icon={<MdModeComment />}>{label}</Heading.H2>
+      <GithubUser />
       <Markdown>{data.about}</Markdown>
       <Educations data={data.educations} />
       <Certifications data={data.certifications} />

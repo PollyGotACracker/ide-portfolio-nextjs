@@ -1,0 +1,21 @@
+/* 첫 번째 요소에만 scroll-snap 적용 */
+
+.content > section:first-child {
+  /* .main: scroll-snap-type: y proximity */
+  height: calc(100vh - var(--main-padding-top) - (var(--header-size) * 2));
+  scroll-margin-top: var(--main-padding-top);
+  scroll-snap-align: start end;
+  scroll-snap-stop: always;
+}
+
+.content > .stopper {
+  height: 1px;
+  margin-top: -1px;
+  scroll-snap-align: start end;
+  /* 스크롤 시 더 강하게 당기게 함 */
+  scroll-snap-stop: always;
+}
+
+.content > section:not(:first-child) {
+  scroll-snap-align: none;
+}

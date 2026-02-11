@@ -129,14 +129,19 @@
   }
 }
 
-
 .main {
+  /* 모바일 기본값 변수 선언 */
+  --main-padding-top: 1rem;
+  --main-padding-bottom: 1rem;
+  --main-padding-side: 1rem;
+
   grid-area: main;
   height: 100%;
-  /* 모바일 */
-  padding: 1rem;
+  padding: var(--main-padding-top) var(--main-padding-side) var(--main-padding-bottom);
   overflow-y: auto;
   background-color: var(--background-main);
+  /* scroll snap */
+  scroll-snap-type: y proximity;
   /* scroll-behavior: smooth; */
   /* overscroll-behavior: contain; */
 }
@@ -144,13 +149,17 @@
 /* 태블릿 (768px 이상) */
 @media (min-width: 768px) {
   .main {
-    padding: 20px 2% 60px;
+    --main-padding-top: 20px;
+    --main-padding-bottom: 60px;
+    --main-padding-side: 2%;
   }
 }
 
 /* 데스크톱 (1024px 이상) */
 @media (min-width: 1024px) {
   .main {
-    padding: 20px 15% 60px;
+    --main-padding-top: 20px;
+    --main-padding-bottom: 60px;
+    --main-padding-side: 15%;
   }
 }
