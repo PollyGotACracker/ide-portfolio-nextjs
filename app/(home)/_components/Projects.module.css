@@ -4,17 +4,40 @@
   row-gap: 30px;
 }
 
+.project {
+  background-color: rgba(var(--alpha-rgb), 0.01);
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
 .titleWrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  padding: 0 15px;
+  padding-top: 5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.rangeWrapper {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.rangeWrapper > svg {
+  transform: translateY(-1px);
+}
+
+.range {
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-color);
 }
 
 .content > * {
@@ -28,7 +51,7 @@
 .textWrapper {
   display: inline-flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 20px;
 }
 
 .textWrapper > svg {
@@ -57,23 +80,21 @@
 .imageGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
+  gap: 5px;
 }
 
 .stackList {
   display: flex;
   flex-wrap: wrap;
+  gap: 5px 10px;
 }
 
 .stack {
+  font-size: 0.9rem;
   white-space: nowrap;
-}
-
-.stack:not(:last-child):after {
-  display: inline;
-  content: "|";
-  padding: 0 5px;
-  color: var(--item-color-inactive);
+  background-color: rgba(var(--alpha-rgb), 0.08);
+  border-radius: 3px;
+  padding: 0 10px;
 }
 
 .extraLinkList {

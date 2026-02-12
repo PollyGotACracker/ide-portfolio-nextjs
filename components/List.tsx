@@ -5,5 +5,5 @@ interface ListProps {
   children: React.ReactNode;
 }
 export default function List({ className, children }: ListProps) {
-  return <ul className={`${styles.list} ${className}`}>{children}</ul>;
+  return <ul className={`${styles.list}${className ? ` ${className}` : ""}`}>{children}</ul>;
 }

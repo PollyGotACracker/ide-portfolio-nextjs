@@ -10,6 +10,7 @@ export default function ImageBox({ src, alt }: { src: string; alt: string; }) {
         <img
           src={`/api${src}`}
           alt={alt}
+          loading="lazy"
           style={{ width: '100%', height: 'auto' }}
         />
       </Link>

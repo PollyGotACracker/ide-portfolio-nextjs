@@ -19,7 +19,7 @@ export function CoursesUI({ data }: { data: CourseType[]; }) {
   return (
     <section>
       <Heading.H2 id={id} icon={<FaChalkboard />}>{label}</Heading.H2>
-      <ul>
+      <ul className={styles.list}>
         {data.map((i) =>
           <li className={styles.item} key={i.title}>
             {i.is_completed ? <IoMdCheckboxOutline /> : <IoMdSquareOutline />}

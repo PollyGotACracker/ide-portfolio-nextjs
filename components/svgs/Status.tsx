@@ -8,7 +8,7 @@ const jetBrainsMono = JetBrains_Mono({
 export default function Status({ className, status, size = "800px" }: { className?: string; status: number; size?: string | number; }) {
   return (
     <div className={jetBrainsMono.variable}>
-      <svg className={className} fill="currentColor" style={{ width: size, height: size }} viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg className={className ?? ""} fill="currentColor" style={{ width: size, height: size }} viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g id="_x30_8_x2C__Browser_x2C__page_x2C__website_x2C__web_x2C__404">
           <g id="XMLID_858_">
             <g id="XMLID_185_">

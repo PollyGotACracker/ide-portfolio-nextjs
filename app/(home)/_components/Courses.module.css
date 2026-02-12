@@ -1,6 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
 .item {
   display: grid;
-  grid-template-columns: auto minmax(80px, 120px) minmax(200px, 1fr);
+  grid-template-columns: auto auto minmax(200px, 1fr);
   column-gap: 10px;
   align-items: center;
 }
@@ -11,8 +17,15 @@
 
 .instructor {
   word-break: keep-all;
-  /* [Issue] 영어와 한글 혼용된 경우 keep-all 적용 X */
-  overflow-wrap: break-word;
-  /* 구형 브라우저 대응 */
-  word-wrap: break-word;
+  /* 모바일 */
+  width: 80px;
+  white-space: pre-wrap;
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+  .instructor {
+    width: 150px;
+    white-space: initial;
+  }
 }

@@ -93,7 +93,7 @@
   transition: opacity 0.3s ease;
 }
 
-/* 데스크톱 (769px 이상) */
+/* 태블릿 ~ 데스크톱 (769px 이상) */
 @media (min-width: 769px) {
   .container {
     grid-template-columns: 1fr var(--aside-width, 200px);
@@ -148,7 +148,7 @@
 }
 
 /* 태블릿 (768px 이상) */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .main {
     --main-padding-top: 20px;
     --main-padding-bottom: 60px;

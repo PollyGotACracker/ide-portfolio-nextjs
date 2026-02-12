@@ -18,7 +18,7 @@ export function TrainingsUI({ data }: { data: TrainingType[]; }) {
   return (
     <section>
       <Heading.H2 id={id} icon={<PiTargetBold />}>{label}</Heading.H2>
-      <ul>
+      <ul className={styles.list}>
         {data.map((i) =>
           <li className={styles.item} key={i.start_at}>
             <span className={styles.range}>{`${i.start_at} ~ ${i?.end_at ?? ``}`}</span>

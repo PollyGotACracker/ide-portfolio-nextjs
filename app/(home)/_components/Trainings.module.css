@@ -1,26 +1,27 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .item {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(100px, 150px) minmax(200px, 500px);
-  grid-template-areas:
-    'range content';
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
 }
 
 .range {
-  grid-area: range;
+  font-size: 0.9rem;
   word-break: keep-all;
-  border-right: 1px solid var(--border-color);
-  padding: 10px 0;
-  padding-right: 15px;
   margin-right: 15px;
 }
 
 .content {
-  grid-area: content;
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
-  margin-bottom: 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: rgba(var(--alpha-rgb), 0.02);
 }
 
 .nameWrapper {
@@ -28,7 +29,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  padding: 10px 15px;
 }
 
 .institution {
@@ -36,4 +37,10 @@
   word-break: keep-all;
   opacity: 0.8;
   font-size: 0.8rem;
+}
+
+.descList {
+  padding: 10px 10px;
+  padding-bottom: 15px;
+  border-top: 1px solid var(--border-color);
 }

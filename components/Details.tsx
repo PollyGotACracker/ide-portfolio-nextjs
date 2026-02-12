@@ -47,7 +47,7 @@ export default function Details({
 
   return (
     <div className={`${styles.details} ${activeStyle}`} onClick={onClick}>
-      <button className={`${styles.summary} ${className ?? ""}`} onClick={handleToggle} disabled={disabled}>
+      <button className={`${styles.summary}${className ? ` ${className}` : ""}`} onClick={handleToggle} disabled={disabled}>
         {!disabled && <i className={`codicon codicon-${chevronClass} ${styles.chevron}`} />}
         {isActive ? openIcon : closeIcon}
         {title}

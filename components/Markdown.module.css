@@ -35,8 +35,7 @@
 
 /* 인라인 코드 */
 .markdown code:not(pre code) {
-  background-color: #2d2d2d;
-  color: #e0e0e0;
+  background-color: rgba(var(--alpha-rgb), 0.08);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.9em;

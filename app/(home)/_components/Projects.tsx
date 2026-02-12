@@ -48,9 +48,11 @@ export function ProjectsUI({ data }: { data: ProjectType[]; }) {
 
 function DateRange({ startAt, endAt }: { startAt: ProjectType["start_at"], endAt?: ProjectType["end_at"]; }) {
   return (
-    <div className={styles.textWrapper}>
+    <div className={styles.rangeWrapper}>
       <FaCalendarAlt />
-      {`${startAt}${endAt ? ` ~ ${endAt}` : ``}`}
+      <span className={styles.range}>
+        {`${startAt}${endAt ? ` ~ ${endAt}` : ``}`}
+      </span>
     </div>
   );
 }
