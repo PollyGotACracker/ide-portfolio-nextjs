@@ -35,7 +35,6 @@ export interface SkillsType {
 /* 프로젝트 */
 export interface ProjectType {
   title: string;
-  repo_name?: string;
   repo_url?: string;
   site_url?: string;
   is_active?: boolean;

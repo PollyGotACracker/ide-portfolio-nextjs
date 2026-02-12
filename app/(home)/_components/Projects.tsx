@@ -34,7 +34,7 @@ export function ProjectsUI({ data }: { data: ProjectType[]; }) {
             </div>
             <ImageGrid images={i?.images} />
             <div className={styles.content}>
-              <RepoLink repoUrl={i?.repo_url} repoName={i?.repo_name} />
+              <RepoLink repoUrl={i?.repo_url} />
               <SiteLink siteUrl={i?.site_url} isActive={i?.is_active} />
               <StackList stacks={i.stacks} />
               <FeatureList features={i.features} />
@@ -55,7 +55,8 @@ function DateRange({ startAt, endAt }: { startAt: ProjectType["start_at"], endAt
   );
 }
 
-function RepoLink({ repoUrl, repoName }: { repoUrl?: ProjectType["repo_url"], repoName?: ProjectType["repo_name"]; }) {
+function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"]; }) {
+  const repoName = repoUrl?.split("/").at(-1);
   if (repoUrl) return (
     <div className={styles.textWrapper}>
       <FaGithub />

@@ -1,8 +1,7 @@
 [
   {
     "title": "Project Lorem Ipsum",
-    "repo_name": "lorem-ipsum-repo",
-    "repo_url": "/",
+    "repo_url": "/lorem-ipsum-repo",
     "site_url": "/",
     "is_active": false,
     "start_at": "2023.01",
