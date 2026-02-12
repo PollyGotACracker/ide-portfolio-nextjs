@@ -5,6 +5,7 @@
 html[data-theme="light"] {
   color-scheme: light;
 
+  --alpha-rgb: 0, 0, 0;
   --primary: #005fb8;
   --primary-light: #89befc;
   --primary-dark: #1a85ff;
@@ -27,6 +28,7 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   color-scheme: dark;
 
+  --alpha-rgb: 255, 255, 255;
   --primary: #0078d4;
   --primary-light: #3794ff;
   --primary-dark: #27568c;
