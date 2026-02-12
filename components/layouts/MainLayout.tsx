@@ -3,8 +3,8 @@
 import '@vscode/codicons/dist/codicon.css';
 import styles from "./MainLayout.module.css";
 import Header from '@/components/Header';
+import PageTabs from '@/components/PageTabs';
 import { usePanel } from '@/contexts/PanelProvider';
-import PageTabs from './PageTabs';
 
 interface MainLayoutProps {
   children: React.ReactNode;

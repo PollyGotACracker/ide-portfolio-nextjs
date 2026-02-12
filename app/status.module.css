@@ -1,0 +1,19 @@
+.section {
+  width: 100%;
+  height: var(--full-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc {
+  font-size: 1.2rem;
+}
+
+.buttonBox {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

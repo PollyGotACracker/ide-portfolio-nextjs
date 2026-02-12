@@ -2,17 +2,18 @@
 
 .content > section:first-child {
   /* .main: scroll-snap-type: y proximity */
-  height: calc(100vh - var(--main-padding-top) - (var(--header-size) * 2));
+  height: calc(var(--full-height) + var(--main-padding-bottom));
+  /* main padding 때문에 스크롤 최상위로 붙지 않는 문제 해결 */
   scroll-margin-top: var(--main-padding-top);
   scroll-snap-align: start end;
   scroll-snap-stop: always;
 }
 
+/* 스크롤 시 더 강하게 당기게 함 */
 .content > .stopper {
   height: 1px;
   margin-top: -1px;
   scroll-snap-align: start end;
-  /* 스크롤 시 더 강하게 당기게 함 */
   scroll-snap-stop: always;
 }
 

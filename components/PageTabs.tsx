@@ -8,7 +8,7 @@ export default function PageTabs() {
     <ul className={styles.tabList}>
       <li className={styles.tab}>
         <i className="codicon codicon-browser" />
-        <span>{pageMap.get(pathname)}</span>
+        <span>{pageMap.get(pathname) ?? decodeURIComponent(pathname).split("/").at(-1)}</span>
       </li>
     </ul>
   );
