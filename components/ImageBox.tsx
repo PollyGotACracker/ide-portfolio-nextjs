@@ -10,31 +10,17 @@ export default function ImageBox({
   ...props
 }: ImageBoxProps) {
   const url = !isRemote ? `/api${src}` : src;
-  const isUnoptimize = src.endsWith('.gif');
+  const isUnoptimized = src.endsWith('.gif');
+  const sizeProps = { width: 0, height: 0, sizes: "100vw", style: { width: '100%', height: 'auto' } };
 
-  const fullStyle = { width: '100%', height: 'auto' };
-  const sizeProps = isUnoptimize
-    ? { style: fullStyle }
-    : { width: 0, height: 0, sizes: "100vw", style: fullStyle };
-
-
-  const Img = !isUnoptimize ?
+  const Img =
     <Image
       src={url}
       alt={alt}
       {...sizeProps}
       {...props}
-    /> :
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={url}
-        alt={alt}
-        loading="lazy"
-        {...sizeProps}
-        {...props}
-      />
-    </>;
+      {...(isUnoptimized && { unoptimized: true })}
+    />;
 
   if (isLink) {
     return <Link href={url} prefetch={false}>{Img}</Link>;

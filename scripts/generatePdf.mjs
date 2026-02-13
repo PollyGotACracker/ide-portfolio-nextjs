@@ -4,6 +4,7 @@
  * => 프로젝트 빌드 후 서버를 실행하고 pdf 파일 생성 후 배포
  */
 
+// 빌드 결과물을 기반으로 실행(next start)
 import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
@@ -29,7 +30,7 @@ if (!fs.existsSync(dir)) {
 // 서버 준비 및 대기(30초)
 const server = spawn('npx', ['next', 'start', '-p', PORT], {
   shell: true,
-  stdio: 'ignore'
+  stdio: 'pipe'
 });
 for (let i = 0; i < 30; i++) {
   try {
@@ -52,7 +53,9 @@ for (const { pagePath, filePath } of pages) {
   await page.setExtraHTTPHeaders({
     'x-build-id': process.env.BUILD_BYPASS_TOKEN
   });
-  const response = await page.goto(URL + pagePath, { waitUntil: 'networkidle0' });
+  // React hydration 이슈 방지
+  await page.setJavaScriptEnabled(false);
+  const response = await page.goto(URL + pagePath, { waitUntil: 'domcontentloaded' });
   console.log('PDF Status:', response.status());
 
   // light 테마 강제 적용
@@ -83,8 +86,10 @@ for (const { pagePath, filePath } of pages) {
     printBackground: true,
     margin: { top: '10mm', bottom: '10mm', left: '10mm', right: '10mm' },
   });
-
-  await browser.close();
-  server.kill();
-  console.log('PDF generated!');
+  await page.close();
 }
+
+await browser.close();
+server.kill();
+console.log('PDF generated!');
+process.exit(0);
