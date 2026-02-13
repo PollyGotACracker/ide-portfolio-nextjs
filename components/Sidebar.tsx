@@ -22,10 +22,10 @@ export default function Sidebar({ explorer, search, sourceControl, extensions }:
   type Menu = keyof typeof MENU_CONFIG;
 
   function renderButton(id: Menu) {
-    const activeStyle = activeMenu === id ? styles.active : "";
+    const activeStyle = activeMenu === id ? ` ${styles.active}` : "";
     return (
       <button
-        className={`${styles.menuButton} ${activeStyle}`}
+        className={`${styles.menuButton}${activeStyle}`}
         onClick={() => setActiveMenu(id)}
         name={MENU_CONFIG[id].name}
       >

@@ -12,11 +12,11 @@ export default async function SourceControl() {
       <ul className={styles.eventList}>
         {res.map((i) => {
           const repoName = i.repo.name.split("/").at(-1);
-          const privateStyle = i.public ? "" : styles.private;
+          const privateStyle = i.public ? "" : ` ${styles.private}`;
           return (
             <li className={styles.event} key={i.id}>
               <Link
-                className={`${styles.eventLink} ${privateStyle}`}
+                className={`${styles.eventLink}${privateStyle}`}
                 href={`https://github.com/${i.repo.name}/commit/${i.payload.head}`}
                 target="_blank"
               >

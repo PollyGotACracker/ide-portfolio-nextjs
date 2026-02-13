@@ -14,10 +14,10 @@ export default function Footer() {
 
 
   function renderButton(id: Menu) {
-    const activeStyle = activeMenu === id ? styles.active : "";
+    const activeStyle = activeMenu === id ? ` ${styles.active}` : "";
     return (
       <button
-        className={`${styles.menuButton} ${activeStyle}`}
+        className={`${styles.menuButton}${activeStyle}`}
         onClick={() => setActiveMenu(id)}
         name={MENU_CONFIG[id].name}
       >

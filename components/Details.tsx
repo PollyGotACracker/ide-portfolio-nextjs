@@ -52,7 +52,7 @@ export default function Details({
         {isActive ? openIcon : closeIcon}
         {title}
       </button>
-      <div className={`${styles.contentWrapper} ${showTransition ? styles.transition : ""}`}>
+      <div className={`${styles.contentWrapper}${showTransition ? ` ${styles.transition}` : ""}`}>
         <div className={`${styles.content} ${showScrollbar ? "scrollbar" : "scrollbarHidden"}`}>
           {children}
         </div>

@@ -79,7 +79,7 @@ function SiteLink({ siteUrl, isActive }: { siteUrl?: ProjectType["site_url"], is
   if (siteUrl) return (
     <div className={styles.textWrapper}>
       <PiLinkSimpleBold />
-      <Link href={siteUrl} className={`${styles.link} ${isActive ? "" : styles.inactive}`} prefetch={false}>
+      <Link href={siteUrl} className={`${styles.link}${isActive ? "" : ` ${styles.inactive}`}`} prefetch={false}>
         {siteUrl}
       </Link>
     </div>
