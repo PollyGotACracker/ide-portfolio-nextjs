@@ -1,0 +1,17 @@
+.wrapper {
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.wrapper:hover .button,
+.wrapper:focus-within .button {
+  opacity: 1;
+}

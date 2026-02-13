@@ -5,20 +5,11 @@
   justify-content: center;
   align-items: center;
   row-gap: 5px;
+  padding-bottom: var(--main-padding-top);
 }
 
 .wrapper {
   width: min(450px, 100%);
-  background-color: var(--border-color);
-  border-radius: 5px;
-}
-
-.textWrapper {
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
 }
 
 .chevron {

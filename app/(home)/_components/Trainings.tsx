@@ -1,6 +1,7 @@
 import styles from "./Trainings.module.css";
 import Heading from "@/components/Heading";
 import List from '@/components/List';
+import Markdown from "@/components/Markdown";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
@@ -27,7 +28,9 @@ export function TrainingsUI({ data }: { data: TrainingType[]; }) {
                 <span className={styles.name}>{i.name}</span>
                 <span className={styles.institution}>{i.institution}</span>
               </div>
-              {i?.description && <List className={styles.descList}>{i?.description?.map((j) => <li key={j}>{j}</li>)}</List>}
+              {i?.description && <List className={styles.descList}>
+                {i?.description?.map((j) => <li key={j}><Markdown>{j}</Markdown></li>)}
+              </List>}
             </div>
           </li>
         )}

@@ -1,6 +1,7 @@
 import styles from "./Experiences.module.css";
 import Heading from "@/components/Heading";
 import List from "@/components/List";
+import Markdown from "@/components/Markdown";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { getJson } from "@/libs/getter";
@@ -27,7 +28,9 @@ export function ExperiencesUI({ data }: { data: ExperienceType[]; }) {
                 <span className={styles.role}>{`${i.job_title} | ${i.position}`}</span>
                 <span className={styles.company}>{i.company}</span>
               </div>
-              <List className={styles.descList}>{i.responsibilities?.map((j) => <li key={j}>{j}</li>)}</List>
+              <List className={styles.descList}>
+                {i.responsibilities?.map((j) => <li key={j}><Markdown>{j}</Markdown></li>)}
+              </List>
             </div>
           </li>
         )}
