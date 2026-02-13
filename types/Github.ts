@@ -6,9 +6,12 @@ export interface User {
   owned_private_repos: number;
 }
 
+export enum EventType {
+  Push = "PushEvent",
+}
 export interface Event {
   id: string;
-  type: "PushEvent" | "CreateEvent" | "DeleteEvent",
+  type: EventType,
   actor: {
     id: number;
     login: string;
