@@ -52,7 +52,7 @@ for (const { pagePath, filePath } of pages) {
   await page.setExtraHTTPHeaders({
     'x-build-id': process.env.BUILD_BYPASS_TOKEN
   });
-  const response = await page.goto(URL + pagePath, { waitUntil: 'load' });
+  const response = await page.goto(URL + pagePath, { waitUntil: 'networkidle0' });
   console.log('PDF Status:', response.status());
 
   // light 테마 강제 적용
