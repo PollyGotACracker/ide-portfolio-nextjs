@@ -1,6 +1,7 @@
 import styles from "./Profile.module.css";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
+import GithubCard from "@/components/GithubCard";
 import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
@@ -20,6 +21,7 @@ export function ProfileUI({ data }: { data: ProfileType; }) {
   return (
     <section data-id={id} className={styles.section}>
       <Heading.H2 id={id} icon={<MdModeComment />}>{label}</Heading.H2>
+      <GithubCard />
       <Markdown className={styles.about}>{data.about}</Markdown>
       <Educations data={data.educations} />
       <Certifications data={data.certifications} />

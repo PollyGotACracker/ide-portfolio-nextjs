@@ -2,6 +2,10 @@
   padding-left: 15px;
 }
 
+.about {
+  margin-top: 10px;
+}
+
 .item {
   display: flex;
   column-gap: 10px;
