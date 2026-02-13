@@ -1,12 +1,12 @@
 import styles from "./GithubUser.module.css";
-import { getUser, getUserEvents } from "@/apis/github";
+import { getUser } from "@/apis/github";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function GithubUser() {
   const res = await getUser();
   return (
-    <Link href={res.html_url} target="_blank" className={styles.github}>
+    <Link href={res.html_url} target="_blank" className={styles.github} prefetch={false}>
       <Image src={res.avatar_url} alt={res.login} width={60} height={60} />
       <div>
         <div className={styles.user}>{res.login}</div>

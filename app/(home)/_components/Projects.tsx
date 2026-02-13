@@ -62,7 +62,7 @@ function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"]; }) {
   if (repoUrl) return (
     <div className={styles.textWrapper}>
       <FaGithub />
-      <Link className={styles.link} href={repoUrl}>{repoName}</Link>
+      <Link className={styles.link} href={repoUrl} prefetch={false}>{repoName}</Link>
     </div>
   );
 }
@@ -79,7 +79,7 @@ function SiteLink({ siteUrl, isActive }: { siteUrl?: ProjectType["site_url"], is
   if (siteUrl) return (
     <div className={styles.textWrapper}>
       <PiLinkSimpleBold />
-      <Link href={siteUrl} className={`${styles.link} ${isActive ? "" : styles.inactive}`}>
+      <Link href={siteUrl} className={`${styles.link} ${isActive ? "" : styles.inactive}`} prefetch={false}>
         {siteUrl}
       </Link>
     </div>
@@ -114,7 +114,7 @@ function ExtraLinks({ links }: Pick<ProjectType, "links">) {
       {links?.map((i) =>
         <li className={styles.textWrapper} key={i.label}>
           <PiLinkSimpleBold />
-          <Link className={styles.link} href={i.url}>{i.label}</Link>
+          <Link className={styles.link} href={i.url} prefetch={false}>{i.label}</Link>
         </li>)}
     </ul>
   );

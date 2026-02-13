@@ -5,7 +5,7 @@ export default function ImageBox({ src, alt }: { src: string; alt: string; }) {
 
   return (
     src.endsWith('.gif') ? (
-      <Link href={`/api${src}`}>
+      <Link href={`/api${src}`} prefetch={false}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/api${src}`}
@@ -15,7 +15,7 @@ export default function ImageBox({ src, alt }: { src: string; alt: string; }) {
         />
       </Link>
     ) : (
-      <Link href={`/api${src}`}>
+      <Link href={`/api${src}`} prefetch={false}>
         <Image
           src={`/api${src}`}
           alt={alt}

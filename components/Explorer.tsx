@@ -32,7 +32,7 @@ export default function Explorer() {
     return (
       <Details
         className={styles.menu}
-        title={<Link className={styles.menuLink} href={page.param}>{page.label}</Link>}
+        title={<Link className={styles.menuLink} href={page.param} prefetch={false}>{page.label}</Link>}
         openIcon={<i className={`codicon codicon-folder-opened`} />}
         closeIcon={<i className={`codicon codicon-folder`} />}
         initialOpen={isActive}
@@ -52,7 +52,7 @@ export default function Explorer() {
           const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
           const link = !download
-            ? <Link className={subpageClass} href={href}>{label}</Link>
+            ? <Link className={subpageClass} href={href} prefetch={false}>{label}</Link>
             : <a className={subpageClass} href={href} download>{label}</a>;
 
           return (
