@@ -1,5 +1,17 @@
 .section {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.text {
+  width: min(250px, 100%);
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
 }
 
 .chevron {
