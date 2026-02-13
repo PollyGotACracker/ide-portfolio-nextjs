@@ -23,7 +23,7 @@ export default async function Projects() {
 
 export function ProjectsUI({ data }: { data: ProjectType[]; }) {
   return (
-    <section>
+    <section data-id={id}>
       <Heading.H2 id={id} icon={<MdMonitor />}>{label}</Heading.H2>
       <ul className={styles.projectList}>
         {data.map((i) =>

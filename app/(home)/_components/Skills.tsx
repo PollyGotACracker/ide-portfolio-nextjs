@@ -25,7 +25,7 @@ export default async function Skills() {
 
 export function SkillsUI({ data }: { data: SkillsType; }) {
   return (
-    <section>
+    <section data-id={id}>
       <Heading.H2 id={id} icon={<FaTools />}>{label}</Heading.H2>
       <ul className={styles.skillList}>
         {data.frontend.map((i) =>

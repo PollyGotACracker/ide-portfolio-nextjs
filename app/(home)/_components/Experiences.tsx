@@ -16,7 +16,7 @@ export default async function Experiences() {
 
 export function ExperiencesUI({ data }: { data: ExperienceType[]; }) {
   return (
-    <section>
+    <section data-id={id}>
       <Heading.H2 id={id} icon={<FaBriefcase />}>{label}</Heading.H2>
       <ul className={styles.list}>
         {data.map((i) =>

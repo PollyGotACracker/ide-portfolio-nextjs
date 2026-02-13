@@ -17,7 +17,7 @@ export default async function Courses() {
 
 export function CoursesUI({ data }: { data: CourseType[]; }) {
   return (
-    <section>
+    <section data-id={id}>
       <Heading.H2 id={id} icon={<FaChalkboard />}>{label}</Heading.H2>
       <ul className={styles.list}>
         {data.map((i) =>

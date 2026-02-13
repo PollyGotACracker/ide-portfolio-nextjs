@@ -26,6 +26,10 @@
   background-color: var(--item-background-hover);
 }
 
+.submenu.active {
+  background-color: var(--item-background-active);
+}
+
 .submenu:before {
   position: absolute;
   content: "";

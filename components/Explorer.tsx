@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { usePanel } from "@/contexts/PanelProvider";
+import useObserver from "@/hooks/useObserver";
 import { PAGES, HOME_HEADINGS, LOG_HEADINGS, DOWNLOAD_FILES } from "@/constants/label";
 import Details from "./Details";
+
 
 export default function Explorer() {
   const pathname = usePathname();
   const { closeMobileAside } = usePanel();
+  const activeId = useObserver("section[data-id]");
   const [activeMenu, setActiveMenu] = useState<string>(pathname);
 
   useEffect(() => { setActiveMenu(pathname); }, [pathname]);
@@ -46,12 +49,14 @@ export default function Explorer() {
     return (
       <ul>
         {menu.map(({ id, label, separator }) => {
+          const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
           const link = !download
             ? <Link className={subpageClass} href={href}>{label}</Link>
             : <a className={subpageClass} href={href} download>{label}</a>;
+
           return (
-            <li className={styles.submenu} key={id}>
+            <li className={`${styles.submenu}${activeClass}`} key={id}>
               {link}
             </li>
           );

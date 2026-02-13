@@ -9,7 +9,7 @@ const notoSans = Noto_Sans({
 });
 
 const title = process.env.NEXT_PUBLIC_NICKNAME;
-const url = process.env.PRODUCTION_URL;
+const url = process.env.NEXT_PUBLIC_PROD_URL;
 const description = `${title} | Frontend Developer Portfolio`;
 
 export const metadata: Metadata = {

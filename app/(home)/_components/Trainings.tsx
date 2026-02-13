@@ -16,7 +16,7 @@ export default async function Trainings() {
 
 export function TrainingsUI({ data }: { data: TrainingType[]; }) {
   return (
-    <section>
+    <section data-id={id}>
       <Heading.H2 id={id} icon={<PiTargetBold />}>{label}</Heading.H2>
       <ul className={styles.list}>
         {data.map((i) =>
