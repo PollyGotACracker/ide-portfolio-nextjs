@@ -6,13 +6,6 @@
 .printPage :global(#courses) {
   padding: 0;
   margin: 0;
-}
-
-.printPage :global(#skills),
-.printPage :global(#projects),
-.printPage :global(#experiences),
-.printPage :global(#trainings),
-.printPage :global(#courses) {
   margin-top: 30px;
 }
 

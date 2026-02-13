@@ -134,7 +134,7 @@
   --main-padding-top: 1rem;
   --main-padding-bottom: 1rem;
   --main-padding-side: 1rem;
-  --full-height: calc(100vh - var(--main-padding-top)- var(--main-padding-bottom) - (var(--header-size) * 2));
+  --full-height: calc(100vh - var(--main-padding-top)- var(--main-padding-bottom) - var(--footer-height) - (var(--header-size) * 2));
 
   grid-area: main;
   height: 100%;

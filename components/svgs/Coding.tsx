@@ -1,5 +1,5 @@
 export default function Coding({ className, size = "800px" }: { className?: string; size?: string | number; }) {
-  const url = process.env.NEXT_PUBLIC_PROD_URL ?? "www";
+  const url = "http://localhost:3000";
   const blocks = [
     [95.2, 162.18], [153.68, 162.18], [270.616, 162.18], [329.12, 162.18], [446.032, 162.18],
     [36.728, 220.652], [95.2, 220.652], [212.144, 220.652], [329.12, 220.652], [387.6, 220.652], [446.032, 220.652],
@@ -30,8 +30,8 @@ export default function Coding({ className, size = "800px" }: { className?: stri
       {/* address bar background */}
       <polygon fill="var(--background-main)" points="443.52,98.06 155.96,98.06 175.08,64.716 462.656,64.716" />
       {/* address */}
-      <g fill="var(--foreground)">
-        <text x="190" y="85" fontSize="12" fill="var(--foreground)">{url}</text>
+      <g>
+        <text x="190" y="85" fontSize="12" fill="var(--border-color-secondary)">{url}</text>
       </g>
       {/* bottoms */}
       <g fill="var(--border-color)">

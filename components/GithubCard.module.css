@@ -1,8 +1,9 @@
 .github {
+  width: 100%;
+  padding: 10px 15px;
   display: flex;
-  column-gap: 20px;
   align-items: center;
-  padding: 10px 20px;
+  column-gap: 10px;
   background-color: var(--background);
   border: 1px solid var(--border-color);
   border-radius: 5px;
@@ -13,14 +14,28 @@
   background-color: transparent;
 }
 
-.githubIcon {
-  margin-right: 5px;
-  transform: translateY(2px);
+.avatarWrapper {
+  width: 60;
+  height: 60;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.urlWapper {
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: nowrap;
 }
 
 .url {
   font-size: 0.8rem;
   border-bottom: 1px solid var(--foreground);
+}
+
+.githubIcon {
+  transform: translateY(2px);
 }
 
 .repoWrapper {
