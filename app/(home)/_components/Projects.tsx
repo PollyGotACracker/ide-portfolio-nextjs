@@ -29,7 +29,7 @@ export function ProjectsUI({ data }: { data: ProjectType[]; }) {
         {data.map((i) =>
           <li className={styles.project} key={i.title}>
             <div className={styles.titleWrapper}>
-              <Heading.H3>{i.title}</Heading.H3>
+              <Heading.H3 className={styles.title}>{i.title}</Heading.H3>
               <DateRange startAt={i.start_at} endAt={i?.end_at} />
             </div>
             <ImageGrid images={i?.images} />

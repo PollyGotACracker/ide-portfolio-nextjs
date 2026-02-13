@@ -1,23 +1,24 @@
 import styles from "./Heading.module.css";
 
 interface Props {
+  className?: string;
   id: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
 }
 
-function H2({ id, icon, children }: Props) {
+function H2({ className, id, icon, children }: Props) {
   return (
-    <h2 className={styles.heading} id={id}>
+    <h2 className={`${styles.heading}${className ? ` ${className}` : ""}`} id={id}>
       {icon}
       {children}
     </h2>
   );
 }
 
-function H3({ icon, children }: Pick<Props, "icon" | "children">) {
+function H3({ className, icon, children }: Omit<Props, "id">) {
   return (
-    <h3 className={styles.heading}>
+    <h3 className={`${styles.heading}${className ? ` ${className}` : ""}`}>
       {icon}
       {children}
     </h3>

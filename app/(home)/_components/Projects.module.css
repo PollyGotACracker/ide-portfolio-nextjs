@@ -19,11 +19,28 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.title {
+  width: 100%;
+}
+
 .rangeWrapper {
   margin-left: auto;
   display: inline-flex;
   align-items: center;
   column-gap: 10px;
+  /* 모바일 */
+  margin-bottom: 10px;
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+  .title {
+    width: auto;
+  }
+
+  .rangeWrapper {
+    margin-bottom: 0;
+  }
 }
 
 .rangeWrapper > svg {
