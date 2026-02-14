@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 interface DetailsProps {
   title: string | React.ReactNode;
   children: React.ReactNode;
+  cClassName?: string,
   className?: string;
   onClick?: React.MouseEventHandler,
   onToggle?: (prev: boolean) => void;
@@ -19,6 +20,7 @@ interface DetailsProps {
 export default function Details({
   title,
   children,
+  cClassName,
   className,
   onClick,
   onToggle,
@@ -46,7 +48,7 @@ export default function Details({
   }
 
   return (
-    <div className={`${styles.details} ${activeStyle}`} onClick={onClick}>
+    <div className={`${styles.details} ${activeStyle} ${cClassName}`} onClick={onClick}>
       <button className={`${styles.summary}${className ? ` ${className}` : ""}`} onClick={handleToggle} disabled={disabled}>
         {!disabled && <i className={`codicon codicon-${chevronClass} ${styles.chevron}`} />}
         {isActive ? openIcon : closeIcon}

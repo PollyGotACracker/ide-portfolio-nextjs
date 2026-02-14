@@ -28,9 +28,11 @@ export default function Explorer() {
 
   function renderPage(page: Page, menu: SubPage[]) {
     const isActive = activeMenu === page.param;
+    const activeStyle = isActive ? ` ${styles.containerActive}` : ``;
 
     return (
       <Details
+        cClassName={`${styles.menuContainer}${activeStyle}`}
         className={styles.menu}
         title={<Link className={styles.menuLink} href={page.param} prefetch={false}>{page.label}</Link>}
         openIcon={<i className={`codicon codicon-folder-opened`} />}
