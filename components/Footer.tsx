@@ -32,13 +32,7 @@ export default async function Footer() {
         </div>
       </div>
       <div className={styles.wrapper}>
-        <div
-          className={`${styles.commit} ${styles.item}`}
-          title={`${commit.commit.author.name}, ${commit.commit.message}`}
-        >
-          <FaCodeCommit />
-          <TimeAgo date={data.pushed_at} locale="en" />
-        </div>
+        <CommitTime name={commit.commit.author.name} message={commit.commit.message} date={commit.commit.author.date} />
         <div
           className={`${styles.lang} ${styles.item} ${styles.highlight}`}
           title="Language"
@@ -48,9 +42,21 @@ export default async function Footer() {
         </div>
         <div
           className={`codicon codicon-bell ${styles.bell} ${styles.highlight}`}
-          title="Notifications(Not Supported)"
+          title="Notifications (Not Supported)"
         />
       </div>
     </footer >
+  );
+}
+
+function CommitTime({ name, message, date }: { name: string, message: string, date: string; }) {
+  return (
+    <div
+      className={`${styles.commit} ${styles.item}`}
+      title={`${name}, ${message}`}
+    >
+      <FaCodeCommit />
+      <TimeAgo date={date} locale="en" />
+    </div>
   );
 }
