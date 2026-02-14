@@ -12,7 +12,7 @@ import Details from "./Details";
 
 export default function Explorer() {
   const pathname = usePathname();
-  const { closeMobileAside } = usePanel();
+  const { closeMobileSide } = usePanel();
   const activeId = useObserver("section[data-id]");
   const [activeMenu, setActiveMenu] = useState<string>(pathname);
 
@@ -22,7 +22,7 @@ export default function Explorer() {
     const target = e.target as HTMLElement;
     const anchor = target.closest('a');
     if (anchor) {
-      closeMobileAside();
+      closeMobileSide();
     };
   }
 

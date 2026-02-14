@@ -41,10 +41,10 @@ export default function Coding({ className, size = "800px" }: { className?: stri
       {/* blocks */}
       <g>
         {blocks.map(([x, y], i) => (
-          <rect key={i} x={x} y={y} width="29.232" height="29.232" fill="var(--background-item)" opacity="0.1">
+          <rect key={i} x={x} y={y} width="29.232" height="29.232" fill="var(--border-color)" opacity="0.1">
             <animate
               attributeName="opacity"
-              values="0.1;0.4;0.1"
+              values="0.1;0.9;0.1"
               dur={`${2 + (i * 0.5) % 3}s`}
               begin={`${(i * 1.5) % 4}s`}
               repeatCount="indefinite"

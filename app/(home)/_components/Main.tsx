@@ -16,7 +16,7 @@ export default function Main() {
 
   return (
     <section data-id="" className={styles.section}>
-      <Coding size="min(400px, 100%)" />
+      <Coding size="min(250px, 100%)" />
       <div className={styles.wrapper}>
         <Markdown noMargin transparent>{code}</Markdown>
       </div>

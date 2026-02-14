@@ -73,10 +73,10 @@ export interface CourseType {
   is_completed: boolean;
 }
 
-/* Footer: Problems */
+/* Bottom: Problems */
 export type ProblemType = string;
 
-/* Footer: Output */
+/* Bottom: Output */
 export interface OutputType {
   version: string;
   features: string[];

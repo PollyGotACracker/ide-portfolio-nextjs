@@ -1,18 +1,18 @@
 .sidebar {
-  --aside-button-size: 30px;
-  grid-area: aside;
+  --side-button-size: 30px;
+  grid-area: right;
   overflow: hidden;
   white-space: nowrap;
   height: 100%;
   background-color: var(--background);
-  width: var(--aside-width);
-  top: var(--aside-top);
-  right: var(--aside-right);
-  position: var(--aside-position);
-  z-index: var(--aside-zindex);
-  padding: var(--aside-padding) 0;
-  border-left: var(--aside-border);
-  transition: var(--aside-transition);
+  width: var(--side-width);
+  top: var(--side-top);
+  right: var(--side-right);
+  position: var(--side-position);
+  z-index: var(--side-zindex);
+  padding: var(--side-padding) 0;
+  border-left: var(--side-border);
+  transition: var(--side-transition);
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -25,8 +25,8 @@
 }
 
 button.menuButton {
-  width: var(--aside-button-size);
-  height: var(--aside-button-size);
+  width: var(--side-button-size);
+  height: var(--side-button-size);
   padding: 5px;
   background-color: transparent;
   color: var(--item-color);

@@ -1,7 +1,6 @@
 .header {
   grid-area: header;
-  /* position: sticky; */
-  background-color: var(--background-main);
+  background-color: var(--background);
   border-bottom: 1px solid var(--border-color);
   z-index: var(--header-zindex);
   width: 100%;
@@ -55,10 +54,10 @@ button.toggleButton[class*="codicon-"] {
   font-size: 1.2rem;
 }
 
-button.toggleButton.aside {
-  color: var(--aside-toggle-color);
+button.toggleButton.right {
+  color: var(--side-toggle-color);
 }
 
-button.toggleButton.footer {
-  color: var(--footer-toggle-color);
+button.toggleButton.bottom {
+  color: var(--bottom-toggle-color);
 }

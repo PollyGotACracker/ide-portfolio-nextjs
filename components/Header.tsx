@@ -6,7 +6,7 @@ import { PAGES } from "@/constants/label";
 import { usePanel } from "@/contexts/PanelProvider";
 
 export default function Header() {
-  const { toggleFooter, toggleAside } = usePanel();
+  const { toggleBottom, toggleSide } = usePanel();
   const router = useRouter();
 
   function handleGoHome() {
@@ -28,12 +28,12 @@ export default function Header() {
       <div className={styles.title} onClick={handleGoHome}>{process.env.NEXT_PUBLIC_NICKNAME}</div>
       <div className={styles.buttonList}>
         <button
-          className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.footer}`}
-          onClick={toggleFooter}
+          className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.bottom}`}
+          onClick={toggleBottom}
         />
         <button
-          className={`codicon codicon-layout-sidebar-right ${styles.toggleButton} ${styles.aside}`}
-          onClick={toggleAside}
+          className={`codicon codicon-layout-sidebar-right ${styles.toggleButton} ${styles.right}`}
+          onClick={toggleSide}
         />
       </div>
     </header>);

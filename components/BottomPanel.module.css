@@ -1,0 +1,59 @@
+.bottom {
+  --bottom-padding-inner: 10px;
+  grid-area: bottom;
+  overflow: hidden;
+  padding: var(--bottom-padding) 0;
+  border-top: var(--bottom-border);
+  transition: var(--bottom-transition);
+}
+
+.menuList {
+  display: flex;
+  column-gap: 5px;
+  padding: 0 var(--bottom-padding-inner);
+}
+
+.content {
+  padding-top: 10px;
+  height: calc(100% - 26px);
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+button.menuButton {
+  width: auto;
+  height: 25px;
+  padding: 5px 8px;
+  background-color: transparent;
+  color: var(--item-color);
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+button.menuButton:hover,
+button.menuButton:focus {
+  color: var(--item-color-active);
+}
+
+button.menuButton.active {
+  background-color: var(--item-background-active);
+  color: var(--item-color-active);
+}
+
+button.closeButton {
+  margin-left: auto;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+button.closeButton:hover {
+  background-color: var(--item-background-hover);
+}
+
+button.toggleButton[class*="codicon-"] {
+  font-size: 1.2rem;
+}

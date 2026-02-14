@@ -9,11 +9,12 @@
 .container {
   /* panel css variables */
   --header-zindex: 102;
-  --aside-zindex: inherit;
-  --aside-position: static;
+  --side-zindex: inherit;
+  --side-position: static;
   --header-size: 40px;
-  --aside-size: 250px;
-  --footer-size: 200px;
+  --footer-size: 30px;
+  --side-size: 250px;
+  --bottom-size: 200px;
   --panel-padding: 10px;
   --panel-border: 1px solid var(--border-color);
   --hide-transition: padding 0s 0.3s, border 0s 0.3s;
@@ -26,9 +27,10 @@
   display: grid;
   grid-template-areas:
     "header header"
-    "tabs aside"
-    "main aside"
-    "footer aside";
+    "tabs right"
+    "main right"
+    "bottom right"
+    "footer footer";
   transition:
     grid-template-columns 0.3s ease-in-out,
     grid-template-rows 0.3s ease-in-out;
@@ -38,43 +40,43 @@
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 200px);
-    --aside-toggle-color: var(--item-color-inactive);
-    --footer-toggle-color: var(--item-color-inactive);
+    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--bottom-height, 200px) var(--footer-height, 30px);
+    --side-toggle-color: var(--item-color-inactive);
+    --bottom-toggle-color: var(--item-color-inactive);
 
-    --aside-position: fixed;
-    --aside-zindex: 101;
-    --aside-right: calc(var(--aside-size) * -1);
-    --aside-top: var(--header-size);
+    --side-position: fixed;
+    --side-zindex: 101;
+    --side-right: calc(var(--side-size) * -1);
+    --side-top: var(--header-size);
 
-    --aside-width: var(--aside-size);
-    --aside-padding: var(--panel-padding);
-    --aside-border: var(--panel-border);
-    --aside-transition: right 0.3s ease-in-out;
+    --side-width: var(--side-size);
+    --side-padding: var(--panel-padding);
+    --side-border: var(--panel-border);
+    --side-transition: right 0.3s ease-in-out;
 
-    --footer-height: 0px;
-    --footer-padding: 0px;
-    --footer-border: none;
-    --footer-transition: var(--hide-transition);
+    --bottom-height: 0px;
+    --bottom-padding: 0px;
+    --bottom-border: none;
+    --bottom-transition: var(--hide-transition);
   }
 
-  .container[data-aside="true"] {
-    --aside-toggle-color: var(--item-color-active);
-    --aside-right: 0;
+  .container[data-right="true"] {
+    --side-toggle-color: var(--item-color-active);
+    --side-right: 0;
   }
 
   /* mobile Overlay */
-  .container[data-aside="true"] > .overlay {
+  .container[data-right="true"] > .overlay {
     opacity: 1;
     visibility: visible;
   }
 
-  .container[data-footer="true"] {
-    --footer-toggle-color: var(--item-color-active);
-    --footer-height: var(--footer-size);
-    --footer-padding: var(--panel-padding);
-    --footer-border: var(--panel-border);
-    --footer-transition: none;
+  .container[data-bottom="true"] {
+    --bottom-toggle-color: var(--item-color-active);
+    --bottom-height: var(--bottom-size);
+    --bottom-padding: var(--panel-padding);
+    --bottom-border: var(--panel-border);
+    --bottom-transition: none;
   }
 }
 
@@ -96,36 +98,35 @@
 /* 태블릿 ~ 데스크톱 (769px 이상) */
 @media (min-width: 769px) {
   .container {
-    grid-template-columns: 1fr var(--aside-width, 200px);
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--footer-height, 0);
-    --aside-toggle-color: var(--item-color-active);
-    --footer-toggle-color: var(--item-color-inactive);
+    grid-template-columns: 1fr var(--side-width, 200px);
+    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--bottom-height, 0) var(--footer-height, 30px);
+    --bottom-toggle-color: var(--item-color-inactive);
 
-    --aside-width: var(--aside-size);
-    --aside-padding: var(--panel-padding);
-    --aside-border: var(--panel-border);
-    --aside-transition: none;
+    --side-width: var(--side-size);
+    --side-padding: var(--panel-padding);
+    --side-border: var(--panel-border);
+    --side-transition: none;
 
-    --footer-height: 0px;
-    --footer-padding: 0px;
-    --footer-border: none;
-    --footer-transition: var(--hide-transition);
+    --bottom-height: 0px;
+    --bottom-padding: 0px;
+    --bottom-border: none;
+    --bottom-transition: var(--hide-transition);
   }
 
-  .container[data-aside="false"] {
-    --aside-toggle-color: var(--item-color-inactive);
-    --aside-width: 0px;
-    --aside-padding: 0px;
-    --aside-border: none;
-    --aside-transition: var(--hide-transition);
+  .container[data-right="false"] {
+    --side-toggle-color: var(--item-color-inactive);
+    --side-width: 0px;
+    --side-padding: 0px;
+    --side-border: none;
+    --side-transition: var(--hide-transition);
   }
 
-  .container[data-footer="true"] {
-    --footer-toggle-color: var(--item-color-active);
-    --footer-height: var(--footer-size);
-    --footer-padding: var(--panel-padding);
-    --footer-border: var(--panel-border);
-    --footer-transition: none;
+  .container[data-bottom="true"] {
+    --bottom-toggle-color: var(--item-color-active);
+    --bottom-height: var(--bottom-size);
+    --bottom-padding: var(--panel-padding);
+    --bottom-border: var(--panel-border);
+    --bottom-transition: none;
   }
 }
 
@@ -134,7 +135,7 @@
   --main-padding-top: 1rem;
   --main-padding-bottom: 1rem;
   --main-padding-side: 1rem;
-  --full-height: calc(100dvh - var(--main-padding-top)- var(--main-padding-bottom) - var(--footer-height) - (var(--header-size) * 2));
+  --full-height: calc(100dvh - var(--main-padding-top) - var(--main-padding-bottom) - var(--bottom-height) - (var(--header-size) * 2));
 
   grid-area: main;
   height: 100%;

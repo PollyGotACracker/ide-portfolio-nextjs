@@ -43,5 +43,5 @@ button.summary:disabled {
   margin: 0;
   list-style: none;
   overflow-y: auto;
-  max-height: calc(100dvh - var(--header-size) - var(--aside-button-size) - (var(--aside-padding) * 3) - var(--summary-size));
+  max-height: calc(100dvh - var(--header-size) - var(--footer-size) - var(--side-button-size) - (var(--side-padding) * 3) - var(--summary-size));
 }

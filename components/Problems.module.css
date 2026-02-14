@@ -3,5 +3,5 @@
   height: 100%;
   overflow: auto;
   white-space: pre-wrap;
-  padding: 0 var(--footer-padding);
+  padding: 0 var(--bottom-padding-inner);
 }

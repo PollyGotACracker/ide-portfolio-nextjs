@@ -4,13 +4,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 export type PanelState = boolean | "";
 interface PanelContextType {
-  showAside: PanelState;
-  showFooter: PanelState;
-  setShowAside: React.Dispatch<React.SetStateAction<PanelState>>;
-  setShowFooter: React.Dispatch<React.SetStateAction<PanelState>>;
-  toggleAside: () => void;
-  toggleFooter: () => void;
-  closeMobileAside: () => void;
+  showSide: PanelState;
+  showBottom: PanelState;
+  setShowSide: React.Dispatch<React.SetStateAction<PanelState>>;
+  setShowBottom: React.Dispatch<React.SetStateAction<PanelState>>;
+  toggleSide: () => void;
+  toggleBottom: () => void;
+  closeMobileSide: () => void;
 }
 
 const PanelContext = createContext<PanelContextType | null>(null);
@@ -24,11 +24,11 @@ export function usePanel() {
 }
 
 export default function PanelProvider({ children }: { children: React.ReactNode; }) {
-  const [showAside, setShowAside] = useState<PanelState>("");
-  const [showFooter, setShowFooter] = useState<PanelState>("");
+  const [showSide, setShowSide] = useState<PanelState>("");
+  const [showBottom, setShowBottom] = useState<PanelState>("");
 
-  function toggleFooter() {
-    setShowFooter((prev: boolean | "") => {
+  function toggleBottom() {
+    setShowBottom((prev: boolean | "") => {
       if (prev === "") {
         return true;
       }
@@ -36,8 +36,8 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
     });
   }
 
-  function toggleAside() {
-    setShowAside((prev: boolean | "") => {
+  function toggleSide() {
+    setShowSide((prev: boolean | "") => {
       if (prev === "") {
         // 데스크톱: false(닫기), 모바일: true(열기)
         return !(window.innerWidth > 768);
@@ -46,9 +46,9 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
     });
   }
 
-  function closeMobileAside() {
+  function closeMobileSide() {
     if (!(window.innerWidth > 768)) {
-      setShowAside(false);
+      setShowSide(false);
     }
   }
 
@@ -59,9 +59,9 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
         const key = e.key;
         switch (key) {
           case "b":
-            return toggleAside();
+            return toggleSide();
           case "j":
-            return toggleFooter();
+            return toggleBottom();
         }
       }
     }
@@ -73,13 +73,13 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
 
   return (
     <PanelContext.Provider value={{
-      showAside,
-      showFooter,
-      setShowAside,
-      setShowFooter,
-      toggleFooter,
-      toggleAside,
-      closeMobileAside
+      showSide,
+      showBottom,
+      setShowSide,
+      setShowBottom,
+      toggleBottom,
+      toggleSide,
+      closeMobileSide
     }}>
       {children}
     </PanelContext.Provider>

@@ -1,16 +1,16 @@
 'use client';
 
-import styles from "./Sidebar.module.css";
+import styles from "./SidePanel.module.css";
 import { useState } from "react";
 
-interface SidebarProps {
+interface SidePanelProps {
   explorer: React.ReactNode;
   search: React.ReactNode;
   sourceControl: React.ReactNode;
   extensions: React.ReactNode;
 }
 
-export default function Sidebar({ explorer, search, sourceControl, extensions }: SidebarProps) {
+export default function SidePanel({ explorer, search, sourceControl, extensions }: SidePanelProps) {
   const [activeMenu, setActiveMenu] = useState<Menu>("explorer");
 
   const MENU_CONFIG = {

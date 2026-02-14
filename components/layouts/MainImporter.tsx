@@ -2,8 +2,8 @@ import PanelProvider from '@/contexts/PanelProvider';
 import FontSizeProvider from '@/contexts/FontSizeProvider';
 import ThemeProvider from '@/contexts/ThemeProvider';
 import MainLayout from '@/components/layouts/MainLayout';
-import Sidebar from '@/components/Sidebar';
-import Footer from '@/components/Footer';
+import SidePanel from '@/components/SidePanel';
+import BottomPanel from '@/components/BottomPanel';
 import Explorer from '@/components/Explorer';
 import SourceControl from '@/components/SourceControl';
 import Search from '@/components/Search';
@@ -11,15 +11,16 @@ import Extensions from '@/components/Extensions';
 import Problems from "@/components/Problems";
 import Output from "@/components/Output";
 import Terminal from "@/components/Terminal";
+import Footer from '@/components/Footer';
 
 export default function MainImporter({ children }: { children: React.ReactNode; }) {
-  const sidebarProps = {
+  const sideProps = {
     explorer: <Explorer />,
     sourceControl: <SourceControl />,
     search: <Search />,
     extensions: <Extensions />
   };
-  const footerProps = {
+  const bottomProps = {
     problems: <Problems />,
     output: <Output />,
     terminal: <Terminal />,
@@ -29,8 +30,10 @@ export default function MainImporter({ children }: { children: React.ReactNode; 
       <FontSizeProvider>
         <PanelProvider>
           <MainLayout
-            sidebar={<Sidebar {...sidebarProps} />}
-            footer={<Footer {...footerProps} />}>
+            aside={<SidePanel {...sideProps} />}
+            bottom={<BottomPanel {...bottomProps} />}
+            footer={<Footer />}
+          >
             {children}
           </MainLayout>
         </PanelProvider>
