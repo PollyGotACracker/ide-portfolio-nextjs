@@ -1,5 +1,94 @@
 .footer {
   grid-area: footer;
+  width: 100%;
+  height: 100%;
+  display: flex;
   background-color: var(--background);
   border-top: 1px solid var(--border-color);
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.wrapper:last-child > *:first-child {
+  margin-left: auto;
+}
+
+.wrapper > *:not(.repoLink) {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  height: 100%;
+  cursor: default;
+}
+
+.wrapper > *:hover,
+.wrapper > *:focus {
+  opacity: 0.8;
+}
+
+.wrapper > *[class*="codicon-"],
+.wrapper > * > *[class*="codicon-"] {
+  font-size: 1rem;
+}
+
+.repoLink[class*="codicon-"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  width: 40px;
+
+}
+
+.repoLink[class*="codicon-"]:hover,
+.repoLink[class*="codicon-"]:focus {
+  background-color: var(--primary-light);
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  column-gap: 5px;
+}
+
+.item > svg {
+  font-size: 1rem;
+}
+
+.highlight:hover,
+.highlight:focus {
+  background-color: var(--item-background-active);
+}
+
+.bell[class*="codicon-"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+}
+
+.commit {
+  white-space: nowrap;
+}
+
+/* display: 모바일 */
+.name,
+.lang {
+  display: none;
+}
+
+/* display: 태블릿 (769px 이상) */
+@media (min-width: 769px) {
+
+  .name,
+  .lang {
+    display: flex;
+  }
+
 }

@@ -24,7 +24,6 @@ export async function fetcher<T>(
   return res.json();
 }
 
-export const GITHUB_USERNAME = CONFIG.GITHUB_USERNAME;
 const GITHUB_SERVER_URL = "https://api.github.com";
 const GITHUB_HEADERS = {
   'X-GitHub-Api-Version': '2022-11-28',

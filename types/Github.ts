@@ -35,3 +35,34 @@ export interface Event {
   public: boolean;
   created_at: string;
 }
+
+export interface RepoInfo {
+  name: string;
+  html_url: string;
+  description: string | null;
+  language: string | null;
+  topics: string[];
+  stargazers_count: number;
+  forks_count: number;
+  size: number;
+  pushed_at: string;
+  updated_at: string;
+  created_at: string;
+  default_branch: string;
+  homepage: string | null;
+  license: {
+    key: string;
+    name: string;
+  } | null;
+}
+
+export interface Commit {
+  sha: string;
+  commit: {
+    message: string;
+    author: {
+      name: string;
+      date: string;
+    };
+  };
+}
