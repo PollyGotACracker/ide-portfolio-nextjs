@@ -1,7 +1,3 @@
-@import "@/styles/prism-one-dark.min.css";
-@import "@/styles/prism-one-light.min.css";
-@import "@/styles/rehype-prism-plus.min.css";
-
 :root {
   --font-size: 16px;
 }

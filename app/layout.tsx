@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
+import CONFIG from "@/constants/config";
 import "./reset.css";
 import "./globals.css";
-import CONFIG from "@/constants/config";
+import "@/styles/prism-one-dark.min.css";
+import "@/styles/prism-one-light.min.css";
+import "@/styles/rehype-prism-plus.min.css";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
