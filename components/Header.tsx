@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 import { useRouter } from "next/navigation";
 import { PAGES } from "@/constants/label";
 import { usePanel } from "@/contexts/PanelProvider";
+import CONFIG from "@/constants/config";
 
 export default function Header() {
   const { toggleBottom, toggleSide } = usePanel();
@@ -25,7 +26,7 @@ export default function Header() {
           onClick={() => router.forward()}
         />
       </div>
-      <div className={styles.title} onClick={handleGoHome}>{process.env.NEXT_PUBLIC_NICKNAME}</div>
+      <div className={styles.title} onClick={handleGoHome}>{CONFIG.NICKNAME}</div>
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.bottom}`}

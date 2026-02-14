@@ -3,6 +3,7 @@ import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
 import { HOME_HEADINGS } from "@/constants/label";
 import { PATHS } from "@/constants/path";
+import CONFIG from "@/constants/config";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -44,9 +45,9 @@ export class CreateTerminal {
       },
       about() {
         return [
-          `> ${process.env.NEXT_PUBLIC_NICKNAME}'s Portfolio v1.0`,
+          `> ${CONFIG.NICKNAME}'s Portfolio v1.0`,
           `> Frontend Developer`,
-          `> Contact: ${process.env.NEXT_PUBLIC_EMAIL}`,
+          `> Contact: ${CONFIG.NEXT_PUBLIC_EMAIL}`,
         ].join('\n');
       },
       echo(value: string) { return value; },

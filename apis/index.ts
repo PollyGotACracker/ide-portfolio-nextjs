@@ -1,4 +1,4 @@
-const DEFAULT_ERROR_MSG = "An error occurred while fetching data.";
+import CONFIG from "@/constants/config";
 
 export async function fetcher<T>(
   endpoint: string,
@@ -24,11 +24,11 @@ export async function fetcher<T>(
   return res.json();
 }
 
-export const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
+export const GITHUB_USERNAME = CONFIG.GITHUB_USERNAME;
 const GITHUB_SERVER_URL = "https://api.github.com";
 const GITHUB_HEADERS = {
   'X-GitHub-Api-Version': '2022-11-28',
-  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+  Authorization: `Bearer ${CONFIG.GITHUB_TOKEN}`
 };
 
 export async function githubFetcher<T>(
@@ -55,3 +55,5 @@ export async function githubFetcher<T>(
 
   return res.json();
 }
+
+const DEFAULT_ERROR_MSG = "An error occurred while fetching data.";
