@@ -3,6 +3,7 @@ import { Noto_Sans } from "next/font/google";
 import CONFIG from "@/constants/config";
 import "./reset.css";
 import "./globals.css";
+import '@vscode/codicons/dist/codicon.css';
 import "@/styles/prism-one-dark.min.css";
 import "@/styles/prism-one-light.min.css";
 import "@/styles/rehype-prism-plus.min.css";

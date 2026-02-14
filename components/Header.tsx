@@ -1,41 +1,51 @@
 'use client';
 
 import styles from "./Header.module.css";
-import { useRouter } from "next/navigation";
-import { PAGES } from "@/constants/label";
 import { usePanel } from "@/contexts/PanelProvider";
 import CONFIG from "@/constants/config";
+import { checkWindows } from "@/libs/checker";
+import { useSyncExternalStore } from "react";
 
 export default function Header() {
-  const { toggleBottom, toggleSide } = usePanel();
-  const router = useRouter();
+  const { toggleBottom, toggleSide, goHome, goBack, goForward } = usePanel();
+  const isWindows = useSyncExternalStore(
+    () => () => { }, // empty subscribe
+    () => checkWindows(), // client
+    () => false // server
+  );
 
-  function handleGoHome() {
-    router.push(PAGES.HOME.param);
-  }
+  const TITLE_GO_BACK = isWindows ? "Alt+LeftArrow" : "Ctrl+-";
+  const TITLE_GO_FOR = isWindows ? "Alt+RightArrow" : "Ctrl+Shift+-";
+  const TITLE_BOTTOM = isWindows ? "Ctrl+J" : "Cmd+J";
+  const TITLE_SIDE = isWindows ? "Ctrl+B" : "Cmd+B";
 
   return (
     <header className={styles.header}>
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-arrow-left ${styles.historyButton}`}
-          onClick={() => router.back()}
+          onClick={goBack}
+          title={`Go Back (${TITLE_GO_BACK})`}
         />
         <button
           className={`codicon codicon-arrow-right ${styles.historyButton}`}
-          onClick={() => router.forward()}
+          onClick={goForward}
+          title={`Go Forward (${TITLE_GO_FOR})`}
         />
       </div>
-      <div className={styles.title} onClick={handleGoHome}>{CONFIG.NICKNAME}</div>
+      <div className={styles.title} onClick={goHome}>{CONFIG.NICKNAME}</div>
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.bottom}`}
           onClick={toggleBottom}
+          title={`Toggle Panel (${TITLE_BOTTOM})`}
         />
         <button
           className={`codicon codicon-layout-sidebar-right ${styles.toggleButton} ${styles.right}`}
           onClick={toggleSide}
+          title={`Toggle Side Bar (${TITLE_SIDE})`}
         />
       </div>
-    </header>);
+    </header>
+  );
 }
