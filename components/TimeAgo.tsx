@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import "dayjs/locale/ko";
 
+// dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 export default function TimeAgo({ date, locale = "ko" }: { date: string; locale?: string; }) {
@@ -14,13 +15,9 @@ export default function TimeAgo({ date, locale = "ko" }: { date: string; locale?
    */
   const timeAgo = useSyncExternalStore(
     () => () => { }, // empty subscribe
-    () => dayjs(date).fromNow(), // client
+    () => dayjs(date).locale(locale).fromNow(), // client
     () => '' // server (empty string)
   );
-
-  useEffect(() => {
-    dayjs.locale(locale);
-  }, [locale]);
 
   return <span>{timeAgo}</span>;
 }
