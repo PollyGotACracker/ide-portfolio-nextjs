@@ -4,8 +4,7 @@ export async function fetcher<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
-  const url = `/api/${endpoint}`;
-
+  const url = `/api${endpoint}`;
   const res = await fetch(url, {
     ...options,
     headers: {

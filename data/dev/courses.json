@@ -10,5 +10,35 @@
     "instructor": "Prof. Ipsum",
     "url": "/",
     "is_completed": false
+  },
+  {
+    "title": "Introduction to Dolor Sit",
+    "instructor": "Dr. Amet",
+    "url": "/",
+    "is_completed": true
+  },
+  {
+    "title": "Consectetur Architecture",
+    "instructor": "Eng. Adipiscing",
+    "url": "/",
+    "is_completed": false
+  },
+  {
+    "title": "Deep Dive into Elit Se",
+    "instructor": "Prof. Eiusmod",
+    "url": "/",
+    "is_completed": false
+  },
+  {
+    "title": "Tempor Incididunt Basics",
+    "instructor": "Dr. Ut Labore",
+    "url": "/",
+    "is_completed": true
+  },
+  {
+    "title": "Magna Aliqua Principles",
+    "instructor": "Prof. Enim",
+    "url": "/",
+    "is_completed": false
   }
 ]

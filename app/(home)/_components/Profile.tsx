@@ -5,7 +5,7 @@ import GithubCard from "@/components/GithubCard";
 import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
-import { getJson } from "@/libs/getter";
+import getJson from "@/libs/getJson";
 import { MdModeComment } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaCertificate } from "react-icons/fa6";

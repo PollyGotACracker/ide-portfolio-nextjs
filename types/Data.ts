@@ -72,3 +72,12 @@ export interface CourseType {
   url?: string;
   is_completed: boolean;
 }
+
+/* Footer: Problems */
+export type ProblemType = string;
+
+/* Footer: Output */
+export interface OutputType {
+  version: string;
+  features: string[];
+}

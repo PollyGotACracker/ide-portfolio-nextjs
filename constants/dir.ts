@@ -9,3 +9,8 @@ export const FILES = {
   EXPERIENCES: "experiences.json",
   TRAININGS: "trainings.json",
 };
+
+export const FILES_EXTRA = {
+  PROBLEMS: ["logs", "problems.json"],
+  OUTPUT: ["logs", "output.json"],
+};

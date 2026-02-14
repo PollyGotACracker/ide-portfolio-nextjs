@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { getDir } from '@/libs/getter';
+import getDir from '@/libs/getDir';
 
 // /public 이 아닌 경로의 이미지 파일 표시 
 // 브라우저 주소창에 이미지 경로 작성

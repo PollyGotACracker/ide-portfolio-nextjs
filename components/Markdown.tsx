@@ -1,3 +1,4 @@
+'use client';
 
 /* @/styles files in global.css */
 import styles from "./Markdown.module.css";

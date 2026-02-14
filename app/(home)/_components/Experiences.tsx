@@ -4,7 +4,7 @@ import List from "@/components/List";
 import Markdown from "@/components/Markdown";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
-import { getJson } from "@/libs/getter";
+import getJson from "@/libs/getJson";
 import { ExperienceType, } from "@/types/Data";
 import { FaBriefcase } from "react-icons/fa";
 

@@ -63,22 +63,8 @@ export default function Terminal() {
     }
   }
   return (
-    <div className={`${styles.terminal} ${jetBrainsMono.variable} scrollbarHidden`} ref={terminalRef}>
-      <ul className={styles.logs}>
-        {logs.length > 0 &&
-          logs.map((log) => (
-            <li className={styles.item} key={log[0].id}>
-              <DynamicPromptText path={log[0].path} isWindows={isWindows} />
-              {log.map((sublog, index) => (
-                <LogText
-                  key={sublog.id + index}
-                  type={sublog.type}
-                  text={sublog.text}
-                />
-              ))}
-            </li>
-          ))}
-      </ul>
+    <div className={`${styles.terminal} ${jetBrainsMono.variable} scrollbar`} ref={terminalRef}>
+      <Logs logs={logs} isWindows={isWindows} />
       <DynamicPromptText path={pathname} isWindows={isWindows} />
       <label className={styles.input} htmlFor="command">
         <input
@@ -92,6 +78,26 @@ export default function Terminal() {
         />
       </label>
     </div>
+  );
+}
+
+function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean; }) {
+  return (
+    <ul className={styles.logs}>
+      {logs.length > 0 &&
+        logs.map((log) => (
+          <li className={styles.item} key={log[0].id}>
+            <DynamicPromptText path={log[0].path} isWindows={isWindows} />
+            {log.map((sublog, index) => (
+              <LogText
+                key={sublog.id + index}
+                type={sublog.type}
+                text={sublog.text}
+              />
+            ))}
+          </li>
+        ))}
+    </ul>
   );
 }
 

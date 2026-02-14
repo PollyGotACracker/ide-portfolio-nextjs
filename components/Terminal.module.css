@@ -1,12 +1,11 @@
 .terminal {
   font-family: var(--font-jetbrains-mono);
-  font-size: 0.9rem;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  line-height: 1.5;
+  padding: 0 var(--footer-padding);
 }
 
 [data-theme="light"] .terminal {

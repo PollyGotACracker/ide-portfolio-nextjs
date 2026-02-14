@@ -2,7 +2,7 @@ import styles from "./Courses.module.css";
 import Heading from "@/components/Heading";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
-import { getJson } from "@/libs/getter";
+import getJson from "@/libs/getJson";
 import { CourseType, } from "@/types/Data";
 import { FaChalkboard } from "react-icons/fa";
 import { IoMdSquareOutline } from "react-icons/io";

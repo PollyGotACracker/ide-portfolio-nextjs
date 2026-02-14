@@ -1,7 +1,7 @@
 .footer {
   grid-area: footer;
   overflow: hidden;
-  padding: var(--footer-padding);
+  padding: var(--footer-padding) 0;
   border-top: var(--footer-border);
   transition: var(--footer-transition);
 }
@@ -9,11 +9,14 @@
 .menuList {
   display: flex;
   column-gap: 5px;
+  padding: 0 var(--footer-padding);
 }
 
 .content {
-  margin-top: 10px;
-  height: calc(100% - 20px - 25px);
+  padding-top: 10px;
+  height: calc(100% - 26px);
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
 button.menuButton {
@@ -29,11 +32,27 @@ button.menuButton {
 
 button.menuButton:hover,
 button.menuButton:focus {
-  background-color: var(--item-background-hover);
   color: var(--item-color-active);
 }
 
 button.menuButton.active {
   background-color: var(--item-background-active);
   color: var(--item-color-active);
+}
+
+button.closeButton {
+  margin-left: auto;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+button.closeButton:hover {
+  background-color: var(--item-background-hover);
+}
+
+button.toggleButton[class*="codicon-"] {
+  font-size: 1.2rem;
 }

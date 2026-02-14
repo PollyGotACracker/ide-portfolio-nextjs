@@ -5,7 +5,7 @@ import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
 import List from "@/components/List";
 import { HOME_HEADINGS } from "@/constants/label";
-import { getJson } from "@/libs/getter";
+import getJson from "@/libs/getJson";
 import { ProjectType } from "@/types/Data";
 import { MdMonitor } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
