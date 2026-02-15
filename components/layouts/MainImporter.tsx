@@ -1,6 +1,4 @@
 import PanelProvider from '@/contexts/PanelProvider';
-import FontSizeProvider from '@/contexts/FontSizeProvider';
-import ThemeProvider from '@/contexts/ThemeProvider';
 import MainLayout from '@/components/layouts/MainLayout';
 import SidePanel from '@/components/SidePanel';
 import BottomPanel from '@/components/BottomPanel';
@@ -25,19 +23,16 @@ export default function MainImporter({ children }: { children: React.ReactNode; 
     output: <Output />,
     terminal: <Terminal />,
   };
+
   return (
-    <ThemeProvider>
-      <FontSizeProvider>
-        <PanelProvider>
-          <MainLayout
-            aside={<SidePanel {...sideProps} />}
-            bottom={<BottomPanel {...bottomProps} />}
-            footer={<Footer />}
-          >
-            {children}
-          </MainLayout>
-        </PanelProvider>
-      </FontSizeProvider>
-    </ThemeProvider>
+    <PanelProvider>
+      <MainLayout
+        aside={<SidePanel {...sideProps} />}
+        bottom={<BottomPanel {...bottomProps} />}
+        footer={<Footer />}
+      >
+        {children}
+      </MainLayout>
+    </PanelProvider>
   );
 }

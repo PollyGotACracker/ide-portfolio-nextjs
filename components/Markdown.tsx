@@ -4,33 +4,58 @@
 import styles from "./Markdown.module.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
-import rehypePrismPlus from 'rehype-prism-plus';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import MarkdownPre from "./MarkdownPre";
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useTheme } from "@/contexts/ThemeProvider";
+
+/**
+ * [Issue] mismatch error 발생(개발 간헐적, 배포 항상)
+ * rehype-prism-plus
+ * => 다른 라이브러리로 대체
+ * => 테마 전환 시 유사 에러 발생
+ * => theme 저장 방식을 localhost 가 아닌 cookie 로 변경
+ */
 
 interface MarkdownProps {
   className?: string;
-  transparent?: boolean;
-  noMargin?: boolean;
+  customStyle?: React.CSSProperties,
+  codeTagProps?: { style: React.CSSProperties; },
   children: string;
 }
 export default function Markdown({
   className,
-  transparent = false,
-  noMargin = false,
+  customStyle,
+  codeTagProps,
   children
 }: MarkdownProps) {
+  const { themeState } = useTheme();
   const optionalClass = className ? ` ${className}` : ``;
-  const transparentClass = transparent ? ` ${styles.transparent}` : ``;
-  const noMarginClass = noMargin ? ` ${styles.no_margin}` : ``;
 
   return (
-    <div className={`${styles.markdown}${transparentClass}${noMarginClass}${optionalClass}`}>
+    <div className={`${styles.markdown}${optionalClass}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[[rehypePrismPlus, { showLineNumbers: true }]]}
         components={{
           pre: MarkdownPre,
-          p: ({ children }) => <div>{children}</div>
+          p: ({ children }) => <div>{children}</div>,
+          code({ className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '');
+            return match ? (
+              <SyntaxHighlighter
+                showLineNumbers
+                style={themeState ? oneDark : oneLight}
+                language={match[1]}
+                customStyle={customStyle}
+                codeTagProps={codeTagProps}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>{children}</code>
+            );
+          }
         }}
       >
         {children}
@@ -38,4 +63,3 @@ export default function Markdown({
     </div>
   );
 }
-

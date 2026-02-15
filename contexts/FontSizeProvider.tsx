@@ -22,8 +22,14 @@ export function useFontSize() {
   };
 }
 
-export default function FontSizeProvider({ children }: { children: React.ReactNode; }) {
-  const [fontSizeState, setFontSizeState] = useState<FontSizeState>(FontSize.init);
+export default function FontSizeProvider({
+  children,
+  initialLarge = false,
+}: {
+  children: React.ReactNode;
+  initialLarge?: boolean;
+}) {
+  const [fontSizeState, setFontSizeState] = useState<FontSizeState>(initialLarge);
 
   return (
     <FontSizeContext.Provider value={{ fontSizeState, setFontSizeState }}>
@@ -33,26 +39,11 @@ export default function FontSizeProvider({ children }: { children: React.ReactNo
 }
 
 const FontSize = {
-  load() {
-    const saved = localStorage.getItem('fontSize');
-    if (saved) {
-      document.documentElement.style.setProperty('--font-size', saved);
-    }
-  },
-  init() {
-    if (typeof window === 'undefined') return false;
-    const saved = localStorage.getItem('fontSize');
-    if (saved) {
-      // document.documentElement.style.setProperty('--font-size', saved);
-      return saved === "20px";
-    }
-    return false;
-  },
   toggle(prev: boolean) {
     const result = !prev;
     const value = result ? '20px' : '16px';
     document.documentElement.style.setProperty('--font-size', value);
-    localStorage.setItem('fontSize', value);
+    document.cookie = `font_size=${value};path=/;max-age=31536000`;
     return result;
   }
 };

@@ -14,15 +14,20 @@ export default function Main() {
   } as const;
   \`\`\`
   `;
+  const transparentProps = {
+    customStyle:
+      { background: 'none' },
+    codeTagProps: { style: { background: 'none' } }
+  };
 
   return (
-    <section data-id="" className={styles.section}>
+    <section data-id="main" className={styles.section} >
       <Coding size="min(250px, 100%)" />
       <div className={styles.wrapper}>
-        <Markdown noMargin transparent>{code}</Markdown>
+        <Markdown {...transparentProps}>{code}</Markdown>
       </div>
       <ScrollChevron />
-    </section>
+    </section >
   );
 }
 

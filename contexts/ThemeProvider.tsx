@@ -22,8 +22,14 @@ export function useTheme() {
   };
 }
 
-export default function ThemeProvider({ children }: { children: React.ReactNode; }) {
-  const [themeState, setThemeState] = useState<ThemeState>(Theme.init);
+export default function ThemeProvider({
+  children,
+  initialDark = false,
+}: {
+  children: React.ReactNode;
+  initialDark?: boolean;
+}) {
+  const [themeState, setThemeState] = useState<ThemeState>(initialDark);
 
   return (
     <ThemeContext.Provider value={{ themeState, setThemeState }}>
@@ -33,33 +39,11 @@ export default function ThemeProvider({ children }: { children: React.ReactNode;
 }
 
 export const Theme = {
-  load() {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      document.documentElement.dataset.theme = saved;
-    } else {
-      const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    }
-  },
-  init() {
-    if (typeof window === 'undefined') return false;
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      // document.documentElement.dataset.theme = saved;
-      return saved === "dark";
-    }
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // const theme = prefersDark ? 'dark' : 'light';
-    // document.documentElement.dataset.theme = theme;
-    return prefersDark;
-  },
   toggle(prev: boolean) {
     const result = !prev;
     const value = result ? 'dark' : 'light';
     document.documentElement.dataset.theme = value;
-    // document.documentElement.setAttribute('data-theme', value);
-    localStorage.setItem('theme', value);
+    document.cookie = `theme=${value};path=/;max-age=31536000`;
     return result;
-  }
+  },
 };

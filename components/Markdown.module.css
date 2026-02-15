@@ -1,13 +1,3 @@
-.markdown.transparent pre[class*="language-"],
-.markdown.transparent code[class*="language-"] {
-  background: transparent;
-}
-
-.markdown.no_margin pre[class*="language-"] {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 .markdown {
   display: block;
   white-space: wrap;
