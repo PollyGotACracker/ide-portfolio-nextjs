@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "pdf": "node scripts/generatePdf.mjs",
-    "deploy": "npm run build && npm run pdf && vercel --prod"
+    "deploy": "npm run build && npm run pdf && vercel --prod",
+    "deploy:dev": "npm run build && npm run pdf && vercel"
   },
   "dependencies": {
     "@vscode/codicons": "^0.0.44",
