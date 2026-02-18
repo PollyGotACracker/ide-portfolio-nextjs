@@ -12,13 +12,13 @@ export default function Coding({ className, size = "800px" }: { className?: stri
       {/* browser tab background */}
       <path
         d="M 11.5 57.332 C 5 57.332 0 62.332 0 68.832 L 0 105.06 L 512 105.06 L 512 68.832 C 512 62.332 507 57.332 500.5 57.332 Z"
-        fill="var(--border-color)"
+        fill="var(--foreground-secondary)"
         stroke="none"
       />
       {/* browser line */}
       <path
         d="M 11.5 57.332 C 5 57.332 0 62.332 0 68.832 L 0 454.668 L 512 454.668 L 512 68.832 C 512 62.332 507 57.332 500.5 57.332 Z"
-        stroke="var(--border-color)"
+        stroke="var(--foreground-secondary)"
         strokeWidth="5"
         fill="transparent"
         strokeLinejoin="round"
@@ -31,17 +31,17 @@ export default function Coding({ className, size = "800px" }: { className?: stri
       <polygon fill="var(--background-main)" points="443.52,98.06 155.96,98.06 175.08,64.716 462.656,64.716" />
       {/* address */}
       <g>
-        <text x="185" y="88" fontSize="16" fill="var(--border-color-secondary)">{url}</text>
+        <text x="185" y="88" fontSize="16" fill="var(--foreground-secondary)">{url}</text>
       </g>
       {/* bottoms */}
-      <g fill="var(--border-color)">
+      <g fill="var(--foreground-secondary)">
         <polygon points="0,423.58 82.856,423.58 113.944,454.66 0,454.66" />
         <polygon points="512,423.58 429.144,423.58 398.056,454.66 512,454.66" />
       </g>
       {/* blocks */}
       <g>
         {blocks.map(([x, y], i) => (
-          <rect key={i} x={x} y={y} width="29.232" height="29.232" fill="var(--border-color)" opacity="0.1">
+          <rect key={i} x={x} y={y} width="29.232" height="29.232" fill="var(--foreground-secondary)" opacity="0.1">
             <animate
               attributeName="opacity"
               values="0.1;0.9;0.1"
@@ -55,7 +55,7 @@ export default function Coding({ className, size = "800px" }: { className?: stri
         ))}
       </g>
       {/* </> */}
-      <g stroke="var(--border-color)" opacity="0.8" fill="none" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
+      <g stroke="var(--foreground-secondary)" opacity="0.8" fill="none" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
         <path d="M200.688,217.48 L81.4,270.412 L200.688,323.344" strokeDasharray="500" strokeDashoffset="500">
           <animate attributeName="stroke-dashoffset" from="500" to="0" dur="0.8s" fill="freeze" />
         </path>

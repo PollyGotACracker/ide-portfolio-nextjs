@@ -5,9 +5,10 @@
 }
 
 .project {
-  background-color: rgba(var(--alpha-rgb), 0.01);
   border-radius: 10px;
   padding-bottom: 10px;
+  background-color: var(--background-card);
+  box-shadow: var(--card-shadow);
 }
 
 .titleWrapper {
@@ -15,7 +16,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 15px;
-  padding-top: 5px;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -29,7 +29,7 @@
   align-items: center;
   column-gap: 10px;
   /* 모바일 */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* 데스크톱 */

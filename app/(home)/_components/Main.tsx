@@ -1,30 +1,15 @@
 
 import styles from "./Main.module.css";
 import Coding from "@/components/svgs/Coding";
-import Markdown from "@/components/Markdown";
 import { FaChevronDown } from "react-icons/fa6";
-import CONFIG from "@/constants/config";
+import Info from "@/components/Info";
 
 export default function Main() {
-  const code = `
-  \`\`\`ts
-  const DATA = {
-    name: "${CONFIG.NEXT_PUBLIC_NAME}",
-    email: "${CONFIG.NEXT_PUBLIC_EMAIL}"
-  } as const;
-  \`\`\`
-  `;
-  const transparentProps = {
-    customStyle:
-      { background: 'none' },
-    codeTagProps: { style: { background: 'none' } }
-  };
-
   return (
     <section data-id="main" className={styles.section} >
       <Coding size="min(250px, 100%)" />
       <div className={styles.wrapper}>
-        <Markdown {...transparentProps}>{code}</Markdown>
+        <Info />
       </div>
       <ScrollChevron />
     </section >
