@@ -1,12 +1,14 @@
 'use client';
 
-import { usePanel } from "@/contexts/PanelProvider";
+import { useRouter } from "next/navigation";
 import Button from "./Button";
+import { PATHS } from "@/constants/path";
 
 
 export default function GoHomeButton() {
-  const { goHome } = usePanel();
+  // DO NOT USE usePanel
+  const router = useRouter();
   return (
-    <Button onClick={goHome}>홈으로</Button>
+    <Button onClick={() => router.push(PATHS.HOME)}>홈으로</Button>
   );
 }

@@ -1,4 +1,3 @@
-import PanelProvider from '@/contexts/PanelProvider';
 import MainLayout from '@/components/layouts/MainLayout';
 import SidePanel from '@/components/SidePanel';
 import BottomPanel from '@/components/BottomPanel';
@@ -25,14 +24,12 @@ export default function MainImporter({ children }: { children: React.ReactNode; 
   };
 
   return (
-    <PanelProvider>
-      <MainLayout
-        aside={<SidePanel {...sideProps} />}
-        bottom={<BottomPanel {...bottomProps} />}
-        footer={<Footer />}
-      >
-        {children}
-      </MainLayout>
-    </PanelProvider>
+    <MainLayout
+      aside={<SidePanel {...sideProps} />}
+      bottom={<BottomPanel {...bottomProps} />}
+      footer={<Footer />}
+    >
+      {children}
+    </MainLayout>
   );
 }

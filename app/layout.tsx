@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import CONFIG from "@/constants/config";
 import ThemeProvider from "@/contexts/ThemeProvider";
 import FontSizeProvider from "@/contexts/FontSizeProvider";
+import PanelProvider from "@/contexts/PanelProvider";
 import "./reset.css";
 import "./globals.css";
 import '@vscode/codicons/dist/codicon.css';
@@ -60,7 +61,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body className={`${notoSans.variable}`}>
         <ThemeProvider initialDark={initialDark}>
           <FontSizeProvider initialLarge={initialLarge}>
-            {children}
+            <PanelProvider>
+              {children}
+            </PanelProvider>
           </FontSizeProvider>
         </ThemeProvider>
       </body>
