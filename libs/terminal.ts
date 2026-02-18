@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
 import { useRouter } from 'next/navigation';
-import { HOME_HEADINGS } from "@/constants/label";
+import { HOME_HEADINGS, PRACTICE_HEADINGS } from "@/constants/label";
 import { PATHS } from "@/constants/path";
 import CONFIG from "@/constants/config";
 
@@ -20,7 +20,12 @@ export class CreateTerminal {
 
   private id: number = 0;
   private cmdIndex = -1;
-  private headingMap = new Map(Object.values(HOME_HEADINGS).map((i) => [i.label, i.id]));
+  private headingMap = new Map<string, string>(
+    [
+      ...Object.values(HOME_HEADINGS).map((i): [string, string] => [i.label, `${PATHS.HOME}${i.separator}${i.id}`]),
+      ...Object.values(PRACTICE_HEADINGS).map((i): [string, string] => [i.label, `${PATHS.PRACTICE}${i.separator}${i.id}`]),
+    ]
+  );
 
   create({
     setLogs, router }: CreateMethodsParams) {
@@ -58,7 +63,7 @@ export class CreateTerminal {
 
         const headingId = headingMap.get(value);
         if (headingId) {
-          return router.push(`#${headingId}`);
+          return router.push(headingId);
         }
 
         switch (value) {
@@ -66,13 +71,13 @@ export class CreateTerminal {
             return;
           case "":
           case "~":
-          case "/":
           case "~/":
           case "..":
-            return router.push(`/`);
-          case "/log":
-          case "log":
-            return router.push(`/log`);
+          case PATHS.HOME:
+            return router.push(PATHS.HOME);
+          case PATHS.PRACTICE:
+          case PATHS.PRACTICE.slice(1):
+            return router.push(PATHS.PRACTICE);
           default:
             return `bash: cd: ${value}: No such page`;
         }

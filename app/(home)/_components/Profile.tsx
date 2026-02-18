@@ -5,7 +5,7 @@ import GithubCard from "@/components/GithubCard";
 import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
-import getJson from "@/libs/getJson";
+import { readJson } from "@/libs/readFile";
 import { MdModeComment } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaCertificate } from "react-icons/fa6";
@@ -13,7 +13,7 @@ import { FaCertificate } from "react-icons/fa6";
 const { id, label } = HOME_HEADINGS.PROFILE;
 
 export default async function Profile() {
-  const data: ProfileType = await getJson(FILES.PROFILE);
+  const data: ProfileType = await readJson(FILES.PROFILE);
   return <ProfileUI data={data} />;
 }
 

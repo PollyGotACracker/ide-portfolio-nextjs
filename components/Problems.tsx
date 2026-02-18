@@ -1,5 +1,5 @@
 import styles from "./Problems.module.css";
-import getJsonFile from "@/libs/getJsonFile";
+import { getJsonFile } from "@/libs/getFile";
 import { FILES_EXTRA } from "@/constants/dir";
 import { ProblemType } from "@/types/Data";
 

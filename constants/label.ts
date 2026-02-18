@@ -2,7 +2,8 @@ import { PATHS } from "./path";
 
 export const PAGES = {
   HOME: { param: PATHS.HOME, label: "홈" },
-  LOG: { param: PATHS.LOG, label: "기록" },
+  PRACTICE: { param: PATHS.PRACTICE, label: "연습" },
+  // TROUBLESHOOTING: { param: PATHS.TROUBLESHOOTING, label: "트러블슈팅팅" },
   DOWNLOAD: { param: PATHS.STATIC_FILES, label: "다운로드" },
 };
 
@@ -24,6 +25,6 @@ export const HOME_SUBHEADINGS = {
   CERTIFICATIONS: { id: "certifications", label: "자격증", separator: "#" },
 };
 
-export const LOG_HEADINGS = {
-  TEST: { id: "test", label: "테스트", separator: "#" }
+export const PRACTICE_HEADINGS = {
+  TEST: { id: "test", label: "테스트", separator: "/" }
 };

@@ -1,14 +1,17 @@
+'use client';
+
 import { PAGES } from "@/constants/label";
 import styles from "./PageTabs.module.css";
 import { usePathname } from "next/navigation";
 
 export default function PageTabs() {
   const pathname = usePathname();
+  const parentPath = pathname.match(/^\/[^/]*/)?.[0] ?? "";
   return (
     <ul className={styles.tabList}>
       <li className={styles.tab}>
         <i className="codicon codicon-browser" />
-        <span>{pageMap.get(pathname) ?? decodeURIComponent(pathname).split("/").at(-1)}</span>
+        <span>{pageMap.get(parentPath) ?? decodeURIComponent(parentPath).split("/").at(-1)}</span>
       </li>
     </ul>
   );

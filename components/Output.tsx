@@ -1,5 +1,5 @@
 import styles from "./Output.module.css";
-import getJsonFile from "@/libs/getJsonFile";
+import { getJsonFile } from "@/libs/getFile";
 import { OutputType } from "@/types/Data";
 import { FILES_EXTRA } from "@/constants/dir";
 

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { usePanel } from "@/contexts/PanelProvider";
 import useObserver from "@/hooks/useObserver";
-import { PAGES, HOME_HEADINGS, LOG_HEADINGS, DOWNLOAD_FILES } from "@/constants/label";
+import { PAGES, HOME_HEADINGS, PRACTICE_HEADINGS, DOWNLOAD_FILES } from "@/constants/label";
 import Details from "./Details";
 
 
@@ -34,7 +34,7 @@ export default function Explorer() {
       <Details
         cClassName={`${styles.menuContainer}${activeStyle}`}
         className={styles.menu}
-        title={<Link className={styles.menuLink} href={page.param} prefetch={false}>{page.label}</Link>}
+        title={<div className={styles.menuLink}>{page.label}</div>}
         openIcon={<i className={`codicon codicon-folder-opened`} />}
         closeIcon={<i className={`codicon codicon-folder`} />}
         initialOpen={isActive}
@@ -72,7 +72,7 @@ export default function Explorer() {
       <Details title="pages">
         <nav className={styles.linkList}>
           {renderPage(PAGES.HOME, HomeHeadings)}
-          {renderPage(PAGES.LOG, LogHeadings)}
+          {renderPage(PAGES.PRACTICE, PracticeHeadings)}
         </nav>
       </Details>
       <Details title="download">
@@ -93,5 +93,5 @@ interface SubPage {
 };
 
 const HomeHeadings: SubPage[] = Object.values(HOME_HEADINGS);
-const LogHeadings: SubPage[] = Object.values(LOG_HEADINGS);
+const PracticeHeadings: SubPage[] = Object.values(PRACTICE_HEADINGS);
 const DownloadFiles: SubPage[] = Object.values(DOWNLOAD_FILES);

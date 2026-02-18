@@ -5,7 +5,7 @@ import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
 import List from "@/components/List";
 import { HOME_HEADINGS } from "@/constants/label";
-import getJson from "@/libs/getJson";
+import { readJson } from "@/libs/readFile";
 import { ProjectType } from "@/types/Data";
 import { MdMonitor } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
@@ -17,7 +17,7 @@ import { FILES } from "@/constants/dir";
 const { id, label } = HOME_HEADINGS.PROJECTS;
 
 export default async function Projects() {
-  const data: ProjectType[] = await getJson(FILES.PROJECTS);
+  const data: ProjectType[] = await readJson(FILES.PROJECTS);
   return <ProjectsUI data={data} />;
 }
 

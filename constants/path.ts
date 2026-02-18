@@ -1,7 +1,8 @@
 
 export const PATHS = {
   HOME: "/",
-  LOG: "/log",
+  PRACTICE: "/practice",
+  // TROUBLESHOOTING: "/troubleshooting",
   STATIC_FILES: "/files"
 };
 

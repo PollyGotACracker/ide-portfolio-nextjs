@@ -4,14 +4,14 @@ import List from "@/components/List";
 import Markdown from "@/components/Markdown";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
-import getJson from "@/libs/getJson";
+import { readJson } from "@/libs/readFile";
 import { ExperienceType, } from "@/types/Data";
 import { FaBriefcase } from "react-icons/fa";
 
 const { id, label } = HOME_HEADINGS.EXPERIENCE;
 
 export default async function Experiences() {
-  const data: ExperienceType[] = await getJson(FILES.EXPERIENCES);
+  const data: ExperienceType[] = await readJson(FILES.EXPERIENCES);
   return <ExperiencesUI data={data} />;
 }
 
