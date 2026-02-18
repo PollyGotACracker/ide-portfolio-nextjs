@@ -20,7 +20,7 @@ export default function Extensions() {
   const { fontSizeState, toggleFontSize } = useFontSize();
 
   return (
-    <Details title="installed">
+    <Details title="installed" showScrollbar={true}>
       <ul className={styles.extList}>
         <Extension name="UI Theme" onToggle={toggleTheme} state={themeState} onValue="dark" offValue="light" icon={<IoInvertMode />} />
         <Extension name="Font Size" onToggle={toggleFontSize} state={fontSizeState} onValue="large" offValue="medium" icon={<RiFontSize2 />} />

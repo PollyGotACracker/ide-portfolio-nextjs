@@ -1,5 +1,6 @@
 .event {
   position: relative;
+
 }
 
 .event:before {
@@ -56,12 +57,13 @@
 
 .eventLink {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   column-gap: 4px;
   font-size: 0.9rem;
   padding: 2px 0 2px 20px;
   margin-left: 20px;
+  overflow: hidden;
 }
 
 .eventLink.private {
@@ -69,8 +71,20 @@
   cursor: default;
 }
 
+.eventWrapper {
+  width: 100%;
+  display: flex;
+  column-gap: 5px;
+  overflow: hidden;
+}
+
 .eventType {
   text-transform: lowercase;
+}
+
+.repoName {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .desc {

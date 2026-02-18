@@ -49,6 +49,7 @@
     --side-right: calc(var(--side-size) * -1);
     --side-top: var(--header-size);
 
+    --side-height: calc(100dvh - var(--header-size));
     --side-width: var(--side-size);
     --side-padding: var(--panel-padding);
     --side-border: var(--panel-border);
@@ -102,6 +103,7 @@
     grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--bottom-height, 0) var(--footer-height, 30px);
     --bottom-toggle-color: var(--item-color-inactive);
 
+    --side-height: calc(100dvh - var(--header-size) - var(--footer-size));
     --side-width: var(--side-size);
     --side-padding: var(--panel-padding);
     --side-border: var(--panel-border);

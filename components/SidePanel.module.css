@@ -10,7 +10,7 @@
   right: var(--side-right);
   position: var(--side-position);
   z-index: var(--side-zindex);
-  padding: var(--side-padding) 0;
+  padding-top: var(--side-padding);
   border-left: var(--side-border);
   transition: var(--side-transition);
   display: grid;
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   column-gap: 5px;
-  margin-bottom: 10px;
+  margin-bottom: var(--side-padding);
 }
 
 button.menuButton {
@@ -51,7 +51,13 @@ i.icon[class*="codicon-"] {
 }
 
 .contentWrapper {
+  --content-height: calc(var(--side-height) - var(--side-button-size) - (var(--side-padding) * 2));
   overflow-x: hidden;
+  max-height: var(--content-height);
+}
+
+.contentWrapper:global(.scrollbarHidden) {
+  overflow-y: hidden;
 }
 
 .contentWrapper > *:not(:last-child) {

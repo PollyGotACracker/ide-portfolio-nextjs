@@ -14,10 +14,10 @@ export default function SidePanel({ explorer, search, sourceControl, extensions 
   const [activeMenu, setActiveMenu] = useState<Menu>("explorer");
 
   const MENU_CONFIG = {
-    explorer: { icon: "files", name: "Files", comp: explorer },
-    search: { icon: "search", name: "Search", comp: search },
-    sourceControl: { icon: "source-control", name: "Source Control", comp: sourceControl },
-    extensions: { icon: "extensions", name: "Extensions", comp: extensions },
+    explorer: { icon: "files", name: "Files", scrollbar: true, comp: explorer },
+    search: { icon: "search", name: "Search", scrollbar: true, comp: search },
+    sourceControl: { icon: "source-control", name: "Source Control", scrollbar: false, comp: sourceControl },
+    extensions: { icon: "extensions", name: "Extensions", scrollbar: false, comp: extensions },
   } as const;
   type Menu = keyof typeof MENU_CONFIG;
 
@@ -42,7 +42,7 @@ export default function SidePanel({ explorer, search, sourceControl, extensions 
         {renderButton("sourceControl")}
         {renderButton("extensions")}
       </div>
-      <div className={`${styles.contentWrapper} scrollbar`}>
+      <div className={`${styles.contentWrapper} ${MENU_CONFIG[activeMenu].scrollbar ? "scrollbar" : "scrollbarHidden"}`}>
         {MENU_CONFIG[activeMenu].comp}
       </div>
     </aside>

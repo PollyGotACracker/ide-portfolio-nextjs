@@ -27,7 +27,6 @@ button.summary:disabled {
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
-  /* height: calc(100% - 30px); */
 }
 
 .contentWrapper.transition {
@@ -42,6 +41,12 @@ button.summary:disabled {
   min-height: 0;
   margin: 0;
   list-style: none;
+}
+
+.content {
   overflow-y: auto;
-  max-height: calc(100dvh - var(--header-size) - var(--footer-size) - var(--side-button-size) - (var(--side-padding) * 3) - var(--summary-size));
+}
+
+.content:global(.scrollbar) {
+  max-height: calc(var(--content-height) - var(--summary-size));
 }
