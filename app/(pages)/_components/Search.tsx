@@ -1,5 +1,5 @@
 import styles from "./Search.module.css";
-import Details from "./Details";
+import Details from "@/components/Details";
 
 export default function Search() {
   return (
@@ -7,5 +7,6 @@ export default function Search() {
       <div className={styles.inputWrapper}>
         <input className={styles.keyword} value="Not supported" disabled />
       </div>
-    </Details>);
+    </Details>
+  );
 }

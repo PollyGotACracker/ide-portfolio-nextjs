@@ -3,7 +3,7 @@
 import styles from "./Extension.module.css";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useFontSize } from "@/providers/FontSizeProvider";
-import Details from "./Details";
+import Details from "@/components/Details";
 import { IoInvertMode } from "react-icons/io5";
 import { RiFontSize2 } from "react-icons/ri";
 

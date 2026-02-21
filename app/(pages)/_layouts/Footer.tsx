@@ -1,7 +1,7 @@
 import { getRepoCommits, getRepoInfo } from "@/apis/github";
 import styles from "./Footer.module.css";
 import Link from "next/link";
-import TimeAgo from "./TimeAgo";
+import TimeAgo from "@/components/TimeAgo";
 import { LuGitBranch } from "react-icons/lu";
 import { FaCodeCommit } from "react-icons/fa6";
 
@@ -32,7 +32,11 @@ export default async function Footer() {
         </div>
       </div>
       <div className={styles.wrapper}>
-        <CommitTime name={commit.commit.author.name} message={commit.commit.message} date={commit.commit.author.date} />
+        <CommitTime
+          name={commit.commit.author.name}
+          message={commit.commit.message}
+          date={commit.commit.author.date}
+        />
         <div
           className={`${styles.lang} ${styles.item} ${styles.highlight}`}
           title="Language"
@@ -45,11 +49,19 @@ export default async function Footer() {
           title="Notifications (Not Supported)"
         />
       </div>
-    </footer >
+    </footer>
   );
 }
 
-function CommitTime({ name, message, date }: { name: string, message: string, date: string; }) {
+function CommitTime({
+  name,
+  message,
+  date,
+}: {
+  name: string;
+  message: string;
+  date: string;
+}) {
   return (
     <div
       className={`${styles.commit} ${styles.item}`}

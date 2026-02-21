@@ -1,8 +1,8 @@
 import styles from "./SourceControl.module.css";
 import Link from "next/link";
 import { getUserEvents } from "@/apis/github";
-import Details from "./Details";
-import TimeAgo from "./TimeAgo";
+import Details from "@/components/Details";
+import TimeAgo from "@/components/TimeAgo";
 import { EventType } from "@/types/Github";
 
 export default async function SourceControl() {

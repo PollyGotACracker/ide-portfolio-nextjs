@@ -12,7 +12,7 @@ import {
   PRACTICE_HEADINGS,
   DOWNLOAD_FILES,
 } from "@/constants/label";
-import Details from "./Details";
+import Details from "@/components/Details";
 
 export default function Explorer() {
   const pathname = usePathname();

@@ -5,7 +5,7 @@ import { JetBrains_Mono } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
-import { Log, LogType } from "../types/Terminal";
+import { Log, LogType } from "@/types/Terminal";
 import { checkWindows } from "@/libs/checker";
 import terminal from "@/libs/terminal";
 
@@ -16,7 +16,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 const DynamicPromptText = dynamic(() => Promise.resolve(PromptText), {
   ssr: false,
-  loading: () => <p className={styles.prompt} />
+  loading: () => <p className={styles.prompt} />,
 });
 
 export default function Terminal() {
@@ -33,7 +33,10 @@ export default function Terminal() {
 
   useEffect(() => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTo({ top: terminalRef.current.scrollHeight, behavior: "smooth" });
+      terminalRef.current.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }
   }, [logs]);
 
@@ -63,7 +66,10 @@ export default function Terminal() {
     }
   }
   return (
-    <div className={`${styles.terminal} ${jetBrainsMono.variable} scrollbar`} ref={terminalRef}>
+    <div
+      className={`${styles.terminal} ${jetBrainsMono.variable} scrollbar`}
+      ref={terminalRef}
+    >
       <Logs logs={logs} isWindows={isWindows} />
       <DynamicPromptText path={pathname} isWindows={isWindows} />
       <label className={styles.input} htmlFor="command">
@@ -81,7 +87,7 @@ export default function Terminal() {
   );
 }
 
-function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean; }) {
+function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean }) {
   return (
     <ul className={styles.logs}>
       {logs.length > 0 &&
@@ -101,8 +107,8 @@ function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean; }) {
   );
 }
 
-function PromptText({ path, isWindows }: { path: string; isWindows: boolean; }) {
-  const displayPath = path === '/' ? '~' : `~${path}`;
+function PromptText({ path, isWindows }: { path: string; isWindows: boolean }) {
+  const displayPath = path === "/" ? "~" : `~${path}`;
   return (
     <p className={styles.prompt}>
       <span className={styles.user}>portfolio@guest</span>
@@ -113,6 +119,6 @@ function PromptText({ path, isWindows }: { path: string; isWindows: boolean; }) 
   );
 }
 
-function LogText({ type, text }: { type: LogType; text: string; }) {
+function LogText({ type, text }: { type: LogType; text: string }) {
   return <p className={styles[type]}>{text}</p>;
 }

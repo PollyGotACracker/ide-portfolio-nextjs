@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./MainLayout.module.css";
+import styles from "./MainLayoutInner.module.css";
 import { usePanel } from "@/providers/PanelProvider";
-import Header from "@/components/Header";
-import PageTabs from "@/components/PageTabs";
+import Header from "./Header";
+import PageTabs from "./PageTabs";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ interface MainLayoutProps {
   bottom: React.ReactNode;
   footer: React.ReactNode;
 }
-export default function MainLayout({
+export default function MainLayoutInner({
   children,
   aside,
   bottom,
