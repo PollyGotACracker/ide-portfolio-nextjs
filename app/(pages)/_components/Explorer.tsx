@@ -13,18 +13,19 @@ import {
   DOWNLOAD_FILES,
 } from "@/constants/label";
 import Details from "@/components/Details";
+import { getFirstPath } from "@/libs/getPath";
 
 export default function Explorer() {
   const pathname = usePathname();
   const { closeMobileSide } = usePanel();
   const activeId = useObserver("section[data-id]");
-  const [activeMenu, setActiveMenu] = useState<string>(pathname);
+  const [activeMenu, setActiveMenu] = useState<string>(getFirstPath(pathname));
 
   useEffect(() => {
-    setActiveMenu(pathname);
+    setActiveMenu(getFirstPath(pathname));
   }, [pathname]);
 
-  function handleOptionalClose(e: React.MouseEvent) {
+  function handleOptionalClose(e: React.SyntheticEvent) {
     const target = e.target as HTMLElement;
     const anchor = target.closest("a");
     if (anchor) {
