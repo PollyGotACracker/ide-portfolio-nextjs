@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   row-gap: 5px;
-  padding-bottom: var(--main-padding-top);
+  margin-bottom: var(--main-padding-bottom);
 }
 
 .wrapper {
@@ -29,6 +29,12 @@
   animation-direction: alternate;
 }
 
+@media (max-height: 600px) {
+  .chevron {
+    bottom: 0;
+  }
+}
+
 .chevron svg {
   font-size: 30px;
 }
@@ -44,8 +50,8 @@
   z-index: -1;
   border-radius: 50%;
   animation-name: pulse;
-  animation-duration: 0.8s;
-  animation-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  animation-duration: 1.6s;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
@@ -55,14 +61,14 @@
   }
 
   to {
-    transform: translate(-50%, 60%);
+    transform: translate(-50%, 50%);
   }
 }
 
 @keyframes pulse {
   from {
     transform: scale(0);
-    opacity: 1;
+    opacity: 0.8;
   }
 
   to {

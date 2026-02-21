@@ -8,7 +8,7 @@
 }
 
 .submenu {
-  height: 30px;
+  height: 35px;
   position: relative;
   display: flex;
   align-items: center;
@@ -25,7 +25,6 @@
 .submenu:focus {
   background-color: var(--item-background-hover);
 }
-
 
 .submenu.active {
   background-color: var(--item-background-active);
@@ -48,7 +47,7 @@
 
 .menuContainer:not(.containerActive):hover .submenu:before,
 .menuContainer:not(.containerActive):focus .submenu:before {
-  background-color: var(--border-color);
+  background-color: var(--item-background-active);
 }
 
 .submenuLink[class*="codicon-"] {
@@ -56,4 +55,5 @@
   align-items: center;
   column-gap: 6px;
   width: 100%;
+  height: 100%;
 }

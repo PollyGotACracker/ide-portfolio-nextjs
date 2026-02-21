@@ -40,7 +40,9 @@
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--bottom-height, 200px) var(--footer-height, 30px);
+    grid-template-rows:
+      var(--header-height, 40px) var(--header-height, 40px)
+      1fr var(--bottom-height, 200px) var(--footer-height, 30px);
     --side-toggle-color: var(--item-color-inactive);
     --bottom-toggle-color: var(--item-color-inactive);
 
@@ -100,7 +102,9 @@
 @media (min-width: 769px) {
   .container {
     grid-template-columns: 1fr var(--side-width, 200px);
-    grid-template-rows: var(--header-height, 40px) var(--header-height, 40px) 1fr var(--bottom-height, 0) var(--footer-height, 30px);
+    grid-template-rows:
+      var(--header-height, 40px) var(--header-height, 40px)
+      1fr var(--bottom-height, 0) var(--footer-height, 30px);
     --bottom-toggle-color: var(--item-color-inactive);
 
     --side-height: calc(100dvh - var(--header-size) - var(--footer-size));
@@ -137,11 +141,15 @@
   --main-padding-top: 1rem;
   --main-padding-bottom: 1rem;
   --main-padding-side: 1rem;
-  --full-height: calc(100dvh - var(--main-padding-top) - var(--main-padding-bottom) - var(--bottom-height) - (var(--header-size) * 2));
+  --full-height: calc(
+    100dvh - var(--main-padding-top) - var(--main-padding-bottom) -
+      var(--bottom-height) - (var(--header-size) * 2) - var(--footer-size)
+  );
 
   grid-area: main;
   height: 100%;
-  padding: var(--main-padding-top) var(--main-padding-side) var(--main-padding-bottom);
+  padding: var(--main-padding-top) var(--main-padding-side)
+    var(--main-padding-bottom);
   overflow-y: auto;
   background-color: var(--background-main);
   /* scroll snap */

@@ -6,7 +6,7 @@
 
 .content > section:first-child {
   /* .main: scroll-snap-type: y proximity */
-  height: calc(var(--full-height) + var(--main-padding-bottom));
+  height: var(--full-height);
   /* main padding 때문에 스크롤 최상위로 붙지 않는 문제 해결 */
   scroll-margin-top: var(--main-padding-top);
   scroll-snap-align: start end;
