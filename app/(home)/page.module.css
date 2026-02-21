@@ -1,4 +1,8 @@
 /* 첫 번째 요소에만 scroll-snap 적용 */
+.content {
+  /* hydration error 방지 */
+  display: block;
+}
 
 .content > section:first-child {
   /* .main: scroll-snap-type: y proximity */

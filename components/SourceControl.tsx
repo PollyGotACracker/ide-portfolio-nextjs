@@ -22,16 +22,19 @@ export default async function SourceControl() {
                 href={`https://github.com/${i.repo.name}/commit/${i.payload.head}`}
                 target="_blank"
               >
-                <div className={styles.eventWrapper}>
-                  <span className={styles.eventType}>{getEventText(i.type)}:</span>
+                <span className={styles.eventWrapper}>
+                  <span className={styles.eventType}>
+                    {getEventText(i.type)}:
+                  </span>
                   <span className={styles.repoName}>{repoName}</span>
-                </div>
-                <div className={styles.desc}>
+                </span>
+                <span className={styles.desc}>
                   <span>{getRefText(i.payload.ref)}</span>
                   <TimeAgo date={i.created_at} />
-                </div>
+                </span>
               </Link>
-            </li>);
+            </li>
+          );
         })}
       </ul>
     </Details>

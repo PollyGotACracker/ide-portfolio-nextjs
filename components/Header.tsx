@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import styles from "./Header.module.css";
 import { usePanel } from "@/contexts/PanelProvider";
@@ -6,12 +6,16 @@ import CONFIG from "@/constants/config";
 import { checkWindows } from "@/libs/checker";
 import { useSyncExternalStore } from "react";
 
+const subscribe = () => () => {};
+const getSnapshot = () => checkWindows();
+const getServerSnapshot = () => undefined;
+
 export default function Header() {
   const { toggleBottom, toggleSide, goHome, goBack, goForward } = usePanel();
   const isWindows = useSyncExternalStore(
-    () => () => { }, // empty subscribe
-    () => checkWindows(), // client
-    () => false // server
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
   );
 
   const TITLE_GO_BACK = isWindows ? "Alt+LeftArrow" : "Ctrl+-";
@@ -33,7 +37,9 @@ export default function Header() {
           title={`Go Forward (${TITLE_GO_FOR})`}
         />
       </div>
-      <div className={styles.title} onClick={goHome}>{CONFIG.NICKNAME}</div>
+      <div className={styles.title} onClick={goHome}>
+        {CONFIG.NICKNAME}
+      </div>
       <div className={styles.buttonList}>
         <button
           className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.bottom}`}

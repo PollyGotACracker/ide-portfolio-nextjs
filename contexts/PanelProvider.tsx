@@ -1,11 +1,18 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { checkWindows } from '@/libs/checker';
-import { PATHS } from '@/constants/path';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { useRouter } from "next/navigation";
+import { checkWindows } from "@/libs/checker";
+import { PATHS } from "@/constants/path";
 
-export type PanelState = boolean | "";
+const DEFAULT_VALUE = "default";
+export type PanelState = boolean | typeof DEFAULT_VALUE;
 interface PanelContextType {
   showSide: PanelState;
   showBottom: PanelState;
@@ -29,23 +36,28 @@ export function usePanel() {
   return panelState;
 }
 
-export default function PanelProvider({ children }: { children: React.ReactNode; }) {
-  const [showSide, setShowSide] = useState<PanelState>("");
-  const [showBottom, setShowBottom] = useState<PanelState>("");
+export default function PanelProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [showSide, setShowSide] = useState<PanelState>(DEFAULT_VALUE);
+  const [showBottom, setShowBottom] = useState<PanelState>(DEFAULT_VALUE);
   const router = useRouter();
 
   /* Panel */
   function toggleBottom() {
-    setShowBottom((prev: boolean | "") => {
-      if (prev === "") {
+    setShowBottom((prev: PanelState) => {
+      if (prev === DEFAULT_VALUE) {
         return true;
       }
       return !prev;
     });
   }
   function toggleSide() {
-    setShowSide((prev: boolean | "") => {
-      if (prev === "") {
+    setShowSide((prev: PanelState) => {
+      if (typeof window === "undefined") return prev;
+      if (prev === DEFAULT_VALUE) {
         // 데스크톱: false(닫기), 모바일: true(열기)
         return !(window.innerWidth > 768);
       }
@@ -53,27 +65,30 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
     });
   }
   function closeMobileSide() {
+    if (typeof window === "undefined") return;
     if (!(window.innerWidth > 768)) {
       setShowSide(false);
     }
   }
 
   /* History */
-  function goHome() {
+  const goHome = () => {
     router.push(PATHS.HOME);
-  }
-  function goBack() {
+  };
+  const goBack = useCallback(() => {
     router.back();
-  }
-  function goForward() {
+  }, [router]);
+
+  const goForward = useCallback(() => {
     router.forward();
-  }
+  }, [router]);
 
   useEffect(() => {
     const isWindows = checkWindows();
+    if (isWindows === undefined) return;
     function onKeyDownCb(e: KeyboardEvent) {
       // Panel
-      if ((e.ctrlKey || e.metaKey)) {
+      if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         const key = e.key;
         switch (key) {
@@ -85,14 +100,15 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
       }
       // History
       const isGoBack = isWindows
-        ? (e.altKey && e.key === 'ArrowLeft')
-        : (e.ctrlKey && e.key === '-');
+        ? e.altKey && e.key === "ArrowLeft"
+        : e.ctrlKey && e.key === "-";
       const isGoForward = isWindows
-        ? (e.altKey && e.key === 'ArrowRight')
-        : (e.ctrlKey && e.shiftKey && e.key === '-');
+        ? e.altKey && e.key === "ArrowRight"
+        : e.ctrlKey && e.shiftKey && e.key === "-";
       if (isGoBack) {
         return goBack();
-      } if (isGoForward) {
+      }
+      if (isGoForward) {
         return goForward();
       }
     }
@@ -100,21 +116,23 @@ export default function PanelProvider({ children }: { children: React.ReactNode;
     return () => {
       document.removeEventListener("keydown", onKeyDownCb);
     };
-  }, []);
+  }, [goBack, goForward]);
 
   return (
-    <PanelContext.Provider value={{
-      showSide,
-      showBottom,
-      setShowSide,
-      setShowBottom,
-      toggleBottom,
-      toggleSide,
-      closeMobileSide,
-      goHome,
-      goBack,
-      goForward,
-    }}>
+    <PanelContext.Provider
+      value={{
+        showSide,
+        showBottom,
+        setShowSide,
+        setShowBottom,
+        toggleBottom,
+        toggleSide,
+        closeMobileSide,
+        goHome,
+        goBack,
+        goForward,
+      }}
+    >
       {children}
     </PanelContext.Provider>
   );

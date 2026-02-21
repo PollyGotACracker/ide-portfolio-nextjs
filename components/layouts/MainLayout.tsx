@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import styles from "./MainLayout.module.css";
-import { usePanel } from '@/contexts/PanelProvider';
-import Header from '@/components/Header';
-import PageTabs from '@/components/PageTabs';
+import { usePanel } from "@/contexts/PanelProvider";
+import Header from "@/components/Header";
+import PageTabs from "@/components/PageTabs";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -11,14 +11,20 @@ interface MainLayoutProps {
   bottom: React.ReactNode;
   footer: React.ReactNode;
 }
-export default function MainLayout({ children, aside, bottom, footer }: MainLayoutProps) {
+export default function MainLayout({
+  children,
+  aside,
+  bottom,
+  footer,
+}: MainLayoutProps) {
   const { showSide, showBottom, setShowSide } = usePanel();
 
   return (
     <div
       className={styles.container}
       data-right={showSide}
-      data-bottom={showBottom}>
+      data-bottom={showBottom}
+    >
       <Header />
       <PageTabs />
       <main className={`${styles.main} scrollbar`}>{children}</main>
