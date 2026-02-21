@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import styles from "./Details.module.css";
 import { useEffect, useState } from "react";
@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 interface DetailsProps {
   title: string | React.ReactNode;
   children: React.ReactNode;
-  cClassName?: string,
+  cClassName?: string;
   className?: string;
-  onClick?: React.MouseEventHandler,
+  onClick?: (e: React.SyntheticEvent) => unknown;
   onToggle?: (prev: boolean) => void;
   openIcon?: React.ReactNode;
   closeIcon?: React.ReactNode;
@@ -29,7 +29,7 @@ export default function Details({
   initialOpen = true,
   disabled = false,
   showScrollbar = false,
-  showTransition = true
+  showTransition = true,
 }: DetailsProps) {
   const [isActive, setIsActive] = useState<boolean>(initialOpen);
   const activeStyle = isActive ? styles.active : "";
@@ -48,14 +48,25 @@ export default function Details({
   }
 
   return (
-    <div className={`${styles.details} ${activeStyle}${cClassName ? ` ${cClassName}` : ``}`} onClick={onClick}>
-      <button className={`${styles.summary}${className ? ` ${className}` : ``}`} onClick={handleToggle} disabled={disabled}>
+    <div
+      className={`${styles.details} ${activeStyle}${cClassName ? ` ${cClassName}` : ``}`}
+      onClick={onClick}
+    >
+      <button
+        className={`${styles.summary}${className ? ` ${className}` : ``}`}
+        onClick={handleToggle}
+        disabled={disabled}
+      >
         {!disabled && <i className={`codicon codicon-${chevronClass}`} />}
         {isActive ? openIcon : closeIcon}
         {title}
       </button>
-      <div className={`${styles.contentWrapper}${showTransition ? ` ${styles.transition}` : ""}`}>
-        <div className={`${styles.content} ${showScrollbar ? "scrollbar" : "scrollbarHidden"}`}>
+      <div
+        className={`${styles.contentWrapper}${showTransition ? ` ${styles.transition}` : ""}`}
+      >
+        <div
+          className={`${styles.content} ${showScrollbar ? "scrollbar" : "scrollbarHidden"}`}
+        >
           {children}
         </div>
       </div>
