@@ -1,4 +1,3 @@
-
 const CONFIG = {
   ENV: process.env.NODE_ENV,
   IS_DEV: process.env.NODE_ENV === "development",
@@ -12,7 +11,7 @@ const CONFIG = {
   GITHUB_USERNAME: "PollyGotACracker",
   GITHUB_REPONAME: "ide-portfolio-nextjs",
   GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-  BUILD_BYPASS_TOKEN: process.env.BUILD_BYPASS_TOKEN
+  BUILD_BYPASS_TOKEN: process.env.BUILD_BYPASS_TOKEN,
 };
 
 export default CONFIG;
