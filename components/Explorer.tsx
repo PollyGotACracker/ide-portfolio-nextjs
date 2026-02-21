@@ -1,14 +1,18 @@
-'use client';
+"use client";
 
 import styles from "./Explorer.module.css";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { usePanel } from "@/contexts/PanelProvider";
+import { usePanel } from "@/providers/PanelProvider";
 import useObserver from "@/hooks/useObserver";
-import { PAGES, HOME_HEADINGS, PRACTICE_HEADINGS, DOWNLOAD_FILES } from "@/constants/label";
+import {
+  PAGES,
+  HOME_HEADINGS,
+  PRACTICE_HEADINGS,
+  DOWNLOAD_FILES,
+} from "@/constants/label";
 import Details from "./Details";
-
 
 export default function Explorer() {
   const pathname = usePathname();
@@ -16,14 +20,16 @@ export default function Explorer() {
   const activeId = useObserver("section[data-id]");
   const [activeMenu, setActiveMenu] = useState<string>(pathname);
 
-  useEffect(() => { setActiveMenu(pathname); }, [pathname]);
+  useEffect(() => {
+    setActiveMenu(pathname);
+  }, [pathname]);
 
   function handleOptionalClose(e: React.MouseEvent) {
     const target = e.target as HTMLElement;
-    const anchor = target.closest('a');
+    const anchor = target.closest("a");
     if (anchor) {
       closeMobileSide();
-    };
+    }
   }
 
   function renderPage(page: Page, menu: SubPage[]) {
@@ -46,16 +52,26 @@ export default function Explorer() {
     );
   }
 
-  function renderSubpages(param: Page["param"], menu: SubPage[], download = false) {
+  function renderSubpages(
+    param: Page["param"],
+    menu: SubPage[],
+    download = false,
+  ) {
     const subpageClass = `codicon codicon-file ${styles.submenuLink}`;
     return (
       <ul>
         {menu.map(({ id, label, separator }) => {
           const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
-          const link = !download
-            ? <Link className={subpageClass} href={href} prefetch={false}>{label}</Link>
-            : <a className={subpageClass} href={href} download>{label}</a>;
+          const link = !download ? (
+            <Link className={subpageClass} href={href} prefetch={false}>
+              {label}
+            </Link>
+          ) : (
+            <a className={subpageClass} href={href} download>
+              {label}
+            </a>
+          );
 
           return (
             <li className={`${styles.submenu}${activeClass}`} key={id}>
@@ -90,7 +106,7 @@ interface SubPage {
   id: string;
   label: string;
   separator: string;
-};
+}
 
 const HomeHeadings: SubPage[] = Object.values(HOME_HEADINGS);
 const PracticeHeadings: SubPage[] = Object.values(PRACTICE_HEADINGS);

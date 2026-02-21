@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import { cookies } from "next/headers";
 import CONFIG from "@/constants/config";
-import ThemeProvider from "@/contexts/ThemeProvider";
-import FontSizeProvider from "@/contexts/FontSizeProvider";
-import PanelProvider from "@/contexts/PanelProvider";
-import "./reset.css";
-import "./globals.css";
+import ThemeProvider from "@/providers/ThemeProvider";
+import FontSizeProvider from "@/providers/FontSizeProvider";
+import PanelProvider from "@/providers/PanelProvider";
+import "@/styles/reset.css";
+import "@/styles/globals.css";
 import "@vscode/codicons/dist/codicon.css";
 
 const notoSans = Noto_Sans({

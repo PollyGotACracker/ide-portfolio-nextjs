@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import styles from "./status.module.css";
+import styles from "@/styles/status.module.css";
 // import MainImporter from "@/components/layouts/MainImporter";
 import Status from "@/components/svgs/Status";
 import Button from "@/components/Button";
@@ -9,10 +9,9 @@ import GoHomeButton from "@/components/GoHomeButton";
 export default function ErrorPage({
   reset,
 }: {
-  error?: Error & { digest?: string; };
+  error?: Error & { digest?: string };
   reset: () => void;
 }) {
-
   return (
     // <MainImporter>
     <section className={styles.section}>

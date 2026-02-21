@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./MainLayout.module.css";
-import { usePanel } from "@/contexts/PanelProvider";
+import { usePanel } from "@/providers/PanelProvider";
 import Header from "@/components/Header";
 import PageTabs from "@/components/PageTabs";
 

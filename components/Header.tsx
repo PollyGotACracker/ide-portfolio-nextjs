@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Header.module.css";
-import { usePanel } from "@/contexts/PanelProvider";
+import { usePanel } from "@/providers/PanelProvider";
 import CONFIG from "@/constants/config";
 import { checkWindows } from "@/libs/checker";
 import { useSyncExternalStore } from "react";

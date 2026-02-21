@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import styles from "./Extension.module.css";
-import { useTheme } from "@/contexts/ThemeProvider";
-import { useFontSize } from "@/contexts/FontSizeProvider";
+import { useTheme } from "@/providers/ThemeProvider";
+import { useFontSize } from "@/providers/FontSizeProvider";
 import Details from "./Details";
 import { IoInvertMode } from "react-icons/io5";
 import { RiFontSize2 } from "react-icons/ri";
@@ -22,19 +22,42 @@ export default function Extensions() {
   return (
     <Details title="installed" showScrollbar={true}>
       <ul className={styles.extList}>
-        <Extension name="UI Theme" onToggle={toggleTheme} state={themeState} onValue="dark" offValue="light" icon={<IoInvertMode />} />
-        <Extension name="Font Size" onToggle={toggleFontSize} state={fontSizeState} onValue="large" offValue="medium" icon={<RiFontSize2 />} />
+        <Extension
+          name="UI Theme"
+          onToggle={toggleTheme}
+          state={themeState}
+          onValue="dark"
+          offValue="light"
+          icon={<IoInvertMode />}
+        />
+        <Extension
+          name="Font Size"
+          onToggle={toggleFontSize}
+          state={fontSizeState}
+          onValue="large"
+          offValue="medium"
+          icon={<RiFontSize2 />}
+        />
       </ul>
     </Details>
   );
 }
 
-function Extension({ name, onToggle, onValue, offValue, state, icon }: ExtensionProps) {
+function Extension({
+  name,
+  onToggle,
+  onValue,
+  offValue,
+  state,
+  icon,
+}: ExtensionProps) {
   return (
     <li className={styles.ext}>
       {icon}
       <div className={styles.extName}>{name}</div>
-      <p className={styles.extDesc}>{`current: ${state ? onValue : offValue}`}</p>
+      <p
+        className={styles.extDesc}
+      >{`current: ${state ? onValue : offValue}`}</p>
       <button
         onClick={onToggle}
         className={`${styles.extButton} ${state ? styles.active : styles.inactive}`}
@@ -44,6 +67,3 @@ function Extension({ name, onToggle, onValue, offValue, state, icon }: Extension
     </li>
   );
 }
-
-
-

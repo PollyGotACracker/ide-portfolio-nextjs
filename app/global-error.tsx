@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import styles from "./status.module.css";
+import styles from "@/styles/status.module.css";
 import Status from "@/components/svgs/Status";
 import Button from "@/components/Button";
 import GoHomeButton from "@/components/GoHomeButton";
@@ -8,10 +8,9 @@ import GoHomeButton from "@/components/GoHomeButton";
 export default function GlobalErrorPage({
   reset,
 }: {
-  error?: Error & { digest?: string; };
+  error?: Error & { digest?: string };
   reset: () => void;
 }) {
-
   return (
     <html>
       <body>

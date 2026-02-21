@@ -1,10 +1,9 @@
-import styles from "./status.module.css";
+import styles from "@/styles/status.module.css";
 import Status from "@/components/svgs/Status";
 import GoHomeButton from "@/components/GoHomeButton";
 import MainImporter from "@/components/layouts/MainImporter";
 
 export default function NotFoundPage() {
-
   return (
     <MainImporter>
       <section className={styles.section}>

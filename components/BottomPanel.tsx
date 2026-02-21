@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import styles from "./BottomPanel.module.css";
 import { useState } from "react";
-import { usePanel } from "@/contexts/PanelProvider";
+import { usePanel } from "@/providers/PanelProvider";
 
 interface BottomPanelProps {
   problems: React.ReactNode;
@@ -10,7 +10,11 @@ interface BottomPanelProps {
   terminal: React.ReactNode;
 }
 
-export default function BottomPanel({ problems, output, terminal }: BottomPanelProps) {
+export default function BottomPanel({
+  problems,
+  output,
+  terminal,
+}: BottomPanelProps) {
   const { setShowBottom } = usePanel();
   const [activeMenu, setActiveMenu] = useState<Menu>("terminal");
 
@@ -20,7 +24,6 @@ export default function BottomPanel({ problems, output, terminal }: BottomPanelP
     terminal: { name: "Terminal", comp: terminal },
   } as const;
   type Menu = keyof typeof MENU_CONFIG;
-
 
   function renderButton(id: Menu) {
     const activeStyle = activeMenu === id ? ` ${styles.active}` : "";
@@ -33,7 +36,7 @@ export default function BottomPanel({ problems, output, terminal }: BottomPanelP
         {MENU_CONFIG[id].name}
       </button>
     );
-  };
+  }
 
   return (
     <div className={styles.bottom}>
@@ -41,7 +44,10 @@ export default function BottomPanel({ problems, output, terminal }: BottomPanelP
         {renderButton("problems")}
         {renderButton("output")}
         {renderButton("terminal")}
-        <button className={`codicon codicon-close ${styles.closeButton}`} onClick={() => setShowBottom(false)} />
+        <button
+          className={`codicon codicon-close ${styles.closeButton}`}
+          onClick={() => setShowBottom(false)}
+        />
       </div>
       <div className={styles.content}>{MENU_CONFIG[activeMenu].comp}</div>
     </div>
