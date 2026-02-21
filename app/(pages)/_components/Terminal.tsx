@@ -87,7 +87,13 @@ export default function Terminal() {
   );
 }
 
-function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean }) {
+function Logs({
+  logs,
+  isWindows,
+}: {
+  logs: Log[][];
+  isWindows: boolean | undefined;
+}) {
   return (
     <ul className={styles.logs}>
       {logs.length > 0 &&
@@ -107,7 +113,13 @@ function Logs({ logs, isWindows }: { logs: Log[][]; isWindows: boolean }) {
   );
 }
 
-function PromptText({ path, isWindows }: { path: string; isWindows: boolean }) {
+function PromptText({
+  path,
+  isWindows,
+}: {
+  path: string;
+  isWindows: boolean | undefined;
+}) {
   const displayPath = path === "/" ? "~" : `~${path}`;
   return (
     <p className={styles.prompt}>
