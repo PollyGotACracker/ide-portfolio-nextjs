@@ -45,6 +45,7 @@ button.summary:disabled {
 
 .content {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content:global(.scrollbar) {

@@ -62,6 +62,7 @@
 
     --bottom-height: 0px;
     --bottom-border-color: transparent;
+    --bottom-transition: var(--hide-transition);
   }
 
   .container[data-right="true"] {
@@ -74,6 +75,7 @@
     --bottom-toggle-color: var(--item-color-active);
     --bottom-border-color: var(--panel-border-color);
     --bottom-height: var(--bottom-size);
+    --bottom-transition: none;
   }
 
   /* mobile Overlay */
@@ -111,21 +113,25 @@
     --side-height: calc(100dvh - var(--header-size) - var(--footer-size));
     --side-width: 0px;
     --side-border-color: transparent;
+    --side-transition: var(--hide-transition);
 
     --bottom-height: 0px;
     --bottom-border-color: transparent;
+    --bottom-transition: var(--hide-transition);
   }
 
   .container[data-right="true"] {
     --side-toggle-color: var(--item-color-active);
     --side-width: var(--side-size);
     --side-border-color: var(--panel-border-color);
+    --side-transition: none;
   }
 
   .container[data-bottom="true"] {
     --bottom-toggle-color: var(--item-color-active);
     --bottom-border-color: var(--panel-border-color);
     --bottom-height: var(--bottom-size);
+    --bottom-transition: none;
   }
 }
 
