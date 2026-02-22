@@ -1,8 +1,8 @@
 "use client";
 
-import styles from "./Button.module.css";
+import styles from "./ButtonChip.module.css";
 
-export default function Button({
+export default function ButtonChip({
   children,
   className,
   ...props

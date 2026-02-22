@@ -18,7 +18,6 @@
   width: 140px;
   height: 100%;
   padding-left: 20px;
-  flex-shrink: 0;
   overflow: hidden;
   position: relative;
   display: inline-flex;
@@ -33,10 +32,9 @@
   transition: background-color 0.1s ease-in-out;
 }
 
-.tab:not(.active):hover,
-.tab:not(.lost):hover {
+.tab:not(.active):not(.lost):hover {
   background-color: var(--item-background-hover);
-  color: var(--foreground);
+  color: var(--item-color-active);
 }
 
 .tabLabel {
@@ -72,11 +70,11 @@ li:not(:last-child) .tab {
   border-left: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   background-color: var(--background);
+  padding: 0 5px;
 }
 
 .download {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }

@@ -35,17 +35,6 @@ button.historyButton {
   color: var(--item-color);
 }
 
-button.button {
-  padding: 5px;
-  border-radius: 4px;
-  background-color: transparent;
-  border: none;
-  transition: all 0.1s ease-in-out;
-}
-button.button:hover {
-  background-color: var(--item-background-hover);
-}
-
 button.historyButton:hover {
   color: var(--item-hover-color);
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./PageTabs.module.css";
+import buttonChipStyles from "@/components/ButtonChip.module.css";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useActiveId } from "@/providers/ActiveIdProvider";
@@ -48,8 +49,8 @@ export default function PageTabs() {
           headings.map((i) => (
             <Tab
               key={i.id}
-              isMatched={activeId === i.id}
               ref={activeId === i.id ? activeTabRef : null}
+              isMatched={activeId === i.id}
               params={parentPath}
               {...i}
             />
@@ -98,7 +99,7 @@ function LostTab({ path }: { path: string }) {
 function DownloadLink() {
   return (
     <a
-      className={styles.download}
+      className={`${buttonChipStyles.button} ${styles.download}`}
       href={`${PAGES.DOWNLOAD.param}${portfolio.separator}${portfolio.id}`}
       title="Download Portfolio"
       download
