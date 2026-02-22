@@ -1,3 +1,4 @@
+import ActiveIdProvider from "@/providers/ActiveIdProvider";
 import MainLayout from "./_layouts/MainLayout";
 /*
 1. layout 은 server component 로 만들어 놓을 것
@@ -5,5 +6,9 @@ import MainLayout from "./_layouts/MainLayout";
     props 사용 => 상위 server component에서 import 하여 특정 prop 또는 children 으로 전달
 */
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <MainLayout>{children}</MainLayout>;
+  return (
+    <ActiveIdProvider>
+      <MainLayout>{children}</MainLayout>
+    </ActiveIdProvider>
+  );
 }

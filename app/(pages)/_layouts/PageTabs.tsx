@@ -2,7 +2,8 @@
 
 import styles from "./PageTabs.module.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { useActiveId } from "@/providers/ActiveIdProvider";
 import {
   DOWNLOAD_FILES,
   HeadingItem,
@@ -10,20 +11,12 @@ import {
   PAGES,
   Separator,
 } from "@/constants/label";
-import { getFirstPath, getLastPathId } from "@/libs/getPath";
 import { IoBrowsersOutline } from "react-icons/io5";
 import { FaHashtag } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
-import useObserver from "@/hooks/useObserver";
-import { useEffect, useRef } from "react";
 
 export default function PageTabs() {
-  const pathname = usePathname();
-  const parentPath = getFirstPath(pathname);
-  const lastPathId = getLastPathId(pathname);
-  const activeSectionId = useObserver("section[data-id]");
-  const activeId = activeSectionId ?? lastPathId;
-
+  const { activeId, parentPath } = useActiveId();
   const pageLabel = pageMap.get(parentPath);
   const headings = pageLabel && PAGE_HEADINGS.get(parentPath);
 

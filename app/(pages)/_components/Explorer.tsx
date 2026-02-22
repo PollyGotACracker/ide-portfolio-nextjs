@@ -1,11 +1,9 @@
 "use client";
 
 import styles from "./Explorer.module.css";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useActiveId } from "@/providers/ActiveIdProvider";
 import { usePanel } from "@/providers/PanelProvider";
-import useObserver from "@/hooks/useObserver";
 import {
   PAGES,
   HOME_HEADINGS,
@@ -13,17 +11,10 @@ import {
   DOWNLOAD_FILES,
 } from "@/constants/label";
 import Details from "@/components/Details";
-import { getFirstPath } from "@/libs/getPath";
 
 export default function Explorer() {
-  const pathname = usePathname();
   const { closeMobileSide } = usePanel();
-  const activeId = useObserver("section[data-id]");
-  const [activeMenu, setActiveMenu] = useState<string>(getFirstPath(pathname));
-
-  useEffect(() => {
-    setActiveMenu(getFirstPath(pathname));
-  }, [pathname]);
+  const { activeId, parentPath } = useActiveId();
 
   function handleOptionalClose(e: React.SyntheticEvent) {
     const target = e.target as HTMLElement;
@@ -34,7 +25,7 @@ export default function Explorer() {
   }
 
   function renderPage(page: Page, menu: SubPage[]) {
-    const isActive = activeMenu === page.param;
+    const isActive = parentPath === page.param;
     const activeStyle = isActive ? ` ${styles.containerActive}` : ``;
 
     return (
