@@ -16,8 +16,12 @@
   --side-size: 250px;
   --bottom-size: 200px;
   --panel-padding: 10px;
-  --panel-border: 1px solid var(--border-color);
-  --hide-transition: padding 0s 0.3s, border 0s 0.3s;
+  --side-padding: var(--panel-padding);
+  --bottom-padding: var(--panel-padding);
+  --panel-border-color: var(--border-color);
+  --hide-transition: border-color 0s 0.3s;
+  --side-transition: var(--hide-transition);
+  --bottom-transition: var(--hide-transition);
 
   position: fixed;
   top: 0;
@@ -39,7 +43,7 @@
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* sidepanel: fixed */
     grid-template-rows:
       var(--header-height, 40px) var(--header-height, 40px)
       1fr var(--bottom-height, 200px) var(--footer-height, 30px);
@@ -53,33 +57,29 @@
 
     --side-height: calc(100dvh - var(--header-size));
     --side-width: var(--side-size);
-    --side-padding: var(--panel-padding);
-    --side-border: var(--panel-border);
+    --side-border-color: transparent;
     --side-transition: right 0.3s ease-in-out;
 
     --bottom-height: 0px;
-    --bottom-padding: 0px;
-    --bottom-border: none;
-    --bottom-transition: var(--hide-transition);
+    --bottom-border-color: transparent;
   }
 
   .container[data-right="true"] {
     --side-toggle-color: var(--item-color-active);
+    --side-border-color: var(--panel-border-color);
     --side-right: 0;
+  }
+
+  .container[data-bottom="true"] {
+    --bottom-toggle-color: var(--item-color-active);
+    --bottom-border-color: var(--panel-border-color);
+    --bottom-height: var(--bottom-size);
   }
 
   /* mobile Overlay */
   .container[data-right="true"] > .overlay {
     opacity: 1;
     visibility: visible;
-  }
-
-  .container[data-bottom="true"] {
-    --bottom-toggle-color: var(--item-color-active);
-    --bottom-height: var(--bottom-size);
-    --bottom-padding: var(--panel-padding);
-    --bottom-border: var(--panel-border);
-    --bottom-transition: none;
   }
 }
 
@@ -105,34 +105,27 @@
     grid-template-rows:
       var(--header-height, 40px) var(--header-height, 40px)
       1fr var(--bottom-height, 0) var(--footer-height, 30px);
+    --side-toggle-color: var(--item-color-inactive);
     --bottom-toggle-color: var(--item-color-inactive);
 
     --side-height: calc(100dvh - var(--header-size) - var(--footer-size));
-    --side-width: var(--side-size);
-    --side-padding: var(--panel-padding);
-    --side-border: var(--panel-border);
-    --side-transition: none;
+    --side-width: 0px;
+    --side-border-color: transparent;
 
     --bottom-height: 0px;
-    --bottom-padding: 0px;
-    --bottom-border: none;
-    --bottom-transition: var(--hide-transition);
+    --bottom-border-color: transparent;
   }
 
-  .container[data-right="false"] {
-    --side-toggle-color: var(--item-color-inactive);
-    --side-width: 0px;
-    --side-padding: 0px;
-    --side-border: none;
-    --side-transition: var(--hide-transition);
+  .container[data-right="true"] {
+    --side-toggle-color: var(--item-color-active);
+    --side-width: var(--side-size);
+    --side-border-color: var(--panel-border-color);
   }
 
   .container[data-bottom="true"] {
     --bottom-toggle-color: var(--item-color-active);
+    --bottom-border-color: var(--panel-border-color);
     --bottom-height: var(--bottom-size);
-    --bottom-padding: var(--panel-padding);
-    --bottom-border: var(--panel-border);
-    --bottom-transition: none;
   }
 }
 
@@ -154,8 +147,6 @@
   background-color: var(--background-main);
   /* scroll snap */
   scroll-snap-type: y proximity;
-  /* scroll-behavior: smooth; */
-  /* overscroll-behavior: contain; */
 }
 
 /* 태블릿 (768px 이상) */

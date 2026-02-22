@@ -11,13 +11,22 @@
   position: var(--side-position);
   z-index: var(--side-zindex);
   padding-top: var(--side-padding);
-  border-left: var(--side-border);
+  border-left: 1px solid transparent;
+  border-color: var(--side-border-color);
   transition: var(--side-transition);
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
+/* 태블릿 (768px 이상) */
+@media (min-width: 769px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
 .menuList {
+  width: 100%;
   display: flex;
   justify-content: center;
   column-gap: 10px;

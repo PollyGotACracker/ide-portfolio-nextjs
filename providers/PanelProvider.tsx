@@ -56,10 +56,14 @@ export default function PanelProvider({
   }
   function toggleSide() {
     setShowSide((prev: PanelState) => {
-      if (typeof window === "undefined") return prev;
+      // 데스크톱 기본값을 open으로 할 경우...
+      // if (typeof window === "undefined") return prev;
+      // if (prev === DEFAULT_VALUE) {
+      //   // 데스크톱: false(닫기), 모바일: true(열기)
+      //   return !(window.innerWidth > 768);
+      // }
       if (prev === DEFAULT_VALUE) {
-        // 데스크톱: false(닫기), 모바일: true(열기)
-        return !(window.innerWidth > 768);
+        return true;
       }
       return !prev;
     });

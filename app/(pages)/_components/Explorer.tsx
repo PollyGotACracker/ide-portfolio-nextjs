@@ -56,7 +56,7 @@ export default function Explorer() {
           const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
           const link = !download ? (
-            <Link className={subpageClass} href={href} prefetch={false}>
+            <Link className={subpageClass} href={href}>
               {label}
             </Link>
           ) : (

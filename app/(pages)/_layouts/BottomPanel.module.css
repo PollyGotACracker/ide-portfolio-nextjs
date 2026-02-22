@@ -3,7 +3,8 @@
   grid-area: bottom;
   overflow: hidden;
   padding: var(--bottom-padding) 0;
-  border-top: var(--bottom-border);
+  border-top: 1px solid transparent;
+  border-color: var(--bottom-border-color);
   transition: var(--bottom-transition);
 }
 
