@@ -5,13 +5,13 @@
 }
 
 h2.heading {
+  justify-content: center;
   font-size: 1.8rem;
   font-weight: 700;
   scroll-margin-top: 20px;
   margin-top: 30px;
   margin-bottom: 20px;
   padding: 0 10px;
-  border-bottom: 1px solid var(--border-color);
 }
 
 h3.heading {

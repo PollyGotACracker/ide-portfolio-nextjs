@@ -1,32 +1,82 @@
-.tabList {
+.pageTabs {
   grid-area: tabs;
-  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tabList {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
 }
 
 .tab {
+  width: 140px;
+  height: 100%;
+  padding-left: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
   position: relative;
   display: inline-flex;
   align-items: center;
   column-gap: 5px;
-  height: 100%;
-  padding: 0 50px;
-  background-color: var(--background-main);
-  border-top: 1px solid var(--primary);
-  border-right: 1px solid var(--border-color);
   font-size: 0.9rem;
   user-select: none;
+  color: var(--item-color);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid var(--border-color);
+  background-color: transparent;
+  transition: background-color 0.1s ease-in-out;
 }
 
-.tab:after {
-  position: absolute;
-  content: "";
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
+.tab:not(.active):hover,
+.tab:not(.lost):hover {
+  background-color: var(--item-background-hover);
+  color: var(--foreground);
+}
+
+.tabLabel {
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+li:not(:last-child) .tab {
+  border-right: 1px solid var(--border-color);
+}
+
+.tab.active,
+.tab.lost {
   background-color: var(--background-main);
+  border-top: 1px solid var(--primary);
+  border-bottom: 1px solid transparent;
+  color: var(--foreground);
 }
 
-.tab > i[class*="codicon"] {
-  transform: translateY(-1px);
+.tab:not(.lost) svg {
+  color: var(--primary);
+}
+
+.rightWrapper {
+  position: sticky;
+  right: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background);
+}
+
+.download {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }

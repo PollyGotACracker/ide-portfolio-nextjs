@@ -14,11 +14,15 @@
 }
 
 .title {
+  max-width: 100%;
+  min-width: 0;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
-  cursor: pointer;
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .buttonList {
@@ -31,22 +35,19 @@ button.historyButton {
   color: var(--item-color);
 }
 
-button.historyButton,
-button.toggleButton {
+button.button {
   padding: 5px;
   border-radius: 4px;
   background-color: transparent;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+button.button:hover {
+  background-color: var(--item-background-hover);
 }
 
 button.historyButton:hover {
-  background-color: var(--item-background-hover);
   color: var(--item-hover-color);
-}
-
-button.toggleButton:hover {
-  background-color: var(--item-background-hover);
 }
 
 button.historyButton[class*="codicon-"],

@@ -27,27 +27,27 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.buttonList}>
         <button
-          className={`codicon codicon-arrow-left ${styles.historyButton}`}
+          className={`codicon codicon-arrow-left ${styles.button} ${styles.historyButton}`}
           onClick={goBack}
           title={`Go Back (${TITLE_GO_BACK})`}
         />
         <button
-          className={`codicon codicon-arrow-right ${styles.historyButton}`}
+          className={`codicon codicon-arrow-right ${styles.button} ${styles.historyButton}`}
           onClick={goForward}
           title={`Go Forward (${TITLE_GO_FOR})`}
         />
       </div>
-      <div className={styles.title} onClick={goHome}>
+      <button className={`${styles.title} ${styles.button}`} onClick={goHome}>
         {CONFIG.NICKNAME}
-      </div>
+      </button>
       <div className={styles.buttonList}>
         <button
-          className={`codicon codicon-layout-panel ${styles.toggleButton} ${styles.bottom}`}
+          className={`codicon codicon-layout-panel ${styles.button} ${styles.toggleButton} ${styles.bottom}`}
           onClick={toggleBottom}
           title={`Toggle Panel (${TITLE_BOTTOM})`}
         />
         <button
-          className={`codicon codicon-layout-sidebar-right ${styles.toggleButton} ${styles.right}`}
+          className={`codicon codicon-layout-sidebar-right ${styles.button} ${styles.toggleButton} ${styles.right}`}
           onClick={toggleSide}
           title={`Toggle Side Bar (${TITLE_SIDE})`}
         />
