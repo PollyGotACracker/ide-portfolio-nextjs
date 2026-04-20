@@ -5,21 +5,19 @@
  */
 
 // 빌드 결과물을 기반으로 실행(next start)
-import fs from 'fs';
-import path from 'path';
-import { spawn } from 'child_process';
-import puppeteer from 'puppeteer';
-import 'dotenv/config'; // .env 읽기
+import fs from "fs";
+import path from "path";
+import { spawn } from "child_process";
+import puppeteer from "puppeteer";
+import "dotenv/config"; // .env 읽기
 
-const BASE_URL = 'http://localhost';
-const PORT = '3333';
+const BASE_URL = "http://localhost";
+const PORT = "3333";
 const URL = `${BASE_URL}:${PORT}`;
-const STATIC_PATH_TARGET = 'public/files';
-const STATIC_PATH_FONT = 'public/fonts/NanumGothic-Regular.ttf';
+const STATIC_PATH_TARGET = "public/files";
+const STATIC_PATH_FONT = "public/fonts/NanumGothic-Regular.ttf";
 
-const pages = [
-  { pagePath: '/portfolio', filePath: '/portfolio.pdf' }
-];
+const pages = [{ pagePath: "/portfolio", filePath: "/portfolio.pdf" }];
 
 // 저장할 경로가 없으면 생성
 const dir = path.join(process.cwd(), STATIC_PATH_TARGET);
@@ -28,47 +26,55 @@ if (!fs.existsSync(dir)) {
 }
 
 // 서버 준비 및 대기(30초)
-const server = spawn('npx', ['next', 'start', '-p', PORT], {
+const server = spawn("npx", ["next", "start", "-p", PORT], {
   shell: true,
-  stdio: 'pipe'
+  stdio: "pipe",
 });
 for (let i = 0; i < 30; i++) {
   try {
     await fetch(URL);
     break;
   } catch {
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, 1000));
   }
 }
 
 // 브라우저 실행 및 URL 화면 렌더링
 const browser = await puppeteer.launch({
   headless: true,
-  args: ['--no-sandbox', '--font-render-hinting=none'],
+  args: ["--no-sandbox", "--font-render-hinting=none"],
 });
 
 for (const { pagePath, filePath } of pages) {
   const page = await browser.newPage();
   // 페이지 진입을 위한 헤더 설정
   await page.setExtraHTTPHeaders({
-    'x-build-id': process.env.BUILD_BYPASS_TOKEN
+    "x-build-id": process.env.BUILD_BYPASS_TOKEN,
   });
   // React hydration 이슈 방지
   await page.setJavaScriptEnabled(false);
-  const response = await page.goto(URL + pagePath, { waitUntil: 'domcontentloaded' });
-  console.log('PDF Status:', response.status());
+  const response = await page.goto(URL + pagePath, {
+    waitUntil: "networkidle2",
+    timeout: 120_000,
+  });
+  console.log("PDF Status:", response.status());
+
+  // 인쇄 스타일(@media print) 적용
+  await page.emulateMediaType("print");
 
   // light 테마 강제 적용
   await page.emulateMediaFeatures([
-    { name: 'prefers-color-scheme', value: 'light' }
+    { name: "prefers-color-scheme", value: "light" },
   ]);
   await page.evaluate(() => {
-    document.documentElement.dataset.theme = 'light';
+    document.documentElement.dataset.theme = "light";
   });
 
   // ttf 폰트를 사용하여 한국어 적용
-  const fontBuffer = fs.readFileSync(path.join(process.cwd(), STATIC_PATH_FONT));
-  const fontBase64 = fontBuffer.toString('base64');
+  const fontBuffer = fs.readFileSync(
+    path.join(process.cwd(), STATIC_PATH_FONT),
+  );
+  const fontBase64 = fontBuffer.toString("base64");
   await page.addStyleTag({
     content: `
     @font-face {
@@ -76,20 +82,20 @@ for (const { pagePath, filePath } of pages) {
       src: url(data:font/truetype;base64,${fontBase64}) format('truetype');
     }
     * { font-family: 'NanumGothic' !important; }
-  `
+  `,
   });
-  await page.evaluateHandle('document.fonts.ready');
+  await page.evaluate(() => document.fonts.ready);
 
   await page.pdf({
     path: STATIC_PATH_TARGET + filePath,
-    format: 'A4',
+    format: "A4",
     printBackground: true,
-    margin: { top: '10mm', bottom: '10mm', left: '10mm', right: '10mm' },
+    margin: { top: "10mm", bottom: "10mm", left: "10mm", right: "10mm" },
   });
   await page.close();
 }
 
 await browser.close();
 server.kill();
-console.log('PDF generated!');
+console.log("PDF generated!");
 process.exit(0);
