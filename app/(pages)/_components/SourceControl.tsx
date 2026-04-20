@@ -29,7 +29,9 @@ export default async function SourceControl() {
                   <span className={styles.repoName}>{repoName}</span>
                 </span>
                 <span className={styles.desc}>
-                  <span>{getRefText(i.payload.ref)}</span>
+                  <span className={styles.refText}>
+                    {getRefText(i.payload.ref)}
+                  </span>
                   <TimeAgo date={i.created_at} />
                 </span>
               </Link>
