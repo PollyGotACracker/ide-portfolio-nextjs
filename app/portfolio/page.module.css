@@ -1,14 +1,13 @@
 @media print {
-
   html,
   body {
     background: white !important;
     background-color: white !important;
   }
 
-  .printPage :global(#projects) {
+  .printPage :global(#projects),
+  .printPage :global(#training) {
     page-break-before: always;
     margin-top: 0px;
   }
-
 }
