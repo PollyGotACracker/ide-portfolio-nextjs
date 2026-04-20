@@ -1,15 +1,138 @@
 .section {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 4rem;
   align-items: center;
-  row-gap: 5px;
   margin-bottom: var(--main-padding-bottom);
 }
 
-.wrapper {
-  width: min(250px, 100%);
+.avatarWrapper {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroEyebrow {
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(var(--alpha-rgb), 0.4);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.heroName {
+  font-size: var(--font-size-xxl);
+  font-weight: 500;
+  margin: 0 0 1.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heroIntro {
+  line-height: 1.7;
+  color: rgba(var(--alpha-rgb), 0.6);
+  margin: 0 0 1.5rem;
+  white-space: pre-line;
+}
+
+.skillIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skillIcon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.55;
+  filter: saturate(0);
+}
+
+.heroSide {
+  border-left: 0.5px solid rgba(var(--alpha-rgb), 0.12);
+  padding-left: 2rem;
+}
+
+.metaList {
+  margin: 0 0 1.75rem;
+}
+
+.metaListRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 0.5px dashed rgba(var(--alpha-rgb), 0.15);
+  font-size: var(--font-size-sm);
+}
+
+.metaListRowLast {
+  border-bottom: none;
+}
+
+.metaListLabel {
+  color: rgba(var(--alpha-rgb), 0.4);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.metaListValue {
+  color: rgba(var(--alpha-rgb), 0.9);
+  margin: 0;
+  text-align: right;
+}
+
+.strengthsTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--alpha-rgb), 0.4);
+  margin: 0 0 0.85rem;
+}
+
+.strengthsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.strengthsItem {
+  position: relative;
+  padding-left: 14px;
+  font-size: var(--font-size-sm);
+  line-height: 1.9;
+  color: rgba(var(--alpha-rgb), 0.9);
+}
+
+.strengthsItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  background: rgba(var(--alpha-rgb), 0.4);
+  border-radius: 50%;
+}
+
+.linkWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+}
+
+.link {
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+.link:hover {
+  border-bottom: 1px solid rgba(var(--alpha-rgb), 0.4);
 }
 
 .chevron {
@@ -27,12 +150,6 @@
   animation-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
   animation-iteration-count: infinite;
   animation-direction: alternate;
-}
-
-@media (max-height: 600px) {
-  .chevron {
-    bottom: 0;
-  }
 }
 
 .chevron svg {
@@ -74,5 +191,24 @@
   to {
     transform: scale(1.2);
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    gap: 0 2rem;
+  }
+
+  .heroSide {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+
+  .chevron svg {
+    font-size: 16px;
   }
 }

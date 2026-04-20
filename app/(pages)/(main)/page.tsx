@@ -1,7 +1,6 @@
 import styles from "./page.module.css";
 import Main from "./_components/Main";
 import Profile from "./_components/Profile";
-import Skills from "./_components/Skills";
 import Projects from "./_components/Projects";
 import Experiences from "./_components/Experiences";
 import Trainings from "./_components/Trainings";
@@ -13,7 +12,6 @@ export default function Home() {
       <Main />
       <div className={styles.stopper} />
       <Profile />
-      <Skills />
       <Projects />
       <Experiences />
       <Trainings />
