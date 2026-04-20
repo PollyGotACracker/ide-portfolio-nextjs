@@ -5,7 +5,6 @@ import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
 import { readJson } from "@/libs/readFile";
-import { MdModeComment } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaCertificate } from "react-icons/fa6";
 
@@ -19,9 +18,7 @@ export default async function Profile() {
 export function ProfileUI({ data }: { data: ProfileType }) {
   return (
     <section data-id={id} className={styles.section}>
-      <Heading.H2 id={id} icon={<MdModeComment />}>
-        {label}
-      </Heading.H2>
+      <Heading.H2 id={id}>{label}</Heading.H2>
       <Markdown className={styles.about}>{data.about}</Markdown>
       <Educations data={data.educations} />
       <Certifications data={data.certifications} />

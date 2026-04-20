@@ -1,6 +1,8 @@
 :root {
   --font-size: 16px;
   --font-size-sm: 14px;
+  --font-size-lg: 20px;
+  --font-size-xl: 30px;
   --font-size-xxl: 40px;
   --rgb-light: 255, 255, 255;
   --rgb-dark: 0, 0, 0;
@@ -80,6 +82,8 @@ html[data-theme="dark"] {
   :root {
     --font-size: 14px;
     --font-size-sm: 12px;
+    --font-size-lg: 18px;
+    --font-size-xl: 24px;
     --font-size-xxl: 30px;
   }
 }

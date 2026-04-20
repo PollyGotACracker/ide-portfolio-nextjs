@@ -7,7 +7,6 @@ import List from "@/components/List";
 import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/libs/readFile";
 import { ProjectType } from "@/types/Data";
-import { MdMonitor } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { PiLinkSimpleBold } from "react-icons/pi";
@@ -24,9 +23,7 @@ export default async function Projects() {
 export function ProjectsUI({ data }: { data: ProjectType[] }) {
   return (
     <section data-id={id}>
-      <Heading.H2 id={id} icon={<MdMonitor />}>
-        {label}
-      </Heading.H2>
+      <Heading.H2 id={id}>{label}</Heading.H2>
       <ul className={styles.projectList}>
         {data.map((i) => (
           <li className={styles.project} key={i.title}>
