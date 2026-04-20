@@ -21,12 +21,14 @@ export default async function Projects() {
   return <ProjectsUI data={data} />;
 }
 
-export function ProjectsUI({ data }: { data: ProjectType[]; }) {
+export function ProjectsUI({ data }: { data: ProjectType[] }) {
   return (
     <section data-id={id}>
-      <Heading.H2 id={id} icon={<MdMonitor />}>{label}</Heading.H2>
+      <Heading.H2 id={id} icon={<MdMonitor />}>
+        {label}
+      </Heading.H2>
       <ul className={styles.projectList}>
-        {data.map((i) =>
+        {data.map((i) => (
           <li className={styles.project} key={i.title}>
             <div className={styles.titleWrapper}>
               <Heading.H3 className={styles.title}>{i.title}</Heading.H3>
@@ -40,13 +42,20 @@ export function ProjectsUI({ data }: { data: ProjectType[]; }) {
               <FeatureList features={i.features} />
               <ExtraLinks links={i?.links} />
             </div>
-          </li>)}
+          </li>
+        ))}
       </ul>
-    </section >
+    </section>
   );
 }
 
-function DateRange({ startAt, endAt }: { startAt: ProjectType["start_at"], endAt?: ProjectType["end_at"]; }) {
+function DateRange({
+  startAt,
+  endAt,
+}: {
+  startAt: ProjectType["start_at"];
+  endAt?: ProjectType["end_at"];
+}) {
   return (
     <div className={styles.rangeWrapper}>
       <FaCalendarAlt />
@@ -57,33 +66,58 @@ function DateRange({ startAt, endAt }: { startAt: ProjectType["start_at"], endAt
   );
 }
 
-function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"]; }) {
+function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"] }) {
   const repoName = repoUrl?.split("/").at(-1);
-  if (repoUrl) return (
-    <div className={styles.textWrapper}>
-      <FaGithub />
-      <Link className={styles.link} href={repoUrl} prefetch={false}>{repoName}</Link>
-    </div>
-  );
+  if (repoUrl)
+    return (
+      <div className={styles.textWrapper}>
+        <FaGithub />
+        <Link className={styles.link} href={repoUrl} prefetch={false}>
+          {repoName}
+        </Link>
+      </div>
+    );
 }
 
 function ImageGrid({ images }: Pick<ProjectType, "images">) {
-  if (images) return (
-    <div className={styles.imageGrid}>
-      {images?.map((i) => <ImageBox key={i} src={i} alt={i} />)}
-    </div>
-  );
+  if (images)
+    return (
+      <div className={styles.imageGrid}>
+        {images?.map((i) => (
+          <ImageBox key={i} src={i} alt={i} />
+        ))}
+      </div>
+    );
 }
 
-function SiteLink({ siteUrl, isActive }: { siteUrl?: ProjectType["site_url"], isActive?: ProjectType["is_active"]; }) {
-  if (siteUrl) return (
-    <div className={styles.textWrapper}>
-      <PiLinkSimpleBold />
-      <Link href={siteUrl} className={`${styles.link}${isActive ? "" : ` ${styles.inactive}`}`} prefetch={false}>
-        {siteUrl}
-      </Link>
-    </div>
-  );
+function SiteLink({
+  siteUrl,
+  isActive,
+}: {
+  siteUrl?: ProjectType["site_url"];
+  isActive?: ProjectType["is_active"];
+}) {
+  if (siteUrl)
+    return (
+      <div className={styles.textWrapper}>
+        <PiLinkSimpleBold />
+        {isActive ? (
+          <div className={styles.linkWrapper}>
+            <img
+              src={`${siteUrl}/favicon.ico`}
+              alt="favicon"
+              width={16}
+              height={16}
+            />
+            <Link href={siteUrl} className={styles.link} prefetch={false}>
+              {siteUrl}
+            </Link>
+          </div>
+        ) : (
+          <span className={`${styles.link} ${styles.inactive}`}>{siteUrl}</span>
+        )}
+      </div>
+    );
 }
 
 function StackList({ stacks }: Pick<ProjectType, "stacks">) {
@@ -91,31 +125,40 @@ function StackList({ stacks }: Pick<ProjectType, "stacks">) {
     <div className={styles.textWrapper}>
       <FaTools />
       <ul className={styles.stackList}>
-        {stacks.map((i) => <li className={styles.stack} key={i}>{i}</li>)}
+        {stacks.map((i) => (
+          <li className={styles.stack} key={i}>
+            {i}
+          </li>
+        ))}
       </ul>
-    </div>);
+    </div>
+  );
 }
 
 function FeatureList({ features }: Pick<ProjectType, "features">) {
   return (
     <List className={styles.FeatureList}>
-      {features.map((i) =>
+      {features.map((i) => (
         <li className={styles.feature} key={i}>
           <Markdown>{i}</Markdown>
         </li>
-      )}
+      ))}
     </List>
   );
 }
 
 function ExtraLinks({ links }: Pick<ProjectType, "links">) {
-  if (links) return (
-    <ul className={styles.extraLinkList}>
-      {links?.map((i) =>
-        <li className={styles.textWrapper} key={i.label}>
-          <PiLinkSimpleBold />
-          <Link className={styles.link} href={i.url} prefetch={false}>{i.label}</Link>
-        </li>)}
-    </ul>
-  );
+  if (links)
+    return (
+      <ul className={styles.extraLinkList}>
+        {links?.map((i) => (
+          <li className={styles.textWrapper} key={i.label}>
+            <PiLinkSimpleBold />
+            <Link className={styles.link} href={i.url} prefetch={false}>
+              {i.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
 }
