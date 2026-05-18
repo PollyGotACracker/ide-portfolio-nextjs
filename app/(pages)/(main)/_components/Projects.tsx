@@ -5,7 +5,7 @@ import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
 import List from "@/components/List";
 import { HOME_HEADINGS } from "@/constants/label";
-import { readJson } from "@/libs/readFile";
+import { readJson } from "@/utils/readFile";
 import { ProjectType } from "@/types/Data";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";

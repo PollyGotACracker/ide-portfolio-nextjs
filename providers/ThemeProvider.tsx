@@ -42,7 +42,7 @@ export const Theme = {
   toggle(prev: boolean) {
     const result = !prev;
     const value = result ? 'dark' : 'light';
-    document.documentElement.dataset.theme = value;
+    document.documentElement.classList.toggle('dark', result);
     document.cookie = `theme=${value};path=/;max-age=31536000`;
     return result;
   },

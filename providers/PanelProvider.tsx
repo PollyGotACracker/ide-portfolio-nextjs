@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { useRouter } from "next/navigation";
-import { checkWindows } from "@/libs/checker";
+import { checkWindows } from "@/utils/checker";
 import { PATHS } from "@/constants/path";
 
 const DEFAULT_VALUE = "default";

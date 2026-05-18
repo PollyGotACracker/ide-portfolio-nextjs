@@ -4,7 +4,7 @@ import Markdown from "@/components/Markdown";
 import { ProfileType } from "@/types/Data";
 import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
-import { readJson } from "@/libs/readFile";
+import { readJson } from "@/utils/readFile";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaCertificate } from "react-icons/fa6";
 

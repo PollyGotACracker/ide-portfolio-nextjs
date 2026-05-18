@@ -8,7 +8,7 @@
   padding: 0 var(--bottom-padding-inner);
 }
 
-[data-theme="light"] .terminal {
+:global(html:not(.dark)) .terminal {
   --color-user: #107c10;
   --color-os: #bc05bc;
   --color-path: #6b6d00;
@@ -16,7 +16,7 @@
   caret-color: var(--primary);
 }
 
-[data-theme="dark"] .terminal {
+:global(.dark) .terminal {
   --color-user: #0cb474;
   --color-os: #c353c3;
   --color-path: #e5e510;

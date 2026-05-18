@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Log, LogType } from "@/types/Terminal";
-import { checkWindows } from "@/libs/checker";
-import terminal from "@/libs/terminal";
+import { checkWindows } from "@/utils/checker";
+import terminal from "@/utils/terminal";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",

@@ -1,156 +1,113 @@
-:root {
-  --font-size: 16px;
-  --font-size-sm: 14px;
-  --font-size-lg: 20px;
-  --font-size-xl: 30px;
-  --font-size-xxl: 40px;
-  --rgb-light: 255, 255, 255;
-  --rgb-dark: 0, 0, 0;
-  --card-shadow:
-    0 1px 2px rgba(var(--rgb-dark), 0.05),
-    1px 0 2px rgba(var(--rgb-dark), 0.05),
-    0 -1px 2px rgba(var(--rgb-dark), 0.05),
-    -1px 0 2px rgba(var(--rgb-dark), 0.05);
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./shadcn.css";
+@import "./tokens.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-html[data-theme="light"] {
-  color-scheme: light;
-
-  --alpha-rgb: var(--rgb-dark);
-  --alpha-rgb-reverse: var(--rgb-light);
-  --primary: #005fb8;
-  --primary-light: #89befc;
-  --primary-dark: #1a85ff;
-
-  --background: #f8f8f8;
-  --foreground: #181818;
-  --foreground-secondary: #dddddd;
-  --background-main: #ffffff;
-  --background-card: rgba(var(--rgb-dark), 0.01);
-  --color-anchor: var(--primary-dark);
-  --border-color: #e5e5e5;
-  --border-color-secondary: #a9a9a9;
-  --item-color: #3b3b3b;
-  --item-background-active: #e2e4ee;
-  --item-background-hover: #f2f2f2;
-  --item-color-active: #3b3b3b;
-  --item-color-inactive: #cdd0d4;
-  --background-input: #ffffff;
-  --border-color-input: #cecece;
-}
-
-html[data-theme="dark"] {
-  color-scheme: dark;
-
-  --alpha-rgb: var(--rgb-light);
-  --alpha-rgb-reverse: var(--rgb-dark);
-  --primary: #0078d4;
-  --primary-light: #3794ff;
-  --primary-dark: #27568c;
-
-  --background: #181818;
-  --foreground: #ededed;
-  --foreground-secondary: #393939;
-  --background-main: #1f1f1f;
-  --background-card: rgba(var(--rgb-dark), 0.1);
-  --color-anchor: var(--primary-light);
-  --border-color: #2b2b2b;
-  --border-color-secondary: #585858;
-  --item-color: #9d9d9d;
-  --item-background-active: #37373d;
-  --item-background-hover: #2a2d2e;
-  --item-color-active: #cccccc;
-  --item-color-inactive: #525252;
-  --background-input: #313131;
-  --border-color-input: #3c3c3c;
-}
-
-/* OS 설정 기본값 */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    color-scheme: dark;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    @apply border-border outline-ring/50;
+  }
+  body {
+    font-size: var(--font-size);
+    font-family: var(--font-noto-sans), Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  input {
+    min-width: 0px;
+    outline: none;
+  }
+  button {
+    outline: none;
+  }
+  button:enabled {
+    cursor: pointer;
   }
 }
 
-@media (prefers-color-scheme: light) {
-  html:not([data-theme]) {
-    color-scheme: light;
+@layer components {
+  .scrollbar::-webkit-scrollbar {
+    /* 세로 */
+    width: 8px;
+    /* 가로 */
+    height: 8px;
   }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --font-size: 14px;
-    --font-size-sm: 12px;
-    --font-size-lg: 18px;
-    --font-size-xl: 24px;
-    --font-size-xxl: 30px;
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent;
   }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  font-size: var(--font-size);
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-noto-sans), Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-input {
-  min-width: 0px;
-  outline: none;
-}
-
-button {
-  outline: none;
-}
-
-button:enabled {
-  cursor: pointer;
-}
-
-.scrollbar::-webkit-scrollbar {
-  /* 세로 스크롤바 */
-  width: 8px;
-  /* 가로 스크롤바 */
-  height: 8px;
-}
-
-.scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5);
-}
-
-.scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 100, 100, 0.7);
-}
-
-.scrollbar::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-
-.scrollbarHidden {
-  scrollbar-width: none;
-}
-
-.scrollbarHidden::-webkit-scrollbar {
-  display: none;
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.5);
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.7);
+  }
+  .scrollbar::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+  .scrollbarHidden {
+    scrollbar-width: none;
+  }
+  .scrollbarHidden::-webkit-scrollbar {
+    display: none;
+  }
 }

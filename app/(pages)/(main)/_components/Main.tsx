@@ -5,7 +5,7 @@ import { getUser } from "@/apis/github";
 import { MdMailOutline } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa6";
 import { SiHtml5 } from "react-icons/si";
-import { SiCss3 } from "react-icons/si";
+import { SiCss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiReact } from "react-icons/si";
@@ -145,7 +145,7 @@ function ScrollChevron() {
 
 const iconMap: Record<string, React.ReactNode> = {
   HTML: <SiHtml5 />,
-  CSS: <SiCss3 />,
+  CSS: <SiCss />,
   JavaScript: <SiJavascript />,
   TypeScript: <SiTypescript />,
   React: <SiReact />,

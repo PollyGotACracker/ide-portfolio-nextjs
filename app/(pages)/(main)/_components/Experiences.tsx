@@ -4,7 +4,7 @@ import List from "@/components/List";
 import Markdown from "@/components/Markdown";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
-import { readJson } from "@/libs/readFile";
+import { readJson } from "@/utils/readFile";
 import { ExperienceType } from "@/types/Data";
 
 const { id, label } = HOME_HEADINGS.EXPERIENCE;

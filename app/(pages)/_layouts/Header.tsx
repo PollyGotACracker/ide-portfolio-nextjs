@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import { useSyncExternalStore } from "react";
 import { usePanel } from "@/providers/PanelProvider";
 import CONFIG from "@/constants/config";
-import { checkWindows } from "@/libs/checker";
+import { checkWindows } from "@/utils/checker";
 import ButtonChip from "@/components/ButtonChip";
 
 const subscribe = () => () => {};

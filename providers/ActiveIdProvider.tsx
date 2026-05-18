@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 import useObserver from "@/hooks/useObserver";
-import { getFirstPath, getLastPathId } from "@/libs/getPath";
+import { getFirstPath, getLastPathId } from "@/utils/getPath";
 import { usePathname } from "next/navigation";
 
 interface ActvieIdContextType {

@@ -2,7 +2,7 @@ import styles from "./Courses.module.css";
 import Heading from "@/components/Heading";
 import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
-import { readJson } from "@/libs/readFile";
+import { readJson } from "@/utils/readFile";
 import { CourseType } from "@/types/Data";
 import { IoMdSquareOutline } from "react-icons/io";
 import { IoMdCheckboxOutline } from "react-icons/io";
