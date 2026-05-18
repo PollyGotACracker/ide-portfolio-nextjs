@@ -2,13 +2,13 @@ import MainLayoutInner from "./MainLayoutInner";
 import SidePanel from "./SidePanel";
 import BottomPanel from "./BottomPanel";
 import Footer from "./Footer";
-import Explorer from "../_components/Explorer";
-import SourceControl from "../_components/SourceControl";
-import Search from "../_components/Search";
-import Extensions from "../_components/Extensions";
-import Problems from "../_components/Problems";
-import Output from "../_components/Output";
-import Terminal from "../_components/Terminal";
+import Explorer from "@/features/panel/Explorer";
+import SourceControl from "@/features/panel/SourceControl";
+import Search from "@/features/panel/Search";
+import Extensions from "@/features/panel/Extensions";
+import Problems from "@/features/panel/Problems";
+import Output from "@/features/panel/Output";
+import Terminal from "@/features/panel/Terminal";
 
 export default function MainLayout({
   children,

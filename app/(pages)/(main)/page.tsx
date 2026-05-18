@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
-import Main from "./_components/Main";
-import Profile from "./_components/Profile";
-import Projects from "./_components/Projects";
-import Experiences from "./_components/Experiences";
-import Trainings from "./_components/Trainings";
-import Courses from "./_components/Courses";
+import Main from "@/features/portfolio/Main";
+import Profile from "@/features/portfolio/Profile";
+import Projects from "@/features/portfolio/Projects";
+import Experiences from "@/features/portfolio/Experiences";
+import Trainings from "@/features/portfolio/Trainings";
+import Courses from "@/features/portfolio/Courses";
 
 export default function Home() {
   return (

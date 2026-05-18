@@ -1,7 +1,7 @@
 import styles from "@/styles/status.module.css";
 import Status from "@/components/svgs/Status";
 import GoHomeButton from "@/components/GoHomeButton";
-import MainLayout from "./(pages)/_layouts/MainLayout";
+import MainLayout from "@/components/layouts/MainLayout";
 import { MESSAGES } from "@/constants/string";
 
 export default function NotFoundPage() {

@@ -4,9 +4,9 @@ import { readMd } from "@/utils/readFile";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ subject: string }>;
+  params: Promise<{ name: string }>;
 }) {
-  const { subject } = await params;
-  const data = await readMd("practice", `${subject}.md`);
+  const { name } = await params;
+  const data = await readMd("practice", `${name}.md`);
   return <Markdown>{data}</Markdown>;
 }

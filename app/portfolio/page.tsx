@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import styles from "./page.module.css";
-import Main from "../(pages)/(main)/_components/Main";
-import Profile from "@/app/(pages)/(main)/_components/Profile";
-import Projects from "@/app/(pages)/(main)/_components/Projects";
-import Experiences from "@/app/(pages)/(main)/_components/Experiences";
-import Trainings from "@/app/(pages)/(main)/_components/Trainings";
-import Courses from "@/app/(pages)/(main)/_components/Courses";
+import Main from "@/features/portfolio/Main";
+import Profile from "@/features/portfolio/Profile";
+import Projects from "@/features/portfolio/Projects";
+import Experiences from "@/features/portfolio/Experiences";
+import Trainings from "@/features/portfolio/Trainings";
+import Courses from "@/features/portfolio/Courses";
 
 export default async function Portfolio() {
   // pdf 생성용 페이지이므로 직접 접근 차단
