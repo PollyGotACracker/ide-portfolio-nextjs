@@ -11,6 +11,7 @@ import {
   DOWNLOAD_FILES,
 } from "@/constants/label";
 import Details from "@/components/Details";
+import Codicon from "@/components/Codicon";
 
 export default function Explorer() {
   const { closeMobileSide } = usePanel();
@@ -33,8 +34,8 @@ export default function Explorer() {
         cClassName={`${styles.menuContainer}${activeStyle}`}
         className={styles.menu}
         title={<div className={styles.menuLink}>{page.label}</div>}
-        openIcon={<i className={`codicon codicon-folder-opened`} />}
-        closeIcon={<i className={`codicon codicon-folder`} />}
+        openIcon={<Codicon name="folder-opened" />}
+        closeIcon={<Codicon name="folder" />}
         initialOpen={isActive}
         showTransition={false}
         onClick={handleOptionalClose}
@@ -49,18 +50,19 @@ export default function Explorer() {
     menu: SubPage[],
     download = false,
   ) {
-    const subpageClass = `codicon codicon-file ${styles.submenuLink}`;
     return (
       <ul>
         {menu.map(({ id, label, separator }) => {
           const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
           const link = !download ? (
-            <Link className={subpageClass} href={href}>
+            <Link className={styles.submenuLink} href={href}>
+              <Codicon name="file" />
               {label}
             </Link>
           ) : (
-            <a className={subpageClass} href={href} download>
+            <a className={styles.submenuLink} href={href} download>
+              <Codicon name="file" />
               {label}
             </a>
           );

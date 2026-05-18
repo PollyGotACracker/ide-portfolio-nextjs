@@ -3,6 +3,7 @@
 import styles from "./BottomPanel.module.css";
 import { useState } from "react";
 import { usePanel } from "@/providers/PanelProvider";
+import Codicon from "@/components/Codicon";
 
 interface BottomPanelProps {
   problems: React.ReactNode;
@@ -45,9 +46,11 @@ export default function BottomPanel({
         {renderButton("output")}
         {renderButton("terminal")}
         <button
-          className={`codicon codicon-close ${styles.closeButton}`}
+          className={styles.closeButton}
           onClick={() => setShowBottom(false)}
-        />
+        >
+          <Codicon name="close" />
+        </button>
       </div>
       <div className={styles.content}>{MENU_CONFIG[activeMenu].comp}</div>
     </div>

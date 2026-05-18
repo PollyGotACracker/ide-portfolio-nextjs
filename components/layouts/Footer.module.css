@@ -30,12 +30,11 @@
   opacity: 0.8;
 }
 
-.wrapper > *[class*="codicon-"],
-.wrapper > * > *[class*="codicon-"] {
+.wrapper .icon {
   font-size: 1rem;
 }
 
-.repoLink[class*="codicon-"] {
+.repoLink {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,8 +43,8 @@
   color: #fff;
 }
 
-.repoLink[class*="codicon-"]:hover,
-.repoLink[class*="codicon-"]:focus {
+.repoLink:hover,
+.repoLink:focus {
   background-color: var(--primary-light);
 }
 
@@ -57,7 +56,7 @@
   column-gap: 5px;
 }
 
-.item > svg {
+.item > .icon {
   font-size: 1rem;
 }
 
@@ -66,8 +65,8 @@
   background-color: var(--item-background-active);
 }
 
-.bell[class*="codicon-"] {
-  display: flex;
+.icon.bell {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 30px;
@@ -85,10 +84,8 @@
 
 /* display: 태블릿 (769px 이상) */
 @media (min-width: 769px) {
-
   .name,
   .lang {
     display: flex;
   }
-
 }

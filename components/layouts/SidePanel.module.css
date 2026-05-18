@@ -55,7 +55,7 @@ button.menuButton.active {
   color: var(--item-color-active);
 }
 
-i.icon[class*="codicon-"] {
+button.menuButton {
   font-size: 1.3rem;
 }
 

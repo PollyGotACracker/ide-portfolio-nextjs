@@ -1,7 +1,8 @@
 import styles from "./GithubCard.module.css";
-import { getUser } from "@/apis/github";
-import ImageBox from "./ImageBox";
 import Link from "next/link";
+import { getUser } from "@/apis/github";
+import ImageBox from "@/components/ImageBox";
+import Codicon from "@/components/Codicon";
 
 export default async function GithubUser() {
   const res = await getUser();
@@ -23,9 +24,7 @@ export default async function GithubUser() {
       <span>
         <span className={styles.user}>{res.login}</span>
         <span className={styles.urlWapper}>
-          <i
-            className={`codicon codicon-github-inverted ${styles.githubIcon}`}
-          />
+          <Codicon name="github-inverted" className={styles.githubIcon} />
           <span className={styles.url}>{res.html_url}</span>
         </span>
         <span className={styles.repoWrapper}>

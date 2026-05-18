@@ -50,7 +50,7 @@
   background-color: var(--item-background-active);
 }
 
-.submenuLink[class*="codicon-"] {
+.submenuLink {
   display: inline-flex;
   align-items: center;
   column-gap: 6px;

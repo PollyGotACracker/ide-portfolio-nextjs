@@ -1,7 +1,8 @@
 "use client";
 
+import Codicon from "./Codicon";
 import styles from "./Details.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface DetailsProps {
   title: string | React.ReactNode;
@@ -35,10 +36,6 @@ export default function Details({
   const activeStyle = isActive ? styles.active : "";
   const chevronClass = isActive ? "chevron-down" : "chevron-right";
 
-  useEffect(() => {
-    setIsActive(initialOpen);
-  }, [initialOpen]);
-
   function handleToggle() {
     if (disabled) return;
     setIsActive((prev) => {
@@ -57,7 +54,7 @@ export default function Details({
         onClick={handleToggle}
         disabled={disabled}
       >
-        {!disabled && <i className={`codicon codicon-${chevronClass}`} />}
+        {!disabled && <Codicon name={chevronClass} />}
         {isActive ? openIcon : closeIcon}
         {title}
       </button>

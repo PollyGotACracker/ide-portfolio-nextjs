@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
 import styles from "./SidePanel.module.css";
 import { useState } from "react";
+import Codicon from "@/components/Codicon";
 
 interface SidePanelProps {
   explorer: React.ReactNode;
@@ -10,14 +11,29 @@ interface SidePanelProps {
   extensions: React.ReactNode;
 }
 
-export default function SidePanel({ explorer, search, sourceControl, extensions }: SidePanelProps) {
+export default function SidePanel({
+  explorer,
+  search,
+  sourceControl,
+  extensions,
+}: SidePanelProps) {
   const [activeMenu, setActiveMenu] = useState<Menu>("explorer");
 
   const MENU_CONFIG = {
     explorer: { icon: "files", name: "Files", scrollbar: true, comp: explorer },
     search: { icon: "search", name: "Search", scrollbar: true, comp: search },
-    sourceControl: { icon: "source-control", name: "Source Control", scrollbar: false, comp: sourceControl },
-    extensions: { icon: "extensions", name: "Extensions", scrollbar: false, comp: extensions },
+    sourceControl: {
+      icon: "source-control",
+      name: "Source Control",
+      scrollbar: false,
+      comp: sourceControl,
+    },
+    extensions: {
+      icon: "extensions",
+      name: "Extensions",
+      scrollbar: false,
+      comp: extensions,
+    },
   } as const;
   type Menu = keyof typeof MENU_CONFIG;
 
@@ -29,10 +45,10 @@ export default function SidePanel({ explorer, search, sourceControl, extensions 
         onClick={() => setActiveMenu(id)}
         name={MENU_CONFIG[id].name}
       >
-        <i className={`${styles.icon} codicon codicon-${MENU_CONFIG[id].icon}`} />
+        <Codicon name={MENU_CONFIG[id].icon} />
       </button>
     );
-  };
+  }
 
   return (
     <aside className={styles.sidebar}>
@@ -42,7 +58,9 @@ export default function SidePanel({ explorer, search, sourceControl, extensions 
         {renderButton("sourceControl")}
         {renderButton("extensions")}
       </div>
-      <div className={`${styles.contentWrapper} ${MENU_CONFIG[activeMenu].scrollbar ? "scrollbar" : "scrollbarHidden"}`}>
+      <div
+        className={`${styles.contentWrapper} ${MENU_CONFIG[activeMenu].scrollbar ? "scrollbar" : "scrollbarHidden"}`}
+      >
         {MENU_CONFIG[activeMenu].comp}
       </div>
     </aside>

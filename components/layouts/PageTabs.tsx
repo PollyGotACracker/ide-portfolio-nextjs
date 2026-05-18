@@ -2,6 +2,7 @@
 
 import styles from "./PageTabs.module.css";
 import buttonChipStyles from "@/components/ButtonChip.module.css";
+import Codicon from "@/components/Codicon";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useActiveId } from "@/providers/ActiveIdProvider";
@@ -104,7 +105,7 @@ function DownloadLink() {
       title="Download Portfolio"
       download
     >
-      <i className="codicon codicon-download" />
+      <Codicon name="download" />
     </a>
   );
 }

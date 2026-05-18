@@ -4,6 +4,8 @@ import Link from "next/link";
 import TimeAgo from "@/components/TimeAgo";
 import { LuGitBranch } from "react-icons/lu";
 import { FaCodeCommit } from "react-icons/fa6";
+import Codicon from "@/components/Codicon";
+import { cn } from "@/utils/cn";
 
 export default async function Footer() {
   const data = await getRepoInfo();
@@ -14,9 +16,11 @@ export default async function Footer() {
         <Link
           href={data.html_url}
           target="_blank"
-          className={`codicon codicon-repo ${styles.repoLink}`}
+          className={styles.repoLink}
           title="Open a Repository"
-        />
+        >
+          <Codicon name="repo" className={styles.icon} />
+        </Link>
         <div
           className={`${styles.branch} ${styles.item} ${styles.highlight}`}
           title={`${data.name} (Git) - ${data.default_branch}`}
@@ -41,11 +45,12 @@ export default async function Footer() {
           className={`${styles.lang} ${styles.item} ${styles.highlight}`}
           title="Language"
         >
-          <i className="codicon codicon-json" />
+          <Codicon name="json" className={styles.icon} />
           <span>{data.language}</span>
         </div>
-        <div
-          className={`codicon codicon-bell ${styles.bell} ${styles.highlight}`}
+        <Codicon
+          name="bell"
+          className={cn(styles.bell, styles.highlight, styles.icon)}
           title="Notifications (Not Supported)"
         />
       </div>
@@ -67,7 +72,7 @@ function CommitTime({
       className={`${styles.commit} ${styles.item}`}
       title={`${name}, ${message}`}
     >
-      <FaCodeCommit />
+      <FaCodeCommit className={styles.icon} />
       <TimeAgo date={date} locale="en" />
     </div>
   );

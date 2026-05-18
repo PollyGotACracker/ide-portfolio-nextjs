@@ -31,17 +31,22 @@
   column-gap: 5px;
 }
 
+button.historyButton,
+button.toggleButton {
+  width: 26px;
+  height: 26px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button.historyButton {
   color: var(--item-color);
 }
 
 button.historyButton:hover {
   color: var(--item-hover-color);
-}
-
-button.historyButton[class*="codicon-"],
-button.toggleButton[class*="codicon-"] {
-  font-size: 1.2rem;
 }
 
 button.toggleButton.right {
