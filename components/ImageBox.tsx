@@ -23,7 +23,7 @@ export default function ImageBox({
     />;
 
   if (isLink) {
-    return <Link href={url} prefetch={false}>{Img}</Link>;
+    return <Link href={src} prefetch={false} scroll={false}>{Img}</Link>;
   } else {
     return Img;
   }
