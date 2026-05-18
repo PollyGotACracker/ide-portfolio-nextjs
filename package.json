@@ -1,5 +1,5 @@
 {
-  "name": "ide-layout",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "pdf": "node scripts/generatePdf.mjs",
-    "deploy": "npm run build && npm run pdf && vercel --prod",
-    "deploy:dev": "npm run build && npm run pdf && vercel"
+    "deploy": "pnpm run build && pnpm run pdf && vercel --prod",
+    "deploy:dev": "pnpm run build && pnpm run pdf && vercel"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

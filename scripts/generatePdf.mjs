@@ -26,7 +26,7 @@ if (!fs.existsSync(dir)) {
 }
 
 // 서버 준비 및 대기(30초)
-const server = spawn("npx", ["next", "start", "-p", PORT], {
+const server = spawn("pnpm", ["start", "-p", PORT], {
   shell: true,
   stdio: "pipe",
 });
