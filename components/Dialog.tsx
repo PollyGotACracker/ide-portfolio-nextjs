@@ -78,6 +78,37 @@ function DialogContent({
   );
 }
 
+function DialogStickyHeader({
+  className,
+  children,
+  showCloseButton = true,
+  ...props
+}: React.ComponentProps<"div"> & {
+  showCloseButton?: boolean;
+}) {
+  return (
+    <div
+      data-slot="dialog-sticky-header"
+      className={cn(
+        "flex items-center justify-between gap-4 shrink-0 px-6 py-4 border-b",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {showCloseButton && (
+        <DialogPrimitive.Close
+          data-slot="dialog-close"
+          className="shrink-0 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        >
+          <MdClose />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      )}
+    </div>
+  );
+}
+
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -145,6 +176,7 @@ export {
   Dialog,
   DialogTrigger,
   DialogContent,
+  DialogStickyHeader,
   DialogHeader,
   DialogFooter,
   DialogTitle,

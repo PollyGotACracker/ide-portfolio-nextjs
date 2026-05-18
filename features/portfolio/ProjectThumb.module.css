@@ -1,0 +1,22 @@
+.thumb {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--background-card);
+  box-shadow: var(--card-shadow);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  overflow: hidden;
+  background-color: rgba(var(--alpha-rgb), 0.05);
+}
+
+.title {
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}

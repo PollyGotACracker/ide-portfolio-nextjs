@@ -22,6 +22,7 @@ export const HOME_HEADINGS: Headings = {
   PROFILE: { id: "profile", label: "소개", separator: "#" },
   // SKILLS: { id: "skills", label: "주요 역량", separator: "#" },
   PROJECTS: { id: "projects", label: "프로젝트", separator: "#" },
+  PROJECTS_TOY: { id: "projects-toy", label: "토이 프로젝트", separator: "#" },
   EXPERIENCE: { id: "experience", label: "경력", separator: "#" },
   TRAINING: { id: "training", label: "교육", separator: "#" },
   COURSES: { id: "courses", label: "강의", separator: "#" },

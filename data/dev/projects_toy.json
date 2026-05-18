@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Project Lorem Ipsum",
+    "repo_url": "/lorem-ipsum-repo",
+    "site_url": "/",
+    "is_active": false,
+    "start_at": "2023.01",
+    "end_at": "2023.06",
+    "images": [
+      "/images/portfolio/image_01.png",
+      "/images/portfolio/image_02.png"
+    ],
+    "stacks": ["Lorem Stack", "Ipsum Stack", "Dolor Stack"],
+    "features": [
+      "Vestibulum lectus **mauris ultrices** eros in cursus.",
+      "Quis hendrerit dolor magna *eget est lorem* ipsum."
+    ],
+    "links": [
+      {
+        "label": "Lorem Documentation",
+        "url": "/"
+      },
+      {
+        "label": "Ipsum Case Study",
+        "url": "/"
+      }
+    ]
+  }
+]

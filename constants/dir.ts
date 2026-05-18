@@ -5,6 +5,7 @@ export const FILES = {
   PROFILE: "profile.json",
   SKILLS: "skills.json",
   PROJECTS: "projects.json",
+  PROJECTS_TOY: "projects_toy.json",
   COURSES: "courses.json",
   EXPERIENCES: "experiences.json",
   TRAININGS: "trainings.json",
