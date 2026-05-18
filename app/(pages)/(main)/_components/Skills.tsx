@@ -7,7 +7,7 @@ import { HOME_HEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
 import { readJson } from "@/utils/readFile";
 import { SiHtml5 } from "react-icons/si";
-import { SiCss3 } from "react-icons/si";
+import { SiCss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiReact } from "react-icons/si";
@@ -46,7 +46,7 @@ export function SkillsUI({ data }: { data: SkillsType }) {
 
 const iconMap: Record<string, React.ReactNode> = {
   HTML: <SiHtml5 />,
-  CSS: <SiCss3 />,
+  CSS: <SiCss />,
   JavaScript: <SiJavascript />,
   TypeScript: <SiTypescript />,
   React: <SiReact />,
