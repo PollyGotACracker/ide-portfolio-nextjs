@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import Codicon from "./Codicon";
 import styles from "./Details.module.css";
 import { useState } from "react";
@@ -33,8 +34,6 @@ export default function Details({
   showTransition = true,
 }: DetailsProps) {
   const [isActive, setIsActive] = useState<boolean>(initialOpen);
-  const activeStyle = isActive ? styles.active : "";
-  const chevronClass = isActive ? "chevron-down" : "chevron-right";
 
   function handleToggle() {
     if (disabled) return;
@@ -46,23 +45,31 @@ export default function Details({
 
   return (
     <div
-      className={`${styles.details} ${activeStyle}${cClassName ? ` ${cClassName}` : ``}`}
+      className={cn(styles.details, cClassName, isActive && styles.active)}
       onClick={onClick}
     >
       <button
-        className={`${styles.summary}${className ? ` ${className}` : ``}`}
+        className={cn(styles.summary, className)}
         onClick={handleToggle}
         disabled={disabled}
       >
-        {!disabled && <Codicon name={chevronClass} />}
+        {!disabled && (
+          <Codicon name={isActive ? "chevron-down" : "chevron-right"} />
+        )}
         {isActive ? openIcon : closeIcon}
         {title}
       </button>
       <div
-        className={`${styles.contentWrapper}${showTransition ? ` ${styles.transition}` : ""}`}
+        className={cn(
+          styles.contentWrapper,
+          showTransition && styles.transition,
+        )}
       >
         <div
-          className={`${styles.content} ${showScrollbar ? "scrollbar" : "scrollbarHidden"}`}
+          className={cn(
+            styles.content,
+            showScrollbar ? "scrollbar" : "scrollbarHidden",
+          )}
         >
           {children}
         </div>

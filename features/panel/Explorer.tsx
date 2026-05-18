@@ -12,6 +12,7 @@ import {
 } from "@/constants/label";
 import Details from "@/components/Details";
 import Codicon from "@/components/Codicon";
+import { cn } from "@/utils/cn";
 
 export default function Explorer() {
   const { closeMobileSide } = usePanel();
@@ -27,11 +28,13 @@ export default function Explorer() {
 
   function renderPage(page: Page, menu: SubPage[]) {
     const isActive = parentPath === page.param;
-    const activeStyle = isActive ? ` ${styles.containerActive}` : ``;
 
     return (
       <Details
-        cClassName={`${styles.menuContainer}${activeStyle}`}
+        cClassName={cn(
+          styles.menuContainer,
+          isActive && styles.containerActive,
+        )}
         className={styles.menu}
         title={<div className={styles.menuLink}>{page.label}</div>}
         openIcon={<Codicon name="folder-opened" />}
@@ -53,7 +56,6 @@ export default function Explorer() {
     return (
       <ul>
         {menu.map(({ id, label, separator }) => {
-          const activeClass = activeId === id ? ` ${styles.active}` : ``;
           const href = `${param}${separator}${id}`;
           const link = !download ? (
             <Link className={styles.submenuLink} href={href}>
@@ -68,7 +70,10 @@ export default function Explorer() {
           );
 
           return (
-            <li className={`${styles.submenu}${activeClass}`} key={id}>
+            <li
+              className={cn(styles.submenu, activeId === id && styles.active)}
+              key={id}
+            >
               {link}
             </li>
           );

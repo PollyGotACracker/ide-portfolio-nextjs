@@ -4,6 +4,7 @@ import { getUserEvents } from "@/apis/github";
 import Details from "@/components/Details";
 import TimeAgo from "@/components/TimeAgo";
 import { EventType } from "@/types/Github";
+import { cn } from "@/utils/cn";
 
 export default async function SourceControl() {
   const data = await getUserEvents();
@@ -14,11 +15,10 @@ export default async function SourceControl() {
         {data.map((i) => {
           if (i.type !== EventType.Push) return null;
           const repoName = i.repo.name.split("/").at(-1);
-          const privateStyle = i.public ? "" : ` ${styles.private}`;
           return (
             <li className={styles.event} key={i.id}>
               <Link
-                className={`${styles.eventLink}${privateStyle}`}
+                className={cn(styles.eventLink, !i.public && styles.private)}
                 href={`https://github.com/${i.repo.name}/commit/${i.payload.head}`}
                 target="_blank"
               >

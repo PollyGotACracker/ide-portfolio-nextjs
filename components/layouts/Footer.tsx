@@ -22,14 +22,14 @@ export default async function Footer() {
           <Codicon name="repo" className={styles.icon} />
         </Link>
         <div
-          className={`${styles.branch} ${styles.item} ${styles.highlight}`}
+          className={cn(styles.branch, styles.item, styles.highlight)}
           title={`${data.name} (Git) - ${data.default_branch}`}
         >
           <LuGitBranch />
           <span>{data.default_branch}</span>
         </div>
         <div
-          className={`${styles.name} ${styles.item}`}
+          className={cn(styles.name, styles.item)}
           title={`Current workspace: ${data.name}`}
         >
           {data.name}
@@ -42,7 +42,7 @@ export default async function Footer() {
           date={commit.commit.author.date}
         />
         <div
-          className={`${styles.lang} ${styles.item} ${styles.highlight}`}
+          className={cn(styles.lang, styles.item, styles.highlight)}
           title="Language"
         >
           <Codicon name="json" className={styles.icon} />
@@ -69,7 +69,7 @@ function CommitTime({
 }) {
   return (
     <div
-      className={`${styles.commit} ${styles.item}`}
+      className={cn(styles.commit, styles.item)}
       title={`${name}, ${message}`}
     >
       <FaCodeCommit className={styles.icon} />

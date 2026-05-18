@@ -4,6 +4,7 @@ import styles from "./MainLayoutInner.module.css";
 import { usePanel } from "@/providers/PanelProvider";
 import Header from "./Header";
 import PageTabs from "./PageTabs";
+import { cn } from "@/utils/cn";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export default function MainLayoutInner({
     >
       <Header />
       <PageTabs />
-      <main className={`${styles.main} scrollbar`}>{children}</main>
+      <main className={cn(styles.main, "scrollbar")}>{children}</main>
       {aside}
       {bottom}
       {footer}

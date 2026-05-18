@@ -12,6 +12,7 @@ import { SiReact } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiReactquery } from "react-icons/si";
 import { SiMockserviceworker } from "react-icons/si";
+import { cn } from "@/utils/cn";
 
 const nameAlt = CONFIG.NEXT_PUBLIC_NAME_ALT;
 const email = CONFIG.NEXT_PUBLIC_EMAIL;
@@ -108,9 +109,10 @@ function MetaList({ items }: { items: MetaItem[] }) {
       {items.map((item, i) => (
         <div
           key={item.label}
-          className={`${styles.metaListRow} ${
-            i === items.length - 1 ? styles.metaListRowLast : ""
-          }`}
+          className={cn(
+            styles.metaListRow,
+            i === items.length - 1 && styles.metaListRowLast,
+          )}
         >
           <dt className={styles.metaListLabel}>{item.label}</dt>
           <dd className={styles.metaListValue}>{item.value}</dd>

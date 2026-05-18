@@ -4,6 +4,7 @@ import styles from "./BottomPanel.module.css";
 import { useState } from "react";
 import { usePanel } from "@/providers/PanelProvider";
 import Codicon from "@/components/Codicon";
+import { cn } from "@/utils/cn";
 
 interface BottomPanelProps {
   problems: React.ReactNode;
@@ -27,10 +28,9 @@ export default function BottomPanel({
   type Menu = keyof typeof MENU_CONFIG;
 
   function renderButton(id: Menu) {
-    const activeStyle = activeMenu === id ? ` ${styles.active}` : "";
     return (
       <button
-        className={`${styles.menuButton}${activeStyle}`}
+        className={cn(styles.menuButton, activeMenu === id && styles.active)}
         onClick={() => setActiveMenu(id)}
         name={MENU_CONFIG[id].name}
       >

@@ -1,10 +1,13 @@
-'use client';
+"use client";
 
 import styles from "./MarkdownPre.module.css";
 import btnStyles from "./Button.module.css";
 import { useRef, useState } from "react";
+import { cn } from "@/utils/cn";
 
-type MarkdownPreProps = { children?: React.ReactNode; } & React.HTMLAttributes<HTMLPreElement>;
+type MarkdownPreProps = {
+  children?: React.ReactNode;
+} & React.HTMLAttributes<HTMLPreElement>;
 export default function MarkdownPre({ children, ...props }: MarkdownPreProps) {
   const [copied, setCopied] = useState(false);
   const textRef = useRef<HTMLPreElement>(null);
@@ -19,10 +22,12 @@ export default function MarkdownPre({ children, ...props }: MarkdownPreProps) {
 
   return (
     <div className={styles.wrapper}>
-      <button onClick={onCopy} className={`${styles.button} ${btnStyles.button}`}>
+      <button onClick={onCopy} className={cn(styles.button, btnStyles.button)}>
         {copied ? "Copied!" : "Copy"}
       </button>
-      <pre ref={textRef} {...props}>{children}</pre>
+      <pre ref={textRef} {...props}>
+        {children}
+      </pre>
     </div>
   );
-};
+}

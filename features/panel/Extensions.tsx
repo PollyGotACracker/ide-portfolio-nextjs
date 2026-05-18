@@ -6,6 +6,7 @@ import { useFontSize } from "@/providers/FontSizeProvider";
 import Details from "@/components/Details";
 import { IoInvertMode } from "react-icons/io5";
 import { RiFontSize2 } from "react-icons/ri";
+import { cn } from "@/utils/cn";
 
 interface ExtensionProps {
   name: string;
@@ -60,7 +61,10 @@ function Extension({
       >{`current: ${state ? onValue : offValue}`}</p>
       <button
         onClick={onToggle}
-        className={`${styles.extButton} ${state ? styles.active : styles.inactive}`}
+        className={cn(
+          styles.extButton,
+          state ? styles.active : styles.inactive,
+        )}
       >
         {state ? "Enabled" : "Disabled"}
       </button>

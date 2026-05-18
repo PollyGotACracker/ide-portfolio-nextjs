@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { Log, LogType } from "@/types/Terminal";
 import { checkWindows } from "@/utils/checker";
 import terminal from "@/utils/terminal";
+import { cn } from "@/utils/cn";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -67,7 +68,7 @@ export default function Terminal() {
   }
   return (
     <div
-      className={`${styles.terminal} ${jetBrainsMono.variable} scrollbar`}
+      className={cn(styles.terminal, jetBrainsMono.variable, "scrollbar")}
       ref={terminalRef}
     >
       <Logs logs={logs} isWindows={isWindows} />

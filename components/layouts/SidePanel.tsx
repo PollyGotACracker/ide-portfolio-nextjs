@@ -3,6 +3,7 @@
 import styles from "./SidePanel.module.css";
 import { useState } from "react";
 import Codicon from "@/components/Codicon";
+import { cn } from "@/utils/cn";
 
 interface SidePanelProps {
   explorer: React.ReactNode;
@@ -38,10 +39,9 @@ export default function SidePanel({
   type Menu = keyof typeof MENU_CONFIG;
 
   function renderButton(id: Menu) {
-    const activeStyle = activeMenu === id ? ` ${styles.active}` : "";
     return (
       <button
-        className={`${styles.menuButton}${activeStyle}`}
+        className={cn(styles.menuButton, activeMenu === id && styles.active)}
         onClick={() => setActiveMenu(id)}
         name={MENU_CONFIG[id].name}
       >
@@ -59,7 +59,10 @@ export default function SidePanel({
         {renderButton("extensions")}
       </div>
       <div
-        className={`${styles.contentWrapper} ${MENU_CONFIG[activeMenu].scrollbar ? "scrollbar" : "scrollbarHidden"}`}
+        className={cn(
+          styles.contentWrapper,
+          MENU_CONFIG[activeMenu].scrollbar ? "scrollbar" : "scrollbarHidden",
+        )}
       >
         {MENU_CONFIG[activeMenu].comp}
       </div>

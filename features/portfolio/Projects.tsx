@@ -12,6 +12,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { PiLinkSimpleBold } from "react-icons/pi";
 import { FaTools } from "react-icons/fa";
 import { FILES } from "@/constants/dir";
+import { cn } from "@/utils/cn";
 
 const { id, label } = HOME_HEADINGS.PROJECTS;
 
@@ -111,7 +112,7 @@ function SiteLink({
             </Link>
           </div>
         ) : (
-          <span className={`${styles.link} ${styles.inactive}`}>{siteUrl}</span>
+          <span className={cn(styles.link, styles.inactive)}>{siteUrl}</span>
         )}
       </div>
     );

@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import styles from "./ButtonChip.module.css";
 
 export default function ButtonChip({
@@ -8,10 +9,7 @@ export default function ButtonChip({
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button
-      className={`${styles.button}${className ? ` ${className}` : ""}`}
-      {...props}
-    >
+    <button className={cn(styles.button, className)} {...props}>
       {children}
     </button>
   );

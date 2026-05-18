@@ -16,6 +16,7 @@ import {
 import { IoBrowsersOutline } from "react-icons/io5";
 import { FaHashtag } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
+import { cn } from "@/utils/cn";
 
 export default function PageTabs() {
   const { activeId, parentPath } = useActiveId();
@@ -45,7 +46,7 @@ export default function PageTabs() {
 
   return (
     <div className={styles.pageTabs}>
-      <ul className={`${styles.tabList} scrollbarHidden`} ref={containerRef}>
+      <ul className={cn(styles.tabList, "scrollbarHidden")} ref={containerRef}>
         {headings &&
           headings.map((i) => (
             <Tab
@@ -72,12 +73,11 @@ type TabProps = {
 } & HeadingItem;
 
 function Tab({ params, isMatched, id, label, separator, ref }: TabProps) {
-  const activeStyle = isMatched ? ` ${styles.active}` : ``;
   return (
     <li ref={ref}>
       <Link
         href={`${params}${separator}${id}`}
-        className={`${styles.tab}${activeStyle}`}
+        className={cn(styles.tab, isMatched && styles.active)}
       >
         {IconMap[separator]}
         <span className={styles.tabLabel}>{label}</span>
@@ -88,7 +88,7 @@ function Tab({ params, isMatched, id, label, separator, ref }: TabProps) {
 
 function LostTab({ path }: { path: string }) {
   return (
-    <li className={`${styles.tab} ${styles.lost}`}>
+    <li className={cn(styles.tab, styles.lost)}>
       <IoBrowsersOutline />
       <span className={styles.tabLabel}>
         {decodeURIComponent(path).replace("/", "")}
@@ -100,7 +100,7 @@ function LostTab({ path }: { path: string }) {
 function DownloadLink() {
   return (
     <a
-      className={`${buttonChipStyles.button} ${styles.download}`}
+      className={cn(buttonChipStyles.button, styles.download)}
       href={`${PAGES.DOWNLOAD.param}${portfolio.separator}${portfolio.id}`}
       title="Download Portfolio"
       download

@@ -9,6 +9,7 @@ import MarkdownPre from "./MarkdownPre";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useTheme } from "@/providers/ThemeProvider";
+import { cn } from "@/utils/cn";
 
 /**
  * [Issue] mismatch error 발생(개발 간헐적, 배포 항상)
@@ -31,10 +32,9 @@ export default function Markdown({
   children,
 }: MarkdownProps) {
   const { themeState } = useTheme();
-  const optionalClass = className ? ` ${className}` : ``;
 
   return (
-    <div className={`${styles.markdown}${optionalClass}`}>
+    <div className={cn(styles.markdown, className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
