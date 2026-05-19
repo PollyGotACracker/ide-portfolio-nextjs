@@ -11,6 +11,8 @@ export const PAGES: Pages = {
   HOME: { param: PATHS.HOME, label: "홈" },
   PRACTICE: { param: PATHS.PRACTICE, label: "연습" },
   COURSES: { param: PATHS.COURSES, label: "강의" },
+  PROJECTS: { param: PATHS.PROJECTS, label: "프로젝트" },
+  IMAGES: { param: PATHS.IMAGES, label: "이미지" },
   DOWNLOAD: { param: PATHS.STATIC_FILES, label: "다운로드" },
 };
 

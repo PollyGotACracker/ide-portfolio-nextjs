@@ -16,6 +16,7 @@ import {
 import { IoBrowsersOutline } from "react-icons/io5";
 import { FaHashtag } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
+import { FaHeartBroken } from "react-icons/fa";
 import { cn } from "@/utils/cn";
 
 export default function PageTabs() {
@@ -66,7 +67,7 @@ export default function PageTabs() {
               />
             );
           })}
-        {!pageLabel && <LostTab path={parentPath} />}
+        {!pageLabel && <LostTab />}
       </ul>
       <div className={styles.rightWrapper}>
         <DownloadLink />
@@ -92,12 +93,13 @@ function Tab({ href, isMatched, label, separator, ref }: TabProps) {
   );
 }
 
-function LostTab({ path }: { path: string }) {
+function LostTab() {
   return (
     <li className={cn(styles.tab, styles.lost)}>
-      <IoBrowsersOutline />
+      <FaHeartBroken />
       <span className={styles.tabLabel}>
-        {decodeURIComponent(path).replace("/", "")}
+        {/* {decodeURIComponent(path).replace("/", "")} */}
+        404
       </span>
     </li>
   );
