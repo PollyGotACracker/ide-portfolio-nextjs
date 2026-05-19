@@ -1,4 +1,5 @@
-import { getRepoCommits, getRepoInfo } from "@/apis/github";
+"use client";
+
 import styles from "./Footer.module.css";
 import Link from "next/link";
 import TimeAgo from "@/components/TimeAgo";
@@ -6,10 +7,15 @@ import { LuGitBranch } from "react-icons/lu";
 import { FaCodeCommit } from "react-icons/fa6";
 import Codicon from "@/components/Codicon";
 import { cn } from "@/utils/cn";
+import { RepoInfo, Commit } from "@/types/Github";
 
-export default async function Footer() {
-  const data = await getRepoInfo();
-  const [commit] = await getRepoCommits({ perPage: 1 });
+interface FooterProps {
+  data: RepoInfo | null;
+  commit: Commit | null;
+}
+
+export default function Footer({ data, commit }: FooterProps) {
+  if (!data) return <footer className={styles.footer} />;
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
@@ -36,11 +42,13 @@ export default async function Footer() {
         </div>
       </div>
       <div className={styles.wrapper}>
-        <CommitTime
-          name={commit.commit.author.name}
-          message={commit.commit.message}
-          date={commit.commit.author.date}
-        />
+        {commit && (
+          <CommitTime
+            name={commit.commit.author.name}
+            message={commit.commit.message}
+            date={commit.commit.author.date}
+          />
+        )}
         <div
           className={cn(styles.lang, styles.item, styles.highlight)}
           title="Language"

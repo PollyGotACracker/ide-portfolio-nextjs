@@ -16,11 +16,14 @@ interface ActvieIdContextType {
 const ActiveIdContext = createContext<ActvieIdContextType | null>(null);
 
 export function useActiveId() {
-  const state = useContext(ActiveIdContext);
-  if (!state) {
-    throw new Error("useActiveId must be used within a ActiveIdProvider.");
-  }
-  return state;
+  const DEFAULT_STATE: ActvieIdContextType = {
+    activeId: null,
+    activeSectionId: null,
+    parentPath: "",
+    lastPathId: "",
+    pathname: "",
+  };
+  return useContext(ActiveIdContext) ?? DEFAULT_STATE;
 }
 
 export default function ActiveIdProvider({

@@ -19,7 +19,7 @@
   --side-padding: var(--panel-padding);
   --bottom-padding: var(--panel-padding);
   --panel-border-color: var(--border-color);
-  --hide-transition: border-color 0s 0.3s;
+  --hide-transition: border-color 0s 0.3s, padding 0s 0.3s;
   --side-transition: var(--hide-transition);
   --bottom-transition: var(--hide-transition);
 
@@ -43,7 +43,7 @@
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr; /* sidepanel: fixed */
+    grid-template-columns: 1fr 0; /* sidepanel: fixed */
     grid-template-rows:
       var(--header-height, 40px) var(--header-height, 40px)
       1fr var(--bottom-height, 200px) var(--footer-height, 30px);
@@ -61,6 +61,7 @@
     --side-transition: right 0.3s ease-in-out;
 
     --bottom-height: 0px;
+    --bottom-padding: 0;
     --bottom-border-color: transparent;
     --bottom-transition: var(--hide-transition);
   }
@@ -75,6 +76,7 @@
     --bottom-toggle-color: var(--item-color-active);
     --bottom-border-color: var(--panel-border-color);
     --bottom-height: var(--bottom-size);
+    --bottom-padding: var(--panel-padding);
     --bottom-transition: none;
   }
 
@@ -116,6 +118,7 @@
     --side-transition: var(--hide-transition);
 
     --bottom-height: 0px;
+    --bottom-padding: 0;
     --bottom-border-color: transparent;
     --bottom-transition: var(--hide-transition);
   }
@@ -131,6 +134,7 @@
     --bottom-toggle-color: var(--item-color-active);
     --bottom-border-color: var(--panel-border-color);
     --bottom-height: var(--bottom-size);
+    --bottom-padding: var(--panel-padding);
     --bottom-transition: none;
   }
 }

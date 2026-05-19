@@ -1,43 +1,43 @@
+"use client";
+
 import styles from "./SourceControl.module.css";
 import Link from "next/link";
-import { getUserEvents } from "@/apis/github";
 import Details from "@/components/Details";
 import TimeAgo from "@/components/TimeAgo";
-import { EventType } from "@/types/Github";
+import { Event, EventType } from "@/types/Github";
 import { cn } from "@/utils/cn";
 
-export default async function SourceControl() {
-  const data = await getUserEvents();
-
+export default function SourceControl({ data }: { data: Event[] }) {
   return (
     <Details title="graph" showScrollbar={true}>
       <ul className={styles.eventList}>
-        {data.map((i) => {
-          if (i.type !== EventType.Push) return null;
-          const repoName = i.repo.name.split("/").at(-1);
-          return (
-            <li className={styles.event} key={i.id}>
-              <Link
-                className={cn(styles.eventLink, !i.public && styles.private)}
-                href={`https://github.com/${i.repo.name}/commit/${i.payload.head}`}
-                target="_blank"
-              >
-                <span className={styles.eventWrapper}>
-                  <span className={styles.eventType}>
-                    {getEventText(i.type)}:
+        {data &&
+          data.map((e) => {
+            if (e.type !== EventType.Push) return null;
+            const repoName = e.repo.name.split("/").at(-1);
+            return (
+              <li className={styles.event} key={e.id}>
+                <Link
+                  className={cn(styles.eventLink, !e.public && styles.private)}
+                  href={`https://github.com/${e.repo.name}/commit/${e.payload.head}`}
+                  target="_blank"
+                >
+                  <span className={styles.eventWrapper}>
+                    <span className={styles.eventType}>
+                      {getEventText(e.type)}:
+                    </span>
+                    <span className={styles.repoName}>{repoName}</span>
                   </span>
-                  <span className={styles.repoName}>{repoName}</span>
-                </span>
-                <span className={styles.desc}>
-                  <span className={styles.refText}>
-                    {getRefText(i.payload.ref)}
+                  <span className={styles.desc}>
+                    <span className={styles.refText}>
+                      {getRefText(e.payload.ref)}
+                    </span>
+                    <TimeAgo date={e.created_at} />
                   </span>
-                  <TimeAgo date={i.created_at} />
-                </span>
-              </Link>
-            </li>
-          );
-        })}
+                </Link>
+              </li>
+            );
+          })}
       </ul>
     </Details>
   );
