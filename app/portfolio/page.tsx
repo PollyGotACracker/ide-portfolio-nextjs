@@ -6,7 +6,6 @@ import Profile from "@/features/portfolio/Profile";
 import Projects from "@/features/portfolio/Projects";
 import Experiences from "@/features/portfolio/Experiences";
 import Trainings from "@/features/portfolio/Trainings";
-import Courses from "@/features/portfolio/Courses";
 
 export default async function Portfolio() {
   // pdf 생성용 페이지이므로 직접 접근 차단
@@ -24,7 +23,6 @@ export default async function Portfolio() {
       <Projects />
       <Experiences />
       <Trainings />
-      <Courses />
     </main>
   );
 }

@@ -9,6 +9,7 @@ import {
   HOME_HEADINGS,
   PRACTICE_HEADINGS,
   DOWNLOAD_FILES,
+  INDEPENDENT_HEADINGS,
 } from "@/constants/label";
 import Details from "@/components/Details";
 import Codicon from "@/components/Codicon";
@@ -41,7 +42,6 @@ export default function Explorer() {
         closeIcon={<Codicon name="folder" />}
         initialOpen={isActive}
         showTransition={false}
-        onClick={handleOptionalClose}
       >
         {renderSubpages(page.param, menu)}
       </Details>
@@ -54,27 +54,23 @@ export default function Explorer() {
     download = false,
   ) {
     return (
-      <ul>
+      <ul className={styles.submenuList}>
         {menu.map(({ id, label, separator }) => {
+          const isActive = activeId === id;
           const href = `${param}${separator}${id}`;
-          const link = !download ? (
-            <Link className={styles.submenuLink} href={href}>
-              <Codicon name="file" />
-              {label}
-            </Link>
-          ) : (
-            <a className={styles.submenuLink} href={href} download>
-              <Codicon name="file" />
-              {label}
-            </a>
-          );
 
           return (
             <li
-              className={cn(styles.submenu, activeId === id && styles.active)}
+              className={cn(
+                styles.submenu,
+                styles.border,
+                isActive && styles.active,
+              )}
               key={id}
             >
-              {link}
+              <MenuLink href={href} download={download}>
+                {label}
+              </MenuLink>
             </li>
           );
         })}
@@ -84,16 +80,49 @@ export default function Explorer() {
 
   return (
     <>
-      <Details title="pages">
-        <nav className={styles.linkList}>
+      <Details title="pages" onClick={handleOptionalClose}>
+        <nav>
           {renderPage(PAGES.HOME, HomeHeadings)}
           {renderPage(PAGES.PRACTICE, PracticeHeadings)}
+          {IndependentHeadings.map((e) => {
+            const href = `/${e.id}`;
+            const isActive = parentPath === href;
+            return (
+              <li
+                className={cn(styles.submenu, isActive && styles.active)}
+                key={e.id}
+              >
+                <MenuLink href={href} download={false}>
+                  {e.label}
+                </MenuLink>
+              </li>
+            );
+          })}
         </nav>
       </Details>
       <Details title="download">
         {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, true)}
       </Details>
     </>
+  );
+}
+
+interface MenuLinkProps {
+  href: string;
+  download: boolean;
+  children: React.ReactNode;
+}
+function MenuLink({ href, download, children }: MenuLinkProps) {
+  return !download ? (
+    <Link className={styles.submenuLink} href={href}>
+      <Codicon name="file" />
+      {children}
+    </Link>
+  ) : (
+    <a className={styles.submenuLink} href={href} download>
+      <Codicon name="file" />
+      {children}
+    </a>
   );
 }
 
@@ -109,4 +138,5 @@ interface SubPage {
 
 const HomeHeadings: SubPage[] = Object.values(HOME_HEADINGS);
 const PracticeHeadings: SubPage[] = Object.values(PRACTICE_HEADINGS);
+const IndependentHeadings: SubPage[] = Object.values(INDEPENDENT_HEADINGS);
 const DownloadFiles: SubPage[] = Object.values(DOWNLOAD_FILES);

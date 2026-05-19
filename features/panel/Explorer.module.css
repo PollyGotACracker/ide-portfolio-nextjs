@@ -1,5 +1,5 @@
 .menu {
-  padding-left: 20px !important;
+  padding-left: 15px !important;
 }
 
 .menuLink {
@@ -12,7 +12,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-left: 45px;
+  padding-left: 35px;
+}
+
+.submenu.border {
+  padding-left: 42px;
 }
 
 .submenu:last-child {
@@ -30,23 +34,26 @@
   background-color: var(--item-background-active);
 }
 
-.submenu:before {
+.submenu.border:before {
   position: absolute;
   content: "";
   display: inline-block;
   width: 1px;
   height: 100%;
   background-color: transparent;
-  transform: translateX(-18px);
+  transform: translateX(-20px);
   transition: background-color 0.2s ease;
 }
 
-.menuContainer.containerActive .submenu:before {
+.menuContainer.containerActive .submenu.border:before,
+.submenuList .submenu.border:before {
   background-color: var(--border-color-secondary);
 }
 
-.menuContainer:not(.containerActive):hover .submenu:before,
-.menuContainer:not(.containerActive):focus .submenu:before {
+.menuContainer:not(.containerActive):hover .submenu.border:before,
+.menuContainer:not(.containerActive):focus .submenu.border:before,
+.submenuList:hover .submenu.border:before,
+.submenuList:focus .submenu.border:before {
   background-color: var(--item-background-active);
 }
 

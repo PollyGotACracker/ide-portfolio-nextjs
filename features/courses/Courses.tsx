@@ -1,13 +1,13 @@
 import styles from "./Courses.module.css";
 import Heading from "@/components/Heading";
 import { FILES } from "@/constants/dir";
-import { HOME_HEADINGS } from "@/constants/label";
+import { INDEPENDENT_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { CourseType } from "@/types/Data";
 import { IoMdSquareOutline } from "react-icons/io";
 import { IoMdCheckboxOutline } from "react-icons/io";
 
-const { id, label } = HOME_HEADINGS.COURSES;
+const { id, label } = INDEPENDENT_HEADINGS.COURSES;
 
 export default async function Courses() {
   const data: CourseType[] = await readJson(FILES.COURSES);

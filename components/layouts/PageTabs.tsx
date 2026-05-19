@@ -19,8 +19,8 @@ import { FaLink } from "react-icons/fa6";
 import { cn } from "@/utils/cn";
 
 export default function PageTabs() {
-  const { activeId, parentPath } = useActiveId();
-  const pageLabel = pageMap.get(parentPath);
+  const { activeId, parentPath, pathname } = useActiveId();
+  const pageLabel = PAGE_MAP.get(parentPath);
   const headings = pageLabel && PAGE_HEADINGS.get(parentPath);
 
   const containerRef = useRef<HTMLUListElement>(null);
@@ -48,15 +48,24 @@ export default function PageTabs() {
     <div className={styles.pageTabs}>
       <ul className={cn(styles.tabList, "scrollbarHidden")} ref={containerRef}>
         {headings &&
-          headings.map((i) => (
-            <Tab
-              key={i.id}
-              ref={activeId === i.id ? activeTabRef : null}
-              isMatched={activeId === i.id}
-              params={parentPath}
-              {...i}
-            />
-          ))}
+          headings.map((e) => {
+            const href = !!e.separator
+              ? `${parentPath}${e.separator}${e.id}`
+              : `/${e.id}`;
+            const isMatched = !!e.separator
+              ? activeId === e.id
+              : pathname === href;
+
+            return (
+              <Tab
+                key={e.id}
+                href={href}
+                ref={isMatched ? activeTabRef : null}
+                isMatched={isMatched}
+                {...e}
+              />
+            );
+          })}
         {!pageLabel && <LostTab path={parentPath} />}
       </ul>
       <div className={styles.rightWrapper}>
@@ -67,18 +76,15 @@ export default function PageTabs() {
 }
 
 type TabProps = {
-  params: string;
+  href: string;
   isMatched: boolean;
   ref?: React.Ref<HTMLLIElement>;
 } & HeadingItem;
 
-function Tab({ params, isMatched, id, label, separator, ref }: TabProps) {
+function Tab({ href, isMatched, label, separator, ref }: TabProps) {
   return (
     <li ref={ref}>
-      <Link
-        href={`${params}${separator}${id}`}
-        className={cn(styles.tab, isMatched && styles.active)}
-      >
+      <Link href={href} className={cn(styles.tab, isMatched && styles.active)}>
         {IconMap[separator]}
         <span className={styles.tabLabel}>{label}</span>
       </Link>
@@ -110,9 +116,10 @@ function DownloadLink() {
   );
 }
 
-const pageMap = new Map(Object.values(PAGES).map((i) => [i.param, i.label]));
+const PAGE_MAP = new Map(Object.values(PAGES).map((i) => [i.param, i.label]));
 const portfolio = DOWNLOAD_FILES.PORTFOLIO;
 const IconMap: Record<Separator, React.ReactNode> = {
   "#": <FaHashtag />,
   "/": <FaLink />,
+  "": <IoBrowsersOutline />,
 };

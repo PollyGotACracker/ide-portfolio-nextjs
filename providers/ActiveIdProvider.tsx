@@ -10,6 +10,7 @@ interface ActvieIdContextType {
   activeSectionId: string | null;
   parentPath: string;
   lastPathId: string;
+  pathname: string;
 }
 
 const ActiveIdContext = createContext<ActvieIdContextType | null>(null);
@@ -35,7 +36,7 @@ export default function ActiveIdProvider({
 
   return (
     <ActiveIdContext.Provider
-      value={{ parentPath, lastPathId, activeSectionId, activeId }}
+      value={{ parentPath, lastPathId, activeSectionId, activeId, pathname }}
     >
       {children}
     </ActiveIdContext.Provider>

@@ -5,7 +5,6 @@ import Projects from "@/features/portfolio/Projects";
 import ProjectsToy from "@/features/portfolio/ProjectsToy";
 import Experiences from "@/features/portfolio/Experiences";
 import Trainings from "@/features/portfolio/Trainings";
-import Courses from "@/features/portfolio/Courses";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
       <ProjectsToy />
       <Experiences />
       <Trainings />
-      <Courses />
     </div>
   );
 }

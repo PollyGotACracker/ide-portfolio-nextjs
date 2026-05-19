@@ -2,7 +2,7 @@ export const PATHS = {
   HOME: "/",
   PRACTICE: "/practice",
   PROJECTS: "/projects",
-  // TROUBLESHOOTING: "/troubleshooting",
+  COURSES: "/courses",
   STATIC_FILES: "/files",
 };
 
