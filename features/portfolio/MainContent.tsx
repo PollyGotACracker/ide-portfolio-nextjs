@@ -8,6 +8,7 @@ import { SiJavascript } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiReact } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
+import { SiAxios } from "react-icons/si";
 import { SiReactquery } from "react-icons/si";
 import { SiMockserviceworker } from "react-icons/si";
 import { SiJest } from "react-icons/si";
@@ -56,6 +57,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "Next.js": (
     <RiNextjsFill size={20} style={{ transform: "translate(-1.8px,-1.8px)" }} />
   ),
+  Axios: <SiAxios />,
   "React-Query": <SiReactquery />,
   MSW: <SiMockserviceworker />,
   Jest: <SiJest />,
@@ -68,6 +70,7 @@ const iconColorMap: Record<string, string> = {
   TypeScript: "49, 120, 198",
   React: "97, 218, 251",
   "Next.js": "0, 0, 0",
+  Axios: "90, 41, 228",
   "React-Query": "255, 65, 84",
   MSW: "255, 106, 51",
   Jest: "194, 19, 37",
