@@ -93,12 +93,13 @@ export default function PanelProvider({
     function onKeyDownCb(e: KeyboardEvent) {
       // Panel
       if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
         const key = e.key;
         switch (key) {
           case "b":
+            e.preventDefault();
             return toggleSide();
           case "j":
+            e.preventDefault();
             return toggleBottom();
         }
       }
