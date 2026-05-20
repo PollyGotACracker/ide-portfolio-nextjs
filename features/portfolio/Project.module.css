@@ -1,6 +1,9 @@
 .project {
-  border-radius: 10px;
   padding-bottom: 10px;
+}
+
+.project.hasStyle {
+  border-radius: 10px;
   background-color: var(--background-card);
   box-shadow: var(--card-shadow);
 }

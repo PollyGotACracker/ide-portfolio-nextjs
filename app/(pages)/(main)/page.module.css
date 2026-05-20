@@ -1,9 +1,14 @@
-/* 첫 번째 요소에만 scroll-snap 적용 */
+.content > section[data-id] {
+  margin-bottom: 60px;
+}
+
 .content {
   /* hydration error 방지 */
   display: block;
+  padding-bottom: 100px;
 }
 
+/* 첫 번째 요소에만 scroll-snap 적용 */
 .content > section:first-child {
   /* .main: scroll-snap-type: y proximity */
   height: var(--full-height);

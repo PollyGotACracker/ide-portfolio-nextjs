@@ -22,7 +22,7 @@ export default function ProjectDialog({ project }: { project: ProjectType }) {
           <DialogTitle>{project.title}</DialogTitle>
         </DialogStickyHeader>
         <div className="scrollbar overflow-y-auto flex-1 p-6">
-          <Project data={project} hasTitle={false} />
+          <Project data={project} hasStyle={false} hasTitle={false} />
         </div>
       </DialogContent>
     </Dialog>

@@ -10,9 +10,15 @@
 .image {
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
   overflow: hidden;
   background-color: rgba(var(--alpha-rgb), 0.05);
+}
+
+.image > img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
 }
 
 .title {

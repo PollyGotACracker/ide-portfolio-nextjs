@@ -8,17 +8,24 @@ import { ProjectType } from "@/types/Data";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { PiLinkSimpleBold } from "react-icons/pi";
-import { FaTools } from "react-icons/fa";
 import { cn } from "@/utils/cn";
 
 interface ProjectProps {
+  /** 프로젝트 데이터 */
   data: ProjectType;
+  /** border-radius, box-shadow, background 유무 */
+  hasStyle?: boolean;
+  /** 제목 유무 */
   hasTitle?: boolean;
 }
 
-export default function Project({ data, hasTitle = true }: ProjectProps) {
+export default function Project({
+  data,
+  hasStyle = true,
+  hasTitle = true,
+}: ProjectProps) {
   return (
-    <div className={styles.project}>
+    <div className={cn(styles.project, hasStyle && styles.hasStyle)}>
       <div className={styles.titleWrapper}>
         {hasTitle && (
           <Heading.H3 className={styles.title}>{data.title}</Heading.H3>
@@ -111,7 +118,6 @@ function SiteLink({
 function StackList({ stacks }: Pick<ProjectType, "stacks">) {
   return (
     <div className={styles.textWrapper}>
-      <FaTools />
       <ul className={styles.stackList}>
         {stacks.map((i) => (
           <li className={styles.stack} key={i}>
