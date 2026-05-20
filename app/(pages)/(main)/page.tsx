@@ -1,6 +1,5 @@
 import styles from "./page.module.css";
 import Main from "@/features/portfolio/Main";
-import Profile from "@/features/portfolio/Profile";
 import Projects from "@/features/portfolio/Projects";
 import ProjectsToy from "@/features/portfolio/ProjectsToy";
 import Experiences from "@/features/portfolio/Experiences";
@@ -11,7 +10,6 @@ export default function Home() {
     <div className={styles.content}>
       <Main />
       <div className={styles.stopper} />
-      <Profile />
       <Projects />
       <ProjectsToy />
       <Experiences />

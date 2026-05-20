@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import styles from "./page.module.css";
 import Main from "@/features/portfolio/Main";
-import Profile from "@/features/portfolio/Profile";
 import Projects from "@/features/portfolio/Projects";
 import Experiences from "@/features/portfolio/Experiences";
 import Trainings from "@/features/portfolio/Trainings";
@@ -19,7 +18,6 @@ export default async function Portfolio() {
   return (
     <main className={styles.printPage}>
       <Main chevron={false} />
-      <Profile />
       <Projects />
       <Experiences />
       <Trainings />
