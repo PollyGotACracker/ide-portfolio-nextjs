@@ -1,9 +1,10 @@
+// REMOVED
+
 import styles from "./Skills.module.css";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
 import List from "@/components/List";
 import { SkillsType } from "@/types/Data";
-import { HOME_HEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
 import { readJson } from "@/utils/readFile";
 import { SiHtml5 } from "react-icons/si";
@@ -15,7 +16,7 @@ import { RiNextjsFill } from "react-icons/ri";
 import { SiReactquery } from "react-icons/si";
 import { SiMockserviceworker } from "react-icons/si";
 
-const { id, label } = HOME_HEADINGS.SKILLS;
+const { id, label } = { id: "skills", label: "기술 스택" };
 
 export default async function Skills() {
   const data: SkillsType = await readJson(FILES.SKILLS);

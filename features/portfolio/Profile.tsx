@@ -1,14 +1,19 @@
+// REMOVED
+
 import styles from "./Profile.module.css";
 import Heading from "@/components/Heading";
 import Markdown from "@/components/Markdown";
 import { ProfileType } from "@/types/Data";
-import { HOME_HEADINGS, HOME_SUBHEADINGS } from "@/constants/label";
 import { FILES } from "@/constants/dir";
 import { readJson } from "@/utils/readFile";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaCertificate } from "react-icons/fa6";
 
-const { id, label } = HOME_HEADINGS.PROFILE;
+const { id, label } = { id: "profile", label: "소개" };
+const HOME_SUBHEADINGS = {
+  EDUCATION: { id: "education", label: "학력", separator: "#" },
+  CERTIFICATIONS: { id: "certifications", label: "자격증", separator: "#" },
+};
 
 export default async function Profile() {
   const data: ProfileType = await readJson(FILES.PROFILE);

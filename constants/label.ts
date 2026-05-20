@@ -21,11 +21,7 @@ export const HOME_HEADINGS: Headings = {
   PROJECTS_TOY: { id: "projects-toy", label: "토이 프로젝트", separator: "#" },
   EXPERIENCE: { id: "experience", label: "경력", separator: "#" },
   TRAINING: { id: "training", label: "교육", separator: "#" },
-};
-
-export const HOME_SUBHEADINGS: Headings = {
-  EDUCATION: { id: "education", label: "학력", separator: "#" },
-  CERTIFICATIONS: { id: "certifications", label: "자격증", separator: "#" },
+  PINNED_REPOS: { id: "pinned-repos", label: "주요 저장소", separator: "#" },
 };
 
 export const PRACTICE_HEADINGS: Headings = {

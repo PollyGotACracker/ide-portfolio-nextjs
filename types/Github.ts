@@ -11,7 +11,7 @@ export enum EventType {
 }
 export interface Event {
   id: string;
-  type: EventType,
+  type: EventType;
   actor: {
     id: number;
     login: string;
@@ -19,19 +19,19 @@ export interface Event {
     gravator_id: string;
     url: string;
     avatar_url: string;
-  },
+  };
   repo: {
     id: number;
     name: string;
     url: string;
-  },
+  };
   payload: {
     repository_id: number;
     push_id: number;
     ref: string;
     head: string;
     before: string;
-  },
+  };
   public: boolean;
   created_at: string;
 }
@@ -65,4 +65,11 @@ export interface Commit {
       date: string;
     };
   };
+}
+
+export interface PinnedRepo {
+  name: string;
+  description: string;
+  url: string;
+  primaryLanguage: { name: string; color: string } | null;
 }
