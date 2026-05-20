@@ -85,6 +85,14 @@
   }
 }
 
+@media print {
+  html,
+  body {
+    background: white !important;
+    background-color: white !important;
+  }
+}
+
 @layer components {
   .scrollbar::-webkit-scrollbar {
     /* 세로 */
