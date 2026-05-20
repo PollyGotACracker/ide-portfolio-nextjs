@@ -5,6 +5,14 @@
     background-color: white !important;
   }
 
+  .printPage {
+    /* Main .heroContent:after 제거 */
+    --hero-glow-display: none;
+    /* 좌우 box-shadow 잘림 방지 */
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
   .printPage :global(#projects),
   .printPage :global(#training) {
     page-break-before: always;

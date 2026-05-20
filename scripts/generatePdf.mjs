@@ -7,12 +7,39 @@
 // 빌드 결과물을 기반으로 실행(next start)
 import fs from "fs";
 import path from "path";
-import { spawn } from "child_process";
+import { spawn, execSync } from "child_process";
 import puppeteer from "puppeteer";
 import "dotenv/config"; // .env 읽기
 
 const BASE_URL = "http://localhost";
 const PORT = "3333";
+
+// 포트를 점유하고 있는 서버 강제 종료
+// pdf 파일이 최신 상태로 생성되지 않는 상황 방지
+try {
+  if (process.platform === "win32") {
+    const result = execSync(`netstat -ano | findstr :${PORT}`, {
+      stdio: "pipe",
+    }).toString();
+    const pids = [
+      ...new Set(
+        result
+          .trim()
+          .split("\n")
+          .map((l) => l.trim().split(/\s+/).at(-1))
+          .filter((p) => /^\d+$/.test(p)),
+      ),
+    ];
+    pids.forEach((pid) => {
+      try {
+        execSync(`taskkill /F /PID ${pid}`, { stdio: "pipe" });
+      } catch {}
+    });
+  } else {
+    execSync(`lsof -ti:${PORT} | xargs kill -9`, { stdio: "pipe" });
+  }
+} catch {}
+
 const URL = `${BASE_URL}:${PORT}`;
 const STATIC_PATH_TARGET = "public/files";
 const STATIC_PATH_FONT = "public/fonts/NanumGothic-Regular.ttf";
@@ -82,6 +109,7 @@ for (const { pagePath, filePath } of pages) {
       src: url(data:font/truetype;base64,${fontBase64}) format('truetype');
     }
     * { font-family: 'NanumGothic' !important; }
+    .codicon { font-family: codicon !important; }
   `,
   });
   await page.evaluate(() => document.fonts.ready);
