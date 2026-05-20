@@ -7,7 +7,9 @@ import List from "@/components/List";
 import { ProjectType } from "@/types/Data";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
-import { PiLinkSimpleBold } from "react-icons/pi";
+import { MdMonitor } from "react-icons/md";
+import { MdLink } from "react-icons/md";
+import { GoLinkExternal } from "react-icons/go";
 import { cn } from "@/utils/cn";
 
 interface ProjectProps {
@@ -95,7 +97,7 @@ function SiteLink({
   if (siteUrl)
     return (
       <div className={styles.textWrapper}>
-        <PiLinkSimpleBold />
+        <MdMonitor />
         {isActive ? (
           <div className={styles.linkWrapper}>
             <img
@@ -133,8 +135,19 @@ function FeatureList({ features }: Pick<ProjectType, "features">) {
   return (
     <List className={styles.FeatureList}>
       {features.map((i) => (
-        <li className={styles.feature} key={i}>
-          <Markdown>{i}</Markdown>
+        <li className={styles.feature} key={i.title}>
+          <div>
+            <Markdown>{i.title}</Markdown>
+            {i.details && (
+              <List className={styles.detailList}>
+                {i.details.map((d) => (
+                  <li key={d}>
+                    <Markdown>{d}</Markdown>
+                  </li>
+                ))}
+              </List>
+            )}
+          </div>
         </li>
       ))}
     </List>
@@ -147,10 +160,13 @@ function ExtraLinks({ links }: Pick<ProjectType, "links">) {
       <ul className={styles.extraLinkList}>
         {links?.map((i) => (
           <li className={styles.textWrapper} key={i.label}>
-            <PiLinkSimpleBold />
-            <Link className={styles.link} href={i.url} prefetch={false}>
-              {i.label}
-            </Link>
+            <MdLink />
+            <div className={styles.linkWrapper}>
+              <Link className={styles.link} href={i.url} prefetch={false}>
+                {i.label}
+              </Link>
+              <GoLinkExternal />
+            </div>
           </li>
         ))}
       </ul>

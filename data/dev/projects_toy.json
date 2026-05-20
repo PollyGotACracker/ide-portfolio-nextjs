@@ -12,8 +12,8 @@
     ],
     "stacks": ["Lorem Stack", "Ipsum Stack", "Dolor Stack"],
     "features": [
-      "Vestibulum lectus **mauris ultrices** eros in cursus.",
-      "Quis hendrerit dolor magna *eget est lorem* ipsum."
+      { "title": "Vestibulum lectus **mauris ultrices** eros in cursus." },
+      { "title": "Quis hendrerit dolor magna *eget est lorem* ipsum." }
     ],
     "links": [
       {

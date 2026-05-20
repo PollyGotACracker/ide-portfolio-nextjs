@@ -1,25 +1,25 @@
 /* 소개 */
 export interface ProfileType {
-  about: string; // markdown
-  educations: EducationType[],
-  certifications: CertificationType[];
+  about: string;
+  skills: string[];
+  strengths: string[];
 }
 
-/* 학력 */
-export interface EducationType {
-  degree: string;
-  major: string;
-  institution: string;
-  start_at: string;
-  end_at?: string;
-}
+// /* 학력 */
+// export interface EducationType {
+//   degree: string;
+//   major: string;
+//   institution: string;
+//   start_at: string;
+//   end_at?: string;
+// }
 
-/* 자격증 */
-export interface CertificationType {
-  name: string;
-  date: string;
-  issuer: string;
-}
+// /* 자격증 */
+// export interface CertificationType {
+//   name: string;
+//   date: string;
+//   issuer: string;
+// }
 
 /* 주요 역량 */
 export interface SkillsType {
@@ -42,8 +42,8 @@ export interface ProjectType {
   end_at?: string;
   images?: string[];
   stacks: string[];
-  features: string[]; // markdown
-  links?: { label: string; url: string; }[];
+  features: { title: string; details?: string[] }[]; // markdown
+  links?: { label: string; url: string }[];
 }
 
 /* 경력 */
@@ -63,7 +63,7 @@ export interface TrainingType {
   end_at?: string;
   institution: string;
   description?: string[]; // markdown
-  links?: { label: string; url: string; is_active?: boolean }[];
+  links?: { label: string; url: string }[];
 }
 
 /* 강의 */

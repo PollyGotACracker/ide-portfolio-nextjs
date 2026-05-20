@@ -1,19 +1,15 @@
 import styles from "./Main.module.css";
 import Link from "next/link";
+import type { ProfileType } from "@/types/Data";
+import type { User } from "@/types/Github";
 import CONFIG from "@/constants/config";
 import { cn } from "@/utils/cn";
-import type { User } from "@/types/Github";
 import { MdMailOutline } from "react-icons/md";
 import { GoLinkExternal } from "react-icons/go";
 
 const email = CONFIG.NEXT_PUBLIC_EMAIL;
-const strengths = [
-  "관심 분야에 깊이 파고드는 학습 태도",
-  "기술 스택별 repository로 체계적인 정리 습관",
-  "매일 기술 아티클을 읽는 꾸준함",
-];
 
-export default function MainAside({ data }: { data: User }) {
+export default function MainAside({ data }: { data: User & ProfileType }) {
   return (
     <aside className={styles.heroSide}>
       <MetaList
@@ -57,7 +53,7 @@ export default function MainAside({ data }: { data: User }) {
           },
         ]}
       />
-      <StrengthList items={strengths} />
+      <StrengthList items={data.strengths} />
     </aside>
   );
 }

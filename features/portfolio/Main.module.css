@@ -62,7 +62,7 @@
   letter-spacing: -0.02em;
 }
 
-.heroIntro {
+.heroAbout {
   line-height: 1.7;
   color: rgba(var(--alpha-rgb), 0.6);
   margin: 0 0 1.5rem;

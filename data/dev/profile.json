@@ -1,19 +1,15 @@
 {
-  "about": "## Lorem Ipsum Profile\n\nLorem ipsum dolor sit amet, **consectetur adipiscing elit**. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "educations": [
-    {
-      "degree": "Lorem Degree",
-      "major": "Ipsum Major",
-      "institution": "Lorem University",
-      "start_at": "2015.03",
-      "end_at": "2019.02"
-    }
+  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "React-Query",
+    "MSW",
+    "Jest"
   ],
-  "certifications": [
-    {
-      "name": "Lorem Certification Plus",
-      "date": "2020.05.20",
-      "issuer": "Ipsum Association"
-    }
-  ]
+  "strengths": ["strength1", "strength2", "strength3"]
 }

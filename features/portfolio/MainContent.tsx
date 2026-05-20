@@ -11,23 +11,11 @@ import { RiNextjsFill } from "react-icons/ri";
 import { SiReactquery } from "react-icons/si";
 import { SiMockserviceworker } from "react-icons/si";
 import { SiJest } from "react-icons/si";
+import { ProfileType } from "@/types/Data";
 
 const nameAlt = CONFIG.NEXT_PUBLIC_NAME_ALT;
 
-const intro = `관심 있는 분야에 깊이 파고들기를 좋아합니다.\n어려운 과제의 해결 방법을 고민하며, 배운 것을 꾸준히 정리합니다.`;
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "React-Query",
-  "MSW",
-  "Jest",
-];
-
-export default function MainContent() {
+export default function MainContent({ data }: { data: ProfileType }) {
   function changeCircleToSkillColor(e: React.MouseEvent<HTMLDivElement>) {
     const hero = e.currentTarget.closest(
       `.${styles.heroContent}`,
@@ -42,9 +30,9 @@ export default function MainContent() {
     <div className={styles.heroContent}>
       <div className={styles.heroEyebrow}>Frontend Developer</div>
       <h1 className={styles.heroName}>{nameAlt}</h1>
-      <p className={styles.heroIntro}>{intro}</p>
+      <p className={styles.heroAbout}>{data.about}</p>
       <div className={styles.skillIcons}>
-        {skills.map((skill) => (
+        {data.skills.map((skill) => (
           <div
             key={skill}
             className={styles.skillIcon}

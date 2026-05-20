@@ -1,9 +1,0 @@
-ul.skillList {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
-
-.capabilityList {
-  padding-left: 15px;
-}
