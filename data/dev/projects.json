@@ -10,11 +10,7 @@
       "/images/portfolio/image_01.png",
       "/images/portfolio/image_02.png"
     ],
-    "stacks": [
-      "Lorem Stack",
-      "Ipsum Stack",
-      "Dolor Stack"
-    ],
+    "stacks": ["Lorem Stack", "Ipsum Stack", "Dolor Stack"],
     "features": [
       "Vestibulum lectus **mauris ultrices** eros in cursus.",
       "Quis hendrerit dolor magna *eget est lorem* ipsum."

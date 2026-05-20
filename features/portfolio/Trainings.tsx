@@ -7,8 +7,8 @@ import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { TrainingType } from "@/types/Data";
-import { PiLinkSimpleBold } from "react-icons/pi";
-import { cn } from "@/utils/cn";
+import { MdLink } from "react-icons/md";
+import { GoLinkExternal } from "react-icons/go";
 
 const { id, label } = HOME_HEADINGS.TRAINING;
 
@@ -23,14 +23,13 @@ function Links({ links }: Pick<TrainingType, "links">) {
     <ul className={styles.linkList}>
       {links.map((i) => (
         <li className={styles.textWrapper} key={i.label}>
-          <PiLinkSimpleBold />
-          {i.is_active !== false ? (
+          <MdLink />
+          <div className={styles.linkWrapper}>
             <Link className={styles.link} href={i.url} prefetch={false}>
               {i.label}
             </Link>
-          ) : (
-            <span className={cn(styles.link, styles.inactive)}>{i.label}</span>
-          )}
+            <GoLinkExternal />
+          </div>
         </li>
       ))}
     </ul>
