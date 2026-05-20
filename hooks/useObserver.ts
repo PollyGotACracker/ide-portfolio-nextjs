@@ -25,7 +25,7 @@ export default function useObserver(selectors: string) {
         }
       });
     }, {
-      rootMargin: "-10% 0px -70% 0px",
+      rootMargin: "-10% 0px -50% 0px",
       threshold: 0
     });
 
