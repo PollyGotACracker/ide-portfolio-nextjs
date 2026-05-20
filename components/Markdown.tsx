@@ -4,6 +4,7 @@
 import styles from "./Markdown.module.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import MarkdownPre from "./MarkdownPre";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -36,7 +37,7 @@ export default function Markdown({
   return (
     <div className={cn(styles.markdown, className)}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkBreaks]}
         components={{
           pre: MarkdownPre,
           p: ({ children }) => <div>{children}</div>,
