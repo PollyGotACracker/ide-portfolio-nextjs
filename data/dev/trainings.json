@@ -8,6 +8,13 @@
       "Comprehensive study of **Lorem Algorithms**.",
       "Practical application of *Ipsum Data Structures*.",
       "Final project on **Dolor Integration**."
+    ],
+    "links": [
+      {
+        "label": "Lorem Study Notes",
+        "url": "https://example.com/lorem-notes",
+        "is_active": false
+      }
     ]
   }
 ]

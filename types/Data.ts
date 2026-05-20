@@ -63,6 +63,7 @@ export interface TrainingType {
   end_at?: string;
   institution: string;
   description?: string[]; // markdown
+  links?: { label: string; url: string; is_active?: boolean }[];
 }
 
 /* 강의 */

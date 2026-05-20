@@ -46,3 +46,40 @@
   padding-bottom: 15px;
   border-top: 1px solid var(--border-color);
 }
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  row-gap: 5px;
+  border-top: 1px solid var(--border-color);
+}
+
+.textWrapper {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.textWrapper > svg {
+  flex-shrink: 0;
+}
+
+.link {
+  color: var(--color-anchor);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  word-break: break-all;
+}
+
+.link:not(.inactive):hover,
+.link:not(.inactive):focus {
+  border-color: var(--color-anchor);
+}
+
+.link.inactive {
+  color: var(--item-color-inactive);
+  text-decoration: line-through;
+  cursor: default;
+  pointer-events: none;
+}

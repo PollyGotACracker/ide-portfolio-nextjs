@@ -1,4 +1,5 @@
 import styles from "./Trainings.module.css";
+import Link from "next/link";
 import Heading from "@/components/Heading";
 import List from "@/components/List";
 import Markdown from "@/components/Markdown";
@@ -6,12 +7,34 @@ import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { TrainingType } from "@/types/Data";
+import { PiLinkSimpleBold } from "react-icons/pi";
+import { cn } from "@/utils/cn";
 
 const { id, label } = HOME_HEADINGS.TRAINING;
 
 export default async function Trainings() {
   const data: TrainingType[] = await readJson(FILES.TRAININGS);
   return <TrainingsUI data={data} />;
+}
+
+function Links({ links }: Pick<TrainingType, "links">) {
+  if (!links?.length) return null;
+  return (
+    <ul className={styles.linkList}>
+      {links.map((i) => (
+        <li className={styles.textWrapper} key={i.label}>
+          <PiLinkSimpleBold />
+          {i.is_active !== false ? (
+            <Link className={styles.link} href={i.url} prefetch={false}>
+              {i.label}
+            </Link>
+          ) : (
+            <span className={cn(styles.link, styles.inactive)}>{i.label}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export function TrainingsUI({ data }: { data: TrainingType[] }) {
@@ -38,6 +61,7 @@ export function TrainingsUI({ data }: { data: TrainingType[] }) {
                   ))}
                 </List>
               )}
+              <Links links={i?.links} />
             </div>
           </li>
         ))}
