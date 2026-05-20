@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import { Log } from "../types/Terminal";
-import { useRouter } from 'next/navigation';
-import { HOME_HEADINGS, PRACTICE_HEADINGS } from "@/constants/label";
+import { useRouter } from "next/navigation";
 import { PATHS } from "@/constants/path";
 import CONFIG from "@/constants/config";
+import { TERMINAL_CD_MAP } from "@/constants/label";
 
 type SetLogs = Dispatch<SetStateAction<Log[][]>>;
 type Router = ReturnType<typeof useRouter>;
@@ -20,21 +20,14 @@ export class CreateTerminal {
 
   private id: number = 0;
   private cmdIndex = -1;
-  private headingMap = new Map<string, string>(
-    [
-      ...Object.values(HOME_HEADINGS).map((i): [string, string] => [i.label, `${PATHS.HOME}${i.separator}${i.id}`]),
-      ...Object.values(PRACTICE_HEADINGS).map((i): [string, string] => [i.label, `${PATHS.PRACTICE}${i.separator}${i.id}`]),
-    ]
-  );
 
-  create({
-    setLogs, router }: CreateMethodsParams) {
+  create({ setLogs, router }: CreateMethodsParams) {
     this.setLogs = setLogs;
     this.router = router;
-  };
+  }
 
   private get methods() {
-    const { router, setLogs, headingMap, downloadFile } = this;
+    const { router, setLogs, downloadFile } = this;
     return {
       help() {
         return [
@@ -46,22 +39,24 @@ export class CreateTerminal {
           `   wget <file>     Download pdf file`,
           `       portfolio`,
           `   clear           Clear terminal`,
-        ].join('\n');
+        ].join("\n");
       },
       about() {
         return [
           `> ${CONFIG.NICKNAME}'s Portfolio v1.0`,
           `> Frontend Developer`,
           `> Contact: ${CONFIG.NEXT_PUBLIC_EMAIL}`,
-        ].join('\n');
+        ].join("\n");
       },
-      echo(value: string) { return value; },
+      echo(value: string) {
+        return value;
+      },
       cd(value: string) {
         if (!value) {
           return router.push(`/`);
         }
 
-        const headingId = headingMap.get(value);
+        const headingId = TERMINAL_CD_MAP.get(value);
         if (headingId) {
           return router.push(headingId);
         }
@@ -91,9 +86,11 @@ export class CreateTerminal {
             return `bash: wget: ${filename}: No such file`;
         }
       },
-      clear() { setLogs([]); }
+      clear() {
+        setLogs([]);
+      },
     };
-  };
+  }
 
   private alias: Record<string, string> = {};
 
@@ -102,18 +99,18 @@ export class CreateTerminal {
       id: this.id,
       type,
       text,
-      path
+      path,
     };
     this.id++;
     return log;
   }
 
   private downloadFile(filename: string, ext: string) {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = `${PATHS.STATIC_FILES}/${filename}.${ext}`;
     link.download = `${filename}.pdf`;
     link.click();
-  };
+  }
 
   exec(name: string) {
     const [cmd, ...rest] = name.split(" ");
@@ -123,7 +120,7 @@ export class CreateTerminal {
       return `bash: ${key}: command not found\nType 'help' to see available commands`;
     }
     return this.methods[key as keyof typeof this.methods](args);
-  };
+  }
 
   insertInput({ text, path }: Pick<CreateLogParams, "text" | "path">) {
     this.inputs.push(text);
@@ -157,12 +154,13 @@ export class CreateTerminal {
   }
 
   get nextCmd() {
-    if (this.inputs.length === 0 || this.cmdIndex === this.inputs.length) return;
+    if (this.inputs.length === 0 || this.cmdIndex === this.inputs.length)
+      return;
     this.cmdIndex++;
     const req = this.inputs?.[this.cmdIndex];
     return req ?? "";
   }
-};
+}
 
 const terminal = new CreateTerminal();
 export default terminal;

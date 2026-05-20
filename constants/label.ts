@@ -1,3 +1,4 @@
+import { getMapItemFromHeading } from "@/utils/getPath";
 import { PATHS } from "./path";
 
 export type Separator = "/" | "#" | "";
@@ -44,4 +45,10 @@ export const PAGE_HEADINGS: PageHeadingsMap = new Map([
   [PATHS.HOME, Object.values(HOME_HEADINGS)],
   [PATHS.PRACTICE, Object.values(PRACTICE_HEADINGS)],
   [PATHS.COURSES, [INDEPENDENT_HEADINGS.COURSES]],
+]);
+
+export const TERMINAL_CD_MAP = new Map<string, string>([
+  ...getMapItemFromHeading(PATHS.HOME, HOME_HEADINGS),
+  ...getMapItemFromHeading(PATHS.PRACTICE, PRACTICE_HEADINGS),
+  ...getMapItemFromHeading("", INDEPENDENT_HEADINGS),
 ]);
