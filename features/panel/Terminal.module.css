@@ -13,7 +13,7 @@
   --color-os: #bc05bc;
   --color-path: #6b6d00;
   --color-branch: #037a98;
-  caret-color: var(--primary);
+  /* caret-color: var(--primary); */
 }
 
 :global(.dark) .terminal {
@@ -21,7 +21,7 @@
   --color-os: #c353c3;
   --color-path: #e5e510;
   --color-branch: #11a8cd;
-  caret-color: var(--foreground);
+  /* caret-color: var(--foreground); */
 }
 
 .logs > .item {
