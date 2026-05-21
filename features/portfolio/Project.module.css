@@ -125,6 +125,15 @@
   row-gap: 5px;
 }
 
+.FeatureList {
+  row-gap: 12px;
+}
+
+.FeatureList .detailList {
+  margin-top: 4px;
+  row-gap: 4px;
+}
+
 .FeatureList .detailList li::before {
   content: "∘";
 }
