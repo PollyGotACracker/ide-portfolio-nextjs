@@ -21,17 +21,18 @@ export interface ProfileType {
 //   issuer: string;
 // }
 
-/* 주요 역량 */
-export interface SkillsType {
-  frontend: {
-    name: string;
-    capabilities: string[]; // markdown
-  }[];
-  infra: string[];
-  design: string[];
-  backend: string[];
-}
+// /* 주요 역량 */
+// export interface SkillsType {
+//   frontend: {
+//     name: string;
+//     capabilities: string[]; // markdown
+//   }[];
+//   infra: string[];
+//   design: string[];
+//   backend: string[];
+// }
 
+export type LinkType = { label: string; url?: string };
 /* 프로젝트 */
 export type ProjectTypeValue =
   | "team"
@@ -50,7 +51,7 @@ export interface ProjectType {
   images?: string[];
   stacks: string[];
   features: { title: string; details?: string[] }[]; // markdown
-  links?: { label: string; url: string }[];
+  links?: LinkType[];
 }
 
 /* 경력 */
@@ -63,7 +64,7 @@ export interface ExperienceType {
   responsibilities: string[]; // markdown
   stacks: string[];
   description?: string[]; // markdown
-  links?: { label: string; url?: string }[];
+  links?: LinkType[];
 }
 
 /* 교육(훈련) */
@@ -73,7 +74,7 @@ export interface TrainingType {
   end_at?: string;
   institution: string;
   description?: string[]; // markdown
-  links?: { label: string; url: string }[];
+  links?: LinkType[];
 }
 
 /* 강의 */

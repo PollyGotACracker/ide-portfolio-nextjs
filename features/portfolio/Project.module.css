@@ -122,6 +122,7 @@
 .extraLinkList {
   display: flex;
   flex-direction: column;
+  row-gap: 5px;
 }
 
 .FeatureList .detailList li::before {

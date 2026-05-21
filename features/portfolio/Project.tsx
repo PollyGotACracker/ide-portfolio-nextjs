@@ -1,5 +1,4 @@
 import styles from "./Project.module.css";
-import Link from "next/link";
 import Markdown from "@/components/Markdown";
 import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
@@ -9,8 +8,8 @@ import ProjectTypeTag from "@/components/ProjectTypeTag";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
+import Anchor from "@/components/Anchor";
 import { MdLink } from "react-icons/md";
-import { GoLinkExternal } from "react-icons/go";
 import { cn } from "@/utils/cn";
 
 interface ProjectProps {
@@ -73,9 +72,7 @@ function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"] }) {
     return (
       <div className={styles.textWrapper}>
         <FaGithub />
-        <Link className={styles.link} href={repoUrl} prefetch={false}>
-          {repoName}
-        </Link>
+        <Anchor href={repoUrl} showIcon={false}>{repoName}</Anchor>
       </div>
     );
 }
@@ -102,21 +99,17 @@ function SiteLink({
     return (
       <div className={styles.textWrapper}>
         <MdMonitor />
-        {isActive ? (
-          <div className={styles.linkWrapper}>
+        <div className={styles.linkWrapper}>
+          {isActive && (
             <img
               src={`${siteUrl}/favicon.ico`}
               alt="favicon"
               width={16}
               height={16}
             />
-            <Link href={siteUrl} className={styles.link} prefetch={false}>
-              {siteUrl}
-            </Link>
-          </div>
-        ) : (
-          <span className={cn(styles.link, styles.inactive)}>{siteUrl}</span>
-        )}
+          )}
+          <Anchor href={siteUrl} isActive={isActive} showIcon={false}>{siteUrl}</Anchor>
+        </div>
       </div>
     );
 }
@@ -165,12 +158,9 @@ function ExtraLinks({ links }: Pick<ProjectType, "links">) {
         {links?.map((i) => (
           <li className={styles.textWrapper} key={i.label}>
             <MdLink />
-            <div className={styles.linkWrapper}>
-              <Link className={styles.link} href={i.url} prefetch={false}>
-                {i.label}
-              </Link>
-              <GoLinkExternal />
-            </div>
+            <Anchor href={i.url}>
+              {i.label}
+            </Anchor>
           </li>
         ))}
       </ul>

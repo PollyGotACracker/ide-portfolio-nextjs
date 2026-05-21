@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.anchor {
+  color: var(--color-anchor);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+  word-break: break-all;
+}
+
+.anchor:hover,
+.anchor:focus {
+  text-decoration-color: var(--color-anchor);
+}
+
+.inactive {
+  color: var(--item-color-inactive);
+  text-decoration: line-through;
+  cursor: default;
+}
+
+.externalIcon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3px;
+  color: var(--foreground);
+  flex-shrink: 0;
+}
