@@ -1,5 +1,5 @@
 import styles from "./Experiences.module.css";
-import Link from "next/link";
+import Anchor from "@/components/Anchor";
 import Heading from "@/components/Heading";
 import List from "@/components/List";
 import Markdown from "@/components/Markdown";
@@ -8,7 +8,6 @@ import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { ExperienceType } from "@/types/Data";
 import { MdLink } from "react-icons/md";
-import { GoLinkExternal } from "react-icons/go";
 
 const { id, label } = HOME_HEADINGS.EXPERIENCE;
 
@@ -52,16 +51,7 @@ function Links({ links }: Pick<ExperienceType, "links">) {
       {links.map((i) => (
         <li className={styles.textWrapper} key={i.label}>
           <MdLink />
-          <div className={styles.linkWrapper}>
-            {i.url ? (
-              <Link className={styles.link} href={i.url} prefetch={false}>
-                {i.label}
-              </Link>
-            ) : (
-              <span>{i.label}</span>
-            )}
-            {i.url && <GoLinkExternal />}
-          </div>
+          <Anchor href={i.url}>{i.label}</Anchor>
         </li>
       ))}
     </ul>
