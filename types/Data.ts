@@ -33,8 +33,15 @@ export interface SkillsType {
 }
 
 /* 프로젝트 */
+export type ProjectTypeValue =
+  | "team"
+  | "personal"
+  | "side"
+  | "service"
+  | "other";
 export interface ProjectType {
   title: string;
+  type: ProjectTypeValue;
   repo_url?: string;
   site_url?: string;
   is_active?: boolean;
@@ -54,6 +61,9 @@ export interface ExperienceType {
   start_at: string;
   end_at?: string;
   responsibilities: string[]; // markdown
+  stacks: string[];
+  description?: string[]; // markdown
+  links?: { label: string; url?: string }[];
 }
 
 /* 교육(훈련) */

@@ -20,7 +20,7 @@ export function ProjectsToyUI({ data }: { data: ProjectType[] }) {
       <ul className={styles.projectList}>
         {data.map((e, i) => (
           <li key={e.title}>
-            <ProjectThumb title={e.title} id={i} image={e.images?.[0]} />
+            <ProjectThumb title={e.title} id={i} image={e.images?.[0]} type={e.type} />
           </li>
         ))}
       </ul>

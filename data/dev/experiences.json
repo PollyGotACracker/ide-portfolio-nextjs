@@ -9,6 +9,25 @@
       "Managed **Lorem Infrastructure** and Ipsum optimization.",
       "Developed *Dolor Sit Amet* modules for scalable systems.",
       "Collabrated with **Ipsum Team** to improve workflow."
+    ],
+    "stacks": ["Lorem Stack", "Ipsum Stack", "Dolor Stack"],
+    "description": [
+      {
+        "title": "Lorem Ipsum Project",
+        "details": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          "Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+          "Excepteur sint occaecat cupidatat non proident.",
+          "Sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "Curabitur pretium tincidunt lacus, nec dignissim ligula."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "Lorem ipsum dolor sit amet" },
+      { "label": "Consectetur adipiscing elit sed do eiusmod" }
     ]
   }
 ]

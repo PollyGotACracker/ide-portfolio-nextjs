@@ -4,7 +4,8 @@ import Markdown from "@/components/Markdown";
 import Heading from "@/components/Heading";
 import ImageBox from "@/components/ImageBox";
 import List from "@/components/List";
-import { ProjectType } from "@/types/Data";
+import type { ProjectType } from "@/types/Data";
+import ProjectTypeTag from "@/components/ProjectTypeTag";
 import { FaGithub } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
@@ -32,7 +33,10 @@ export default function Project({
         {hasTitle && (
           <Heading.H3 className={styles.title}>{data.title}</Heading.H3>
         )}
-        <DateRange startAt={data.start_at} endAt={data?.end_at} />
+        <div className={styles.metaRow}>
+          <ProjectTypeTag type={data.type} />
+          <DateRange startAt={data.start_at} endAt={data?.end_at} />
+        </div>
       </div>
       <ImageGrid images={data?.images} />
       <div className={styles.content}>

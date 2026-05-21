@@ -21,8 +21,14 @@
   object-fit: cover;
 }
 
-.title {
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px 15px;
+}
+
+.title {
   font-size: 0.95rem;
   font-weight: 600;
 }

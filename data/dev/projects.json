@@ -1,6 +1,7 @@
 [
   {
     "title": "Project Lorem Ipsum",
+    "type": "team",
     "repo_url": "/lorem-ipsum-repo",
     "site_url": "/",
     "is_active": false,
