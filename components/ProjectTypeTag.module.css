@@ -1,0 +1,30 @@
+.typeTag {
+  border-radius: 3px;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.team {
+  background-color: rgba(0, 120, 212, 0.12);
+  color: #0078d4;
+}
+
+.personal {
+  background-color: rgba(16, 124, 16, 0.12);
+  color: #107c10;
+}
+
+.side {
+  background-color: rgba(136, 0, 239, 0.12);
+  color: #8800ef;
+}
+
+.service {
+  background-color: rgba(202, 80, 16, 0.12);
+  color: #ca5010;
+}
+
+.other {
+  background-color: rgba(100, 100, 100, 0.12);
+  color: #646464;
+}
