@@ -18,9 +18,9 @@ export const PAGES: Pages = {
 };
 
 export const HOME_HEADINGS: Headings = {
+  EXPERIENCE: { id: "experience", label: "경력", separator: "#" },
   PROJECTS: { id: "projects", label: "프로젝트", separator: "#" },
   PROJECTS_TOY: { id: "projects-toy", label: "토이 프로젝트", separator: "#" },
-  EXPERIENCE: { id: "experience", label: "경력", separator: "#" },
   TRAINING: { id: "training", label: "교육", separator: "#" },
   PINNED_REPOS: { id: "pinned-repos", label: "주요 저장소", separator: "#" },
 };
