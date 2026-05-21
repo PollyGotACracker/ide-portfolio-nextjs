@@ -19,10 +19,10 @@ export default async function Portfolio() {
   return (
     <main className={styles.printPage}>
       <Main chevron={false} />
-      <PinnedRepos />
-      <Projects />
       <Experiences />
+      <Projects />
       <Trainings />
+      <PinnedRepos />
     </main>
   );
 }

@@ -11,9 +11,9 @@ export default function Home() {
     <div className={styles.content}>
       <Main />
       <div className={styles.stopper} />
+      <Experiences />
       <Projects />
       <ProjectsToy />
-      <Experiences />
       <Trainings />
       <PinnedRepos />
     </div>

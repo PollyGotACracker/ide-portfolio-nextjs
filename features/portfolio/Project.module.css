@@ -16,10 +16,6 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.title {
-  width: 100%;
-}
-
 .metaRow {
   margin-left: auto;
   display: inline-flex;
@@ -27,13 +23,6 @@
   column-gap: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-/* 데스크톱 */
-@media (min-width: 1024px) {
-  .title {
-    width: auto;
-  }
 }
 
 .rangeWrapper {

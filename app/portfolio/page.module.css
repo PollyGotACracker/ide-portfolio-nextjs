@@ -10,8 +10,7 @@
     padding-right: 4px;
   }
 
-  .printPage :global(#projects),
-  .printPage :global(#experience) {
+  .printPage :global(#projects) {
     page-break-before: always;
     margin-top: 0px;
   }

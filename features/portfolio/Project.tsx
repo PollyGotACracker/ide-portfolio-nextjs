@@ -6,7 +6,6 @@ import List from "@/components/List";
 import type { ProjectType } from "@/types/Data";
 import ProjectTypeTag from "@/components/ProjectTypeTag";
 import { FaGithub } from "react-icons/fa";
-import { FaCalendarAlt } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 import Anchor from "@/components/Anchor";
 import { MdLink } from "react-icons/md";
@@ -58,7 +57,6 @@ function DateRange({
 }) {
   return (
     <div className={styles.rangeWrapper}>
-      <FaCalendarAlt />
       <span className={styles.range}>
         {`${startAt}${endAt ? ` ~ ${endAt}` : ``}`}
       </span>
@@ -72,7 +70,9 @@ function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"] }) {
     return (
       <div className={styles.textWrapper}>
         <FaGithub />
-        <Anchor href={repoUrl} showIcon={false}>{repoName}</Anchor>
+        <Anchor href={repoUrl} showIcon={false}>
+          {repoName}
+        </Anchor>
       </div>
     );
 }
@@ -108,7 +108,9 @@ function SiteLink({
               height={16}
             />
           )}
-          <Anchor href={siteUrl} isActive={isActive} showIcon={false}>{siteUrl}</Anchor>
+          <Anchor href={siteUrl} isActive={isActive} showIcon={false}>
+            {siteUrl}
+          </Anchor>
         </div>
       </div>
     );
@@ -158,9 +160,7 @@ function ExtraLinks({ links }: Pick<ProjectType, "links">) {
         {links?.map((i) => (
           <li className={styles.textWrapper} key={i.label}>
             <MdLink />
-            <Anchor href={i.url}>
-              {i.label}
-            </Anchor>
+            <Anchor href={i.url}>{i.label}</Anchor>
           </li>
         ))}
       </ul>
