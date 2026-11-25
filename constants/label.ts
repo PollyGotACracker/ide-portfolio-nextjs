@@ -38,12 +38,12 @@ export const INDEPENDENT_HEADINGS: Headings = {
   },
 };
 
-export const DOWNLOAD_FILES: Headings = {
-  PORTFOLIO: { id: "portfolio.pdf", label: "포트폴리오", separator: "/" },
-};
-
 export const EXTERNAL_LINKS: Headings = {
   BLOG: { id: "", label: "블로그", separator: "" },
+};
+
+export const DOWNLOAD_FILES: Headings = {
+  PORTFOLIO: { id: "portfolio.pdf", label: "포트폴리오", separator: "/" },
 };
 
 export const PAGE_HEADINGS: PageHeadingsMap = new Map([

@@ -52,6 +52,7 @@ export default function Explorer() {
   function renderSubpages(
     param: Page["param"],
     menu: SubPage[],
+    external = false,
     download = false,
   ) {
     return (
@@ -69,7 +70,7 @@ export default function Explorer() {
               )}
               key={id}
             >
-              <MenuLink href={href} download={download}>
+              <MenuLink href={href} external={external} download={download}>
                 {label}
               </MenuLink>
             </li>
@@ -93,19 +94,17 @@ export default function Explorer() {
                 className={cn(styles.submenu, isActive && styles.active)}
                 key={e.id}
               >
-                <MenuLink href={href} download={false}>
-                  {e.label}
-                </MenuLink>
+                <MenuLink href={href}>{e.label}</MenuLink>
               </li>
             );
           })}
         </nav>
       </Details>
       <Details title="external">
-        {renderSubpages(PAGES.BLOG.param, ExternalLinks, false)}
+        {renderSubpages(PAGES.BLOG.param, ExternalLinks, true, false)}
       </Details>
       <Details title="download">
-        {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, true)}
+        {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, false, true)}
       </Details>
     </>
   );
@@ -113,18 +112,28 @@ export default function Explorer() {
 
 interface MenuLinkProps {
   href: string;
-  download: boolean;
   children: React.ReactNode;
+  external?: boolean;
+  download?: boolean;
 }
-function MenuLink({ href, download, children }: MenuLinkProps) {
+function MenuLink({
+  href,
+  children,
+  external = false,
+  download = false,
+}: MenuLinkProps) {
   return !download ? (
-    <Link className={styles.submenuLink} href={href}>
-      <Codicon name="file" />
+    <Link
+      className={styles.submenuLink}
+      href={href}
+      target={!external ? "_self" : "_blank"}
+    >
+      {!external ? <Codicon name="file" /> : <Codicon name="go-to-file" />}
       {children}
     </Link>
   ) : (
     <a className={styles.submenuLink} href={href} download>
-      <Codicon name="file" />
+      <Codicon name="attach" />
       {children}
     </a>
   );
