@@ -10,6 +10,7 @@ import {
   PRACTICE_HEADINGS,
   DOWNLOAD_FILES,
   INDEPENDENT_HEADINGS,
+  EXTERNAL_LINKS,
 } from "@/constants/label";
 import Details from "@/components/Details";
 import Codicon from "@/components/Codicon";
@@ -100,6 +101,9 @@ export default function Explorer() {
           })}
         </nav>
       </Details>
+      <Details title="external">
+        {renderSubpages(PAGES.BLOG.param, ExternalLinks, false)}
+      </Details>
       <Details title="download">
         {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, true)}
       </Details>
@@ -139,4 +143,5 @@ interface SubPage {
 const HomeHeadings: SubPage[] = Object.values(HOME_HEADINGS);
 const PracticeHeadings: SubPage[] = Object.values(PRACTICE_HEADINGS);
 const IndependentHeadings: SubPage[] = Object.values(INDEPENDENT_HEADINGS);
+const ExternalLinks: SubPage[] = Object.values(EXTERNAL_LINKS);
 const DownloadFiles: SubPage[] = Object.values(DOWNLOAD_FILES);

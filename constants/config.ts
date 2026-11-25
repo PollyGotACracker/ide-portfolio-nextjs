@@ -8,6 +8,7 @@ const CONFIG = {
   NEXT_PUBLIC_NAME_ALT: process.env.NEXT_PUBLIC_NAME_ALT,
   NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
   NEXT_PUBLIC_PROD_URL: process.env.NEXT_PUBLIC_PROD_URL,
+  NEXT_PUBLIC_BLOG_URL: process.env.NEXT_PUBLIC_BLOG_URL,
 
   GITHUB_USERNAME: "PollyGotACracker",
   GITHUB_REPONAME: "ide-portfolio-nextjs",

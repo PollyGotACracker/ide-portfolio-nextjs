@@ -14,6 +14,7 @@ export const PAGES: Pages = {
   COURSES: { param: PATHS.COURSES, label: "강의" },
   PROJECTS: { param: PATHS.PROJECTS, label: "프로젝트" },
   IMAGES: { param: PATHS.IMAGES, label: "이미지" },
+  BLOG: { param: PATHS.EXTERNAL_BLOG, label: "블로그" },
   DOWNLOAD: { param: PATHS.STATIC_FILES, label: "다운로드" },
 };
 
@@ -39,6 +40,10 @@ export const INDEPENDENT_HEADINGS: Headings = {
 
 export const DOWNLOAD_FILES: Headings = {
   PORTFOLIO: { id: "portfolio.pdf", label: "포트폴리오", separator: "/" },
+};
+
+export const EXTERNAL_LINKS: Headings = {
+  BLOG: { id: "", label: "블로그", separator: "" },
 };
 
 export const PAGE_HEADINGS: PageHeadingsMap = new Map([
