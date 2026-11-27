@@ -7,6 +7,6 @@ export default async function Page({
   params: Promise<{ name: string }>;
 }) {
   const { name } = await params;
-  const data = await readMd("practice", `${name}.md`);
+  const data = await readMd("subjects", `${name}.md`);
   return <Markdown>{data}</Markdown>;
 }

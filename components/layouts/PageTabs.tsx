@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useActiveId } from "@/providers/ActiveIdProvider";
 import {
-  DOWNLOAD_FILES,
+  FILES,
   HeadingItem,
   PAGE_HEADINGS,
   PAGES,
@@ -109,7 +109,7 @@ function DownloadLink() {
   return (
     <a
       className={cn(buttonChipStyles.button, styles.download)}
-      href={`${PAGES.DOWNLOAD.param}${portfolio.separator}${portfolio.id}`}
+      href={`${PAGES.FILES.param}${portfolio.separator}${portfolio.id}`}
       title="Download Portfolio"
       download
     >
@@ -119,7 +119,7 @@ function DownloadLink() {
 }
 
 const PAGE_MAP = new Map(Object.values(PAGES).map((i) => [i.param, i.label]));
-const portfolio = DOWNLOAD_FILES.PORTFOLIO;
+const portfolio = FILES.PORTFOLIO;
 const IconMap: Record<Separator, React.ReactNode> = {
   "#": <FaHashtag />,
   "/": <FaLink />,

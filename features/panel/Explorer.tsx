@@ -7,8 +7,7 @@ import { usePanel } from "@/providers/PanelProvider";
 import {
   PAGES,
   HOME_HEADINGS,
-  PRACTICE_HEADINGS,
-  DOWNLOAD_FILES,
+  FILES,
   INDEPENDENT_HEADINGS,
   EXTERNAL_LINKS,
 } from "@/constants/label";
@@ -85,7 +84,6 @@ export default function Explorer() {
       <Details title="pages" onClick={handleOptionalClose}>
         <nav>
           {renderPage(PAGES.HOME, HomeHeadings)}
-          {renderPage(PAGES.PRACTICE, PracticeHeadings)}
           {IndependentHeadings.map((e) => {
             const href = `/${e.id}`;
             const isActive = parentPath === href;
@@ -100,11 +98,11 @@ export default function Explorer() {
           })}
         </nav>
       </Details>
-      <Details title="external">
+      <Details title="external links">
         {renderSubpages(PAGES.BLOG.param, ExternalLinks, true, false)}
       </Details>
-      <Details title="download">
-        {renderSubpages(PAGES.DOWNLOAD.param, DownloadFiles, false, true)}
+      <Details title="documents">
+        {renderSubpages(PAGES.FILES.param, Files, false, false)}
       </Details>
     </>
   );
@@ -150,7 +148,6 @@ interface SubPage {
 }
 
 const HomeHeadings: SubPage[] = Object.values(HOME_HEADINGS);
-const PracticeHeadings: SubPage[] = Object.values(PRACTICE_HEADINGS);
 const IndependentHeadings: SubPage[] = Object.values(INDEPENDENT_HEADINGS);
 const ExternalLinks: SubPage[] = Object.values(EXTERNAL_LINKS);
-const DownloadFiles: SubPage[] = Object.values(DOWNLOAD_FILES);
+const Files: SubPage[] = Object.values(FILES);

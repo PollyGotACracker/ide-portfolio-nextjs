@@ -70,9 +70,6 @@ export class CreateTerminal {
           case "..":
           case PATHS.HOME:
             return router.push(PATHS.HOME);
-          case PATHS.PRACTICE:
-          case PATHS.PRACTICE.slice(1):
-            return router.push(PATHS.PRACTICE);
           default:
             return `bash: cd: ${value}: No such page`;
         }
@@ -107,7 +104,7 @@ export class CreateTerminal {
 
   private downloadFile(filename: string, ext: string) {
     const link = document.createElement("a");
-    link.href = `${PATHS.STATIC_FILES}/${filename}.${ext}`;
+    link.href = `${PATHS.FILES}/${filename}.${ext}`;
     link.download = `${filename}.pdf`;
     link.click();
   }
