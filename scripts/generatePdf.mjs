@@ -12,7 +12,7 @@ import puppeteer from "puppeteer";
 import dotenv from "dotenv";
 
 dotenv.config({
-  path: [`.env.${process.env.NODE_ENV || "development"}`, ".env"],
+  path: [".env.production", ".env"],
 });
 const BASE_URL = "http://localhost";
 const PORT = "3333";
@@ -77,7 +77,7 @@ const browser = await puppeteer.launch({
 
 for (const { pagePath, filePath } of pages) {
   const page = await browser.newPage();
-  console.log(process.env.BUILD_BYPASS_TOKEN);
+
   // 페이지 진입을 위한 헤더 설정
   await page.setExtraHTTPHeaders({
     "x-build-id": process.env.BUILD_BYPASS_TOKEN,
@@ -117,6 +117,22 @@ for (const { pagePath, filePath } of pages) {
   `,
   });
   await page.evaluate(() => document.fonts.ready);
+
+  // pdf문서에서 정상적으로 열리지 않는 링크 처리
+  await page.evaluate((prodUrl) => {
+    document.querySelectorAll("a[href]").forEach((anchor) => {
+      const href = anchor.getAttribute("href") ?? "";
+
+      // mailto 제거
+      if (/^mailto:/i.test(href.trim())) {
+        anchor.removeAttribute("href");
+      }
+      // 이미지 링크에 사이트 주소 추가
+      if (anchor.querySelector("img")) {
+        anchor.setAttribute("href", `${prodUrl}${href}`);
+      }
+    });
+  }, process.env.NEXT_PUBLIC_PROD_URL);
 
   await page.pdf({
     path: STATIC_PATH_TARGET + filePath,
