@@ -29,6 +29,9 @@ importers:
       next:
         specifier: 16.1.6
         version: 16.1.6(@babel/core@7.29.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      pixelarticons:
+        specifier: ^2.4.2
+        version: 2.4.2(react@19.2.3)
       radix-ui:
         specifier: ^1.4.3
         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.13))(@types/react@19.2.13)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3568,6 +3571,12 @@ packages:
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
+
+  pixelarticons@2.4.2:
+    resolution: {integrity: sha512-BZKSU5ckLuioZCzES4fEmdQfnI8XEiQlHljdIVk+N6+KH7vTBQJNtMs+V0LQF7nC7cZbKT0qBXFOsT35sl8uhg==}
+    hasBin: true
+    peerDependencies:
+      react: '>=16'
 
   pkce-challenge@5.0.1:
     resolution: {integrity: sha512-wQ0b/W4Fr01qtpHlqSqspcj3EhBvimsdh0KlHhH8HRZnMsEa0ea2fTULOXOS9ccQr3om+GcGRk4e+isrZWV8qQ==}
@@ -8203,6 +8212,10 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.4: {}
+
+  pixelarticons@2.4.2(react@19.2.3):
+    dependencies:
+      react: 19.2.3
 
   pkce-challenge@5.0.1: {}
 

@@ -17,7 +17,7 @@
 .tab {
   width: 140px;
   height: 100%;
-  padding-left: 20px;
+  padding-left: 10px;
   overflow: hidden;
   position: relative;
   display: inline-flex;
@@ -29,12 +29,15 @@
   border-top: 1px solid transparent;
   border-bottom: 1px solid var(--border-color);
   background-color: transparent;
-  transition: background-color 0.1s ease-in-out;
 }
 
 .tab:not(.active):not(.lost):hover {
   background-color: var(--item-background-hover);
   color: var(--item-color-active);
+}
+
+.tab svg {
+  width: 18px;
 }
 
 .tabLabel {

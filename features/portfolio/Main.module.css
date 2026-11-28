@@ -55,6 +55,7 @@
 }
 
 .heroName {
+  font-family: var(--font-pixelify-sans);
   font-size: var(--font-size-xxl);
   font-weight: 500;
   margin: 0 0 1.25rem;
@@ -93,11 +94,14 @@
 
 .metaListRow {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  column-gap: 5px;
+  align-items: end;
   padding: 8px 0;
   border-bottom: 0.5px dashed rgba(var(--alpha-rgb), 0.15);
   font-size: var(--font-size-sm);
+}
+.metaListRow > *:last-child {
+  margin-left: auto;
 }
 
 .metaListRowLast {

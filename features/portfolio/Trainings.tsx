@@ -7,10 +7,11 @@ import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { TrainingType } from "@/types/Data";
-import { MdLink } from "react-icons/md";
+import { Notebook } from "pixelarticons/react";
 
 const { id, label } = HOME_HEADINGS.TRAINING;
 
+const IconStyles = { width: 16 };
 export default async function Trainings() {
   const data: TrainingType[] = await readJson(FILES.TRAININGS);
   return <TrainingsUI data={data} />;
@@ -22,10 +23,8 @@ function Links({ links }: Pick<TrainingType, "links">) {
     <ul className={styles.linkList}>
       {links.map((i) => (
         <li className={styles.textWrapper} key={i.label}>
-          <MdLink />
-          <Anchor href={i.url}>
-            {i.label}
-          </Anchor>
+          <Notebook {...IconStyles} />
+          <Anchor href={i.url}>{i.label}</Anchor>
         </li>
       ))}
     </ul>

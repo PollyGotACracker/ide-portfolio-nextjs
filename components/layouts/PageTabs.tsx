@@ -2,7 +2,7 @@
 
 import styles from "./PageTabs.module.css";
 import buttonChipStyles from "@/components/ButtonChip.module.css";
-import Codicon from "@/components/Codicon";
+import { Download } from "pixelarticons/react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useActiveId } from "@/providers/ActiveIdProvider";
@@ -13,12 +13,13 @@ import {
   PAGES,
   Separator,
 } from "@/constants/label";
-import { IoBrowsersOutline } from "react-icons/io5";
-import { FaHashtag } from "react-icons/fa";
-import { FaLink } from "react-icons/fa6";
-import { FaHeartBroken } from "react-icons/fa";
+import { Hash as IconHash } from "pixelarticons/react";
+import { Link as IconLink } from "pixelarticons/react";
+import { FileText as IconFileText } from "pixelarticons/react";
+import { CircleQuestion as IconCircleQuestion } from "pixelarticons/react";
 import { cn } from "@/utils/cn";
 
+const IconStyles = { width: 16 };
 export default function PageTabs() {
   const { activeId, parentPath, pathname } = useActiveId();
   const pageLabel = PAGE_MAP.get(parentPath);
@@ -96,7 +97,7 @@ function Tab({ href, isMatched, label, separator, ref }: TabProps) {
 function LostTab() {
   return (
     <li className={cn(styles.tab, styles.lost)}>
-      <FaHeartBroken />
+      <IconCircleQuestion />
       <span className={styles.tabLabel}>
         {/* {decodeURIComponent(path).replace("/", "")} */}
         404
@@ -113,7 +114,7 @@ function DownloadLink() {
       title="Download Portfolio"
       download
     >
-      <Codicon name="download" />
+      <Download width={20} />
     </a>
   );
 }
@@ -121,7 +122,7 @@ function DownloadLink() {
 const PAGE_MAP = new Map(Object.values(PAGES).map((i) => [i.param, i.label]));
 const portfolio = FILES.PORTFOLIO;
 const IconMap: Record<Separator, React.ReactNode> = {
-  "#": <FaHashtag />,
-  "/": <FaLink />,
-  "": <IoBrowsersOutline />,
+  "#": <IconHash {...IconStyles} />,
+  "/": <IconLink {...IconStyles} />,
+  "": <IconFileText {...IconStyles} />,
 };

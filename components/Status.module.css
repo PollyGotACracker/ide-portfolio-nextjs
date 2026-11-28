@@ -1,0 +1,27 @@
+.status {
+  font-family: var(--font-pixelify-sans);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  padding: 12px 24px;
+  box-shadow:
+    -5px 0 0 0 rgba(var(--alpha-rgb), 1),
+    5px 0 0 0 rgba(var(--alpha-rgb), 1),
+    0 -5px 0 0 rgba(var(--alpha-rgb), 1),
+    0 5px 0 0 rgba(var(--alpha-rgb), 1);
+}
+
+.status > * {
+  line-height: 1;
+  text-shadow: 5px 5px 0 var(--shadow-color);
+}
+
+.statusCode {
+  font-size: var(--font-size-xxl);
+}
+
+.statusDesc {
+  font-size: var(--font-size-xxl);
+}

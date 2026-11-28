@@ -5,10 +5,10 @@ import ImageBox from "@/components/ImageBox";
 import List from "@/components/List";
 import type { ProjectType } from "@/types/Data";
 import ProjectTypeTag from "@/components/ProjectTypeTag";
-import { FaGithub } from "react-icons/fa";
-import { MdMonitor } from "react-icons/md";
 import Anchor from "@/components/Anchor";
-import { MdLink } from "react-icons/md";
+import { Github } from "pixelarticons/react";
+import { Monitor } from "pixelarticons/react";
+import { Notebook } from "pixelarticons/react";
 import { cn } from "@/utils/cn";
 
 interface ProjectProps {
@@ -19,6 +19,8 @@ interface ProjectProps {
   /** 제목 유무 */
   hasTitle?: boolean;
 }
+
+const IconStyles = { width: 16 };
 
 export default function Project({
   data,
@@ -69,10 +71,8 @@ function RepoLink({ repoUrl }: { repoUrl?: ProjectType["repo_url"] }) {
   if (repoUrl)
     return (
       <div className={styles.textWrapper}>
-        <FaGithub />
-        <Anchor href={repoUrl} showIcon={false}>
-          {repoName}
-        </Anchor>
+        <Github {...IconStyles} />
+        <Anchor href={repoUrl}>{repoName}</Anchor>
       </div>
     );
 }
@@ -98,7 +98,7 @@ function SiteLink({
   if (siteUrl)
     return (
       <div className={styles.textWrapper}>
-        <MdMonitor />
+        <Monitor {...IconStyles} />
         <div className={styles.linkWrapper}>
           {isActive && (
             <img
@@ -108,7 +108,7 @@ function SiteLink({
               height={16}
             />
           )}
-          <Anchor href={siteUrl} isActive={isActive} showIcon={false}>
+          <Anchor href={siteUrl} isActive={isActive}>
             {siteUrl}
           </Anchor>
         </div>
@@ -159,7 +159,7 @@ function ExtraLinks({ links }: Pick<ProjectType, "links">) {
       <ul className={styles.extraLinkList}>
         {links?.map((i) => (
           <li className={styles.textWrapper} key={i.label}>
-            <MdLink />
+            <Notebook {...IconStyles} />
             <Anchor href={i.url}>{i.label}</Anchor>
           </li>
         ))}

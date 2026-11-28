@@ -14,12 +14,12 @@
 }
 
 .title {
+  font-family: var(--font-pixelify-sans);
   max-width: 100%;
   min-width: 0;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
-  font-size: 0.9rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

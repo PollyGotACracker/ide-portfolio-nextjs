@@ -3,9 +3,8 @@ import { PinnedRepo } from "@/types/Github";
 import styles from "./PinnedRepos.module.css";
 import { HOME_HEADINGS } from "@/constants/label";
 import Heading from "@/components/Heading";
-import { FaGithub } from "react-icons/fa";
+import { Github } from "pixelarticons/react";
 import Link from "next/link";
-import Codicon from "@/components/Codicon";
 
 const { id, label } = HOME_HEADINGS.PINNED_REPOS;
 
@@ -14,6 +13,7 @@ export default async function PinnedRepos() {
   return <PinnedReposUI data={res} />;
 }
 
+const IconStyles = { width: 16 };
 export function PinnedReposUI({ data }: { data: PinnedRepo[] }) {
   return (
     <section data-id={id}>
@@ -28,7 +28,7 @@ export function PinnedReposUI({ data }: { data: PinnedRepo[] }) {
               className={styles.repoCard}
             >
               <span className={styles.repoName}>
-                <Codicon name="repo" className={styles.repoIcon} />
+                <Github {...IconStyles} />
                 {repo.name}
               </span>
               {repo.description && (

@@ -1,5 +1,5 @@
 import styles from "@/styles/status.module.css";
-import Status from "@/components/svgs/Status";
+import Status from "@/components/Status";
 import GoHomeButton from "@/components/GoHomeButton";
 import MainLayout from "@/components/layouts/MainLayout";
 import { MESSAGES } from "@/constants/string";

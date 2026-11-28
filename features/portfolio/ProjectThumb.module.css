@@ -1,7 +1,7 @@
 .thumb {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   overflow: hidden;
   background-color: var(--background-card);
   box-shadow: var(--card-shadow);

@@ -4,21 +4,23 @@ import type { ProfileType } from "@/types/Data";
 import type { User } from "@/types/Github";
 import CONFIG from "@/constants/config";
 import { cn } from "@/utils/cn";
-import { MdMailOutline } from "react-icons/md";
-import { GoLinkExternal } from "react-icons/go";
+import { Mail } from "pixelarticons/react";
+import { Github } from "pixelarticons/react";
+import { ExternalLink } from "pixelarticons/react";
 
 const email = CONFIG.NEXT_PUBLIC_EMAIL;
 
+const IconsStyles = { width: 20 };
 export default function MainAside({ data }: { data: User & ProfileType }) {
   return (
     <aside className={styles.heroSide}>
       <MetaList
         items={[
           {
+            icon: <Mail {...IconsStyles} />,
             label: "Email",
             value: (
               <div className={styles.linkWrapper}>
-                <MdMailOutline size={16} />
                 <Link
                   className={styles.link}
                   href={`mailto:${email}`}
@@ -30,7 +32,8 @@ export default function MainAside({ data }: { data: User & ProfileType }) {
             ),
           },
           {
-            label: "GitHub",
+            icon: <Github {...IconsStyles} />,
+            label: "Github",
             value: (
               <div className={styles.linkWrapper}>
                 <img
@@ -47,7 +50,7 @@ export default function MainAside({ data }: { data: User & ProfileType }) {
                 >
                   {data.login}
                 </Link>
-                <GoLinkExternal />
+                <ExternalLink width={16} />
               </div>
             ),
           },
@@ -59,6 +62,7 @@ export default function MainAside({ data }: { data: User & ProfileType }) {
 }
 
 type MetaItem = {
+  icon: React.ReactNode;
   label: string;
   value: React.ReactNode;
 };
@@ -74,6 +78,7 @@ function MetaList({ items }: { items: MetaItem[] }) {
             i === items.length - 1 && styles.metaListRowLast,
           )}
         >
+          {item.icon}
           <dt className={styles.metaListLabel}>{item.label}</dt>
           <dd className={styles.metaListValue}>{item.value}</dd>
         </div>

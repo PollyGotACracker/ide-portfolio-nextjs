@@ -7,7 +7,7 @@ import { FILES } from "@/constants/dir";
 import { HOME_HEADINGS } from "@/constants/label";
 import { readJson } from "@/utils/readFile";
 import { ExperienceType } from "@/types/Data";
-import { MdLink } from "react-icons/md";
+import { Notebook } from "pixelarticons/react";
 
 const { id, label } = HOME_HEADINGS.EXPERIENCE;
 
@@ -15,6 +15,8 @@ export default async function Experiences() {
   const data: ExperienceType[] = await readJson(FILES.EXPERIENCES);
   return <ExperiencesUI data={data} />;
 }
+
+const IconStyles = { width: 16 };
 
 function Stacks({ stacks }: Pick<ExperienceType, "stacks">) {
   if (!stacks.length) return null;
@@ -50,7 +52,7 @@ function Links({ links }: Pick<ExperienceType, "links">) {
     <ul className={styles.linkList}>
       {links.map((i) => (
         <li className={styles.textWrapper} key={i.label}>
-          <MdLink />
+          <Notebook {...IconStyles} />
           <Anchor href={i.url}>{i.label}</Anchor>
         </li>
       ))}

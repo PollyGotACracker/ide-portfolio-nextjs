@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "@/styles/status.module.css";
-import Status from "@/components/svgs/Status";
+import Status from "@/components/Status";
 import ErrResetButton from "@/components/ErrResetButton";
 import GoHomeButton from "@/components/GoHomeButton";
 import { MESSAGES } from "@/constants/string";

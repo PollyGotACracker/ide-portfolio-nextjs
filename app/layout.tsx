@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans, Geist } from "next/font/google";
+import { Noto_Sans, Pixelify_Sans } from "next/font/google";
 import { cookies } from "next/headers";
 import CONFIG from "@/constants/config";
 import ThemeProvider from "@/providers/ThemeProvider";
@@ -14,10 +14,12 @@ import {
   COOKIE_THEME,
 } from "@/utils/theme";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
-
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
+  subsets: ["latin"],
+});
+const pixelifySans = Pixelify_Sans({
+  variable: "--font-pixelify-sans",
   subsets: ["latin"],
 });
 
@@ -56,7 +58,7 @@ export default async function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={cn("font-sans", geist.variable, initialDark && "dark")}
+      className={cn(pixelifySans.variable, initialDark && "dark")}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
