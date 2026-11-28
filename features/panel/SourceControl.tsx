@@ -4,35 +4,31 @@ import styles from "./SourceControl.module.css";
 import Link from "next/link";
 import Details from "@/components/Details";
 import TimeAgo from "@/components/TimeAgo";
-import { Event, EventType } from "@/types/Github";
-import { cn } from "@/utils/cn";
+import { RepoActivity } from "@/types/Github";
 
-export default function SourceControl({ data }: { data: Event[] }) {
+export default function SourceControl({ data }: { data: RepoActivity[] }) {
   return (
     <Details title="graph" showScrollbar={true}>
       <ul className={styles.eventList}>
         {data &&
           data.map((e) => {
-            if (e.type !== EventType.Push) return null;
-            const repoName = e.repo.name.split("/").at(-1);
+            const repoName = e.repo.split("/").at(-1);
             return (
-              <li className={styles.event} key={e.id}>
+              <li className={styles.event} key={`${e.repo}:${e.id}`}>
                 <Link
-                  className={cn(styles.eventLink, !e.public && styles.private)}
-                  href={`https://github.com/${e.repo.name}/commit/${e.payload.head}`}
+                  className={styles.eventLink}
+                  href={`https://github.com/${e.repo}/commit/${e.after}`}
                   target="_blank"
                 >
                   <span className={styles.eventWrapper}>
-                    <span className={styles.eventType}>
-                      {getEventText(e.type)}:
-                    </span>
+                    <span className={styles.eventType}>Push:</span>
                     <span className={styles.repoName}>{repoName}</span>
                   </span>
                   <span className={styles.desc}>
                     <span className={styles.refText}>
-                      {getRefText(e.payload.ref)}
+                      {getRefText(e.ref)}
                     </span>
-                    <TimeAgo date={e.created_at} />
+                    <TimeAgo date={e.timestamp} />
                   </span>
                 </Link>
               </li>
@@ -45,8 +41,4 @@ export default function SourceControl({ data }: { data: Event[] }) {
 
 function getRefText(ref: string) {
   return ref.split("/").at(-1);
-}
-
-function getEventText(type: string) {
-  return type.slice(0, -5);
 }

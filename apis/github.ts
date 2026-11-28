@@ -1,6 +1,12 @@
 "use server";
 
-import { Commit, Event, PinnedRepo, RepoInfo, User } from "@/types/Github";
+import {
+  Commit,
+  RepoActivity,
+  PinnedRepo,
+  RepoInfo,
+  User,
+} from "@/types/Github";
 import { githubFetcher } from ".";
 import CONFIG from "@/constants/config";
 
@@ -11,12 +17,32 @@ export async function getUser() {
   return res;
 }
 
-export async function getUserEvents() {
-  const endpoint = `/users/${CONFIG.GITHUB_USERNAME}/events`;
-  const res: Event[] = await githubFetcher(endpoint, {
-    next: { revalidate: 60, tags: ["events", "commits"] },
-  });
-  return res;
+// `/events` endpoint로 조회하는 경우 원인 불명의 데이터 누락 발생
+export async function getUserActivities() {
+  const username = encodeURIComponent(CONFIG.GITHUB_USERNAME);
+  const repos = await githubFetcher<{ full_name: string }[]>(
+    `/users/${username}/repos?sort=pushed&direction=desc&per_page=10`,
+    { next: { revalidate: 60, tags: ["repo"] } },
+  );
+  const activities = await Promise.all(
+    repos.map(async (repo) => {
+      const data = await githubFetcher<Omit<RepoActivity, "repo">[]>(
+        `/repos/${repo.full_name}/activity?actor=${username}&per_page=30`,
+        { next: { revalidate: 60, tags: ["activities", "commits"] } },
+      );
+      return data
+        .filter(
+          (activity) =>
+            activity.activity_type === "push" ||
+            activity.activity_type === "force_push",
+        )
+        .map((activity) => ({ ...activity, repo: repo.full_name }));
+    }),
+  );
+  return activities
+    .flat()
+    .sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))
+    .slice(0, 30);
 }
 
 export async function getRepoInfo() {

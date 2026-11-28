@@ -6,34 +6,13 @@ export interface User {
   owned_private_repos: number;
 }
 
-export enum EventType {
-  Push = "PushEvent",
-}
-export interface Event {
-  id: string;
-  type: EventType;
-  actor: {
-    id: number;
-    login: string;
-    display_login: string;
-    gravator_id: string;
-    url: string;
-    avatar_url: string;
-  };
-  repo: {
-    id: number;
-    name: string;
-    url: string;
-  };
-  payload: {
-    repository_id: number;
-    push_id: number;
-    ref: string;
-    head: string;
-    before: string;
-  };
-  public: boolean;
-  created_at: string;
+export interface RepoActivity {
+  id: number;
+  activity_type: string;
+  repo: string;
+  ref: string;
+  after: string;
+  timestamp: string;
 }
 
 export interface RepoInfo {

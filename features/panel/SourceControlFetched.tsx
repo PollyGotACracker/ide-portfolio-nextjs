@@ -1,7 +1,7 @@
 import SourceControl from "./SourceControl";
-import { getUserEvents } from "@/apis/github";
+import { getUserActivities } from "@/apis/github";
 
 export default async function SourceControlFetched() {
-  const data = await getUserEvents();
+  const data = await getUserActivities();
   return <SourceControl data={data} />;
 }
