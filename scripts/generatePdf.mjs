@@ -9,8 +9,11 @@ import fs from "fs";
 import path from "path";
 import { spawn, execSync } from "child_process";
 import puppeteer from "puppeteer";
-import "dotenv/config"; // .env 읽기
+import dotenv from "dotenv";
 
+dotenv.config({
+  path: [`.env.${process.env.NODE_ENV || "development"}`, ".env"],
+});
 const BASE_URL = "http://localhost";
 const PORT = "3333";
 
@@ -74,6 +77,7 @@ const browser = await puppeteer.launch({
 
 for (const { pagePath, filePath } of pages) {
   const page = await browser.newPage();
+  console.log(process.env.BUILD_BYPASS_TOKEN);
   // 페이지 진입을 위한 헤더 설정
   await page.setExtraHTTPHeaders({
     "x-build-id": process.env.BUILD_BYPASS_TOKEN,
