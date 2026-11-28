@@ -56,7 +56,6 @@ export default function MainAside({ data }: { data: User & ProfileType }) {
           },
         ]}
       />
-      <StrengthList items={data.strengths} />
     </aside>
   );
 }
@@ -84,20 +83,5 @@ function MetaList({ items }: { items: MetaItem[] }) {
         </div>
       ))}
     </dl>
-  );
-}
-
-function StrengthList({ items }: { items: string[] }) {
-  return (
-    <section>
-      <h3 className={styles.strengthsTitle}>Strengths</h3>
-      <ul className={styles.strengthsList}>
-        {items.map((text) => (
-          <li key={text} className={styles.strengthsItem}>
-            {text}
-          </li>
-        ))}
-      </ul>
-    </section>
   );
 }

@@ -1,8 +1,6 @@
 /* 소개 */
 export interface ProfileType {
-  about: string;
   skills: string[];
-  strengths: string[];
 }
 
 // /* 학력 */

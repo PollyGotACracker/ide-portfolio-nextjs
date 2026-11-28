@@ -31,7 +31,6 @@ export default function MainContent({ data }: { data: ProfileType }) {
     <div className={styles.heroContent}>
       <div className={styles.heroEyebrow}>Frontend Developer</div>
       <h1 className={styles.heroName}>{nameAlt}</h1>
-      <p className={styles.heroAbout}>{data.about}</p>
       <div className={styles.skillIcons}>
         {data.skills.map((skill) => (
           <div

@@ -18,7 +18,7 @@ export default async function Portfolio() {
 
   return (
     <main className={styles.printPage}>
-      <Main chevron={false} />
+      <Main scroller={false} />
       <Experiences />
       <Projects />
       <Trainings />

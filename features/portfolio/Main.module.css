@@ -55,19 +55,11 @@
 }
 
 .heroName {
-  font-family: var(--font-pixelify-sans);
   font-size: var(--font-size-xxl);
   font-weight: 500;
   margin: 0 0 1.25rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
-}
-
-.heroAbout {
-  line-height: 1.7;
-  color: rgba(var(--alpha-rgb), 0.6);
-  margin: 0 0 1.5rem;
-  white-space: pre-line;
 }
 
 .skillIcons {
@@ -120,40 +112,6 @@
   text-align: right;
 }
 
-.strengthsTitle {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(var(--alpha-rgb), 0.4);
-  margin: 0 0 0.85rem;
-}
-
-.strengthsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.strengthsItem {
-  position: relative;
-  padding-left: 14px;
-  font-size: var(--font-size-sm);
-  line-height: 1.9;
-  color: rgba(var(--alpha-rgb), 0.9);
-}
-
-.strengthsItem::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 4px;
-  height: 4px;
-  background: rgba(var(--alpha-rgb), 0.4);
-  border-radius: 50%;
-}
-
 .linkWrapper {
   display: inline-flex;
   align-items: center;
@@ -167,65 +125,6 @@
 
 .link:hover {
   border-bottom: 1px solid rgba(var(--alpha-rgb), 0.4);
-}
-
-.chevron {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(-50%);
-  animation-name: bounce;
-  animation-duration: 0.8s;
-  animation-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-.chevron svg {
-  font-size: 30px;
-}
-
-.chevron:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(var(--alpha-rgb), 0.4);
-  z-index: -1;
-  border-radius: 50%;
-  animation-name: pulse;
-  animation-duration: 1.6s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-
-@keyframes bounce {
-  from {
-    transform: translate(-50%, 0);
-  }
-
-  to {
-    transform: translate(-50%, 50%);
-  }
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(0);
-    opacity: 0.8;
-  }
-
-  to {
-    transform: scale(1.2);
-    opacity: 0;
-  }
 }
 
 @media (max-width: 768px) {
@@ -243,9 +142,5 @@
   .heroSide {
     border-left: none;
     padding-left: 0;
-  }
-
-  .chevron svg {
-    font-size: 16px;
   }
 }
